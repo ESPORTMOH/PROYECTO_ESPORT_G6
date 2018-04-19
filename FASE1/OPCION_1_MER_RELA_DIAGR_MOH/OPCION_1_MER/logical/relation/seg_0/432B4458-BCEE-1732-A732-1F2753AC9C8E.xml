@@ -1,0 +1,21 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Relation class="oracle.dbtools.crest.model.design.logical.Relation" name="LOG_DUENO" directorySegmentName="seg_0" id="432B4458-BCEE-1732-A732-1F2753AC9C8E">
+<createdBy>1gdaw12</createdBy>
+<createdTime>2018-04-19 10:56:34 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>OPCION1_MER</ownerDesignName>
+<engineerTo>
+<item key="5A8C821C-4404-BFC2-4F18-A93BCD8E38CF" value="true"/>
+</engineerTo>
+<sourcePk>F8A76652-1D42-25EF-4CA3-61EF7F6542BC</sourcePk>
+<targetPk>68432F5E-1963-72F4-385F-9AD2CE410850</targetPk>
+<identifying>false</identifying>
+<optionalSource>false</optionalSource>
+<optionalTarget>false</optionalTarget>
+<sourceCardinality>1</sourceCardinality>
+<sourceEntity>2B689F50-FCB0-D025-249C-9D744078936C</sourceEntity>
+<targetCardinalityString>1</targetCardinalityString>
+<targetEntity>2DF7C3A9-E558-47C4-04C1-96CADEC3FC22</targetEntity>
+<transferable>true</transferable>
+<deleteRule>NO ACTION</deleteRule>
+</Relation>

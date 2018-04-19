@@ -1,0 +1,92 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="6DDA5F34-E582-CB32-4A53-121A5EA9DCD5" name="DUENO">
+<createdBy>MIGUEL</createdBy>
+<createdTime>2018-04-19 18:25:36 UTC</createdTime>
+<generatorID>1171095D-7830-A2AC-1CAC-68D1B5C6DFAC</generatorID>
+<ownerDesignName>OPCION_3_MER_MOH</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="COD_PERSONA" id="BEECF971-9982-87DF-CD5B-09C802C1FFAB">
+<createdBy>MIGUEL</createdBy>
+<createdTime>2018-04-19 18:25:36 UTC</createdTime>
+<generatorID>FED2DC2F-2B6D-338D-079E-576812871D2D</generatorID>
+<ownerDesignName>OPCION_3_MER_MOH</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>30</dataTypePrecision>
+<ownDataTypeParameters>,30,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="2E25DF5B-0A50-DC65-F4F4-3A9825605BC2" referredColumn="84921196-3B78-13C8-BCFF-3533BCD8D0F5"/>
+</associations>
+</Column>
+<Column name="TELEFONO_CONTACTO" id="A071E4A5-4041-410B-AF1E-5E8114BB4574">
+<createdBy>MIGUEL</createdBy>
+<createdTime>2018-04-19 18:25:36 UTC</createdTime>
+<generatorID>993955EB-8528-A8E5-9CA3-0D4E9F54D677</generatorID>
+<ownerDesignName>OPCION_3_MER_MOH</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>9</dataTypePrecision>
+<ownDataTypeParameters>,9,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="EQUIPO_COD_EQUIPO" id="1EC4A6AC-284A-9EAB-EE1A-13CCD423C36F">
+<createdBy>MIGUEL</createdBy>
+<createdTime>2018-04-19 18:25:36 UTC</createdTime>
+<generatorID>D0513020-43D5-4241-9EDF-4A1A872E392F</generatorID>
+<ownerDesignName>OPCION_3_MER_MOH</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>16</dataTypePrecision>
+<ownDataTypeParameters>,16,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="5CD2007C-D73E-0C9E-E451-1DB2A1106AD5" referredColumn="575D91FF-63A6-B1A3-19BB-FE3EE2DC336A"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="EC5B78E8-C787-103E-1C4D-89F5A1B21AF9" name="DUENO_PK">
+<createdBy>MIGUEL</createdBy>
+<createdTime>2018-04-19 18:25:36 UTC</createdTime>
+<generatorID>EF91E57A-9B9A-506A-55A5-FCC682DC8470</generatorID>
+<ownerDesignName>OPCION_3_MER_MOH</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="BEECF971-9982-87DF-CD5B-09C802C1FFAB"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="623F9698-6660-EE87-EAB6-EF7B42627CA2" name="DUENO_PERSONA_FK">
+<createdBy>MIGUEL</createdBy>
+<createdTime>2018-04-19 18:25:36 UTC</createdTime>
+<generatorID>BFF24E8A-1C7D-A6EF-B8FB-4B9E2B8E2204</generatorID>
+<ownerDesignName>OPCION_3_MER_MOH</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="BEECF971-9982-87DF-CD5B-09C802C1FFAB"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="E563E713-48A5-9576-AACE-B4793A0CF0F0" name="DUENO_EQUIPO_FK">
+<createdBy>MIGUEL</createdBy>
+<createdTime>2018-04-19 18:25:36 UTC</createdTime>
+<generatorID>983F232A-AEA4-4ED4-1882-971852488552</generatorID>
+<ownerDesignName>OPCION_3_MER_MOH</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="1EC4A6AC-284A-9EAB-EE1A-13CCD423C36F"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

@@ -1,0 +1,20 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Relation class="oracle.dbtools.crest.model.design.logical.Relation" name="JUEGA_LOCAL" directorySegmentName="seg_0" id="FE900148-7DD3-AC80-6CE5-233158428F6C">
+<createdBy>1gdaw12</createdBy>
+<createdTime>2018-04-19 10:28:51 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>OPCION1_MER</ownerDesignName>
+<engineerTo>
+<item key="5A8C821C-4404-BFC2-4F18-A93BCD8E38CF" value="true"/>
+</engineerTo>
+<sourcePk>97B2F3A4-734E-EAEB-2C46-A8AB5668F66A</sourcePk>
+<identifying>false</identifying>
+<optionalSource>false</optionalSource>
+<optionalTarget>false</optionalTarget>
+<sourceCardinality>1</sourceCardinality>
+<sourceEntity>84B1D401-5C0C-69A8-1221-697A6DFDA38A</sourceEntity>
+<targetCardinalityString>1</targetCardinalityString>
+<targetEntity>5E0A9944-C592-AA48-8A10-A1E2725BD0B9</targetEntity>
+<transferable>true</transferable>
+<deleteRule>NO ACTION</deleteRule>
+</Relation>

@@ -1,0 +1,21 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Relation class="oracle.dbtools.crest.model.design.logical.Relation" name="EQUIPO_VISITANTE" directorySegmentName="seg_0" id="6BB28BBD-BD85-2865-54A2-8C1B4ECA1216">
+<createdBy>MIGUEL</createdBy>
+<createdTime>2018-04-19 18:21:03 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>OPCION_3_MER_MOH</ownerDesignName>
+<engineerTo>
+<item key="632580BE-9D69-C699-5250-5B362354143E" value="true"/>
+</engineerTo>
+<sourcePk>C6FA0238-F49A-0DFE-5CEF-46A77172FE4E</sourcePk>
+<targetPk>0F6E0094-BA83-8484-337F-4E1D9A33FD71</targetPk>
+<identifying>false</identifying>
+<optionalSource>false</optionalSource>
+<optionalTarget>false</optionalTarget>
+<sourceCardinality>1</sourceCardinality>
+<sourceEntity>63D4A7E3-4317-7147-D9A8-50AC68FCB22C</sourceEntity>
+<targetCardinalityString>1</targetCardinalityString>
+<targetEntity>9CEA02A9-9496-CE57-8543-76557381FDDE</targetEntity>
+<transferable>true</transferable>
+<deleteRule>NO ACTION</deleteRule>
+</Relation>

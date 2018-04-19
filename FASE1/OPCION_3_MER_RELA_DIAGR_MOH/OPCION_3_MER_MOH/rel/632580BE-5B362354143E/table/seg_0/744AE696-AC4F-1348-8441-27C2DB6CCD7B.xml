@@ -1,0 +1,64 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="744AE696-AC4F-1348-8441-27C2DB6CCD7B" name="ADMINISTRADOR">
+<createdBy>MIGUEL</createdBy>
+<createdTime>2018-04-19 18:25:36 UTC</createdTime>
+<generatorID>733A8085-E41E-F911-922F-5AA07755C4CC</generatorID>
+<ownerDesignName>OPCION_3_MER_MOH</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="COD_PERSONA" id="F262EF5B-900B-FA46-9E09-989FF3570EDD">
+<createdBy>MIGUEL</createdBy>
+<createdTime>2018-04-19 18:25:36 UTC</createdTime>
+<generatorID>FED2DC2F-2B6D-338D-079E-576812871D2D</generatorID>
+<ownerDesignName>OPCION_3_MER_MOH</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>30</dataTypePrecision>
+<ownDataTypeParameters>,30,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="80320630-249C-2E52-7D26-920DFFC170D1" referredColumn="84921196-3B78-13C8-BCFF-3533BCD8D0F5"/>
+</associations>
+</Column>
+<Column name="EMAIL_CONTACTO" id="AC5ECA1E-2F40-CA36-14E4-8671CD90AC2A">
+<createdBy>MIGUEL</createdBy>
+<createdTime>2018-04-19 18:25:36 UTC</createdTime>
+<generatorID>76519D6F-32C5-5887-48C3-BCBD29FE6309</generatorID>
+<ownerDesignName>OPCION_3_MER_MOH</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>30</dataTypeSize>
+<ownDataTypeParameters>30,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="C6837834-1772-78D2-62BF-A4AACAB057CD" name="ADMINISTRADOR_PK">
+<createdBy>MIGUEL</createdBy>
+<createdTime>2018-04-19 18:25:36 UTC</createdTime>
+<generatorID>EF91E57A-9B9A-506A-55A5-FCC682DC8470</generatorID>
+<ownerDesignName>OPCION_3_MER_MOH</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="F262EF5B-900B-FA46-9E09-989FF3570EDD"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="DBC2AF85-C43E-C15B-E86B-AE194588E569" name="ADMINISTRADOR_PERSONA_FK">
+<createdBy>MIGUEL</createdBy>
+<createdTime>2018-04-19 18:25:36 UTC</createdTime>
+<generatorID>B4D9EF7F-9EA1-F32F-3DA4-517ED3B108C9</generatorID>
+<ownerDesignName>OPCION_3_MER_MOH</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="F262EF5B-900B-FA46-9E09-989FF3570EDD"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

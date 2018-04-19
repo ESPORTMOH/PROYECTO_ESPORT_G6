@@ -1,0 +1,20 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<oracle.dbtools.crest.model.design.logical.LogicalDesign>
+   <object objectType="Entity" objectID="781DC3A4-80FA-6788-A048-8BA77B691668" name="ADMIN" seqName="seg_0"/>
+   <object objectType="Entity" objectID="6E02D532-8CFA-C4A5-3E68-AEB940542112" name="DUENO" seqName="seg_0"/>
+   <object objectType="Entity" objectID="78C868C5-AAD2-25F2-94BE-CB5E259FF3D2" name="EQUIPO" seqName="seg_0"/>
+   <object objectType="Entity" objectID="7A5D06F9-8B71-4A43-1C42-3B56E3DD00E7" name="JORNADA" seqName="seg_0"/>
+   <object objectType="Entity" objectID="C75E9B1F-9DAC-72D2-8842-8B457C7BD799" name="JUGADOR" seqName="seg_0"/>
+   <object objectType="Entity" objectID="FCA96664-CDD6-45AC-AFE3-0D1274255F2A" name="PARTIDO" seqName="seg_0"/>
+   <object objectType="Entity" objectID="366C10A8-B163-1471-5ECC-736841A2ADA5" name="PERSONA" seqName="seg_0"/>
+   <object objectType="Entity" objectID="3EFBE988-CC5E-AD48-1FAC-F286295B0940" name="USUARIO" seqName="seg_0"/>
+   <object objectType="Relation" objectID="C9F6AF05-599C-180D-4B08-53F38FD12C10" name="CONFECCIONA" seqName="seg_0"/>
+   <object objectType="Relation" objectID="956AD005-2CA6-892C-8F1A-EA4692CB64F2" name="DISPUTA" seqName="seg_0"/>
+   <object objectType="Relation" objectID="22477126-7787-F7FD-2DF4-E1804D258137" name="EQUIPO_LOCAL" seqName="seg_0"/>
+   <object objectType="Relation" objectID="B7585F05-1E9F-A325-118B-3E4CDE1B33E9" name="EQUIPO_VISITANTE" seqName="seg_0"/>
+   <object objectType="Relation" objectID="3611D2E1-52DA-F0FC-5C7E-F974E824ECF4" name="INTEGRA" seqName="seg_0"/>
+   <object objectType="Hierarchy relation" objectID="58C09798-3C69-F123-8D9C-226501CFFB44" name="Hierarchy_1" seqName="seg_0"/>
+   <object objectType="Hierarchy relation" objectID="FFE60766-1111-9697-F637-12C205897D53" name="Hierarchy_2" seqName="seg_0"/>
+   <object objectType="Hierarchy relation" objectID="1D8FB407-6629-B784-24F9-48FF6DF4684F" name="Hierarchy_3" seqName="seg_0"/>
+   <object objectType="Hierarchy relation" objectID="9F9899E5-5755-96B3-E972-A39079511ED7" name="Hierarchy_4" seqName="seg_0"/>
+</oracle.dbtools.crest.model.design.logical.LogicalDesign>

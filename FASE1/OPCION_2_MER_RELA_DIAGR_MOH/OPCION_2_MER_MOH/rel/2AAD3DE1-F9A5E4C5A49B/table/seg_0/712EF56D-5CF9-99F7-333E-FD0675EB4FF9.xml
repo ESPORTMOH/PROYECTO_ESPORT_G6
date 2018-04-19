@@ -1,0 +1,179 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="712EF56D-5CF9-99F7-333E-FD0675EB4FF9" name="EQUIPO">
+<createdBy>MIGUEL</createdBy>
+<createdTime>2018-04-19 17:24:27 UTC</createdTime>
+<generatorID>78C868C5-AAD2-25F2-94BE-CB5E259FF3D2</generatorID>
+<ownerDesignName>OPCION_2_MER_MOH</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="COD_EQUIPO" id="D23E56DB-9766-C2BD-1892-938C2CA85A62">
+<createdBy>MIGUEL</createdBy>
+<createdTime>2018-04-19 17:24:27 UTC</createdTime>
+<generatorID>8B43497A-F14D-E142-B0A2-90CB841AD2DB</generatorID>
+<ownerDesignName>OPCION_2_MER_MOH</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>8</dataTypePrecision>
+<ownDataTypeParameters>,8,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="NOMBRE" id="B7AA1BEC-2572-EDAA-517B-12BC5424B157">
+<createdBy>MIGUEL</createdBy>
+<createdTime>2018-04-19 17:24:27 UTC</createdTime>
+<generatorID>63D887E1-A3E8-1BF0-E4C1-6307DE1D4E5B</generatorID>
+<ownerDesignName>OPCION_2_MER_MOH</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>20</dataTypeSize>
+<ownDataTypeParameters>20,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="PRESUPUESTO" id="FBC3CCBF-9CF4-F53D-87CE-86D9789E0289">
+<createdBy>MIGUEL</createdBy>
+<createdTime>2018-04-19 17:24:27 UTC</createdTime>
+<generatorID>65173773-4DE8-B5B2-C235-4C306BEF6041</generatorID>
+<ownerDesignName>OPCION_2_MER_MOH</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>6</dataTypePrecision>
+<ownDataTypeParameters>,6,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="ANO_FUNDACION" id="BC0AE5B0-72F4-B054-EEDD-61F97699A7B1">
+<createdBy>MIGUEL</createdBy>
+<createdTime>2018-04-19 17:24:27 UTC</createdTime>
+<generatorID>3932FD8B-7D8E-D198-9A61-3031222ED2C8</generatorID>
+<ownerDesignName>OPCION_2_MER_MOH</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>4</dataTypePrecision>
+<ownDataTypeParameters>,4,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="CIUDAD" id="F2D82E1E-1854-5318-1F67-0BAA25007F0E">
+<createdBy>MIGUEL</createdBy>
+<createdTime>2018-04-19 17:24:27 UTC</createdTime>
+<generatorID>85DBBEE7-50C5-2C3B-B0D5-FEE9F8390621</generatorID>
+<ownerDesignName>OPCION_2_MER_MOH</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>20</dataTypeSize>
+<ownDataTypeParameters>20,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="ESTADIO" id="F0CA5167-A4A0-2AB2-E19E-B0FCA63FCA68">
+<createdBy>MIGUEL</createdBy>
+<createdTime>2018-04-19 17:24:27 UTC</createdTime>
+<generatorID>6CECB663-97AE-3505-132B-42DE6DAE8830</generatorID>
+<ownerDesignName>OPCION_2_MER_MOH</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>20</dataTypeSize>
+<ownDataTypeParameters>20,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="DUENO_COD_PERSONA" id="5967FD53-0876-C432-A483-87D3A8F5833A">
+<createdBy>MIGUEL</createdBy>
+<createdTime>2018-04-19 17:24:27 UTC</createdTime>
+<generatorID>E51A67F8-39E3-71DE-4496-C21C8FBA8D6E</generatorID>
+<ownerDesignName>OPCION_2_MER_MOH</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>30</dataTypePrecision>
+<ownDataTypeParameters>,30,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="67F37EE6-3B94-3711-9C76-B51DB77090C7" referredColumn="D3353DF9-6915-F624-D134-EDD5787FB5F9"/>
+</associations>
+</Column>
+<Column name="PARTIDO_COD_PARTIDO" id="10E60764-FA3C-3EB7-067D-CDC48DAA35C9">
+<createdBy>MIGUEL</createdBy>
+<createdTime>2018-04-19 17:24:27 UTC</createdTime>
+<generatorID>32FE2B69-0EFB-7597-AC31-00354E9A7366</generatorID>
+<ownerDesignName>OPCION_2_MER_MOH</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>48</dataTypePrecision>
+<ownDataTypeParameters>,48,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="10B4E028-D508-ADD0-A330-784885A3376B" referredColumn="24741520-4AD0-C51F-4624-172C5A81EE20"/>
+</associations>
+</Column>
+<Column name="PARTIDO_COD_PARTIDO1" id="9A2E1231-636D-3E5A-221D-DA8B840C9F57">
+<createdBy>MIGUEL</createdBy>
+<createdTime>2018-04-19 17:24:27 UTC</createdTime>
+<generatorID>7B111498-3A47-AEDD-AEF5-BD173BABF155</generatorID>
+<ownerDesignName>OPCION_2_MER_MOH</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>48</dataTypePrecision>
+<ownDataTypeParameters>,48,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="83CECA50-449D-4EDE-C03A-1AE36D65F1BD" referredColumn="24741520-4AD0-C51F-4624-172C5A81EE20"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="F879FA08-F3C4-BC8D-1F74-73BE795B5580" name="EQUIPO_PK">
+<createdBy>MIGUEL</createdBy>
+<createdTime>2018-04-19 17:24:27 UTC</createdTime>
+<generatorID>A0DB10AF-595F-F35A-27A8-24DDD3B64615</generatorID>
+<ownerDesignName>OPCION_2_MER_MOH</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="D23E56DB-9766-C2BD-1892-938C2CA85A62"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="52A6A823-650D-2FC1-5C85-CF24F1FD3ACD" name="EQUIPO_DUENO_FK">
+<createdBy>MIGUEL</createdBy>
+<createdTime>2018-04-19 17:24:27 UTC</createdTime>
+<generatorID>C9F6AF05-599C-180D-4B08-53F38FD12C10</generatorID>
+<ownerDesignName>OPCION_2_MER_MOH</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="5967FD53-0876-C432-A483-87D3A8F5833A"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="E53111C3-EF0E-10ED-C09D-C93014651583" name="EQUIPO_PARTIDO_FK">
+<createdBy>MIGUEL</createdBy>
+<createdTime>2018-04-19 17:24:27 UTC</createdTime>
+<generatorID>22477126-7787-F7FD-2DF4-E1804D258137</generatorID>
+<ownerDesignName>OPCION_2_MER_MOH</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="10E60764-FA3C-3EB7-067D-CDC48DAA35C9"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="24485F06-231C-5DA0-3E33-F07951BF6920" name="EQUIPO_PARTIDO_FKv1">
+<createdBy>MIGUEL</createdBy>
+<createdTime>2018-04-19 17:24:27 UTC</createdTime>
+<generatorID>B7585F05-1E9F-A325-118B-3E4CDE1B33E9</generatorID>
+<ownerDesignName>OPCION_2_MER_MOH</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="9A2E1231-636D-3E5A-221D-DA8B840C9F57"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>
