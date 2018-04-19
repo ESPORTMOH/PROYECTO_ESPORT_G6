@@ -1,0 +1,15 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="5CD2007C-D73E-0C9E-E451-1DB2A1106AD5" containerWithKeyObject="6DDA5F34-E582-CB32-4A53-121A5EA9DCD5" localFKIndex="E563E713-48A5-9576-AACE-B4793A0CF0F0" name="DUENO_EQUIPO_FK">
+<createdBy>MIGUEL</createdBy>
+<createdTime>2018-04-19 18:25:36 UTC</createdTime>
+<generatorID>983F232A-AEA4-4ED4-1882-971852488552</generatorID>
+<ownerDesignName>OPCION_3_MER_MOH</ownerDesignName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>03576A32-2513-7842-AC5C-E4FAE2C07747</referredTableID>
+<keyObject>1847478A-5FAD-D599-4833-7E8B84C3FDC5</keyObject>
+<referredKeyID>1847478A-5FAD-D599-4833-7E8B84C3FDC5</referredKeyID>
+<mandatory>true</mandatory>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

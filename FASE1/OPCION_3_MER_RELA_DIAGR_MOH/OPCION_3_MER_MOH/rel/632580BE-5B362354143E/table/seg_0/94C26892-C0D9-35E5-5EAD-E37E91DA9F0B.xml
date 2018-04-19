@@ -1,0 +1,96 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="94C26892-C0D9-35E5-5EAD-E37E91DA9F0B" name="JORNADA">
+<createdBy>MIGUEL</createdBy>
+<createdTime>2018-04-19 18:25:36 UTC</createdTime>
+<generatorID>8FAE52A8-B9BD-5F5A-C76F-2735121D236A</generatorID>
+<ownerDesignName>OPCION_3_MER_MOH</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="COD_JORNADA" id="24417832-F6D9-BBB9-01EC-2FDC1E9EF0F0">
+<createdBy>MIGUEL</createdBy>
+<createdTime>2018-04-19 18:25:36 UTC</createdTime>
+<generatorID>1D57707C-12AB-0FF1-00ED-D9EE52FD03E0</generatorID>
+<ownerDesignName>OPCION_3_MER_MOH</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>18</dataTypePrecision>
+<ownDataTypeParameters>,18,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="FECHA_INICIO" id="7C68644B-C082-DE71-8413-BD966A683F55">
+<createdBy>MIGUEL</createdBy>
+<createdTime>2018-04-19 18:25:36 UTC</createdTime>
+<generatorID>036C54C8-8FD4-257D-DB8A-845BBE164240</generatorID>
+<ownerDesignName>OPCION_3_MER_MOH</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="FECHA_FIN" id="567831F4-C311-05CA-BFEB-6EFC5E324987">
+<createdBy>MIGUEL</createdBy>
+<createdTime>2018-04-19 18:25:36 UTC</createdTime>
+<generatorID>2234AA94-09B9-1587-6497-7950501689B3</generatorID>
+<ownerDesignName>OPCION_3_MER_MOH</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="NUMERO_TEMPORADA" id="E58F9064-129A-CC3D-69F2-828AEC822463">
+<createdBy>MIGUEL</createdBy>
+<createdTime>2018-04-19 18:25:36 UTC</createdTime>
+<generatorID>5C6B1F62-BAB3-C9A7-31CD-D89DDC054ACF</generatorID>
+<ownerDesignName>OPCION_3_MER_MOH</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>20</dataTypePrecision>
+<ownDataTypeParameters>,20,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="EQUIPO_LOCAL" id="47261A2B-4F8A-0FB0-23B7-5106A3BBE421">
+<createdBy>MIGUEL</createdBy>
+<createdTime>2018-04-19 18:25:36 UTC</createdTime>
+<generatorID>F3D1D4A5-7AA5-72F1-1A04-72ACEE2E3BB3</generatorID>
+<ownerDesignName>OPCION_3_MER_MOH</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>20</dataTypeSize>
+<ownDataTypeParameters>20,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="EQUIPO_VISITANTE" id="DB018022-6885-0EF8-65DF-798FE106778A">
+<createdBy>MIGUEL</createdBy>
+<createdTime>2018-04-19 18:25:36 UTC</createdTime>
+<generatorID>881D74D4-0597-0144-8693-91E1E6DC5BC4</generatorID>
+<ownerDesignName>OPCION_3_MER_MOH</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>20</dataTypeSize>
+<ownDataTypeParameters>20,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="6FA42045-7A27-FB75-8C56-AA7E03B86F06" name="JORNADA_PK">
+<createdBy>MIGUEL</createdBy>
+<createdTime>2018-04-19 18:25:36 UTC</createdTime>
+<generatorID>C5CD3367-342C-3AF3-FB3C-A841BE61ECB4</generatorID>
+<ownerDesignName>OPCION_3_MER_MOH</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="24417832-F6D9-BBB9-01EC-2FDC1E9EF0F0"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

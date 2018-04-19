@@ -1,0 +1,51 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="1171095D-7830-A2AC-1CAC-68D1B5C6DFAC" name="DUENO">
+<createdBy>MIGUEL</createdBy>
+<createdTime>2018-04-19 18:07:32 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>OPCION_3_MER_MOH</ownerDesignName>
+<engineerTo>
+<item key="632580BE-9D69-C699-5250-5B362354143E" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<hierarchicalParent>6B59CB47-F2DA-13B1-0962-E90430152FF1</hierarchicalParent>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="TELEFONO_CONTACTO" id="993955EB-8528-A8E5-9CA3-0D4E9F54D677">
+<createdBy>MIGUEL</createdBy>
+<createdTime>2018-04-19 18:07:43 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>OPCION_3_MER_MOH</ownerDesignName>
+<engineerTo>
+<item key="632580BE-9D69-C699-5250-5B362354143E" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>9</dataTypePrecision>
+<ownDataTypeParameters>,9,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="COD_EQUIPO" id="D0513020-43D5-4241-9EDF-4A1A872E392F">
+<createdBy>MIGUEL</createdBy>
+<createdTime>2018-04-19 18:19:06 UTC</createdTime>
+<generatorID>983F232A-AEA4-4ED4-1882-971852488552</generatorID>
+<ownerDesignName>OPCION_3_MER_MOH</ownerDesignName>
+<engineerTo>
+<item key="632580BE-9D69-C699-5250-5B362354143E" value="true"/>
+</engineerTo>
+<referedAttribute>E7EFF669-083E-4965-4659-BE803742F698</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>16</dataTypePrecision>
+<ownDataTypeParameters>,16,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+</Entity>

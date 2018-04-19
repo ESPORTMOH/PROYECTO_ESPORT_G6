@@ -1,0 +1,20 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Relation class="oracle.dbtools.crest.model.design.logical.Relation" name="INTEGRA" directorySegmentName="seg_0" id="A78767B0-A2FE-28F5-3DD9-03D453DD70E0">
+<createdBy>MIGUEL</createdBy>
+<createdTime>2018-04-19 18:19:54 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>OPCION_3_MER_MOH</ownerDesignName>
+<engineerTo>
+<item key="632580BE-9D69-C699-5250-5B362354143E" value="true"/>
+</engineerTo>
+<sourcePk>C6FA0238-F49A-0DFE-5CEF-46A77172FE4E</sourcePk>
+<identifying>false</identifying>
+<optionalSource>false</optionalSource>
+<optionalTarget>false</optionalTarget>
+<sourceCardinality>1</sourceCardinality>
+<sourceEntity>63D4A7E3-4317-7147-D9A8-50AC68FCB22C</sourceEntity>
+<targetCardinalityString>*</targetCardinalityString>
+<targetEntity>D5BE240A-6EA4-6E07-5D62-0566E603D0D0</targetEntity>
+<transferable>true</transferable>
+<deleteRule>NO ACTION</deleteRule>
+</Relation>

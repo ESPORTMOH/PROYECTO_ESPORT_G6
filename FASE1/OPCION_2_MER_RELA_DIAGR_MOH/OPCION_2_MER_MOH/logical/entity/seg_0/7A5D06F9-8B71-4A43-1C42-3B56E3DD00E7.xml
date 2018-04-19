@@ -1,0 +1,117 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="7A5D06F9-8B71-4A43-1C42-3B56E3DD00E7" name="JORNADA">
+<createdBy>1gdaw12</createdBy>
+<createdTime>2018-04-19 12:02:57 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>OPCION_2_MER_MOH</ownerDesignName>
+<engineerTo>
+<item key="2AAD3DE1-A0E9-D4CE-A12A-F9A5E4C5A49B" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="COD_JORNADA" id="2B110FA1-FD93-C52E-14E3-A3E8EF4DB0EC">
+<createdBy>1gdaw12</createdBy>
+<createdTime>2018-04-19 12:03:03 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>OPCION_2_MER_MOH</ownerDesignName>
+<engineerTo>
+<item key="2AAD3DE1-A0E9-D4CE-A12A-F9A5E4C5A49B" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>18</dataTypePrecision>
+<ownDataTypeParameters>,18,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="FECHA_INICIO" id="2EA0329A-B7E0-7DAE-35EB-551553462BA1">
+<createdBy>1gdaw12</createdBy>
+<createdTime>2018-04-19 12:03:18 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>OPCION_2_MER_MOH</ownerDesignName>
+<engineerTo>
+<item key="2AAD3DE1-A0E9-D4CE-A12A-F9A5E4C5A49B" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="FECHA_FIN" id="8EC14063-B9B7-C277-C44D-75E90CBF8308">
+<createdBy>1gdaw12</createdBy>
+<createdTime>2018-04-19 12:03:39 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>OPCION_2_MER_MOH</ownerDesignName>
+<engineerTo>
+<item key="2AAD3DE1-A0E9-D4CE-A12A-F9A5E4C5A49B" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="NUMERO_TEMPORADA" id="4166DAF2-6FFE-8468-687E-6762E0602059">
+<createdBy>1gdaw12</createdBy>
+<createdTime>2018-04-19 12:03:51 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>OPCION_2_MER_MOH</ownerDesignName>
+<engineerTo>
+<item key="2AAD3DE1-A0E9-D4CE-A12A-F9A5E4C5A49B" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>20</dataTypePrecision>
+<ownDataTypeParameters>,20,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="EQUIPO_LOCAL" id="2614F9F1-0FC5-D50C-007B-73F0ECD6B261">
+<createdBy>1gdaw12</createdBy>
+<createdTime>2018-04-19 12:04:36 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>OPCION_2_MER_MOH</ownerDesignName>
+<engineerTo>
+<item key="2AAD3DE1-A0E9-D4CE-A12A-F9A5E4C5A49B" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>20</dataTypeSize>
+<ownDataTypeParameters>20,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="EQUIPO_VISITANTE" id="44250B97-C705-AA0D-AA44-1FAB6AD5C67D">
+<createdBy>1gdaw12</createdBy>
+<createdTime>2018-04-19 12:04:54 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>OPCION_2_MER_MOH</ownerDesignName>
+<engineerTo>
+<item key="2AAD3DE1-A0E9-D4CE-A12A-F9A5E4C5A49B" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>20</dataTypeSize>
+<ownDataTypeParameters>20,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="B2EE1FF4-41B6-9E5F-839E-A3432C596A9B" name="JORNADA PK">
+<createdBy>1gdaw12</createdBy>
+<createdTime>2018-04-19 12:03:48 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>OPCION_2_MER_MOH</ownerDesignName>
+<engineerTo>
+<item key="2AAD3DE1-A0E9-D4CE-A12A-F9A5E4C5A49B" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>2B110FA1-FD93-C52E-14E3-A3E8EF4DB0EC</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

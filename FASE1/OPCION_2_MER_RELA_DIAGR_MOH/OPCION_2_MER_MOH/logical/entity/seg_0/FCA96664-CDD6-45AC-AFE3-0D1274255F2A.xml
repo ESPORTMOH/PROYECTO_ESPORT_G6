@@ -1,0 +1,148 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="FCA96664-CDD6-45AC-AFE3-0D1274255F2A" name="PARTIDO">
+<createdBy>1gdaw12</createdBy>
+<createdTime>2018-04-19 11:57:47 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>OPCION_2_MER_MOH</ownerDesignName>
+<engineerTo>
+<item key="2AAD3DE1-A0E9-D4CE-A12A-F9A5E4C5A49B" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="COD_PARTIDO" id="5AFC139D-B46E-6975-BA44-246C80FC8C40">
+<createdBy>1gdaw12</createdBy>
+<createdTime>2018-04-19 11:57:52 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>OPCION_2_MER_MOH</ownerDesignName>
+<engineerTo>
+<item key="2AAD3DE1-A0E9-D4CE-A12A-F9A5E4C5A49B" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>48</dataTypePrecision>
+<ownDataTypeParameters>,48,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="FECHA" id="065F8AD0-85CB-B062-CD5A-FF54E493A18A">
+<createdBy>1gdaw12</createdBy>
+<createdTime>2018-04-19 11:58:06 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>OPCION_2_MER_MOH</ownerDesignName>
+<engineerTo>
+<item key="2AAD3DE1-A0E9-D4CE-A12A-F9A5E4C5A49B" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="HORA" id="E289B334-3B51-2482-8BB9-69A3EA9022A6">
+<createdBy>1gdaw12</createdBy>
+<createdTime>2018-04-19 11:58:41 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>OPCION_2_MER_MOH</ownerDesignName>
+<engineerTo>
+<item key="2AAD3DE1-A0E9-D4CE-A12A-F9A5E4C5A49B" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT014</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="PUNTOS_LOCAL" id="E20591C3-574A-916E-4917-B4BE93CA9E30">
+<createdBy>1gdaw12</createdBy>
+<createdTime>2018-04-19 11:58:58 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>OPCION_2_MER_MOH</ownerDesignName>
+<engineerTo>
+<item key="2AAD3DE1-A0E9-D4CE-A12A-F9A5E4C5A49B" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>3</dataTypePrecision>
+<ownDataTypeParameters>,3,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="PUNTOS_VISITANTE" id="2B40C5C7-E1CF-3295-1E88-5D00A1FCFC3E">
+<createdBy>1gdaw12</createdBy>
+<createdTime>2018-04-19 11:59:19 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>OPCION_2_MER_MOH</ownerDesignName>
+<engineerTo>
+<item key="2AAD3DE1-A0E9-D4CE-A12A-F9A5E4C5A49B" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>3</dataTypePrecision>
+<ownDataTypeParameters>,3,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="COD_EQUIPO" id="22227875-A713-0BC0-8C75-62DAB32B65C8">
+<createdBy>1gdaw12</createdBy>
+<createdTime>2018-04-19 12:00:30 UTC</createdTime>
+<generatorID>22477126-7787-F7FD-2DF4-E1804D258137</generatorID>
+<ownerDesignName>OPCION_2_MER_MOH</ownerDesignName>
+<engineerTo>
+<item key="2AAD3DE1-A0E9-D4CE-A12A-F9A5E4C5A49B" value="true"/>
+</engineerTo>
+<referedAttribute>8B43497A-F14D-E142-B0A2-90CB841AD2DB</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>8</dataTypePrecision>
+<ownDataTypeParameters>,8,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="COD_EQUIPO1" id="39A8DFEA-3506-084A-AB58-63F0574C04B0">
+<createdBy>1gdaw12</createdBy>
+<createdTime>2018-04-19 12:01:02 UTC</createdTime>
+<generatorID>B7585F05-1E9F-A325-118B-3E4CDE1B33E9</generatorID>
+<ownerDesignName>OPCION_2_MER_MOH</ownerDesignName>
+<engineerTo>
+<item key="2AAD3DE1-A0E9-D4CE-A12A-F9A5E4C5A49B" value="true"/>
+</engineerTo>
+<referedAttribute>8B43497A-F14D-E142-B0A2-90CB841AD2DB</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>8</dataTypePrecision>
+<ownDataTypeParameters>,8,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="COD_JORNADA" id="727730B4-B622-C11C-D179-5D6848FB7949">
+<createdBy>1gdaw12</createdBy>
+<createdTime>2018-04-19 12:05:52 UTC</createdTime>
+<generatorID>956AD005-2CA6-892C-8F1A-EA4692CB64F2</generatorID>
+<ownerDesignName>OPCION_2_MER_MOH</ownerDesignName>
+<engineerTo>
+<item key="2AAD3DE1-A0E9-D4CE-A12A-F9A5E4C5A49B" value="true"/>
+</engineerTo>
+<referedAttribute>2B110FA1-FD93-C52E-14E3-A3E8EF4DB0EC</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>18</dataTypePrecision>
+<ownDataTypeParameters>,18,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="A3EBB2B8-C758-B5D7-678D-040EB7543AEC" name="PARTIDO PK">
+<createdBy>1gdaw12</createdBy>
+<createdTime>2018-04-19 11:58:42 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>OPCION_2_MER_MOH</ownerDesignName>
+<engineerTo>
+<item key="2AAD3DE1-A0E9-D4CE-A12A-F9A5E4C5A49B" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>5AFC139D-B46E-6975-BA44-246C80FC8C40</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

@@ -1,0 +1,34 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="C9F5336C-AD1C-BDB2-03BD-EEA8EBF551B9" name="USUARIO">
+<createdBy>MIGUEL</createdBy>
+<createdTime>2018-04-19 18:08:57 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>OPCION_3_MER_MOH</ownerDesignName>
+<engineerTo>
+<item key="632580BE-9D69-C699-5250-5B362354143E" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<hierarchicalParent>6B59CB47-F2DA-13B1-0962-E90430152FF1</hierarchicalParent>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="FECHA_NACIMIENTO" id="AE8E012C-6DC0-8403-AE19-24D47FD8656D">
+<createdBy>MIGUEL</createdBy>
+<createdTime>2018-04-19 18:09:13 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>OPCION_3_MER_MOH</ownerDesignName>
+<engineerTo>
+<item key="632580BE-9D69-C699-5250-5B362354143E" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+</Entity>

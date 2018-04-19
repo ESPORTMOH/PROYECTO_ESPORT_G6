@@ -1,0 +1,136 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="D5BE240A-6EA4-6E07-5D62-0566E603D0D0" name="JUGADOR">
+<createdBy>MIGUEL</createdBy>
+<createdTime>2018-04-19 18:09:59 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>OPCION_3_MER_MOH</ownerDesignName>
+<engineerTo>
+<item key="632580BE-9D69-C699-5250-5B362354143E" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="COD_JUGADOR" id="D97C1353-D83C-DB20-AE6C-D828F13B9B69">
+<createdBy>MIGUEL</createdBy>
+<createdTime>2018-04-19 18:10:05 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>OPCION_3_MER_MOH</ownerDesignName>
+<engineerTo>
+<item key="632580BE-9D69-C699-5250-5B362354143E" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>50</dataTypePrecision>
+<ownDataTypeParameters>,50,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="NOMBRE" id="CCC314E1-43B7-DA79-5E34-7AA25F6272F3">
+<createdBy>MIGUEL</createdBy>
+<createdTime>2018-04-19 18:10:30 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>OPCION_3_MER_MOH</ownerDesignName>
+<engineerTo>
+<item key="632580BE-9D69-C699-5250-5B362354143E" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>20</dataTypeSize>
+<ownDataTypeParameters>20,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="APELLIDO" id="46F00456-8FCE-E7D9-7C3A-4956E5DD18D9">
+<createdBy>MIGUEL</createdBy>
+<createdTime>2018-04-19 18:10:46 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>OPCION_3_MER_MOH</ownerDesignName>
+<engineerTo>
+<item key="632580BE-9D69-C699-5250-5B362354143E" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>20</dataTypeSize>
+<ownDataTypeParameters>20,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="SUELDO" id="D6B067F4-174D-A7BF-5D6B-4B965A0C2CAD">
+<createdBy>MIGUEL</createdBy>
+<createdTime>2018-04-19 18:10:57 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>OPCION_3_MER_MOH</ownerDesignName>
+<engineerTo>
+<item key="632580BE-9D69-C699-5250-5B362354143E" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT020</logicalDatatype>
+<dataTypePrecision>6</dataTypePrecision>
+<dataTypeScale>2</dataTypeScale>
+<ownDataTypeParameters>,6,2</ownDataTypeParameters>
+</Attribute>
+<Attribute name="POSICION" id="66CB244A-F775-8C5E-BA32-2D9B3824C560">
+<createdBy>MIGUEL</createdBy>
+<createdTime>2018-04-19 18:11:24 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>OPCION_3_MER_MOH</ownerDesignName>
+<engineerTo>
+<item key="632580BE-9D69-C699-5250-5B362354143E" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>10</dataTypeSize>
+<ownDataTypeParameters>10,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="NACIONALIDAD" id="BD29C0EA-0DA2-A923-9E4D-5C55F2B3241D">
+<createdBy>MIGUEL</createdBy>
+<createdTime>2018-04-19 18:11:37 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>OPCION_3_MER_MOH</ownerDesignName>
+<engineerTo>
+<item key="632580BE-9D69-C699-5250-5B362354143E" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>20</dataTypeSize>
+<ownDataTypeParameters>20,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="COD_EQUIPO" id="85D5AC59-13F5-21CF-DB26-E79AE37EB58E">
+<createdBy>MIGUEL</createdBy>
+<createdTime>2018-04-19 18:19:54 UTC</createdTime>
+<generatorID>A78767B0-A2FE-28F5-3DD9-03D453DD70E0</generatorID>
+<ownerDesignName>OPCION_3_MER_MOH</ownerDesignName>
+<engineerTo>
+<item key="632580BE-9D69-C699-5250-5B362354143E" value="true"/>
+</engineerTo>
+<referedAttribute>E7EFF669-083E-4965-4659-BE803742F698</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>16</dataTypePrecision>
+<ownDataTypeParameters>,16,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="1C196284-23D5-428E-198A-34FA86624610" name="JUGADOR PK">
+<createdBy>MIGUEL</createdBy>
+<createdTime>2018-04-19 18:10:28 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>OPCION_3_MER_MOH</ownerDesignName>
+<engineerTo>
+<item key="632580BE-9D69-C699-5250-5B362354143E" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>D97C1353-D83C-DB20-AE6C-D828F13B9B69</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

@@ -1,0 +1,21 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Relation class="oracle.dbtools.crest.model.design.logical.Relation" name="CONFECCIONA" directorySegmentName="seg_0" id="3ACF3DE4-DEBD-A3C3-AE40-AAD6B8510426">
+<createdBy>1gdaw12</createdBy>
+<createdTime>2018-04-19 10:30:27 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>OPCION1_MER</ownerDesignName>
+<engineerTo>
+<item key="5A8C821C-4404-BFC2-4F18-A93BCD8E38CF" value="true"/>
+</engineerTo>
+<sourcePk>68432F5E-1963-72F4-385F-9AD2CE410850</sourcePk>
+<targetPk>97B2F3A4-734E-EAEB-2C46-A8AB5668F66A</targetPk>
+<identifying>false</identifying>
+<optionalSource>false</optionalSource>
+<optionalTarget>false</optionalTarget>
+<sourceCardinality>1</sourceCardinality>
+<sourceEntity>2DF7C3A9-E558-47C4-04C1-96CADEC3FC22</sourceEntity>
+<targetCardinalityString>1</targetCardinalityString>
+<targetEntity>84B1D401-5C0C-69A8-1221-697A6DFDA38A</targetEntity>
+<transferable>true</transferable>
+<deleteRule>NO ACTION</deleteRule>
+</Relation>

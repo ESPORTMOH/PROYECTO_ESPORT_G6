@@ -1,0 +1,86 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="88827513-52C8-E3BA-EFC8-A51E6CF90CBE" name="PERSONA">
+<createdBy>MIGUEL</createdBy>
+<createdTime>2018-04-19 18:25:36 UTC</createdTime>
+<generatorID>6B59CB47-F2DA-13B1-0962-E90430152FF1</generatorID>
+<ownerDesignName>OPCION_3_MER_MOH</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="COD_PERSONA" id="84921196-3B78-13C8-BCFF-3533BCD8D0F5">
+<createdBy>MIGUEL</createdBy>
+<createdTime>2018-04-19 18:25:36 UTC</createdTime>
+<generatorID>FED2DC2F-2B6D-338D-079E-576812871D2D</generatorID>
+<ownerDesignName>OPCION_3_MER_MOH</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>30</dataTypePrecision>
+<ownDataTypeParameters>,30,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="NOMBRE" id="951C0AB0-D5D5-A36A-EB46-59D789824B3D">
+<createdBy>MIGUEL</createdBy>
+<createdTime>2018-04-19 18:25:36 UTC</createdTime>
+<generatorID>C2368C0A-671B-25B4-DC8E-F9E54D3BC339</generatorID>
+<ownerDesignName>OPCION_3_MER_MOH</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>20</dataTypeSize>
+<ownDataTypeParameters>20,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="APELLIDO" id="90DF392F-3198-5916-9556-249EB27A3282">
+<createdBy>MIGUEL</createdBy>
+<createdTime>2018-04-19 18:25:36 UTC</createdTime>
+<generatorID>AAC260F4-775B-F00F-350F-32AD6B4FB8E9</generatorID>
+<ownerDesignName>OPCION_3_MER_MOH</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>20</dataTypeSize>
+<ownDataTypeParameters>20,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="USER" id="A7236602-7FB2-3046-0D40-D871F06D8C29">
+<createdBy>MIGUEL</createdBy>
+<createdTime>2018-04-19 18:25:36 UTC</createdTime>
+<generatorID>DD79D2CE-1CA8-D59C-3A3C-ABBFC314C9F4</generatorID>
+<ownerDesignName>OPCION_3_MER_MOH</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>8</dataTypeSize>
+<ownDataTypeParameters>8,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="PASS" id="2B0B61EB-0B37-243F-B113-82EC6FB16AEE">
+<createdBy>MIGUEL</createdBy>
+<createdTime>2018-04-19 18:25:36 UTC</createdTime>
+<generatorID>3B2EB1C1-A527-D57A-BAFA-18C9121D390D</generatorID>
+<ownerDesignName>OPCION_3_MER_MOH</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>8</dataTypeSize>
+<ownDataTypeParameters>8,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="6CAADB2C-38A1-2787-968F-8CA22E9FCB67" name="PERSONA_PK">
+<createdBy>MIGUEL</createdBy>
+<createdTime>2018-04-19 18:25:36 UTC</createdTime>
+<generatorID>EF91E57A-9B9A-506A-55A5-FCC682DC8470</generatorID>
+<ownerDesignName>OPCION_3_MER_MOH</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="84921196-3B78-13C8-BCFF-3533BCD8D0F5"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

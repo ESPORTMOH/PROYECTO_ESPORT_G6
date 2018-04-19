@@ -1,0 +1,23 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<oracle.dbtools.crest.model.design.relational.RelationalDesign>
+   <object objectType="Table" objectID="744AE696-AC4F-1348-8441-27C2DB6CCD7B" name="ADMINISTRADOR" seqName="seg_0"/>
+   <object objectType="Table" objectID="6DDA5F34-E582-CB32-4A53-121A5EA9DCD5" name="DUENO" seqName="seg_0"/>
+   <object objectType="Table" objectID="03576A32-2513-7842-AC5C-E4FAE2C07747" name="EQUIPO" seqName="seg_0"/>
+   <object objectType="Table" objectID="94C26892-C0D9-35E5-5EAD-E37E91DA9F0B" name="JORNADA" seqName="seg_0"/>
+   <object objectType="Table" objectID="3E7E1878-3DDD-4091-D0EA-E90B8A4A3FAD" name="JUGADOR" seqName="seg_0"/>
+   <object objectType="Table" objectID="B32480B4-0D95-F2D8-56F4-F6D638161CD0" name="PARTIDO" seqName="seg_0"/>
+   <object objectType="Table" objectID="88827513-52C8-E3BA-EFC8-A51E6CF90CBE" name="PERSONA" seqName="seg_0"/>
+   <object objectType="Table" objectID="90D6FFA2-55A7-3CE6-E863-20C28C905284" name="USUARIO" seqName="seg_0"/>
+   <object objectType="FKIndexAssociation" objectID="80320630-249C-2E52-7D26-920DFFC170D1" name="ADMINISTRADOR_PERSONA_FK" seqName="seg_0" containerID="744AE696-AC4F-1348-8441-27C2DB6CCD7B" refContainerID="88827513-52C8-E3BA-EFC8-A51E6CF90CBE"/>
+   <object objectType="FKIndexAssociation" objectID="5CD2007C-D73E-0C9E-E451-1DB2A1106AD5" name="DUENO_EQUIPO_FK" seqName="seg_0" containerID="6DDA5F34-E582-CB32-4A53-121A5EA9DCD5" refContainerID="03576A32-2513-7842-AC5C-E4FAE2C07747"/>
+   <object objectType="FKIndexAssociation" objectID="2E25DF5B-0A50-DC65-F4F4-3A9825605BC2" name="DUENO_PERSONA_FK" seqName="seg_0" containerID="6DDA5F34-E582-CB32-4A53-121A5EA9DCD5" refContainerID="88827513-52C8-E3BA-EFC8-A51E6CF90CBE"/>
+   <object objectType="FKIndexAssociation" objectID="AEE2BAA6-1BEF-8CAD-4F73-96F6C19FE140" name="EQUIPO_DUENO_FK" seqName="seg_0" containerID="03576A32-2513-7842-AC5C-E4FAE2C07747" refContainerID="6DDA5F34-E582-CB32-4A53-121A5EA9DCD5"/>
+   <object objectType="FKIndexAssociation" objectID="1C29C15E-2703-B720-CC87-88015FDE57D0" name="EQUIPO_PARTIDO_FK" seqName="seg_0" containerID="03576A32-2513-7842-AC5C-E4FAE2C07747" refContainerID="B32480B4-0D95-F2D8-56F4-F6D638161CD0"/>
+   <object objectType="FKIndexAssociation" objectID="49E0A2FD-594E-7F8C-30F5-63874CDDC103" name="EQUIPO_PARTIDO_FKv1" seqName="seg_0" containerID="03576A32-2513-7842-AC5C-E4FAE2C07747" refContainerID="B32480B4-0D95-F2D8-56F4-F6D638161CD0"/>
+   <object objectType="FKIndexAssociation" objectID="7217E83E-33F3-8389-FD84-54A22FCBA6FA" name="JUGADOR_EQUIPO_FK" seqName="seg_0" containerID="3E7E1878-3DDD-4091-D0EA-E90B8A4A3FAD" refContainerID="03576A32-2513-7842-AC5C-E4FAE2C07747"/>
+   <object objectType="FKIndexAssociation" objectID="467269C1-F81C-D571-CDB8-EC1EF8F4A295" name="PARTIDO_EQUIPO_FK" seqName="seg_0" containerID="B32480B4-0D95-F2D8-56F4-F6D638161CD0" refContainerID="03576A32-2513-7842-AC5C-E4FAE2C07747"/>
+   <object objectType="FKIndexAssociation" objectID="4E8C5D85-91A4-E9A3-5AE7-EADB65B862E9" name="PARTIDO_EQUIPO_FKv1" seqName="seg_0" containerID="B32480B4-0D95-F2D8-56F4-F6D638161CD0" refContainerID="03576A32-2513-7842-AC5C-E4FAE2C07747"/>
+   <object objectType="FKIndexAssociation" objectID="2A5E24AB-E44E-C70B-0DC7-B7D4BF53CC9A" name="PARTIDO_JORNADA_FK" seqName="seg_0" containerID="B32480B4-0D95-F2D8-56F4-F6D638161CD0" refContainerID="94C26892-C0D9-35E5-5EAD-E37E91DA9F0B"/>
+   <object objectType="FKIndexAssociation" objectID="1CD846DD-5F9F-2CE3-D96F-36FEA0F5364C" name="USUARIO_PERSONA_FK" seqName="seg_0" containerID="90D6FFA2-55A7-3CE6-E863-20C28C905284" refContainerID="88827513-52C8-E3BA-EFC8-A51E6CF90CBE"/>
+   <object objectType="FKArc" objectID="30AF6144-9572-9FD6-52C0-AFC10432EEBC" name="FKArc_1" seqName="seg_0"/>
+</oracle.dbtools.crest.model.design.relational.RelationalDesign>

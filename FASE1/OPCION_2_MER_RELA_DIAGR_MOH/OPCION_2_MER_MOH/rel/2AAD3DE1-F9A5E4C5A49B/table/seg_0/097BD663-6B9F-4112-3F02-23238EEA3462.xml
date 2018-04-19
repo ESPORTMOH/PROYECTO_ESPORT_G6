@@ -1,0 +1,165 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="097BD663-6B9F-4112-3F02-23238EEA3462" name="PARTIDO">
+<createdBy>MIGUEL</createdBy>
+<createdTime>2018-04-19 17:24:27 UTC</createdTime>
+<generatorID>FCA96664-CDD6-45AC-AFE3-0D1274255F2A</generatorID>
+<ownerDesignName>OPCION_2_MER_MOH</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="COD_PARTIDO" id="24741520-4AD0-C51F-4624-172C5A81EE20">
+<createdBy>MIGUEL</createdBy>
+<createdTime>2018-04-19 17:24:27 UTC</createdTime>
+<generatorID>5AFC139D-B46E-6975-BA44-246C80FC8C40</generatorID>
+<ownerDesignName>OPCION_2_MER_MOH</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>48</dataTypePrecision>
+<ownDataTypeParameters>,48,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="FECHA" id="4E8D0BB5-14B6-508F-0108-C5A915187C07">
+<createdBy>MIGUEL</createdBy>
+<createdTime>2018-04-19 17:24:27 UTC</createdTime>
+<generatorID>065F8AD0-85CB-B062-CD5A-FF54E493A18A</generatorID>
+<ownerDesignName>OPCION_2_MER_MOH</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="HORA" id="3054EDDE-B1EB-C2AE-5A51-0E1541B5033D">
+<createdBy>MIGUEL</createdBy>
+<createdTime>2018-04-19 17:24:27 UTC</createdTime>
+<generatorID>E289B334-3B51-2482-8BB9-69A3EA9022A6</generatorID>
+<ownerDesignName>OPCION_2_MER_MOH</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT014</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="PUNTOS_LOCAL" id="7071B0F7-287D-53FA-54D4-B7170B355680">
+<createdBy>MIGUEL</createdBy>
+<createdTime>2018-04-19 17:24:27 UTC</createdTime>
+<generatorID>E20591C3-574A-916E-4917-B4BE93CA9E30</generatorID>
+<ownerDesignName>OPCION_2_MER_MOH</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>3</dataTypePrecision>
+<ownDataTypeParameters>,3,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="PUNTOS_VISITANTE" id="A73A0642-8522-2A85-2F25-0D3C29D9E280">
+<createdBy>MIGUEL</createdBy>
+<createdTime>2018-04-19 17:24:27 UTC</createdTime>
+<generatorID>2B40C5C7-E1CF-3295-1E88-5D00A1FCFC3E</generatorID>
+<ownerDesignName>OPCION_2_MER_MOH</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>3</dataTypePrecision>
+<ownDataTypeParameters>,3,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="EQUIPO_COD_EQUIPO" id="905A6A14-6F76-950C-7B09-B867F22B1D2F">
+<createdBy>MIGUEL</createdBy>
+<createdTime>2018-04-19 17:24:27 UTC</createdTime>
+<generatorID>22227875-A713-0BC0-8C75-62DAB32B65C8</generatorID>
+<ownerDesignName>OPCION_2_MER_MOH</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>8</dataTypePrecision>
+<ownDataTypeParameters>,8,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="C23A5C20-7666-9BEA-7977-34B23ED3777D" referredColumn="D23E56DB-9766-C2BD-1892-938C2CA85A62"/>
+</associations>
+</Column>
+<Column name="EQUIPO_COD_EQUIPO1" id="885E3C50-FEF6-E81B-E1F9-C9FD2E49D583">
+<createdBy>MIGUEL</createdBy>
+<createdTime>2018-04-19 17:24:27 UTC</createdTime>
+<generatorID>39A8DFEA-3506-084A-AB58-63F0574C04B0</generatorID>
+<ownerDesignName>OPCION_2_MER_MOH</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>8</dataTypePrecision>
+<ownDataTypeParameters>,8,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="762D17FF-2117-50DE-721A-4A7D95F63375" referredColumn="D23E56DB-9766-C2BD-1892-938C2CA85A62"/>
+</associations>
+</Column>
+<Column name="JORNADA_COD_JORNADA" id="0AA22304-5159-F2CE-F30C-D90CD68766D8">
+<createdBy>MIGUEL</createdBy>
+<createdTime>2018-04-19 17:24:27 UTC</createdTime>
+<generatorID>727730B4-B622-C11C-D179-5D6848FB7949</generatorID>
+<ownerDesignName>OPCION_2_MER_MOH</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>18</dataTypePrecision>
+<ownDataTypeParameters>,18,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="77ABAFFB-22CA-8EA4-95F7-E0EAAE691D1C" referredColumn="8DF9EE55-E5A8-DDB7-D946-6164A78FC132"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="1CE2A6C3-3B68-AC7E-1F50-B76C4476E817" name="PARTIDO_PK">
+<createdBy>MIGUEL</createdBy>
+<createdTime>2018-04-19 17:24:27 UTC</createdTime>
+<generatorID>A3EBB2B8-C758-B5D7-678D-040EB7543AEC</generatorID>
+<ownerDesignName>OPCION_2_MER_MOH</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="24741520-4AD0-C51F-4624-172C5A81EE20"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="7E21B23A-3261-73BF-F072-C4FF73891A31" name="PARTIDO_JORNADA_FK">
+<createdBy>MIGUEL</createdBy>
+<createdTime>2018-04-19 17:24:27 UTC</createdTime>
+<generatorID>956AD005-2CA6-892C-8F1A-EA4692CB64F2</generatorID>
+<ownerDesignName>OPCION_2_MER_MOH</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="0AA22304-5159-F2CE-F30C-D90CD68766D8"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="5B2DFDA3-9DCA-09FD-6BB7-424FA41757D7" name="PARTIDO_EQUIPO_FK">
+<createdBy>MIGUEL</createdBy>
+<createdTime>2018-04-19 17:24:27 UTC</createdTime>
+<generatorID>22477126-7787-F7FD-2DF4-E1804D258137</generatorID>
+<ownerDesignName>OPCION_2_MER_MOH</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="905A6A14-6F76-950C-7B09-B867F22B1D2F"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="C27CDB37-36EB-345F-3103-342C9DB37C69" name="PARTIDO_EQUIPO_FKv1">
+<createdBy>MIGUEL</createdBy>
+<createdTime>2018-04-19 17:24:27 UTC</createdTime>
+<generatorID>B7585F05-1E9F-A325-118B-3E4CDE1B33E9</generatorID>
+<ownerDesignName>OPCION_2_MER_MOH</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="885E3C50-FEF6-E81B-E1F9-C9FD2E49D583"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>
