@@ -1,2 +1,7 @@
-Creo que las opciones 2 y 3 son las mas acertadas
+NOTA:
+-----
+
+* Si solo se puede corregir una opcion, esta se encuentra en la carpeta OPCION_SELECCIONADA (LA 3)
+
+* En la carpeta OTRAS_OPCIONES estan la 1 y la 2
 
