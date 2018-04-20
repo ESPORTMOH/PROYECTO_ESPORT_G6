@@ -1,7 +1,8 @@
 NOTA:
 -----
 
-* Si solo se puede corregir una opcion, esta se encuentra en la carpeta OPCION_SELECCIONADA (LA 3)
+* Si solo se puede corregir una opcion, la opcion selecccionada 
+  es la 1 y esta en la carpeta OPCION_SELECCIONADA (LA 1)
 
-* En la carpeta OTRAS_OPCIONES estan la 1 y la 2
+
 
