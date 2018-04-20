@@ -1,0 +1,107 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="A6CCDBEF-30CB-D958-E119-5A3D83DC5A0A" name="ADMINISTRADOR">
+<createdBy>1gdaw12</createdBy>
+<createdTime>2018-04-19 10:47:08 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>OPCION1_MER</ownerDesignName>
+<engineerTo>
+<item key="5A8C821C-4404-BFC2-4F18-A93BCD8E38CF" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="COD_ADMIN" id="16C56EC3-4039-42CF-2CD9-D8658D3F6BD7">
+<createdBy>1gdaw12</createdBy>
+<createdTime>2018-04-19 10:47:17 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>OPCION1_MER</ownerDesignName>
+<engineerTo>
+<item key="5A8C821C-4404-BFC2-4F18-A93BCD8E38CF" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>10</dataTypeSize>
+<ownDataTypeParameters>10,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="NOMBRE" id="05759725-110E-0FF0-15F7-917B619ED9CF">
+<createdBy>1gdaw12</createdBy>
+<createdTime>2018-04-19 10:47:30 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>OPCION1_MER</ownerDesignName>
+<engineerTo>
+<item key="5A8C821C-4404-BFC2-4F18-A93BCD8E38CF" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>20</dataTypeSize>
+<ownDataTypeParameters>20,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="APELLIDO" id="68CFCD13-BF96-D9AF-9EF1-CDDB5D51B60D">
+<createdBy>1gdaw12</createdBy>
+<createdTime>2018-04-19 10:47:50 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>OPCION1_MER</ownerDesignName>
+<engineerTo>
+<item key="5A8C821C-4404-BFC2-4F18-A93BCD8E38CF" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>20</dataTypeSize>
+<ownDataTypeParameters>20,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="COD_LOGIN" id="ABDA881A-6EC4-9815-D94A-9E908C8838AE">
+<createdBy>1gdaw12</createdBy>
+<createdTime>2018-04-19 10:57:07 UTC</createdTime>
+<generatorID>708DECEF-1BFA-66CF-385D-60E5FD8C16A8</generatorID>
+<ownerDesignName>OPCION1_MER</ownerDesignName>
+<engineerTo>
+<item key="5A8C821C-4404-BFC2-4F18-A93BCD8E38CF" value="true"/>
+</engineerTo>
+<referedAttribute>6D653160-16F3-61FE-D120-F90F8AB503F1</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<ownDataTypeParameters>,10,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="COD_ADMIN1" id="C376E8B8-6BBC-D017-66EE-05ACC255E566">
+<createdBy>1gdaw12</createdBy>
+<createdTime>2018-04-19 10:57:07 UTC</createdTime>
+<generatorID>708DECEF-1BFA-66CF-385D-60E5FD8C16A8</generatorID>
+<ownerDesignName>OPCION1_MER</ownerDesignName>
+<engineerTo>
+<item key="5A8C821C-4404-BFC2-4F18-A93BCD8E38CF" value="true"/>
+</engineerTo>
+<referedAttribute>ED65C3B2-79D3-A7CC-A5A7-52A611AE833C</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>10</dataTypeSize>
+<ownDataTypeParameters>10,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="318FB803-9288-8481-397B-54D235B2B7E0" name="ADMINISTRADOR PK">
+<createdBy>1gdaw12</createdBy>
+<createdTime>2018-04-19 10:47:27 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>OPCION1_MER</ownerDesignName>
+<engineerTo>
+<item key="5A8C821C-4404-BFC2-4F18-A93BCD8E38CF" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>16C56EC3-4039-42CF-2CD9-D8658D3F6BD7</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

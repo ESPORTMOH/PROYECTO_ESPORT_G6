@@ -1,0 +1,19 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<oracle.dbtools.crest.model.design.logical.LogicalDesign>
+   <object objectType="Entity" objectID="A6CCDBEF-30CB-D958-E119-5A3D83DC5A0A" name="ADMINISTRADOR" seqName="seg_0"/>
+   <object objectType="Entity" objectID="2DF7C3A9-E558-47C4-04C1-96CADEC3FC22" name="DUENO" seqName="seg_0"/>
+   <object objectType="Entity" objectID="84B1D401-5C0C-69A8-1221-697A6DFDA38A" name="EQUIPO" seqName="seg_0"/>
+   <object objectType="Entity" objectID="8F4103D6-4331-7883-E8AC-F8939F34DDE3" name="JORNADA" seqName="seg_0"/>
+   <object objectType="Entity" objectID="9425EB2D-B027-D30A-9A20-DF93737059D4" name="JUGADOR" seqName="seg_0"/>
+   <object objectType="Entity" objectID="2B689F50-FCB0-D025-249C-9D744078936C" name="LOGIN" seqName="seg_0"/>
+   <object objectType="Entity" objectID="5E0A9944-C592-AA48-8A10-A1E2725BD0B9" name="PARTIDO" seqName="seg_0"/>
+   <object objectType="Entity" objectID="658707B4-16C7-96F0-11C9-231C824C753E" name="USUARIO" seqName="seg_0"/>
+   <object objectType="Relation" objectID="3ACF3DE4-DEBD-A3C3-AE40-AAD6B8510426" name="CONFECCIONA" seqName="seg_0"/>
+   <object objectType="Relation" objectID="5B618777-584B-DD44-75BF-7BAFE0E12C61" name="INTEGRA" seqName="seg_0"/>
+   <object objectType="Relation" objectID="FE900148-7DD3-AC80-6CE5-233158428F6C" name="JUEGA_LOCAL" seqName="seg_0"/>
+   <object objectType="Relation" objectID="4709AB9F-20FA-0EA3-8AD0-A3009D263235" name="JUEGA_VISITANTE" seqName="seg_0"/>
+   <object objectType="Relation" objectID="708DECEF-1BFA-66CF-385D-60E5FD8C16A8" name="LOG_ADMIN" seqName="seg_0"/>
+   <object objectType="Relation" objectID="432B4458-BCEE-1732-A732-1F2753AC9C8E" name="LOG_DUENO" seqName="seg_0"/>
+   <object objectType="Relation" objectID="FC72D750-5634-BA0D-1F49-3E23B19A5A2D" name="LOG_USUARIO" seqName="seg_0"/>
+   <object objectType="Relation" objectID="4E689954-0279-34F8-EAD4-43AC30A2E52E" name="Relation_6" seqName="seg_0"/>
+</oracle.dbtools.crest.model.design.logical.LogicalDesign>
