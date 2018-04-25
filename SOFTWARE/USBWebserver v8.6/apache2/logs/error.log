@@ -1,6 +1,0 @@
-[Mon Apr 23 12:43:14.898056 2018] [mpm_winnt:notice] [pid 3776:tid 808] AH00455: Apache/2.4.6 (Win32) PHP/5.4.17 configured -- resuming normal operations
-[Mon Apr 23 12:43:14.898557 2018] [mpm_winnt:notice] [pid 3776:tid 808] AH00456: Apache Lounge VC10 Server built: Jul 16 2013 11:15:41
-[Mon Apr 23 12:43:14.898557 2018] [core:notice] [pid 3776:tid 808] AH00094: Command line: 'C:\\GITHUB_MIGUEL_OLMO_NO_BORRAR\\ORG_ORIGINAL_PROYECTO_ESPORT_G6\\PROYECTO_ESPORT_G6\\SOFTWARE\\USBWebserver v8.6/apache2/bin/httpd_usbwv8.exe -d C:/GITHUB_MIGUEL_OLMO_NO_BORRAR/ORG_ORIGINAL_PROYECTO_ESPORT_G6/PROYECTO_ESPORT_G6/SOFTWARE/USBWebserver v8.6/apache2'
-[Mon Apr 23 12:43:14.902559 2018] [mpm_winnt:notice] [pid 3776:tid 808] AH00418: Parent: Created child process 9564
-[Mon Apr 23 12:43:15.628714 2018] [mpm_winnt:notice] [pid 9564:tid 840] AH00354: Child: Starting 64 worker threads.
-[Mon Apr 23 12:43:20.308430 2018] [:error] [pid 9564:tid 1344] [client ::1:55102] PHP Fatal error:  require(): Failed opening required './libraries/plugins/auth/swekey/swekey.auth.lib.php' (include_path='.;C:\\php\\pear') in C:\\GITHUB_MIGUEL_OLMO_NO_BORRAR\\ORG_ORIGINAL_PROYECTO_ESPORT_G6\\PROYECTO_ESPORT_G6\\SOFTWARE\\USBWebserver v8.6\\phpmyadmin\\libraries\\plugins\\auth\\AuthenticationCookie.class.php on line 29
