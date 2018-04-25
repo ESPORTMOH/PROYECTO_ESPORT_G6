@@ -1,0 +1,5 @@
+[Tue Apr 24 23:40:36.108621 2018] [mpm_winnt:notice] [pid 19592:tid 652] AH00455: Apache/2.4.6 (Win32) PHP/5.4.17 configured -- resuming normal operations
+[Tue Apr 24 23:40:36.108621 2018] [mpm_winnt:notice] [pid 19592:tid 652] AH00456: Apache Lounge VC10 Server built: Jul 16 2013 11:15:41
+[Tue Apr 24 23:40:36.108621 2018] [core:notice] [pid 19592:tid 652] AH00094: Command line: 'D:\\GITHUB_TRABAJOS_MIGUEL_CURSO_2018\\DAW_CURSO_2017_2018\\ORG_MASTER_PROYECTO_ESPORT_G6\\PROYECTO_ESPORT_G6\\USBWEBSERVER_v8.6\\USBWebServer_v8.6/apache2/bin/httpd_usbwv8.exe -d D:/GITHUB_TRABAJOS_MIGUEL_CURSO_2018/DAW_CURSO_2017_2018/ORG_MASTER_PROYECTO_ESPORT_G6/PROYECTO_ESPORT_G6/USBWEBSERVER_v8.6/USBWebServer_v8.6/apache2'
+[Tue Apr 24 23:40:36.139887 2018] [mpm_winnt:notice] [pid 19592:tid 652] AH00418: Parent: Created child process 10504
+[Tue Apr 24 23:40:37.627463 2018] [mpm_winnt:notice] [pid 10504:tid 820] AH00354: Child: Starting 64 worker threads.
