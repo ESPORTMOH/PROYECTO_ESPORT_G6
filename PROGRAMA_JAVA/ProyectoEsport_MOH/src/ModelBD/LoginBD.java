@@ -1,6 +1,6 @@
 package ModelBD;
 
-import ModelBD.GenericoBD.*;
+import ModelBD.*;
 import ModelUML.*;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -12,6 +12,7 @@ import Exceptions.*;
  */
 public class LoginBD extends GenericoBD {
 
+    //VALIDAR LOGIN
     public Login validarLogin(Login loginUML) throws SQLException, Exception {
 
         Login log = new Login();

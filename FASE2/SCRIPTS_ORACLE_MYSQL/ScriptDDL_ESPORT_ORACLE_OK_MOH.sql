@@ -191,7 +191,6 @@ CREATE TABLE equipo (
   codDuenio NUMBER(4) NOT NULL -- RESERVADO FK
 );
 
-
 -- --------------------------------------------------------
 --
 -- Estructura de tabla 'partido'
@@ -288,8 +287,10 @@ COMMIT;
 -- Filtros para la tabla 'jugador'
 --
 
-ALTER TABLE jugador
-  ADD CONSTRAINT JU_JUEQ_FK FOREIGN KEY (codEquipo) REFERENCES equipo (codEquipo) ON DELETE CASCADE;
+ALTER TABLE jugador ADD (
+  CONSTRAINT JU_JUEQ_FK FOREIGN KEY (codEquipo) REFERENCES equipo (codEquipo) ON DELETE CASCADE,
+  CONSTRAINT JU_SUMN_CK CHECK (sueldo >= 735));
+-- Siguiendo las referencias salariales de la siguiente pagina web: http://www.salariominimo.es/2018.html
 COMMIT;
 
 -- --------------------------------------------------------
@@ -367,6 +368,15 @@ SELECT * FROM login;
 SELECT * FROM administrador;
 SELECT * FROM duenio;
 SELECT * FROM usuario;
+
+SELECT *
+  FROM SYS.USER_CONSTRAINTS 
+  WHERE TABLE_NAME = UPPER('JUGADOR');
+
+SELECT *
+  FROM SYS.USER_CONSTRAINTS 
+  WHERE TABLE_NAME = UPPER('LOGIN');
+
 
 -- --------------------------------------------------------
 

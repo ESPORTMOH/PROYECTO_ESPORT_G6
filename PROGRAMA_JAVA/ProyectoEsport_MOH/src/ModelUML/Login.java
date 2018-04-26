@@ -28,12 +28,6 @@ public class Login {
         return codLogin;
     }
 
-    /*
-    public void setCodLogin(Integer codLogin) {
-        this.codLogin = codLogin;
-    }
-*/
-
     public String getUser() {
         return user;
     }

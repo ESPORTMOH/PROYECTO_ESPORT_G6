@@ -27,23 +27,26 @@ public class VPanelAdministracion extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
-        jMenuItem3 = new javax.swing.JMenuItem();
-        jMenuItem4 = new javax.swing.JMenuItem();
-        jMenuItem5 = new javax.swing.JMenuItem();
-        jMenuItem6 = new javax.swing.JMenuItem();
-        jMenuItem7 = new javax.swing.JMenuItem();
+        jMadministradores = new javax.swing.JMenuItem();
+        jMduenios = new javax.swing.JMenuItem();
+        jMjugadores = new javax.swing.JMenuItem();
+        jMusuarios = new javax.swing.JMenuItem();
+        jMequipos = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
-        jMenuItem8 = new javax.swing.JMenuItem();
-        jMenuItem9 = new javax.swing.JMenuItem();
+        jMcalendario = new javax.swing.JMenuItem();
+        jMresultados = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setText("PANEL DE ADMINISTRADORES");
+
+        jLabel2.setText("Bienvenid@ de nuevo");
 
         jMenu1.setText("Archivo");
 
@@ -57,30 +60,55 @@ public class VPanelAdministracion extends javax.swing.JFrame {
 
         jMenu2.setText("Administrar");
 
-        jMenuItem3.setText("CRUD Administradores");
-        jMenu2.add(jMenuItem3);
+        jMadministradores.setText("CRUD Administradores");
+        jMadministradores.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMadministradoresActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jMadministradores);
 
-        jMenuItem4.setText("CRUD Duenios");
-        jMenu2.add(jMenuItem4);
+        jMduenios.setText("CRUD Duenios");
+        jMduenios.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMdueniosActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jMduenios);
 
-        jMenuItem5.setText("CRUD Jugadores");
-        jMenu2.add(jMenuItem5);
+        jMjugadores.setText("CRUD Jugadores");
+        jMjugadores.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMjugadoresActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jMjugadores);
 
-        jMenuItem6.setText("CRUD Usuarios");
-        jMenu2.add(jMenuItem6);
+        jMusuarios.setText("CRUD Usuarios");
+        jMusuarios.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMusuariosActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jMusuarios);
 
-        jMenuItem7.setText("CRUD Equipos");
-        jMenu2.add(jMenuItem7);
+        jMequipos.setText("CRUD Equipos");
+        jMequipos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMequiposActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jMequipos);
 
         jMenuBar1.add(jMenu2);
 
         jMenu3.setText("Gestionar");
 
-        jMenuItem8.setText("Calendarios");
-        jMenu3.add(jMenuItem8);
+        jMcalendario.setText("Calendarios");
+        jMenu3.add(jMcalendario);
 
-        jMenuItem9.setText("Resultados");
-        jMenu3.add(jMenuItem9);
+        jMresultados.setText("Resultados");
+        jMenu3.add(jMresultados);
 
         jMenuBar1.add(jMenu3);
 
@@ -94,17 +122,54 @@ public class VPanelAdministracion extends javax.swing.JFrame {
                 .addContainerGap(113, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addGap(117, 117, 117))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(76, 76, 76)
+                .addComponent(jLabel2)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(25, 25, 25)
                 .addComponent(jLabel1)
-                .addContainerGap(236, Short.MAX_VALUE))
+                .addGap(32, 32, 32)
+                .addComponent(jLabel2)
+                .addContainerGap(188, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    // APERTURAS DE LAS VISTAS CRUD / ADMINISTRADORES / USUARIOS / DUENOS / JUGADORES / EQUIPOS
+    private void jMadministradoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMadministradoresActionPerformed
+        // ACTION CRUD ADMINISTRADORES
+        Controladora.abrirCrudAdministradores();
+        Controladora.cierraMe();
+    }//GEN-LAST:event_jMadministradoresActionPerformed
+
+    private void jMjugadoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMjugadoresActionPerformed
+        // ACTION CRUD JUGADORES
+        Controladora.abrirCrudJugadores();
+        Controladora.cierraMe();
+    }//GEN-LAST:event_jMjugadoresActionPerformed
+
+    private void jMdueniosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMdueniosActionPerformed
+        // ACTION CRUD DUENIOS
+        Controladora.abrirCrudDuenios();
+        Controladora.cierraMe();
+    }//GEN-LAST:event_jMdueniosActionPerformed
+
+    private void jMusuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMusuariosActionPerformed
+        // ACTION CRUD USUARIOS
+        Controladora.abrirCrudUsuarios();
+        Controladora.cierraMe();
+    }//GEN-LAST:event_jMusuariosActionPerformed
+
+    private void jMequiposActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMequiposActionPerformed
+        // ACTION CRUD EQUIPOS
+        Controladora.abrirCrudEquipos();
+        Controladora.cierraMe();
+    }//GEN-LAST:event_jMequiposActionPerformed
 
     /**
      * @param args the command line arguments
@@ -144,18 +209,19 @@ public class VPanelAdministracion extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JMenuItem jMadministradores;
+    private javax.swing.JMenuItem jMcalendario;
+    private javax.swing.JMenuItem jMduenios;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem3;
-    private javax.swing.JMenuItem jMenuItem4;
-    private javax.swing.JMenuItem jMenuItem5;
-    private javax.swing.JMenuItem jMenuItem6;
-    private javax.swing.JMenuItem jMenuItem7;
-    private javax.swing.JMenuItem jMenuItem8;
-    private javax.swing.JMenuItem jMenuItem9;
+    private javax.swing.JMenuItem jMequipos;
+    private javax.swing.JMenuItem jMjugadores;
+    private javax.swing.JMenuItem jMresultados;
+    private javax.swing.JMenuItem jMusuarios;
     // End of variables declaration//GEN-END:variables
 }
