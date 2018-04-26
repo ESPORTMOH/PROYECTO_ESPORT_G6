@@ -5,6 +5,10 @@
  */
 package Views.Administradores;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import proyectoesport_moh.Controladora;
+
 /**
  *
  * @author MIGUEL
@@ -16,6 +20,7 @@ public class VBajaAdmins extends javax.swing.JFrame {
      */
     public VBajaAdmins() {
         initComponents();
+        configPredeterminadaVentana();
     }
 
     /**
@@ -31,10 +36,11 @@ public class VBajaAdmins extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jBaceptar = new javax.swing.JButton();
+        jBeliminar = new javax.swing.JButton();
         jTdni = new javax.swing.JTextField();
         jTnombre = new javax.swing.JTextField();
         jTapellido = new javax.swing.JTextField();
+        jBbuscar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -46,7 +52,19 @@ public class VBajaAdmins extends javax.swing.JFrame {
 
         jLabel4.setText("Apellido");
 
-        jBaceptar.setText("ACEPTAR");
+        jBeliminar.setText("ELIMINAR");
+        jBeliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBeliminarActionPerformed(evt);
+            }
+        });
+
+        jBbuscar.setText("BUSCAR");
+        jBbuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBbuscarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -58,8 +76,11 @@ public class VBajaAdmins extends javax.swing.JFrame {
                 .addGap(110, 110, 110))
             .addGroup(layout.createSequentialGroup()
                 .addGap(71, 71, 71)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jBaceptar)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jBbuscar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jBeliminar))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel2)
@@ -91,12 +112,28 @@ public class VBajaAdmins extends javax.swing.JFrame {
                         .addComponent(jTapellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 58, Short.MAX_VALUE)
-                .addComponent(jBaceptar)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jBeliminar)
+                    .addComponent(jBbuscar))
                 .addGap(29, 29, 29))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jBeliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBeliminarActionPerformed
+        // ACTION ELIMINAR
+        Controladora.eliminarAdministradorDelaBD(jTdni.getText());
+    }//GEN-LAST:event_jBeliminarActionPerformed
+
+    private void jBbuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBbuscarActionPerformed
+        // ACTION BUSCAR ADMIN PRIMERO EN LA BD PARA ELIMINAR DESPUES
+        try {
+            Controladora.localizarAdministradorEnBD(jTdni.getText());
+        } catch (Exception ex) {
+            Logger.getLogger(VBajaAdmins.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jBbuscarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -137,7 +174,8 @@ public class VBajaAdmins extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jBaceptar;
+    private javax.swing.JButton jBbuscar;
+    private javax.swing.JButton jBeliminar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -146,4 +184,21 @@ public class VBajaAdmins extends javax.swing.JFrame {
     private javax.swing.JTextField jTdni;
     private javax.swing.JTextField jTnombre;
     // End of variables declaration//GEN-END:variables
+
+    
+    public void rellenarCamposVentana(String dni, String nombre, String apellido){
+        jTdni.setText(dni);
+        jTnombre.setText(nombre);
+        jTapellido.setText(apellido);
+        jBeliminar.setEnabled(true);
+    }
+    
+    public void configPredeterminadaVentana() {
+        jTdni.setText("");
+        jTnombre.setText("");
+        jTapellido.setText("");
+        jTnombre.setEnabled(false);
+        jTapellido.setEnabled(false);
+        jBeliminar.setEnabled(false);
+    }
 }

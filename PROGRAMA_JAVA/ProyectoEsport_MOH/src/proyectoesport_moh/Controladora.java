@@ -331,4 +331,14 @@ public class Controladora {
     }
 
     ////////////////////////////////////////////////////////////////////////////////////////////////
+    
+    public static void localizarAdministradorEnBD(String dni) throws Exception {
+        administradorBD = new AdministradorBD();
+        Administrador administrador = administradorBD.localizaAdministrador(dni);
+        vBajaAdmin.rellenarCamposVentana(administrador.getDni(),administrador.getNombre(),administrador.getApellido());
+    }
+    
+    public static void eliminarAdministradorDelaBD(String text) {
+       
+    }
 }

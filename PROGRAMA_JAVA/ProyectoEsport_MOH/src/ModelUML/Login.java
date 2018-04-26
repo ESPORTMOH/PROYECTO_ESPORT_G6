@@ -23,6 +23,10 @@ public class Login {
         this.password = password;
         this.tipo = tipo;
     }
+    
+    public Login(Integer codLogin) {
+        this.codLogin = codLogin;
+    }
 
     public Integer getCodLogin() {
         return codLogin;
