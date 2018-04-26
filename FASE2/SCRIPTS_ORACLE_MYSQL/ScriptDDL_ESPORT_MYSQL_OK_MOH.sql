@@ -34,7 +34,7 @@ CREATE TABLE `login` (
   `usuario` varchar(8) NOT NULL,
   `passwd` varchar(8) NOT NULL,
   `tipo` varchar(1) NOT NULL
-  );
+);
 
 -- --------------------------------------------------------
 
@@ -154,6 +154,7 @@ CREATE TABLE `jornada` (
 --
 -- Indices de la tabla `login`
 --
+
 ALTER TABLE `login`
   ADD PRIMARY KEY `LO_CDLO_PK` (`codLogin`);
 
@@ -162,6 +163,7 @@ ALTER TABLE `login`
 --
 -- Indices de la tabla `administrador`
 --
+
 ALTER TABLE `administrador`
   ADD PRIMARY KEY `AD_CDAD_PK` (`codAdministrador`),
   ADD KEY `AD_ADCL_FK` (`codLogin`);
@@ -171,6 +173,7 @@ ALTER TABLE `administrador`
 --
 -- Indices de la tabla `usuario`
 --
+
 ALTER TABLE `usuario`
   ADD PRIMARY KEY `US_CDUS_PK` (`codUsuario`),
   ADD KEY `US_USCL_FK` (`codLogin`);
@@ -180,6 +183,7 @@ ALTER TABLE `usuario`
 --
 -- Indices de la tabla `duenio`
 --
+
 ALTER TABLE `duenio`
   ADD PRIMARY KEY `DU_CDDU_PK` (`codDuenio`),
   ADD KEY `DU_DUCL_FK` (`codLogin`);
@@ -189,6 +193,7 @@ ALTER TABLE `duenio`
 --
 -- Indices de la tabla `jugador`
 --
+
 ALTER TABLE `jugador`
   ADD PRIMARY KEY `JU_CDJU_PK` (`codJugador`),
   ADD KEY `JU_JUEQ_FK` (`codEquipo`);
@@ -207,6 +212,7 @@ ALTER TABLE `equipo`
 --
 -- Indices de la tabla `partido`
 --
+
 ALTER TABLE `partido`
   ADD PRIMARY KEY `PA_CDPA_PK` (`codPartido`),
   ADD KEY `PA_PEQL_FK` (`codLocal`),
@@ -214,9 +220,11 @@ ALTER TABLE `partido`
   ADD KEY `PA_PAJO_FK` (`codJornada`);
 
 -- --------------------------------------------------------
+
 --
 -- Indices de la tabla `jornada`
 --
+
 ALTER TABLE `jornada`
   ADD PRIMARY KEY `JO_CDJO_PK` (`codJornada`);
 
@@ -231,13 +239,16 @@ ALTER TABLE `jornada`
 --
 -- AUTO_INCREMENT de la tabla `login`
 --
+
 ALTER TABLE `login`
   MODIFY `codLogin` int(4) NOT NULL AUTO_INCREMENT;
 
 -- -------------------------------------------------------- 
+
 --
 -- AUTO_INCREMENT de la tabla `administrador`
 --
+
 ALTER TABLE `administrador`
   MODIFY `codAdministrador` int(4) NOT NULL AUTO_INCREMENT;
 
@@ -246,6 +257,7 @@ ALTER TABLE `administrador`
 --
 -- AUTO_INCREMENT de la tabla `usuario`
 --
+
 ALTER TABLE `usuario`
   MODIFY `codUsuario` int(4) NOT NULL AUTO_INCREMENT;
 
@@ -254,6 +266,7 @@ ALTER TABLE `usuario`
 --
 -- AUTO_INCREMENT de la tabla `duenio`
 --
+
 ALTER TABLE `duenio`
   MODIFY `codDuenio` int(4) NOT NULL AUTO_INCREMENT;
 
@@ -262,6 +275,7 @@ ALTER TABLE `duenio`
 --
 -- AUTO_INCREMENT de la tabla `jugador`
 --
+
 ALTER TABLE `jugador`
   MODIFY `codJugador` int(4) NOT NULL AUTO_INCREMENT;
 
@@ -270,6 +284,7 @@ ALTER TABLE `jugador`
 --
 -- AUTO_INCREMENT de la tabla `equipo`
 --
+
 ALTER TABLE `equipo`
   MODIFY `codEquipo` int(4) NOT NULL AUTO_INCREMENT;
 
@@ -278,6 +293,7 @@ ALTER TABLE `equipo`
 --
 -- AUTO_INCREMENT de la tabla `partido`
 --
+
 ALTER TABLE `partido`
   MODIFY `codPartido` int(4) NOT NULL AUTO_INCREMENT;
 
@@ -286,6 +302,7 @@ ALTER TABLE `partido`
 --
 -- AUTO_INCREMENT de la tabla `jornada`
 --
+
 ALTER TABLE `jornada`
   MODIFY `codJornada` int(11) NOT NULL AUTO_INCREMENT;
 
@@ -302,10 +319,10 @@ ALTER TABLE `login`
 
 -- --------------------------------------------------------
 
-
 --
 -- Filtros para la tabla `administrador`
 --
+
 ALTER TABLE `administrador`
   ADD CONSTRAINT `AD_ADCL_FK` FOREIGN KEY (`codLogin`) REFERENCES `login` (`codLogin`) ON DELETE CASCADE ON UPDATE CASCADE;
 
@@ -314,14 +331,16 @@ ALTER TABLE `administrador`
 --
 -- Filtros para la tabla `usuario`
 --
+
 ALTER TABLE `usuario`
   ADD CONSTRAINT `US_USCL_FK` FOREIGN KEY (`codLogin`) REFERENCES `login` (`codLogin`) ON DELETE CASCADE ON UPDATE CASCADE;
-COMMIT;
+
 -- --------------------------------------------------------
   
 --
 -- Filtros para la tabla `duenio`
 --
+
 ALTER TABLE `duenio`
   ADD CONSTRAINT `DU_DUCL_FK` FOREIGN KEY (`codLogin`) REFERENCES `login` (`codLogin`) ON DELETE CASCADE ON UPDATE CASCADE;
 
@@ -330,14 +349,18 @@ ALTER TABLE `duenio`
 --
 -- Filtros para la tabla `jugador`
 --
-ALTER TABLE `jugador`
-  ADD CONSTRAINT `JU_JUEQ_FK` FOREIGN KEY (`codEquipo`) REFERENCES `equipo` (`codEquipo`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+ALTER TABLE `jugador` ADD (
+  CONSTRAINT `JU_JUEQ_FK` FOREIGN KEY (`codEquipo`) REFERENCES `equipo` (`codEquipo`) ON DELETE CASCADE ON UPDATE CASCADE
+  CONSTRAINT `JU_SUMN_CK` CHECK (salario >= 735,90));
+  
 
 -- --------------------------------------------------------
 
 --
 -- Filtros para la tabla `equipo`
 --
+
 ALTER TABLE `equipo`
   ADD CONSTRAINT `EQ_EQDU_FK` FOREIGN KEY (`codDuenio`) REFERENCES `duenio` (`codDuenio`) ON DELETE CASCADE ON UPDATE CASCADE;
 
@@ -346,6 +369,7 @@ ALTER TABLE `equipo`
 --
 -- Filtros para la tabla `partido`
 --
+
 ALTER TABLE `partido`
   ADD CONSTRAINT `PA_PAJO_FK` FOREIGN KEY (`codJornada`) REFERENCES `jornada` (`codJornada`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `PA_PEQL_FK` FOREIGN KEY (`codLocal`) REFERENCES `equipo` (`codEquipo`) ON DELETE CASCADE ON UPDATE CASCADE,
@@ -365,6 +389,26 @@ ALTER TABLE `partido`
 INSERT INTO login (codLogin, usuario, passwd, tipo) VALUES (1, 'root','root','A');
 
 INSERT INTO administrador VALUES (1, '00000000A', 'Miguel', 'Olmo', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Datos para la tabla 'login' y 'duenio' -  Creacion de un duenio SUPERDUENIO
+--
+
+INSERT INTO login (codLogin, usuario, passwd, tipo) VALUES (2, 'super','duenio','D');
+
+INSERT INTO duenio VALUES (1, '11111111A', 'Super', 'Duenio', 2);
+
+-- --------------------------------------------------------
+
+--
+-- Datos para la tabla 'login' y 'usuario' -  Creacion de un usuario SUPERUSUARIO
+--
+
+INSERT INTO login (codLogin, usuario, passwd, tipo) VALUES (3, 'super','usuario','U');
+
+INSERT INTO usuario VALUES (1, '22222222A', 'Super', 'Usuario', 3);
 
 -- --------------------------------------------------------
 
