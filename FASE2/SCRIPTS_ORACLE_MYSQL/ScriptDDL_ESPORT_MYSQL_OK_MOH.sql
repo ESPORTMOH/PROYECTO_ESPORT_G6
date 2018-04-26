@@ -368,3 +368,23 @@ INSERT INTO administrador VALUES (1, '00000000A', 'Miguel', 'Olmo', 1);
 
 -- --------------------------------------------------------
 
+--
+-- Datos para la tabla 'login' y 'duenio' -  Creacion de un duenio SUPERDUENIO
+--
+
+INSERT INTO login (codLogin, usuario, passwd, tipo) VALUES (2, 'super','duenio','D');
+
+INSERT INTO duenio VALUES (1, '11111111A', 'Super', 'Duenio', 2);
+
+-- --------------------------------------------------------
+
+--
+-- Datos para la tabla 'login' y 'usuario' -  Creacion de un usuario SUPERUSUARIO
+--
+
+INSERT INTO login (codLogin, usuario, passwd, tipo) VALUES (3, 'super','usuario','U');
+
+INSERT INTO usuario VALUES (1, '22222222A', 'Super', 'Usuario', 3);
+
+-- --------------------------------------------------------
+
