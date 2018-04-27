@@ -6,38 +6,53 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import Exceptions.*;
+import java.sql.Connection;
 
 /**
  * @author MIGUEL
  */
 public class LoginBD extends GenericoBD {
 
+    private Connection con;
+
     //VALIDAR LOGIN
     public Login validarLogin(Login loginUML) throws SQLException, Exception {
 
-        Login log = new Login();
+        GenericoBD genericoBD = new GenericoBD();
+        con = genericoBD.abrirConexion(con);
 
-        PreparedStatement pS = abrirConexion().prepareStatement("SELECT usuario, passwd, tipo FROM login WHERE usuario = ? and passwd = ?");
+        // COMPROBACION DEL RETORNO DE LA CONEXION, SI ES NULA SALTA MI EXCEPCION PARA QUE EL USUARIO SE DE CUENTA
+        if (con == null) {
+            throw new ProblemasEstablecerConexion();
+        }
+        
+        // CREO OBJETO DE TIPOLOG QUE ME PERMITIRA ALMACENAR EL TIPO DE LOGIN QUE CONSULTO EN LA BD
+        Login tipolog = new Login();
+
+        String consultaSQL = "SELECT usuario, passwd, tipo FROM login WHERE usuario = ? and passwd = ?";
+
+        PreparedStatement pS = con.prepareStatement(consultaSQL);
 
         pS.setString(1, loginUML.getUser());
         pS.setString(2, loginUML.getPassword());
 
         try (ResultSet datosRS = pS.executeQuery()) {
             if (!datosRS.next()) {
-                //throw new UserNotExist();
-                System.out.println("no");
+                throw new UsuarioLogNoExiste();
+
             } else {
 
-                log.setUser(datosRS.getString("usuario"));
-                log.setPassword(datosRS.getString("passwd"));
-                log.setTipo(datosRS.getString("tipo"));
-
+                tipolog.setUser(datosRS.getString("usuario"));
+                tipolog.setPassword(datosRS.getString("passwd"));
+                tipolog.setTipo(datosRS.getString("tipo"));
             }
         }
 
-        cerrarConexion();
+        // CIERRA CONEXION
+        con.close();
 
-        return log;
+        // RETORNO TIPO LOG A / D / U
+        return tipolog;
 
     }
 

@@ -6,7 +6,7 @@ package Exceptions;
 
 public class ErroresDesconocidos extends Exception {
 
-    private static String mensaje;
+    static String mensaje;
 
     public ErroresDesconocidos() {
 
