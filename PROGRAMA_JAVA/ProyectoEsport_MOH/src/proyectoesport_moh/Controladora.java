@@ -30,10 +30,10 @@ public class Controladora {
     // VISTAS ADMINISTRADOR
     private static VPanelAdministracion vpanelAdministracion;
     private static VPanelCrudAdministradores vpanelCrudAdministradores;
-    private static VAltaAdmins vAltaAdmin;
-    private static VBajaAdmins vBajaAdmin;
-    private static VEditarAdmins vEditarAdmin;
-    private static VConsultaAdmins vConsultaAdmin;
+    private static VAltaAdmins vAltaAdmins;
+    private static VBajaAdmins vBajaAdmins;
+    private static VEditarAdmins vEditarAdmins;
+    private static VConsultaAdmins vConsultaAdmins;
 
     // VISTAS USUARIOS
     private static VPanelUsuarios vpanelUsuarios;
@@ -53,10 +53,10 @@ public class Controladora {
 
     // VISTAS JUGADORES
     private static VPanelCrudJugadores vpanelJugadores;
-    private static VAltaJugadores vAltaJugador;
-    private static VBajaJugadores vBajaJugador;
-    private static VEditarJugadores vEditarJugador;
-    private static VConsultaJugadores vConsultaJugador;
+    private static VAltaJugadores vAltaJugadores;
+    private static VBajaJugadores vBajaJugadores;
+    private static VEditarJugadores vEditarJugadores;
+    private static VConsultaJugadores vConsultaJugadores;
 
     // VISTAS EQUIPOS
     private static VPanelCrudEquipos vpanelCrudEquipos;
@@ -65,14 +65,31 @@ public class Controladora {
     private static VEditarEquipos vEditarEquipos;
     private static VConsultaEquipos vConsultaEquipos;
 
+    // VISTAS PARTIDOS
+    
+
     //
     private static Login loginUML;
+    //
+    private static AdministradorBD administradorBD;
 
     //
     private static LoginBD loginBD;
 
     //
-    private static AdministradorBD administradorBD;
+    private static UsuarioBD usuarioBD;
+
+    //
+    private static DuenioBD duenioBD;
+
+    //
+    private static JugadorBD jugadorBD;
+
+    //
+    private static EquipoBD equipoBD;
+
+    //
+    private static PartidoBD partidoBD;
 
     public static void main(String[] args) {
 
@@ -204,26 +221,26 @@ public class Controladora {
     // ABRIR PANELES ALTA / BAJA / CONSULTA / MODIFICACION > ADMINISTRADORES 
     // ALTA ADMINS
     public static void VAltaAdmins() {
-        vAltaAdmin = new VAltaAdmins();
-        vAltaAdmin.setVisible(true);
+        vAltaAdmins = new VAltaAdmins();
+        vAltaAdmins.setVisible(true);
     }
 
     // BAJA ADMINS
     public static void VBajaAdmins() {
-        vBajaAdmin = new VBajaAdmins();
-        vBajaAdmin.setVisible(true);
+        vBajaAdmins = new VBajaAdmins();
+        vBajaAdmins.setVisible(true);
     }
 
     // CONSULTA ADMINS
     public static void VConsultaAdmins() {
-        vConsultaAdmin = new VConsultaAdmins();
-        vConsultaAdmin.setVisible(true);
+        vConsultaAdmins = new VConsultaAdmins();
+        vConsultaAdmins.setVisible(true);
     }
 
     // MODIFICA ADMINS
     public static void VModificaAdmins() {
-        vEditarAdmin = new VEditarAdmins();
-        vEditarAdmin.setVisible(true);
+        vEditarAdmins = new VEditarAdmins();
+        vEditarAdmins.setVisible(true);
     }
 
     ////////////////////////////////////////////////////////////////////////////////////////////////
@@ -282,26 +299,26 @@ public class Controladora {
     // ABRIR PANELES ALTA / BAJA / CONSULTA / MODIFICACION > JUGADORES
     // ALTA JUGADORES
     public static void VAltaJugadores() {
-        vAltaJugador = new VAltaJugadores();
-        vAltaJugador.setVisible(true);
+        vAltaJugadores = new VAltaJugadores();
+        vAltaJugadores.setVisible(true);
     }
 
     // BAJA JUGADORES
     public static void VBajaJugadores() {
-        vBajaJugador = new VBajaJugadores();
-        vBajaJugador.setVisible(true);
+        vBajaJugadores = new VBajaJugadores();
+        vBajaJugadores.setVisible(true);
     }
 
     // CONSULTA JUGADORES
     public static void VConsultaJugadores() {
-        vConsultaJugador = new VConsultaJugadores();
-        vConsultaJugador.setVisible(true);
+        vConsultaJugadores = new VConsultaJugadores();
+        vConsultaJugadores.setVisible(true);
     }
 
     // MODIFICA JUGADORES
     public static void VModificaJugadores() {
-        vEditarJugador = new VEditarJugadores();
-        vEditarJugador.setVisible(true);
+        vEditarJugadores = new VEditarJugadores();
+        vEditarJugadores.setVisible(true);
     }
 
     ////////////////////////////////////////////////////////////////////////////////////////////////
@@ -331,14 +348,52 @@ public class Controladora {
     }
 
     ////////////////////////////////////////////////////////////////////////////////////////////////
-    
+    // SENTENCIAS ALTA / BAJA / CONSULTA / MODIFICACION > ADMINISTRADOR
     public static void localizarAdministradorEnBD(String dni) throws Exception {
         administradorBD = new AdministradorBD();
         Administrador administrador = administradorBD.localizaAdministrador(dni);
-        vBajaAdmin.rellenarCamposVentana(administrador.getDni(),administrador.getNombre(),administrador.getApellido());
+        vBajaAdmins.rellenarCamposVentana(administrador.getDni(), administrador.getNombre(), administrador.getApellido());
     }
-    
+
     public static void eliminarAdministradorDelaBD(String text) {
-       
+
     }
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    // SENTENCIAS ALTA / BAJA / CONSULTA / MODIFICACION > USUARIO
+    public static void localizarUsuarioEnBD(String dni) throws Exception {
+        usuarioBD = new UsuarioBD();
+        Usuario usuario = duenioBD.localizaUsuario(dni);
+        vBajaUsuarios.rellenarCamposVentana(usuario.getDni(), usuario.getNombre(), usuario.getApellido());
+    }
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    // SENTENCIAS ALTA / BAJA / CONSULTA / MODIFICACION > DUENIO
+    public static void localizarDuenioEnBD(String dni) throws Exception {
+        duenioBD = new DuenioBD();
+        Duenio duenio = duenioBD.localizaDuenio(dni);
+        vBajaDuenios.rellenarCamposVentana(duenio.getDni(), duenio.getNombre(), duenio.getApellido());
+    }
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    // SENTENCIAS ALTA / BAJA / CONSULTA / MODIFICACION > JUGADOR
+    public static void localizarJugadorEnBD(String dni) throws Exception {
+        jugadorBD = new JugadorBD();
+        Jugador jugador = jugadorBD.localizaJugador(dni);
+        vBajaJugadores.rellenarCamposVentana(jugador.getDni(), jugador.getNombre(), jugador.getApellido());
+    }
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    // SENTENCIAS ALTA / BAJA / CONSULTA / MODIFICACION > EQUIPO
+    public static void localizarEquipoEnBD(String dni) throws Exception {
+        equipoBD = new EquipoBD();
+        Equipo equipo = duenioBD.localizaEquipo(dni);
+        vBajaEquipos.rellenarCamposVentana(equipo.getDni(), equipo.getNombre(), equipo.getApellido());
+    }
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    // SENTENCIAS ALTA / BAJA / CONSULTA / MODIFICACION > PARTIDO
+    
+    
+    ////////////////////////////////////////////////////////////////////////////////////////////////
 }

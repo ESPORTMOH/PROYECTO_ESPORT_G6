@@ -5,8 +5,10 @@
  */
 package Views.Administradores;
 
+import Exceptions.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import proyectoesport_moh.Controladora;
 
 /**
@@ -20,6 +22,8 @@ public class VBajaAdmins extends javax.swing.JFrame {
      */
     public VBajaAdmins() {
         initComponents();
+        this.setLocationRelativeTo(null);
+        this.setResizable(false);
         configPredeterminadaVentana();
     }
 
@@ -127,11 +131,13 @@ public class VBajaAdmins extends javax.swing.JFrame {
     }//GEN-LAST:event_jBeliminarActionPerformed
 
     private void jBbuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBbuscarActionPerformed
-        // ACTION BUSCAR ADMIN PRIMERO EN LA BD PARA ELIMINAR DESPUES
+        // ACTION PARA BUSCAR ADMIN PRIMERO EN LA BD Y ELIMINAR DESPUES SI SE QUIERE
         try {
             Controladora.localizarAdministradorEnBD(jTdni.getText());
-        } catch (Exception ex) {
-            Logger.getLogger(VBajaAdmins.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (DuenioNoExiste ANE) {
+            JOptionPane.showMessageDialog(this, ANE.getMensaje());
+        } catch (Exception E) {
+            JOptionPane.showMessageDialog(this, E.getMessage());
         }
     }//GEN-LAST:event_jBbuscarActionPerformed
 
@@ -185,6 +191,7 @@ public class VBajaAdmins extends javax.swing.JFrame {
     private javax.swing.JTextField jTnombre;
     // End of variables declaration//GEN-END:variables
 
+    // FUNCIONES PROPIAS DE LA VISTA
     
     public void rellenarCamposVentana(String dni, String nombre, String apellido){
         jTdni.setText(dni);

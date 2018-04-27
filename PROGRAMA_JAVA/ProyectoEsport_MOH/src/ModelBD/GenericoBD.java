@@ -6,20 +6,65 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 /**
- *
  * @author MIGUEL
  */
 public class GenericoBD {
 
-    private static Connection con;
-    
-    private static String nombreBD = "esportmoh";
-    
-    private static String url = "jdbc:mysql://localhost:3307/" + nombreBD;
-    private static String user = "root";
-    private static String pass = "usbw";
-    
+    // CONEXIONES / DESCONEXIONES A LA BD MEDIANTE SRVORACLE / EN CLASE
+    public Connection abrirConexion(Connection conexion) throws SQLException, ProblemasEstablecerConexion {
 
+        try {
+            Class.forName("oracle.jdbc.driver.OracleDriver");
+            conexion = DriverManager.getConnection("jdbc:oracle:thin:@172.20.225.114:1521:orcl", "eqdaw06", "eqdaw06");
+
+            if (conexion != null) {
+                System.out.println("Conexion Establecida");
+                return conexion;
+            } else {
+                System.out.println("Error Estableciendo Conexion");
+                return null;
+            }
+        } catch (ClassNotFoundException | SQLException E) {
+            return null;
+        }
+
+    }
+
+    public void cerrarConexion(Connection conexion) throws SQLException, ProblemasEstablecerConexion {
+        try {
+            System.out.println("Conexion Cerrada");
+            conexion.close();
+        } catch (SQLException E) {
+        }
+    }
+
+}
+////////////////////////////////////////////////////////////////////////////////////////////////
+// DATOS PARA LA CONEXION EN MI CASA CON VAGRANT
+/*
+        Class.forName("oracle.jdbc.OracleDriver");
+        String user = "system";
+        String pass = "oracle";
+        String url = "jdbc:oracle:thin:@10.10.10.9:1521:db12102";
+        
+        
+        jdbc:oracle:thin:@172.20.225.114:1521:orcl
+ */
+////////////////////////////////////////////////////////////////////////////////////////////////
+
+/*
+    // CONEXIONES / DESCONEXIONES A LA BD MEDIANTE USBWEBSERVER / MYSQL
+    
+    private Connection con;
+
+    private String nombreBD = "esportmoh";
+
+    private String url = "jdbc:mysql://localhost:3307/" + nombreBD;
+    private String user = "root";
+    private String pass = "usbw";
+
+    
+    // FUNCION PARA ESTABLECER CONEXION CON LA BD EN MYSQL
     public Connection abrirConexion() throws ClassNotFoundException, SQLException, ProblemasConexion {
 
         Class.forName("com.mysql.jdbc.Driver");
@@ -39,6 +84,7 @@ public class GenericoBD {
         }
     }
 
+    // FUNCION PARA CERRAR CONEXION CON LA BD EN MYSQL
     public Connection cerrarConexion() throws SQLException, ProblemasConexion {
         try {
             con.close();
@@ -46,41 +92,8 @@ public class GenericoBD {
             return null;
         } catch (Exception e) {
             throw new ProblemasConexion("mensajeCierraConexion");
-            
         }
-
     }
-    
-    /*
-    private static String nombreBD = "esportmoh";
-    private static String url = "jdbc:mysql://localhost:3307/" + nombreBD;
-    private static String user = "root";
-    private static String pass = "usbw";
-    private static Connection con;
-   
+ */
+////////////////////////////////////////////////////////////////////////////////////////////////
 
-    //ESTABLECER CONEXION
-    public static Connection abrirConexion() throws ClassNotFoundException, SQLException, Exception {
-        try {
-
-            Class.forName("com.mysql.jdbc.Driver");
-            con = DriverManager.getConnection(url, user, pass);
-
-            if (con == null) {
-                throw new ProblemasConexion("mensaje");
-            }
-        } catch (ProblemasConexion | ClassNotFoundException | SQLException E) {
-            return null;
-        }
-        System.out.println("Conexion Establecida");
-        return con;
-    }
-
-    //CERRAR CONEXION
-    public static void cerrarConexion() throws SQLException, Exception {
-        System.out.println("Conexion Cerrada");
-        con.close();
-    }
-     */
-    
-}
