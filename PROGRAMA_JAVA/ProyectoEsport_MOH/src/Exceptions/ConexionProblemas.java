@@ -3,15 +3,15 @@ package Exceptions;
 /**
  * @author MIGUEL
  */
-public class ProblemasEstablecerConexion extends Exception {
+public class ConexionProblemas extends Exception {
 
     private static String mensaje;
 
-    public ProblemasEstablecerConexion() {
+    public ConexionProblemas() {
 
     }
 
-    public ProblemasEstablecerConexion(String mensaje) {
+    public ConexionProblemas(String mensaje) {
         ErroresDesconocidos.mensaje = mensaje;
     }
 

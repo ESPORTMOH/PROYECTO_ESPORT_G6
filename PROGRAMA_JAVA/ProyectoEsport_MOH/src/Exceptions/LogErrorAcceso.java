@@ -4,16 +4,16 @@ package Exceptions;
  * @author MIGUEL
  */
 
-public class ErrorAccesoLogin extends Exception {
+public class LogErrorAcceso extends Exception {
 
     private static String mensaje;
 
-    public ErrorAccesoLogin() {
+    public LogErrorAcceso() {
 
     }
 
-    public ErrorAccesoLogin(String mensaje) {
-        ErrorAccesoLogin.mensaje = mensaje;
+    public LogErrorAcceso(String mensaje) {
+        LogErrorAcceso.mensaje = mensaje;
     }
 
     public String getMensaje() {
@@ -23,7 +23,7 @@ public class ErrorAccesoLogin extends Exception {
     }
 
     public void setMensaje(String mensaje) {
-        ErrorAccesoLogin.mensaje = mensaje;
+        LogErrorAcceso.mensaje = mensaje;
     }
 
 }

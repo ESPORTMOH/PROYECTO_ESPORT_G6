@@ -23,7 +23,7 @@ public class LoginBD extends GenericoBD {
 
         // COMPROBACION DEL RETORNO DE LA CONEXION, SI ES NULA SALTA MI EXCEPCION PARA QUE EL USUARIO SE DE CUENTA
         if (con == null) {
-            throw new ProblemasEstablecerConexion();
+            throw new ConexionProblemas();
         }
         
         // CREO OBJETO DE TIPOLOG QUE ME PERMITIRA ALMACENAR EL TIPO DE LOGIN QUE CONSULTO EN LA BD
@@ -38,7 +38,7 @@ public class LoginBD extends GenericoBD {
 
         try (ResultSet datosRS = pS.executeQuery()) {
             if (!datosRS.next()) {
-                throw new UsuarioLogNoExiste();
+                throw new LogAccesoNoExiste();
 
             } else {
 

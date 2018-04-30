@@ -16,8 +16,8 @@ public class JugadorNoExiste extends Exception{
     }
 
     public String getMensaje() {
-        mensaje = "El Admin o la Contraseña no"
-                + "\nexisten en la Base de Datos";
+        mensaje = "El Jugador con el DNI introducido"
+                + "\nno existe en la Base de Datos";
         return mensaje;
     }
 

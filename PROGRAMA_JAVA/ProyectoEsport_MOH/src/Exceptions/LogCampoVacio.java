@@ -4,16 +4,16 @@ package Exceptions;
  * @author MIGUEL
  */
 
-public class CampoVacio extends Exception {
+public class LogCampoVacio extends Exception {
 
     private static String mensaje;
 
-    public CampoVacio() {
+    public LogCampoVacio() {
 
     }
 
-    public CampoVacio(String mensaje) {
-        CampoVacio.mensaje = mensaje;
+    public LogCampoVacio(String mensaje) {
+        LogCampoVacio.mensaje = mensaje;
     }
 
     public String getMensaje() {
@@ -23,7 +23,7 @@ public class CampoVacio extends Exception {
     }
 
     public void setMensaje(String mensaje) {
-        CampoVacio.mensaje = mensaje;
+        LogCampoVacio.mensaje = mensaje;
     }
 
 }
