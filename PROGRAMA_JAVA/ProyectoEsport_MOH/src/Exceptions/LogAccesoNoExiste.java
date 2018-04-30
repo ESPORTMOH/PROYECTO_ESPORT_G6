@@ -4,20 +4,20 @@ package Exceptions;
  * @author 1gdaw12
  */
 
-public class AdminNoExiste extends Exception{
+public class LogAccesoNoExiste extends Exception{
     private static String mensaje;
 
-    public AdminNoExiste() {
+    public LogAccesoNoExiste() {
 
     }
 
-    public AdminNoExiste(String mensaje) {
+    public LogAccesoNoExiste(String mensaje) {
         ErroresDesconocidos.mensaje = mensaje;
     }
 
     public String getMensaje() {
-        mensaje = "El Admin con el DNI introducido"
-                + "\nno existe en la Base de Datos";
+        mensaje = "El Usuario o la Contraseña no"
+                + "\nexisten en la Base de Datos";
         return mensaje;
     }
 

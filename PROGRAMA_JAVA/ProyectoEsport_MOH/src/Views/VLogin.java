@@ -106,15 +106,15 @@ public class VLogin extends javax.swing.JFrame {
     private void jBaceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBaceptarActionPerformed
         try {
             if (jTusuario.getText().isEmpty() || jPasswd.getText().isEmpty()) {
-                throw new CampoVacio();
+                throw new LogCampoVacio();
             } else {
                 Controladora.consultarLogin(jTusuario.getText(), jPasswd.getText());
             }
-        } catch (CampoVacio CV) {
+        } catch (LogCampoVacio CV) {
             JOptionPane.showMessageDialog(this, CV.getMensaje());
-        } catch (UsuarioLogNoExiste UNE) {
+        } catch (LogAccesoNoExiste UNE) {
             JOptionPane.showMessageDialog(this, UNE.getMensaje()); 
-        } catch (ProblemasEstablecerConexion PEC) {
+        } catch (ConexionProblemas PEC) {
             JOptionPane.showMessageDialog(this, PEC.getMensaje());
         } catch (Exception E) {
             JOptionPane.showMessageDialog(this, E.getMessage());

@@ -6,7 +6,7 @@
 package Views.Duenios;
 
 import Exceptions.DuenioNoExiste;
-import Views.Administradores.*;
+import Views.Duenios.*;
 import javax.swing.JOptionPane;
 import proyectoesport_moh.Controladora;
 
@@ -56,6 +56,11 @@ public class VBajaDuenios extends javax.swing.JFrame {
         jLabel4.setText("Apellido");
 
         jBeliminar.setText("ELIMINAR");
+        jBeliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBeliminarActionPerformed(evt);
+            }
+        });
 
         jBbuscar.setText("BUSCAR");
         jBbuscar.addActionListener(new java.awt.event.ActionListener() {
@@ -130,6 +135,11 @@ public class VBajaDuenios extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, E.getMessage());
         }
     }//GEN-LAST:event_jBbuscarActionPerformed
+
+    private void jBeliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBeliminarActionPerformed
+        // ACTION ELIMINAR
+        Controladora.eliminarDuenioDelaBD(jTdni.getText());
+    }//GEN-LAST:event_jBeliminarActionPerformed
 
     /**
      * @param args the command line arguments

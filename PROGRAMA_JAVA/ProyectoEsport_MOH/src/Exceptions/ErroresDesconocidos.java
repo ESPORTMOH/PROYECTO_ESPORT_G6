@@ -18,7 +18,7 @@ public class ErroresDesconocidos extends Exception {
 
     public String getMensaje() {
         mensaje = "Error Desconocido, pongase en"
-                + "\ncontacto con el SUPER USUARIO";
+                + "\ncontacto con el SUPER ADMIN";
         return mensaje;
     }
 

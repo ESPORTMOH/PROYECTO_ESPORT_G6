@@ -134,7 +134,7 @@ public class VBajaAdmins extends javax.swing.JFrame {
         // ACTION PARA BUSCAR ADMIN PRIMERO EN LA BD Y ELIMINAR DESPUES SI SE QUIERE
         try {
             Controladora.localizarAdministradorEnBD(jTdni.getText());
-        } catch (DuenioNoExiste ANE) {
+        } catch (AdminNoExiste ANE) {
             JOptionPane.showMessageDialog(this, ANE.getMensaje());
         } catch (Exception E) {
             JOptionPane.showMessageDialog(this, E.getMessage());

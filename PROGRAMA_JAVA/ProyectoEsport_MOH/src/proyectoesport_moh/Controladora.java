@@ -61,13 +61,11 @@ public class Controladora {
     // VISTAS EQUIPOS
     private static VPanelCrudEquipos vpanelCrudEquipos;
     private static VAltaEquipos vAltaEquipos;
-    private static VBajaEquipos vBajaEquipos;
+    private static VConsultaEquipos vBajaEquipos;
     private static VEditarEquipos vEditarEquipos;
     private static VConsultaEquipos vConsultaEquipos;
 
     // VISTAS PARTIDOS
-    
-
     //
     private static Login loginUML;
     //
@@ -331,7 +329,7 @@ public class Controladora {
 
     // BAJA EQUIPOS
     public static void VBajaEquipos() {
-        vBajaEquipos = new VBajaEquipos();
+        vBajaEquipos = new VConsultaEquipos();
         vBajaEquipos.setVisible(true);
     }
 
@@ -355,7 +353,7 @@ public class Controladora {
         vBajaAdmins.rellenarCamposVentana(administrador.getDni(), administrador.getNombre(), administrador.getApellido());
     }
 
-    public static void eliminarAdministradorDelaBD(String text) {
+    public static void eliminarAdministradorDelaBD(String dni) {
 
     }
 
@@ -363,8 +361,11 @@ public class Controladora {
     // SENTENCIAS ALTA / BAJA / CONSULTA / MODIFICACION > USUARIO
     public static void localizarUsuarioEnBD(String dni) throws Exception {
         usuarioBD = new UsuarioBD();
-        Usuario usuario = duenioBD.localizaUsuario(dni);
+        Usuario usuario = usuarioBD.localizaUsuario(dni);
         vBajaUsuarios.rellenarCamposVentana(usuario.getDni(), usuario.getNombre(), usuario.getApellido());
+    }
+
+    public static void eliminarUsuarioDelaBD(String dni) {
     }
 
     ////////////////////////////////////////////////////////////////////////////////////////////////
@@ -375,6 +376,9 @@ public class Controladora {
         vBajaDuenios.rellenarCamposVentana(duenio.getDni(), duenio.getNombre(), duenio.getApellido());
     }
 
+    public static void eliminarDuenioDelaBD(String dni) {
+    }
+
     ////////////////////////////////////////////////////////////////////////////////////////////////
     // SENTENCIAS ALTA / BAJA / CONSULTA / MODIFICACION > JUGADOR
     public static void localizarJugadorEnBD(String dni) throws Exception {
@@ -383,17 +387,21 @@ public class Controladora {
         vBajaJugadores.rellenarCamposVentana(jugador.getDni(), jugador.getNombre(), jugador.getApellido());
     }
 
+    public static void eliminarJugadorDelaBD(String dni) {
+    }
+
     ////////////////////////////////////////////////////////////////////////////////////////////////
     // SENTENCIAS ALTA / BAJA / CONSULTA / MODIFICACION > EQUIPO
     public static void localizarEquipoEnBD(String dni) throws Exception {
         equipoBD = new EquipoBD();
-        Equipo equipo = duenioBD.localizaEquipo(dni);
-        vBajaEquipos.rellenarCamposVentana(equipo.getDni(), equipo.getNombre(), equipo.getApellido());
+        Equipo equipo = equipoBD.localizaEquipo(dni);
+        vBajaEquipos.rellenarCamposVentana();
+    }
+
+    public static void eliminarEquipoDelaBD(String nombre) {
     }
 
     ////////////////////////////////////////////////////////////////////////////////////////////////
     // SENTENCIAS ALTA / BAJA / CONSULTA / MODIFICACION > PARTIDO
-    
-    
     ////////////////////////////////////////////////////////////////////////////////////////////////
 }

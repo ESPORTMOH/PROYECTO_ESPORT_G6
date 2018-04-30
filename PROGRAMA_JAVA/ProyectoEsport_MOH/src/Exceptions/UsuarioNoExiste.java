@@ -4,20 +4,20 @@ package Exceptions;
  * @author 1gdaw12
  */
 
-public class UsuarioLogNoExiste extends Exception{
+public class UsuarioNoExiste extends Exception{
     private static String mensaje;
 
-    public UsuarioLogNoExiste() {
+    public UsuarioNoExiste() {
 
     }
 
-    public UsuarioLogNoExiste(String mensaje) {
+    public UsuarioNoExiste(String mensaje) {
         ErroresDesconocidos.mensaje = mensaje;
     }
 
     public String getMensaje() {
-        mensaje = "El Usuario o la Contraseña no"
-                + "\nexisten en la Base de Datos";
+        mensaje = "El Usuario con el DNI introducido"
+                + "\nno existe en la Base de Datos";
         return mensaje;
     }
 

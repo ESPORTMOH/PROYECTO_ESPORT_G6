@@ -4,20 +4,20 @@ package Exceptions;
  * @author 1gdaw12
  */
 
-public class AdminNoExiste extends Exception{
+public class EquipoNoExiste extends Exception{
     private static String mensaje;
 
-    public AdminNoExiste() {
+    public EquipoNoExiste() {
 
     }
 
-    public AdminNoExiste(String mensaje) {
+    public EquipoNoExiste(String mensaje) {
         ErroresDesconocidos.mensaje = mensaje;
     }
 
     public String getMensaje() {
-        mensaje = "El Admin con el DNI introducido"
-                + "\nno existe en la Base de Datos";
+        mensaje = "El Nombre del Equipo introducido"
+              + "\nno existe en la Base de Datos";
         return mensaje;
     }
 

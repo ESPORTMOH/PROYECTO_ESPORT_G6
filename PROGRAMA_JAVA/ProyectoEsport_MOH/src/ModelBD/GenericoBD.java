@@ -11,7 +11,7 @@ import java.sql.SQLException;
 public class GenericoBD {
 
     // CONEXIONES / DESCONEXIONES A LA BD MEDIANTE SRVORACLE / EN CLASE
-    public Connection abrirConexion(Connection conexion) throws SQLException, ProblemasEstablecerConexion {
+    public Connection abrirConexion(Connection conexion) throws SQLException, ConexionProblemas {
 
         try {
             Class.forName("oracle.jdbc.driver.OracleDriver");
@@ -30,7 +30,7 @@ public class GenericoBD {
 
     }
 
-    public void cerrarConexion(Connection conexion) throws SQLException, ProblemasEstablecerConexion {
+    public void cerrarConexion(Connection conexion) throws SQLException, ConexionProblemas {
         try {
             System.out.println("Conexion Cerrada");
             conexion.close();
