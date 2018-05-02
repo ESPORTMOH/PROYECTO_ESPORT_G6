@@ -1,11 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Views.Duenios;
 
 import Views.Administradores.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import proyectoesport_moh.Controladora;
 
 /**
  *
@@ -14,7 +12,7 @@ import Views.Administradores.*;
 public class VAltaDuenios extends javax.swing.JFrame {
 
     /**
-     * Creates new form VAltaAdmin
+     * Creates new form VAltaDuenio
      */
     public VAltaDuenios() {
         initComponents();
@@ -49,6 +47,11 @@ public class VAltaDuenios extends javax.swing.JFrame {
         jLabel4.setText("Apellido");
 
         jBaceptar.setText("ACEPTAR");
+        jBaceptar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBaceptarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -101,6 +104,15 @@ public class VAltaDuenios extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jBaceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBaceptarActionPerformed
+        // ACTION ALTA DUENIO
+        try {
+            Controladora.altaDuenioBD(jTdni.getText(), jTnombre.getText(), jTapellido.getText(), "A");
+        } catch (Exception ex) {
+            Logger.getLogger(VAltaAdmins.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jBaceptarActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -127,13 +139,7 @@ public class VAltaDuenios extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(VAltaDuenios.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
+
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {

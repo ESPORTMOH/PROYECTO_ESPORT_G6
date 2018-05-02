@@ -6,8 +6,7 @@
 package Views.Administradores;
 
 import Exceptions.*;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+
 import javax.swing.JOptionPane;
 import proyectoesport_moh.Controladora;
 
@@ -80,10 +79,10 @@ public class VBajaAdmins extends javax.swing.JFrame {
                 .addGap(110, 110, 110))
             .addGroup(layout.createSequentialGroup()
                 .addGap(71, 71, 71)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jBbuscar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(18, 18, 18)
                         .addComponent(jBeliminar))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -133,7 +132,13 @@ public class VBajaAdmins extends javax.swing.JFrame {
     private void jBbuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBbuscarActionPerformed
         // ACTION PARA BUSCAR ADMIN PRIMERO EN LA BD Y ELIMINAR DESPUES SI SE QUIERE
         try {
-            Controladora.localizarAdministradorEnBD(jTdni.getText());
+            if (jTdni.getText().isEmpty()) {
+                throw new CampoDniVacio();
+            } else {
+                Controladora.localizarAdministradorEnBD(jTdni.getText());
+            }   
+        } catch (CampoDniVacio CDV) {
+            JOptionPane.showMessageDialog(this, CDV.getMensaje());
         } catch (AdminNoExiste ANE) {
             JOptionPane.showMessageDialog(this, ANE.getMensaje());
         } catch (Exception E) {
@@ -167,9 +172,7 @@ public class VBajaAdmins extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(VBajaAdmins.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
+
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {

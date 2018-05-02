@@ -5,6 +5,10 @@
  */
 package Views.Administradores;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import proyectoesport_moh.Controladora;
+
 /**
  *
  * @author MIGUEL
@@ -47,6 +51,11 @@ public class VAltaAdmins extends javax.swing.JFrame {
         jLabel4.setText("Apellido");
 
         jBaceptar.setText("ACEPTAR");
+        jBaceptar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBaceptarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -97,6 +106,15 @@ public class VAltaAdmins extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jBaceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBaceptarActionPerformed
+        // ACTION ALTA ADMINISTRADOR
+        try {
+            Controladora.altaAdministradorBD(jTdni.getText(), jTnombre.getText(), jTapellido.getText(), "A");
+        } catch (Exception ex) {
+            Logger.getLogger(VAltaAdmins.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jBaceptarActionPerformed
 
     /**
      * @param args the command line arguments

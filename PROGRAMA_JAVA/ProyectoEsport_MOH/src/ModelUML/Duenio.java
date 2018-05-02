@@ -17,6 +17,12 @@ public class Duenio {
     public Duenio() {
     }
 
+    public Duenio(String dni, String nombre, String apellido) {
+        this.dni = dni;
+        this.nombre = nombre;
+        this.apellido = apellido;
+    }
+
     public Duenio(Integer codDuenio, String dni, String nombre, String apellido) {
         this.codDuenio = codDuenio;
         this.dni = dni;
@@ -71,7 +77,5 @@ public class Duenio {
     public void setLogin(Login login) {
         this.login = login;
     }
-    
-    
 
 }

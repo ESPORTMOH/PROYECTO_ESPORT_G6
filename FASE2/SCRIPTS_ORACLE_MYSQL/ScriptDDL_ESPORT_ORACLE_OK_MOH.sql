@@ -69,8 +69,8 @@ CREATE TABLE login (
                    NOORDER  
                    NOCYCLE  NOT NULL ENABLE
                    CONSTRAINT LO_CDLO_PK PRIMARY KEY,
-  usuario VARCHAR2(8) NOT NULL,
-  passwd VARCHAR2(8) NOT NULL,
+  usuario VARCHAR2(9) NOT NULL,
+  passwd VARCHAR2(20) NOT NULL,
   tipo VARCHAR2(1) NOT NULL
 );
 
@@ -160,11 +160,11 @@ CREATE TABLE jugador (
   nombre VARCHAR2(20) NOT NULL,
   apellido VARCHAR2(20) NOT NULL,
   nickname VARCHAR2(10) NOT NULL,
-  sueldo NUMBER(6,2) NOT NULL,
+  sueldo NUMBER(10) NOT NULL,
   fechaNacimiento DATE NOT NULL,
   nacionalidad VARCHAR2(20) NOT NULL,
   posicion VARCHAR2(10) NOT NULL,
-  codEquipo NUMBER(4) NOT NULL -- RESERVADO FK
+  codEquipo NUMBER(4) -- RESERVADO FK
 );
 
 -- --------------------------------------------------------
@@ -360,10 +360,17 @@ COMMIT;
 
 -- --------------------------------------------------------
 
+INSERT INTO jugador (codJugador, dni, nombre, apellido, nickname, sueldo, fechaNacimiento, nacionalidad, posicion) VALUES (DEFAULT, '12345678A', 'nombre', 'apellido', 'nickname', 40000, to_date('10/10/1000', 'dd/mm/YYYY'), 'nacionalidad', 'j')
+
+
+--select * from jugador;
+-- --------------------------------------------------------
+
 --
 -- COMPROBACIONES
 --
 
+/*
 SELECT * FROM login;
 SELECT * FROM administrador;
 SELECT * FROM duenio;
@@ -376,7 +383,7 @@ SELECT *
 SELECT *
   FROM SYS.USER_CONSTRAINTS 
   WHERE TABLE_NAME = UPPER('LOGIN');
-
+*/
 
 -- --------------------------------------------------------
 

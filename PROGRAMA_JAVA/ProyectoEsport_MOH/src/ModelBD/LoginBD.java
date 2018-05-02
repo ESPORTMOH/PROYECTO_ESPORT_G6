@@ -6,6 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import Exceptions.*;
+import java.sql.CallableStatement;
 import java.sql.Connection;
 
 /**
@@ -14,6 +15,30 @@ import java.sql.Connection;
 public class LoginBD extends GenericoBD {
 
     private Connection con;
+
+    // LLAMADA AL PROCEDIMIENTO PARA GENERAR AUTO USER / PASSWD 
+    public Integer generarLogin(String dni, String nombre, String apellido, String tipo) throws SQLException, Exception {
+
+        GenericoBD genericoBD = new GenericoBD();
+        con = genericoBD.abrirConexion(con);
+
+        CallableStatement cS = con.prepareCall("{call generarAutoUserPass(?,?,?,?,?)}");
+
+        cS.setString(1, dni);
+        cS.setString(2, nombre);
+        cS.setString(3, apellido);
+        cS.setString(4, tipo);
+
+        cS.registerOutParameter(5, java.sql.Types.INTEGER);
+        cS.execute();
+        
+        Integer id = cS.getInt(5);
+
+        con.close();
+
+        return id;
+
+    }
 
     //VALIDAR LOGIN
     public Login validarLogin(Login loginUML) throws SQLException, Exception {
@@ -25,7 +50,7 @@ public class LoginBD extends GenericoBD {
         if (con == null) {
             throw new ConexionProblemas();
         }
-        
+
         // CREO OBJETO DE TIPOLOG QUE ME PERMITIRA ALMACENAR EL TIPO DE LOGIN QUE CONSULTO EN LA BD
         Login tipolog = new Login();
 
