@@ -423,7 +423,7 @@ public class Controladora {
     public static void localizarEquipoEnBD(String dni) throws Exception {
         equipoBD = new EquipoBD();
         Equipo equipo = equipoBD.localizaEquipo(dni);
-        vBajaEquipos.rellenarCamposVentana();
+       // vBajaEquipos.rellenarCamposVentana();
     }
 
     public static void eliminarEquipoDelaBD(String nombre) {

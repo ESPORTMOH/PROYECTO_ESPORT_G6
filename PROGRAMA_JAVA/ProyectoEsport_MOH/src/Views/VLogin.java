@@ -103,6 +103,7 @@ public class VLogin extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    // ACTION BOTON ACEPTAR
     private void jBaceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBaceptarActionPerformed
         try {
             if (jTusuario.getText().isEmpty() || jPasswd.getText().isEmpty()) {
@@ -123,7 +124,22 @@ public class VLogin extends javax.swing.JFrame {
     }//GEN-LAST:event_jBaceptarActionPerformed
 
     private void jPasswdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswdActionPerformed
-        // TODO add your handling code here:
+        // ENTER                                      
+        try {
+            if (jTusuario.getText().isEmpty() || jPasswd.getText().isEmpty()) {
+                throw new LogCampoVacio();
+            } else {
+                Controladora.consultarLogin(jTusuario.getText(), jPasswd.getText());
+            }
+        } catch (LogCampoVacio CV) {
+            JOptionPane.showMessageDialog(this, CV.getMensaje());
+        } catch (LogAccesoNoExiste UNE) {
+            JOptionPane.showMessageDialog(this, UNE.getMensaje()); 
+        } catch (ConexionProblemas PEC) {
+            JOptionPane.showMessageDialog(this, PEC.getMensaje());
+        } catch (Exception E) {
+            JOptionPane.showMessageDialog(this, E.getMessage());
+        }
 
     }//GEN-LAST:event_jPasswdActionPerformed
 

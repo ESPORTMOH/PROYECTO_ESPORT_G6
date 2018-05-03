@@ -126,19 +126,23 @@ public class VBajaJugadores extends javax.swing.JFrame {
                             .addComponent(jLabel7)
                             .addComponent(jLabel8)
                             .addComponent(jLabel9))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jCalendarFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(40, 40, 40)
+                                .addComponent(jBbuscar)
+                                .addGap(43, 43, 43)
+                                .addComponent(jBeliminar))
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addGroup(layout.createSequentialGroup()
-                                    .addComponent(jBbuscar)
-                                    .addGap(43, 43, 43)
-                                    .addComponent(jBeliminar))
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                    .addGap(9, 9, 9)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(jTnacionalidad, javax.swing.GroupLayout.DEFAULT_SIZE, 224, Short.MAX_VALUE)
-                                        .addComponent(jTposicion)))))
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(jTposicion, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jTnacionalidad))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                        .addGap(20, 20, 20)
+                                        .addComponent(jCalendarFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                         .addContainerGap())))
         );
         layout.setVerticalGroup(
@@ -195,7 +199,7 @@ public class VBajaJugadores extends javax.swing.JFrame {
                 throw new CampoDniVacio();
             } else {
                 Controladora.localizarJugadorEnBD(jTdni.getText());
-            }   
+            }
         } catch (CampoDniVacio CDV) {
             JOptionPane.showMessageDialog(this, CDV.getMensaje());
         } catch (JugadorNoExiste JNE) {
@@ -274,10 +278,13 @@ public class VBajaJugadores extends javax.swing.JFrame {
         jTapellido.setText(apellido);
         jTnik.setText(nickname);
         jTsueldo.setText(sueldo.toString());
+        
         jCalendarFecha.setDate(fechaNacimiento);
+        
+        
         jTnacionalidad.setText(nacionalidad);
         jTposicion.setText(posicion);
-           
+
         jBeliminar.setEnabled(true);
     }
 
@@ -287,7 +294,7 @@ public class VBajaJugadores extends javax.swing.JFrame {
         jTapellido.setEnabled(false);
         jTnik.setEnabled(false);
         jTsueldo.setEnabled(false);
-        jCalendarFecha.setEnabled(false);
+        jCalendarFecha.setSelectedIndex(-1);
         jTnacionalidad.setEnabled(false);
         jTposicion.setEnabled(false);
         jBeliminar.setEnabled(false);

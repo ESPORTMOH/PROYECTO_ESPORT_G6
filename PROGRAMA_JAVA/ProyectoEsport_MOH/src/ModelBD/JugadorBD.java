@@ -1,4 +1,3 @@
-
 package ModelBD;
 
 import ModelUML.*;
@@ -13,7 +12,7 @@ import java.sql.SQLException;
  * @author MIGUEL
  */
 public class JugadorBD {
-    
+
     private Connection con;
 
     public Jugador localizaJugador(String dni) throws SQLException, Exception {
@@ -24,36 +23,35 @@ public class JugadorBD {
         Jugador jugador = new Jugador();
 
         String consultaSQL = "SELECT codJugador, dni, nombre, apellido, nickname, sueldo, fechaNacimiento, nacionalidad, posicion, codEquipo FROM jugador WHERE dni = ?";
-        
-        PreparedStatement pS=con.prepareStatement(consultaSQL);
+
+        PreparedStatement pS = con.prepareStatement(consultaSQL);
 
         pS.setString(1, dni.toUpperCase());
 
-        try (ResultSet datosRS = pS.executeQuery()) {
-            if (!datosRS.next()) {
-                throw new JugadorNoExiste();
-            } else {
+        ResultSet datosRS = pS.executeQuery();
+        if (!datosRS.next()) {
+            throw new JugadorNoExiste();
+        } else {
 
-                jugador.setCodJugador(datosRS.getInt("codJugador"));
-                jugador.setDni(datosRS.getString("dni"));
-                jugador.setNombre(datosRS.getString("nombre"));
-                jugador.setApellido(datosRS.getString("apellido"));
-                jugador.setNickname(datosRS.getString("nickname"));
+            jugador.setCodJugador(datosRS.getInt("codJugador"));
+            jugador.setDni(datosRS.getString("dni"));
+            jugador.setNombre(datosRS.getString("nombre"));
+            jugador.setApellido(datosRS.getString("apellido"));
+            jugador.setNickname(datosRS.getString("nickname"));
 
-                jugador.setSueldo(datosRS.getDouble("sueldo"));
-                
-                java.sql.Date sqlFechaNacimientoJugador = new java.sql.Date(jugador.getFechaNacimiento().getTime());
-                jugador.setFechaNacimiento(datosRS.getDate(sqlFechaNacimientoJugador.toString()));
-                
-                jugador.setNacionalidad(datosRS.getString("nacionalidad"));
-                jugador.setPosicion(datosRS.getString("posicion"));
-                
-                jugador.setEquipo(new Equipo(datosRS.getInt("codEquipo")));
-            }
+            jugador.setSueldo(datosRS.getDouble("sueldo"));
+
+            jugador.setFechaNacimiento((datosRS.getDate("fechaNacimiento")));
+
+            jugador.setNacionalidad(datosRS.getString("nacionalidad"));
+            jugador.setPosicion(datosRS.getString("posicion"));
+
+            jugador.setEquipo(new Equipo(datosRS.getInt("codEquipo")));
         }
+
         con.close();
         return jugador;
 
     }
-    
+
 }

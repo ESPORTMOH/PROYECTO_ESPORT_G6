@@ -47,9 +47,9 @@ public class AdministradorBD extends GenericoBD {
 
         pS.setString(1, dni.toUpperCase());
 
-        try (ResultSet datosRS = pS.executeQuery()) {
+        ResultSet datosRS = pS.executeQuery();
             if (!datosRS.next()) {
-                throw new DuenioNoExiste();
+                throw new AdminNoExiste();
             } else {
 
                 administrador.setCodAdministrador(datosRS.getInt("codAdministrador"));
@@ -58,7 +58,7 @@ public class AdministradorBD extends GenericoBD {
                 administrador.setApellido(datosRS.getString("apellido"));
                 administrador.setLogin(new Login(datosRS.getInt("codLogin")));
             }
-        }
+        
         con.close();
         return administrador;
 
