@@ -5,8 +5,10 @@
  */
 package Views.Administradores;
 
+import Exceptions.AdminCRUDError;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import proyectoesport_moh.Controladora;
 
 /**
@@ -35,7 +37,7 @@ public class VAltaAdmins extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jBaceptar = new javax.swing.JButton();
+        jBalta = new javax.swing.JButton();
         jTdni = new javax.swing.JTextField();
         jTnombre = new javax.swing.JTextField();
         jTapellido = new javax.swing.JTextField();
@@ -50,10 +52,10 @@ public class VAltaAdmins extends javax.swing.JFrame {
 
         jLabel4.setText("Apellido");
 
-        jBaceptar.setText("ACEPTAR");
-        jBaceptar.addActionListener(new java.awt.event.ActionListener() {
+        jBalta.setText("DAR DE ALTA");
+        jBalta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBaceptarActionPerformed(evt);
+                jBaltaActionPerformed(evt);
             }
         });
 
@@ -68,7 +70,7 @@ public class VAltaAdmins extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(71, 71, 71)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jBaceptar)
+                    .addComponent(jBalta)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel2)
@@ -100,21 +102,23 @@ public class VAltaAdmins extends javax.swing.JFrame {
                         .addComponent(jTapellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 58, Short.MAX_VALUE)
-                .addComponent(jBaceptar)
+                .addComponent(jBalta)
                 .addGap(29, 29, 29))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jBaceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBaceptarActionPerformed
+    private void jBaltaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBaltaActionPerformed
         // ACTION ALTA ADMINISTRADOR
         try {
             Controladora.altaAdministradorBD(jTdni.getText(), jTnombre.getText(), jTapellido.getText(), "A");
+        } catch (AdminCRUDError ACRUDE) {
+            JOptionPane.showMessageDialog(this, ACRUDE.getMensaje());
         } catch (Exception ex) {
             Logger.getLogger(VAltaAdmins.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }//GEN-LAST:event_jBaceptarActionPerformed
+    }//GEN-LAST:event_jBaltaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -153,7 +157,7 @@ public class VAltaAdmins extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jBaceptar;
+    private javax.swing.JButton jBalta;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

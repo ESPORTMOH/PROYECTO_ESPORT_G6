@@ -386,10 +386,10 @@ COMMIT;
  
 -- http://www.marca.com/baloncesto/nba/album/2016/09/13/57d7c14f468aebd25a8b4647_1.html
 
-INSERT INTO jugador (codJugador, dni, nombre, apellido, nickname, sueldo, fechaNacimiento, nacionalidad, posicion) VALUES (DEFAULT, '12345678A', 'nombre', 'apellido', 'nickname', 40000, to_date('10/10/2000', 'dd/mm/YYYY'), 'nacionalidad', 'j')
+INSERT INTO jugador VALUES (DEFAULT, '32317743Y', 'Pau', 'Gasol', 'Pau', 100000, TO_DATE('06/07/1980', 'dd/mm/YYYY'), 'Spain', 'F', null)
 COMMIT;
 
-select * from jugador;
+
 
 -- --------------------------------------------------------
 

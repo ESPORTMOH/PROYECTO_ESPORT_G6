@@ -15,16 +15,27 @@ import proyectoesport_moh.Controladora;
  * @author MIGUEL
  */
 public class VBajaAdmins extends javax.swing.JFrame {
+    
+    private final String tipoVentana;
 
     /**
      * Creates new form VAltaAdmin
      */
     public VBajaAdmins() {
+        this.tipoVentana = "VBajaAdmins";
+        
         initComponents();
         this.setLocationRelativeTo(null);
         this.setResizable(false);
-        configPredeterminadaVentana();
+        configPredeterminadaVentana(); 
+        
+    
+        
+       
+        
+          
     }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -39,11 +50,11 @@ public class VBajaAdmins extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jBeliminar = new javax.swing.JButton();
+        jBbaja = new javax.swing.JButton();
         jTdni = new javax.swing.JTextField();
         jTnombre = new javax.swing.JTextField();
         jTapellido = new javax.swing.JTextField();
-        jBbuscar = new javax.swing.JButton();
+        jBconsultar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -55,17 +66,17 @@ public class VBajaAdmins extends javax.swing.JFrame {
 
         jLabel4.setText("Apellido");
 
-        jBeliminar.setText("ELIMINAR");
-        jBeliminar.addActionListener(new java.awt.event.ActionListener() {
+        jBbaja.setText("DAR DE BAJA");
+        jBbaja.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBeliminarActionPerformed(evt);
+                jBbajaActionPerformed(evt);
             }
         });
 
-        jBbuscar.setText("BUSCAR");
-        jBbuscar.addActionListener(new java.awt.event.ActionListener() {
+        jBconsultar.setText("CONSULTAR");
+        jBconsultar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBbuscarActionPerformed(evt);
+                jBconsultarActionPerformed(evt);
             }
         });
 
@@ -81,9 +92,9 @@ public class VBajaAdmins extends javax.swing.JFrame {
                 .addGap(71, 71, 71)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jBbuscar)
+                        .addComponent(jBconsultar)
                         .addGap(18, 18, 18)
-                        .addComponent(jBeliminar))
+                        .addComponent(jBbaja))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel2)
@@ -94,7 +105,7 @@ public class VBajaAdmins extends javax.swing.JFrame {
                             .addComponent(jTdni)
                             .addComponent(jTapellido)
                             .addComponent(jTnombre, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(71, Short.MAX_VALUE))
+                .addContainerGap(65, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -116,35 +127,38 @@ public class VBajaAdmins extends javax.swing.JFrame {
                     .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 58, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jBeliminar)
-                    .addComponent(jBbuscar))
+                    .addComponent(jBbaja)
+                    .addComponent(jBconsultar))
                 .addGap(29, 29, 29))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jBeliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBeliminarActionPerformed
+    private void jBbajaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBbajaActionPerformed
         // ACTION ELIMINAR
         Controladora.eliminarAdministradorDelaBD(jTdni.getText());
-    }//GEN-LAST:event_jBeliminarActionPerformed
+    }//GEN-LAST:event_jBbajaActionPerformed
 
-    private void jBbuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBbuscarActionPerformed
+    private void jBconsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBconsultarActionPerformed
         // ACTION PARA BUSCAR ADMIN PRIMERO EN LA BD Y ELIMINAR DESPUES SI SE QUIERE
         try {
             if (jTdni.getText().isEmpty()) {
                 throw new CampoDniVacio();
             } else {
-                Controladora.localizarAdministradorEnBD(jTdni.getText());
+               
+                Controladora.localizarAdministradorEnBD(tipoVentana, jTdni.getText());
             }   
         } catch (CampoDniVacio CDV) {
             JOptionPane.showMessageDialog(this, CDV.getMensaje());
         } catch (AdminNoExiste ANE) {
             JOptionPane.showMessageDialog(this, ANE.getMensaje());
+        } catch (AdminCRUDError ACRUDE) {
+            JOptionPane.showMessageDialog(this, ACRUDE.getMensaje());
         } catch (Exception E) {
             JOptionPane.showMessageDialog(this, E.getMessage());
         }
-    }//GEN-LAST:event_jBbuscarActionPerformed
+    }//GEN-LAST:event_jBconsultarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -183,8 +197,8 @@ public class VBajaAdmins extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jBbuscar;
-    private javax.swing.JButton jBeliminar;
+    private javax.swing.JButton jBbaja;
+    private javax.swing.JButton jBconsultar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -200,15 +214,12 @@ public class VBajaAdmins extends javax.swing.JFrame {
         jTdni.setText(dni);
         jTnombre.setText(nombre);
         jTapellido.setText(apellido);
-        jBeliminar.setEnabled(true);
+        jBbaja.setEnabled(true);
     }
     
     public void configPredeterminadaVentana() {
-        jTdni.setText("");
-        jTnombre.setText("");
-        jTapellido.setText("");
         jTnombre.setEnabled(false);
         jTapellido.setEnabled(false);
-        jBeliminar.setEnabled(false);
+        jBbaja.setEnabled(false);
     }
 }
