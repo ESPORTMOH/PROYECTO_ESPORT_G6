@@ -2,8 +2,8 @@ package Views.Administradores;
 
 import proyectoesport_moh.Controladora;
 import Exceptions.*;
+import ModelUML.Administrador;
 import javax.swing.JOptionPane;
-
 
 /**
  *
@@ -12,6 +12,7 @@ import javax.swing.JOptionPane;
 public class VEditarAdmins extends javax.swing.JFrame {
 
     private final String tipoVentana;
+
     /**
      * Creates new form VAltaAdmin
      */
@@ -20,7 +21,7 @@ public class VEditarAdmins extends javax.swing.JFrame {
         initComponents();
         this.setResizable(false);
         configPredeterminadaVentana();
-        
+
     }
 
     /**
@@ -40,6 +41,7 @@ public class VEditarAdmins extends javax.swing.JFrame {
         jTdni = new javax.swing.JTextField();
         jTnombre = new javax.swing.JTextField();
         jTapellido = new javax.swing.JTextField();
+        jBeditar = new javax.swing.JButton();
         jBreset = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -59,7 +61,14 @@ public class VEditarAdmins extends javax.swing.JFrame {
             }
         });
 
-        jBreset.setText("EDITAR");
+        jBeditar.setText("EDITAR");
+        jBeditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBeditarActionPerformed(evt);
+            }
+        });
+
+        jBreset.setText("RESET");
         jBreset.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBresetActionPerformed(evt);
@@ -70,36 +79,37 @@ public class VEditarAdmins extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(127, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel4))
+                        .addGap(34, 34, 34)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jTdni)
+                            .addComponent(jTapellido)
+                            .addComponent(jTnombre, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jBconsultar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jBeditar)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jBreset)
+                .addGap(52, 52, 52))
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(71, 71, 71)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jBconsultar)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jBreset))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel2)
-                                    .addComponent(jLabel3)
-                                    .addComponent(jLabel4))
-                                .addGap(34, 34, 34)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jTdni)
-                                    .addComponent(jTapellido)
-                                    .addComponent(jTnombre, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(100, 100, 100)
-                        .addComponent(jLabel1)))
-                .addContainerGap(71, Short.MAX_VALUE))
+                .addGap(160, 160, 160)
+                .addComponent(jLabel1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(14, 14, 14)
+                .addContainerGap()
                 .addComponent(jLabel1)
-                .addGap(43, 43, 43)
+                .addGap(63, 63, 63)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel2)
                     .addComponent(jTdni, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -112,11 +122,12 @@ public class VEditarAdmins extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(jTapellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 58, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 55, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jBreset)
-                    .addComponent(jBconsultar))
-                .addGap(29, 29, 29))
+                    .addComponent(jBeditar)
+                    .addComponent(jBconsultar)
+                    .addComponent(jBreset))
+                .addGap(23, 23, 23))
         );
 
         pack();
@@ -129,7 +140,7 @@ public class VEditarAdmins extends javax.swing.JFrame {
                 throw new CampoDniVacio();
             } else {
                 Controladora.localizarAdministradorEnBD(tipoVentana, jTdni.getText());
-            }   
+            }
         } catch (CampoDniVacio CDV) {
             JOptionPane.showMessageDialog(this, CDV.getMensaje());
         } catch (AdminNoExiste ANE) {
@@ -140,6 +151,24 @@ public class VEditarAdmins extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, E.getMessage());
         }
     }//GEN-LAST:event_jBconsultarActionPerformed
+
+    // ACTION BOTON EDITAR
+    private void jBeditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBeditarActionPerformed
+
+        try {
+            if (jTnombre.getText().isEmpty()) {
+                throw new AdminNombreVacio();
+            } else {
+                Controladora.pedirActualizarAdministrador(jTnombre.getText());
+            }
+        } catch (AdminNombreVacio ANV) {
+            JOptionPane.showMessageDialog(this, ANV.getMensaje());
+        }catch (Exception ex) {
+
+        }
+
+
+    }//GEN-LAST:event_jBeditarActionPerformed
 
     private void jBresetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBresetActionPerformed
         // ACTION BOTON RESET
@@ -185,6 +214,7 @@ public class VEditarAdmins extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBconsultar;
+    private javax.swing.JButton jBeditar;
     private javax.swing.JButton jBreset;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -194,25 +224,27 @@ public class VEditarAdmins extends javax.swing.JFrame {
     private javax.swing.JTextField jTdni;
     private javax.swing.JTextField jTnombre;
     // End of variables declaration//GEN-END:variables
-    
+
     // FUNCIONES PROPIAS DE LA VISTA
-    
-    public void rellenarCamposVentana(String dni, String nombre, String apellido){
+    public void rellenarCamposVentana(String dni, String nombre, String apellido) {
         jTnombre.setEnabled(true);
         jTdni.setText(dni);
         jTnombre.setText(nombre);
         jTapellido.setText(apellido);
+        jTdni.setEnabled(false);
     }
-    
+
     public void configPredeterminadaVentana() {
         jTnombre.setEnabled(false);
         jTapellido.setEnabled(false);
     }
-    
+
     public void resetearCamposParaConsultarDeNuevo() {
         jTdni.setText(null);
         jTnombre.setText(null);
         jTapellido.setText(null);
+        jTdni.setEnabled(true);
+        configPredeterminadaVentana();
     }
-    
+
 }

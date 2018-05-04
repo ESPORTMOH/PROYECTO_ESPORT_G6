@@ -34,7 +34,7 @@ public class AdministradorBD extends GenericoBD {
     }
 
     // LOCALIZAR ADMINISTRADOR
-    public Administrador localizaAdministrador(String dni) throws SQLException, Exception {
+    public Administrador localizarAdministrador(String dni) throws SQLException, Exception {
 
         GenericoBD genericoBD = new GenericoBD();
         con = genericoBD.abrirConexion(con);
@@ -61,7 +61,29 @@ public class AdministradorBD extends GenericoBD {
         
         con.close();
         return administrador;
+    }
+    
+    // EDITAR ADMINISTRADOR
+    public void ejecutarModificacion(Administrador administradorUML) throws SQLException, ConexionProblemas {
+        
+        GenericoBD genericoBD = new GenericoBD();
+        con = genericoBD.abrirConexion(con);
+
+        String editaSQL = "UPDATE administrador SET nombre = ?  where dni = ?";
+
+        PreparedStatement pS = con.prepareStatement(editaSQL);
+        
+        pS.setString(1, administradorUML.getNombre());
+        pS.setString(2, administradorUML.getDni());
+        
+        
+        pS.executeUpdate();
+        
+        con.close();
 
     }
+    
+
+    
 
 }

@@ -4,6 +4,7 @@
 package proyectoesport_moh;
 
 import Exceptions.AdminCRUDError;
+import Exceptions.ConexionProblemas;
 import Views.*;
 import Views.Administradores.*;
 import Views.Duenios.*;
@@ -13,6 +14,7 @@ import Views.Usuarios.*;
 
 import ModelUML.*;
 import ModelBD.*;
+import java.sql.SQLException;
 
 /**
  * @author MIGUEL OLMO HERNANDO
@@ -29,6 +31,8 @@ public class Controladora {
     private static VLogin vLo;
 
     // VISTAS ADMINISTRADOR
+    private static Administrador administradorUML;
+
     private static VPanelAdministracion vpanelAdministracion;
     private static VPanelCrudAdministradores vpanelCrudAdministradores;
     private static VAltaAdmins vAltaAdmins;
@@ -351,8 +355,8 @@ public class Controladora {
     // ALTA
     public static void altaAdministradorBD(String dni, String nombre, String apellido, String tipo) throws Exception {
         administradorBD = new AdministradorBD();
-        Administrador administrador = new Administrador(dni, nombre, apellido);
-        administradorBD.insertarAdministradorBD(administrador, tipo);
+        administradorUML = new Administrador(dni, nombre, apellido);
+        administradorBD.insertarAdministradorBD(administradorUML, tipo);
 
     }
 
@@ -363,44 +367,48 @@ public class Controladora {
             case "VAltaAdmins": {
 
                 administradorBD = new AdministradorBD();
-                Administrador administrador = administradorBD.localizaAdministrador(dni);
-                vBajaAdmins.rellenarCamposVentana(administrador.getDni(), administrador.getNombre(), administrador.getApellido());
+                administradorUML = administradorBD.localizarAdministrador(dni);
+                vBajaAdmins.rellenarCamposVentana(administradorUML.getDni(), administradorUML.getNombre(), administradorUML.getApellido());
                 break;
             }
             case "VBajaAdmins": {
 
                 administradorBD = new AdministradorBD();
-                Administrador administrador = administradorBD.localizaAdministrador(dni);
-                vBajaAdmins.rellenarCamposVentana(administrador.getDni(), administrador.getNombre(), administrador.getApellido());
+                administradorUML = administradorBD.localizarAdministrador(dni);
+                vBajaAdmins.rellenarCamposVentana(administradorUML.getDni(), administradorUML.getNombre(), administradorUML.getApellido());
                 break;
             }
             case "VConsultarAdmins": {
 
                 administradorBD = new AdministradorBD();
-                Administrador administrador = administradorBD.localizaAdministrador(dni);
-                vConsultarAdmins.rellenarCamposVentana(administrador.getDni(), administrador.getNombre(), administrador.getApellido());
+                administradorUML = administradorBD.localizarAdministrador(dni);
+                vConsultarAdmins.rellenarCamposVentana(administradorUML.getDni(), administradorUML.getNombre(), administradorUML.getApellido());
                 break;
             }
             case "VEditarAdmins": {
 
                 administradorBD = new AdministradorBD();
-                Administrador administrador = administradorBD.localizaAdministrador(dni);
-                vBajaAdmins.rellenarCamposVentana(administrador.getDni(), administrador.getNombre(), administrador.getApellido());
+                administradorUML = administradorBD.localizarAdministrador(dni);
+                vEditarAdmins.rellenarCamposVentana(administradorUML.getDni(), administradorUML.getNombre(), administradorUML.getApellido());
                 break;
             }
             default:
+                System.err.println("Error critico en el CRUD de Administradores");
                 throw new AdminCRUDError();
         }
-        System.err.println("Error critico en el CRUD de Administradores");
     }
-
 
     // BAJA
     public static void eliminarAdministradorDelaBD(String dni) {
 
     }
 
-    // EDITA
+    // EDITAR
+    public static void pedirActualizarAdministrador(String nombre) throws SQLException, ConexionProblemas {
+        administradorUML.setNombre(nombre);
+        administradorBD.ejecutarModificacion(administradorUML);
+    }
+
     ////////////////////////////////////////////////////////////////////////////////////////////////
     // SENTENCIAS ALTA / BAJA / CONSULTA / MODIFICACION > USUARIO
     // ALTA
