@@ -4,20 +4,20 @@ package Exceptions;
  * @author 1gdaw12
  */
 
-public class AdminNombreVacio extends Exception{
+public class AdminPassVacia extends Exception{
     private static String mensaje;
 
-    public AdminNombreVacio() {
+    public AdminPassVacia() {
 
     }
 
-    public AdminNombreVacio(String mensaje) {
+    public AdminPassVacia(String mensaje) {
         ErroresDesconocidos.mensaje = mensaje;
     }
 
     public String getMensaje() {
-        mensaje = "El Campo Nombre es requerido"
-                + "\npara su modificacion.";
+        mensaje = "La Constraseña es obligatoria"
+                + "\npara poder guardarla en la BD";
         return mensaje;
     }
 

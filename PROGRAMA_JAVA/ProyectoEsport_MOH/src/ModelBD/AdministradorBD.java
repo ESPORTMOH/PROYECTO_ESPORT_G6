@@ -41,7 +41,11 @@ public class AdministradorBD extends GenericoBD {
 
         Administrador administrador = new Administrador();
 
-        String consultaSQL = "SELECT codAdministrador, dni, nombre, apellido, codLogin FROM administrador WHERE dni = ?";
+        String consultaSQL = "SELECT a.codAdministrador, a.dni, a.nombre, a.apellido, a.codLogin, l.codLogin, l.usuario, l.passwd FROM administrador a, login l  WHERE (a.codLogin = l.codLogin) AND a.dni = ?";
+        
+        /*
+        SELECT codAdministrador, dni, nombre, apellido, codLogin FROM administrador WHERE dni = ?
+        */
 
         PreparedStatement pS = con.prepareStatement(consultaSQL);
 
@@ -57,31 +61,15 @@ public class AdministradorBD extends GenericoBD {
                 administrador.setNombre(datosRS.getString("nombre"));
                 administrador.setApellido(datosRS.getString("apellido"));
                 administrador.setLogin(new Login(datosRS.getInt("codLogin")));
+                administrador.getLogin().setUser(datosRS.getString("usuario"));
+                administrador.getLogin().setPassword(datosRS.getString("passwd"));
             }
         
         con.close();
         return administrador;
     }
     
-    // EDITAR ADMINISTRADOR
-    public void ejecutarModificacion(Administrador administradorUML) throws SQLException, ConexionProblemas {
-        
-        GenericoBD genericoBD = new GenericoBD();
-        con = genericoBD.abrirConexion(con);
-
-        String editaSQL = "UPDATE administrador SET nombre = ?  where dni = ?";
-
-        PreparedStatement pS = con.prepareStatement(editaSQL);
-        
-        pS.setString(1, administradorUML.getNombre());
-        pS.setString(2, administradorUML.getDni());
-        
-        
-        pS.executeUpdate();
-        
-        con.close();
-
-    }
+    
     
 
     

@@ -78,6 +78,28 @@ public class LoginBD extends GenericoBD {
 
         // RETORNO TIPO LOG A / D / U
         return tipolog;
+    }
+    
+    // EDITAR LOGIN
+    public void ejecutarModificacion(String passwd, Integer codLoginADM) throws SQLException, ConexionProblemas {
+        
+        GenericoBD genericoBD = new GenericoBD();
+        con = genericoBD.abrirConexion(con);
+
+        String editaSQL = "UPDATE login l SET l.passwd = ? WHERE (l.codLogin = ?)";
+        
+                
+                /*"UPDATE login SET passwd = ?  where dni = ?";*/
+
+        PreparedStatement pS = con.prepareStatement(editaSQL);
+        
+        pS.setString(1, passwd);
+        pS.setString(2, codLoginADM.toString());
+        
+        
+        pS.executeUpdate();
+        
+        con.close();
 
     }
 

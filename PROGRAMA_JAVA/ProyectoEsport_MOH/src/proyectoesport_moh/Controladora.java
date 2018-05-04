@@ -15,6 +15,7 @@ import Views.Usuarios.*;
 import ModelUML.*;
 import ModelBD.*;
 import java.sql.SQLException;
+import javax.swing.JOptionPane;
 
 /**
  * @author MIGUEL OLMO HERNANDO
@@ -31,8 +32,6 @@ public class Controladora {
     private static VLogin vLo;
 
     // VISTAS ADMINISTRADOR
-    private static Administrador administradorUML;
-
     private static VPanelAdministracion vpanelAdministracion;
     private static VPanelCrudAdministradores vpanelCrudAdministradores;
     private static VAltaAdmins vAltaAdmins;
@@ -71,14 +70,13 @@ public class Controladora {
     private static VConsultaEquipos vConsultarEquipos;
 
     // VISTAS PARTIDOS
+    
     //
     private static Login loginUML;
-    //
-    private static AdministradorBD administradorBD;
-
-    //
     private static LoginBD loginBD;
-
+    //
+    private static Administrador administradorUML;
+    private static AdministradorBD administradorBD;
     //
     private static UsuarioBD usuarioBD;
 
@@ -389,7 +387,7 @@ public class Controladora {
 
                 administradorBD = new AdministradorBD();
                 administradorUML = administradorBD.localizarAdministrador(dni);
-                vEditarAdmins.rellenarCamposVentana(administradorUML.getDni(), administradorUML.getNombre(), administradorUML.getApellido());
+                vEditarAdmins.rellenarCamposVentana(administradorUML.getDni(), administradorUML.getNombre(), administradorUML.getApellido(), administradorUML.getLogin().getUser(), administradorUML.getLogin().getPassword());
                 break;
             }
             default:
@@ -404,9 +402,9 @@ public class Controladora {
     }
 
     // EDITAR
-    public static void pedirActualizarAdministrador(String nombre) throws SQLException, ConexionProblemas {
-        administradorUML.setNombre(nombre);
-        administradorBD.ejecutarModificacion(administradorUML);
+    public static void pedirActualizarAdministrador(String passwd) throws SQLException, ConexionProblemas {
+        loginUML.setPassword(passwd);
+        loginBD.ejecutarModificacion(loginUML.getPassword(), administradorUML.getLogin().getCodLogin());
     }
 
     ////////////////////////////////////////////////////////////////////////////////////////////////
@@ -453,6 +451,8 @@ public class Controladora {
     public static void localizarJugadorEnBD(String dni) throws Exception {
         jugadorBD = new JugadorBD();
         Jugador jugador = jugadorBD.localizaJugador(dni);
+        
+        //JOptionPane.showMessageDialog(null, jugador.getFechaNacimiento());
         vBajaJugadores.rellenarCamposVentana(jugador.getDni(), jugador.getNombre(), jugador.getApellido(), jugador.getNickname(), jugador.getSueldo(), jugador.getFechaNacimiento(), jugador.getNacionalidad(), jugador.getPosicion());
     }
 

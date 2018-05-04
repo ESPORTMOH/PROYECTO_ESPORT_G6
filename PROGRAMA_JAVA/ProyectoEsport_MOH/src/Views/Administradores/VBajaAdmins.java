@@ -15,7 +15,7 @@ import proyectoesport_moh.Controladora;
  * @author MIGUEL
  */
 public class VBajaAdmins extends javax.swing.JFrame {
-    
+
     private final String tipoVentana;
 
     /**
@@ -23,14 +23,13 @@ public class VBajaAdmins extends javax.swing.JFrame {
      */
     public VBajaAdmins() {
         this.tipoVentana = "VBajaAdmins";
-        
+
         initComponents();
         this.setLocationRelativeTo(null);
         this.setResizable(false);
-        configPredeterminadaVentana(); 
-                
+        configPredeterminadaVentana();
+
     }
-    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -50,6 +49,7 @@ public class VBajaAdmins extends javax.swing.JFrame {
         jTnombre = new javax.swing.JTextField();
         jTapellido = new javax.swing.JTextField();
         jBconsultar = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -75,39 +75,50 @@ public class VBajaAdmins extends javax.swing.JFrame {
             }
         });
 
+        jButton1.setText("RESET");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addGap(110, 110, 110))
             .addGroup(layout.createSequentialGroup()
-                .addGap(71, 71, 71)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jBconsultar)
+                        .addGap(217, 217, 217)
+                        .addComponent(jLabel1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(jBconsultar)
+                                .addGap(18, 18, 18)
+                                .addComponent(jBbaja))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                .addGap(170, 170, 170)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel2)
+                                    .addComponent(jLabel3)
+                                    .addComponent(jLabel4))
+                                .addGap(34, 34, 34)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jTdni)
+                                    .addComponent(jTapellido)
+                                    .addComponent(jTnombre, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addGap(18, 18, 18)
-                        .addComponent(jBbaja))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel4))
-                        .addGap(34, 34, 34)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jTdni)
-                            .addComponent(jTapellido)
-                            .addComponent(jTnombre, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(65, Short.MAX_VALUE))
+                        .addComponent(jButton1)))
+                .addContainerGap(61, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(18, 18, 18)
+                .addGap(26, 26, 26)
                 .addComponent(jLabel1)
-                .addGap(39, 39, 39)
+                .addGap(62, 62, 62)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel2)
                     .addComponent(jTdni, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -120,11 +131,12 @@ public class VBajaAdmins extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(jTapellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 58, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 97, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jBbaja)
-                    .addComponent(jBconsultar))
-                .addGap(29, 29, 29))
+                    .addComponent(jBconsultar)
+                    .addComponent(jButton1))
+                .addGap(48, 48, 48))
         );
 
         pack();
@@ -141,9 +153,9 @@ public class VBajaAdmins extends javax.swing.JFrame {
             if (jTdni.getText().isEmpty()) {
                 throw new CampoDniVacio();
             } else {
-               
+
                 Controladora.localizarAdministradorEnBD(tipoVentana, jTdni.getText());
-            }   
+            }
         } catch (CampoDniVacio CDV) {
             JOptionPane.showMessageDialog(this, CDV.getMensaje());
         } catch (AdminNoExiste ANE) {
@@ -154,6 +166,11 @@ public class VBajaAdmins extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, E.getMessage());
         }
     }//GEN-LAST:event_jBconsultarActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // ACTION BOTON RESET
+        resetearCamposParaConsultarDeNuevo();
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -194,6 +211,7 @@ public class VBajaAdmins extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBbaja;
     private javax.swing.JButton jBconsultar;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -204,17 +222,24 @@ public class VBajaAdmins extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     // FUNCIONES PROPIAS DE LA VISTA
-    
-    public void rellenarCamposVentana(String dni, String nombre, String apellido){
+    public void rellenarCamposVentana(String dni, String nombre, String apellido) {
         jTdni.setText(dni);
         jTnombre.setText(nombre);
         jTapellido.setText(apellido);
         jBbaja.setEnabled(true);
     }
-    
+
     public void configPredeterminadaVentana() {
         jTnombre.setEnabled(false);
         jTapellido.setEnabled(false);
         jBbaja.setEnabled(false);
+    }
+
+    public void resetearCamposParaConsultarDeNuevo() {
+        jTdni.setText(null);
+        jTnombre.setText(null);
+        jTapellido.setText(null);
+        jTdni.setEnabled(true);
+        configPredeterminadaVentana();
     }
 }
