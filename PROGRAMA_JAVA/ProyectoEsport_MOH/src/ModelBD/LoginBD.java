@@ -8,6 +8,8 @@ import java.sql.SQLException;
 import Exceptions.*;
 import java.sql.CallableStatement;
 import java.sql.Connection;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * @author MIGUEL
@@ -22,7 +24,7 @@ public class LoginBD extends GenericoBD {
         GenericoBD genericoBD = new GenericoBD();
         con = genericoBD.abrirConexion(con);
 
-        CallableStatement cS = con.prepareCall("{call PROCE_generarAutoUserPass(?,?,?,?,?)}");
+        CallableStatement cS = con.prepareCall("{call ESPORT_MOH.PROCE_generarAutoUserPass(?,?,?,?,?)}");
 
         cS.setString(1, dni);
         cS.setString(2, nombre);
@@ -31,7 +33,7 @@ public class LoginBD extends GenericoBD {
 
         cS.registerOutParameter(5, java.sql.Types.INTEGER);
         cS.execute();
-        
+
         Integer id = cS.getInt(5);
 
         con.close();
@@ -79,28 +81,39 @@ public class LoginBD extends GenericoBD {
         // RETORNO TIPO LOG A / D / U
         return tipolog;
     }
-    
+
     // EDITAR LOGIN
     public void ejecutarModificacion(String passwd, Integer codLoginADM) throws SQLException, ConexionProblemas {
-        
+
         GenericoBD genericoBD = new GenericoBD();
         con = genericoBD.abrirConexion(con);
 
         String editaSQL = "UPDATE login l SET l.passwd = ? WHERE (l.codLogin = ?)";
-        
-                
-                /*"UPDATE login SET passwd = ?  where dni = ?";*/
 
         PreparedStatement pS = con.prepareStatement(editaSQL);
-        
+
         pS.setString(1, passwd);
         pS.setString(2, codLoginADM.toString());
-        
-        
+
         pS.executeUpdate();
-        
+
         con.close();
 
+    }
+
+    // ELIMINAR ADMIN LOGI
+    public void eliminarDeLaBDAdminLog(Integer codLogin) throws SQLException, ConexionProblemas {
+
+        GenericoBD genericoBD = new GenericoBD();
+
+        con = genericoBD.abrirConexion(con);
+
+        PreparedStatement pS = con.prepareStatement("DELETE FROM login WHERE codLogin = ?");
+        pS.setInt(1, codLogin);
+
+        pS.executeUpdate();
+
+        cerrarConexion(con);
     }
 
 }

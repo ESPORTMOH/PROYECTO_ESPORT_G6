@@ -30,7 +30,7 @@ public class AdministradorBD extends GenericoBD {
         pS.setInt(4, codLogin);
         pS.executeUpdate();
 
-        con.close();
+        cerrarConexion(con);
     }
 
     // LOCALIZAR ADMINISTRADOR
@@ -42,36 +42,46 @@ public class AdministradorBD extends GenericoBD {
         Administrador administrador = new Administrador();
 
         String consultaSQL = "SELECT a.codAdministrador, a.dni, a.nombre, a.apellido, a.codLogin, l.codLogin, l.usuario, l.passwd FROM administrador a, login l  WHERE (a.codLogin = l.codLogin) AND a.dni = ?";
-        
+
         /*
         SELECT codAdministrador, dni, nombre, apellido, codLogin FROM administrador WHERE dni = ?
-        */
-
+         */
         PreparedStatement pS = con.prepareStatement(consultaSQL);
 
         pS.setString(1, dni.toUpperCase());
 
         ResultSet datosRS = pS.executeQuery();
-            if (!datosRS.next()) {
-                throw new AdminNoExiste();
-            } else {
+        if (!datosRS.next()) {
+            throw new AdminNoExiste();
+        } else {
 
-                administrador.setCodAdministrador(datosRS.getInt("codAdministrador"));
-                administrador.setDni(datosRS.getString("dni"));
-                administrador.setNombre(datosRS.getString("nombre"));
-                administrador.setApellido(datosRS.getString("apellido"));
-                administrador.setLogin(new Login(datosRS.getInt("codLogin")));
-                administrador.getLogin().setUser(datosRS.getString("usuario"));
-                administrador.getLogin().setPassword(datosRS.getString("passwd"));
-            }
-        
-        con.close();
+            administrador.setCodAdministrador(datosRS.getInt("codAdministrador"));
+            administrador.setDni(datosRS.getString("dni"));
+            administrador.setNombre(datosRS.getString("nombre"));
+            administrador.setApellido(datosRS.getString("apellido"));
+            administrador.setLogin(new Login(datosRS.getInt("codLogin")));
+            administrador.getLogin().setUser(datosRS.getString("usuario"));
+            administrador.getLogin().setPassword(datosRS.getString("passwd"));
+        }
+
+        cerrarConexion(con);
+
         return administrador;
     }
-    
-    
-    
 
-    
+    // ELIMINAR ADMINISTRADOR
+    public void eliminarDeLaBDAdmin(String dni) throws SQLException, ConexionProblemas {
+        
+        GenericoBD genericoBD = new GenericoBD();
+        con = genericoBD.abrirConexion(con);
+        
+        PreparedStatement pS = con.prepareStatement("DELETE FROM administrador WHERE dni = ?");
+        pS.setString(1, dni);
+        
+        pS.executeUpdate();
+        
+        cerrarConexion(con);
+
+    }
 
 }

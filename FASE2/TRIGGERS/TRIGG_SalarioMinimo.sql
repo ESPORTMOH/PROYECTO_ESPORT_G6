@@ -3,7 +3,7 @@ CREATE OR REPLACE TRIGGER TRIGG_salarioMinimo
     FOR EACH ROW
       DECLARE
         v_sueldosTotales NUMBER;
-        v_presupuestoMaximoPorEquipo number:=200000;
+        v_presupuestoMaximoPorEquipo NUMBER:=200000;
         v_nuevoSueldo NUMBER;
         v_error EXCEPTION;
       BEGIN

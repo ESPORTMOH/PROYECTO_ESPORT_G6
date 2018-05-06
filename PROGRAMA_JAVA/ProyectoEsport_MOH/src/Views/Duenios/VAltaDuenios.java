@@ -107,7 +107,7 @@ public class VAltaDuenios extends javax.swing.JFrame {
     private void jBaceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBaceptarActionPerformed
         // ACTION ALTA DUENIO
         try {
-            Controladora.altaDuenioBD(jTdni.getText(), jTnombre.getText(), jTapellido.getText(), "A");
+            Controladora.altaDuenioBD(jTdni.getText(), jTnombre.getText(), jTapellido.getText(), "D");
         } catch (Exception ex) {
             Logger.getLogger(VAltaAdmins.class.getName()).log(Level.SEVERE, null, ex);
         }

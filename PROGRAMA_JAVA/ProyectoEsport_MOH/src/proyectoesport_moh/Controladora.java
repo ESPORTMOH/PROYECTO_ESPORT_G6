@@ -15,7 +15,6 @@ import Views.Usuarios.*;
 import ModelUML.*;
 import ModelBD.*;
 import java.sql.SQLException;
-import javax.swing.JOptionPane;
 
 /**
  * @author MIGUEL OLMO HERNANDO
@@ -364,16 +363,14 @@ public class Controladora {
         switch (tipoVentana) {
             case "VAltaAdmins": {
 
-                administradorBD = new AdministradorBD();
-                administradorUML = administradorBD.localizarAdministrador(dni);
-                vBajaAdmins.rellenarCamposVentana(administradorUML.getDni(), administradorUML.getNombre(), administradorUML.getApellido());
+              
                 break;
             }
             case "VBajaAdmins": {
 
                 administradorBD = new AdministradorBD();
                 administradorUML = administradorBD.localizarAdministrador(dni);
-                vBajaAdmins.rellenarCamposVentana(administradorUML.getDni(), administradorUML.getNombre(), administradorUML.getApellido());
+                vBajaAdmins.rellenarCamposVentana(administradorUML.getDni(), administradorUML.getNombre(), administradorUML.getApellido(), administradorUML.getLogin().getCodLogin());
                 break;
             }
             case "VConsultarAdmins": {
@@ -397,8 +394,12 @@ public class Controladora {
     }
 
     // BAJA
-    public static void eliminarAdministradorDelaBD(String dni) {
-
+    public static void eliminarAdministradorDelaBD(String dni, Integer codLogin) throws SQLException, ConexionProblemas {
+        administradorBD = new AdministradorBD();
+        loginBD = new LoginBD();
+        
+        administradorBD.eliminarDeLaBDAdmin(dni);
+        loginBD.eliminarDeLaBDAdminLog(codLogin);
     }
 
     // EDITAR

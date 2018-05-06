@@ -10,7 +10,7 @@ public class Equipo {
 
     private Integer codEquipo;
     private String nombre;
-    private Integer presupuesto;
+    private Double presupuesto;
     private String anioFundacion;
     private String ciudad;
     private String nombreEstadio;
@@ -21,7 +21,7 @@ public class Equipo {
     public Equipo() {
     }
 
-    public Equipo(Integer codEquipo, String nombre, Integer presupuesto, String anioFundacion, String ciudad, String nombreEstadio) {
+    public Equipo(Integer codEquipo, String nombre, Double presupuesto, String anioFundacion, String ciudad, String nombreEstadio) {
         this.codEquipo = codEquipo;
         this.nombre = nombre;
         this.presupuesto = presupuesto;
@@ -50,11 +50,11 @@ public class Equipo {
         this.nombre = nombre;
     }
 
-    public Integer getPresupuesto() {
+    public Double getPresupuesto() {
         return presupuesto;
     }
 
-    public void setPresupuesto(Integer presupuesto) {
+    public void setPresupuesto(Double presupuesto) {
         this.presupuesto = presupuesto;
     }
 

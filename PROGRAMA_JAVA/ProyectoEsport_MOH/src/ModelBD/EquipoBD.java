@@ -35,7 +35,7 @@ public class EquipoBD {
             } else {
                 equipo.setCodEquipo(datosRS.getInt("codEquipo"));
                 equipo.setNombre(datosRS.getString("nombre"));
-                equipo.setPresupuesto(datosRS.getInt("presupuesto"));
+                equipo.setPresupuesto(datosRS.getDouble("presupuesto"));
                 equipo.setAnioFundacion(datosRS.getString("anioFundacion"));
                 equipo.setCiudad(datosRS.getString("ciudad"));
                 equipo.setNombreEstadio(datosRS.getString("nombreEstadio"));

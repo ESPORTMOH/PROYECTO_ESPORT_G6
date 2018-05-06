@@ -17,6 +17,8 @@ import proyectoesport_moh.Controladora;
 public class VBajaAdmins extends javax.swing.JFrame {
 
     private final String tipoVentana;
+    
+    private static Integer almacenarCodLogin;
 
     /**
      * Creates new form VAltaAdmin
@@ -144,7 +146,15 @@ public class VBajaAdmins extends javax.swing.JFrame {
 
     private void jBbajaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBbajaActionPerformed
         // ACTION ELIMINAR
-        Controladora.eliminarAdministradorDelaBD(jTdni.getText());
+
+        int preguntaSalida = JOptionPane.showConfirmDialog(this, "¿Realmente deseas eliminar"
+                + "\na este Administrador?");
+
+        if (preguntaSalida == JOptionPane.YES_OPTION) {
+            Controladora.eliminarAdministradorDelaBD(jTdni.getText(), almacenarCodLogin);
+        }
+
+
     }//GEN-LAST:event_jBbajaActionPerformed
 
     private void jBconsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBconsultarActionPerformed
@@ -222,11 +232,13 @@ public class VBajaAdmins extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     // FUNCIONES PROPIAS DE LA VISTA
-    public void rellenarCamposVentana(String dni, String nombre, String apellido) {
+    public void rellenarCamposVentana(String dni, String nombre, String apellido, Integer login) {
         jTdni.setText(dni);
         jTnombre.setText(nombre);
         jTapellido.setText(apellido);
         jBbaja.setEnabled(true);
+        
+        almacenarCodLoginRecibido(login);
     }
 
     public void configPredeterminadaVentana() {
@@ -242,4 +254,10 @@ public class VBajaAdmins extends javax.swing.JFrame {
         jTdni.setEnabled(true);
         configPredeterminadaVentana();
     }
+
+    public void almacenarCodLoginRecibido(Integer login) {
+        almacenarCodLogin = login;
+    }
+
+   
 }
