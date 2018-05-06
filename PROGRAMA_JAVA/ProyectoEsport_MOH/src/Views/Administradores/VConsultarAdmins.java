@@ -1,25 +1,26 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package Views.Jugadores;
+package Views.Administradores;
 
-import Views.Equipos.*;
-import Views.Duenios.*;
-import Views.Administradores.*;
+import proyectoesport_moh.Controladora;
+import Exceptions.*;
+import javax.swing.JOptionPane;
+
 
 /**
  *
  * @author MIGUEL
  */
-public class VConsultaJugadores extends javax.swing.JFrame {
+public class VConsultarAdmins extends javax.swing.JFrame {
 
+    private final String tipoVentana;
     /**
      * Creates new form VAltaAdmin
      */
-    public VConsultaJugadores() {
+    public VConsultarAdmins() {
+        this.tipoVentana = "VConsultarAdmins";
         initComponents();
+        this.setResizable(false);
+        configPredeterminadaVentana();
+        
     }
 
     /**
@@ -35,14 +36,15 @@ public class VConsultaJugadores extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jBaceptar = new javax.swing.JButton();
+        jBconsultar = new javax.swing.JButton();
         jTdni = new javax.swing.JTextField();
         jTnombre = new javax.swing.JTextField();
         jTapellido = new javax.swing.JTextField();
+        jBreset = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setText("CONSULTAR JUGADORES");
+        jLabel1.setText("CONSULTAR ADMINISTRADORES");
 
         jLabel2.setText("DNI");
 
@@ -50,7 +52,19 @@ public class VConsultaJugadores extends javax.swing.JFrame {
 
         jLabel4.setText("Apellido");
 
-        jBaceptar.setText("ACEPTAR");
+        jBconsultar.setText("CONSULTAR");
+        jBconsultar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBconsultarActionPerformed(evt);
+            }
+        });
+
+        jBreset.setText("RESET");
+        jBreset.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBresetActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -59,9 +73,15 @@ public class VConsultaJugadores extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(87, 87, 87)
+                        .addComponent(jLabel1))
+                    .addGroup(layout.createSequentialGroup()
                         .addGap(71, 71, 71)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jBaceptar)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jBconsultar)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jBreset))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel2)
@@ -71,18 +91,15 @@ public class VConsultaJugadores extends javax.swing.JFrame {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(jTdni)
                                     .addComponent(jTapellido)
-                                    .addComponent(jTnombre, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(106, 106, 106)
-                        .addComponent(jLabel1)))
+                                    .addComponent(jTnombre, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                 .addContainerGap(71, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(17, 17, 17)
+                .addGap(18, 18, 18)
                 .addComponent(jLabel1)
-                .addGap(40, 40, 40)
+                .addGap(39, 39, 39)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel2)
                     .addComponent(jTdni, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -96,12 +113,38 @@ public class VConsultaJugadores extends javax.swing.JFrame {
                         .addComponent(jTapellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 58, Short.MAX_VALUE)
-                .addComponent(jBaceptar)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jBreset)
+                    .addComponent(jBconsultar))
                 .addGap(29, 29, 29))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jBconsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBconsultarActionPerformed
+        // ACTION PARA CONSULTAR EL ADMIN EN LA BD
+        try {
+            if (jTdni.getText().isEmpty()) {
+                throw new CampoDniVacio();
+            } else {
+                Controladora.localizarAdministradorEnBD(tipoVentana, jTdni.getText());
+            }   
+        } catch (CampoDniVacio CDV) {
+            JOptionPane.showMessageDialog(this, CDV.getMensaje());
+        } catch (AdminNoExiste ANE) {
+            JOptionPane.showMessageDialog(this, ANE.getMensaje());
+        } catch (AdminCRUDError ACRUDE) {
+            JOptionPane.showMessageDialog(this, ACRUDE.getMensaje());
+        } catch (Exception E) {
+            JOptionPane.showMessageDialog(this, E.getMessage());
+        }
+    }//GEN-LAST:event_jBconsultarActionPerformed
+
+    private void jBresetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBresetActionPerformed
+        // ACTION BOTON RESET
+        resetearCamposParaConsultarDeNuevo();
+    }//GEN-LAST:event_jBresetActionPerformed
 
     /**
      * @param args the command line arguments
@@ -120,153 +163,28 @@ public class VConsultaJugadores extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(VConsultaJugadores.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VConsultarAdmins.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(VConsultaJugadores.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VConsultarAdmins.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(VConsultaJugadores.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VConsultarAdmins.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(VConsultaJugadores.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VConsultarAdmins.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
+
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new VConsultaJugadores().setVisible(true);
+                new VConsultarAdmins().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jBaceptar;
+    private javax.swing.JButton jBconsultar;
+    private javax.swing.JButton jBreset;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -275,4 +193,26 @@ public class VConsultaJugadores extends javax.swing.JFrame {
     private javax.swing.JTextField jTdni;
     private javax.swing.JTextField jTnombre;
     // End of variables declaration//GEN-END:variables
+    
+    // FUNCIONES PROPIAS DE LA VISTA
+    
+    public void rellenarCamposVentana(String dni, String nombre, String apellido){
+        jTnombre.setEnabled(true);
+        jTapellido.setEnabled(true);
+        jTdni.setText(dni);
+        jTnombre.setText(nombre);
+        jTapellido.setText(apellido);
+    }
+    
+    public void configPredeterminadaVentana() {
+        jTnombre.setEnabled(false);
+        jTapellido.setEnabled(false);
+    }
+    
+    public void resetearCamposParaConsultarDeNuevo() {
+        jTdni.setText(null);
+        jTnombre.setText(null);
+        jTapellido.setText(null);
+    }
+    
 }

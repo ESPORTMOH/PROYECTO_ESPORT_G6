@@ -3,6 +3,8 @@
  */
 package proyectoesport_moh;
 
+import Exceptions.AdminCRUDError;
+import Exceptions.ConexionProblemas;
 import Views.*;
 import Views.Administradores.*;
 import Views.Duenios.*;
@@ -12,6 +14,7 @@ import Views.Usuarios.*;
 
 import ModelUML.*;
 import ModelBD.*;
+import java.sql.SQLException;
 
 /**
  * @author MIGUEL OLMO HERNANDO
@@ -33,7 +36,7 @@ public class Controladora {
     private static VAltaAdmins vAltaAdmins;
     private static VBajaAdmins vBajaAdmins;
     private static VEditarAdmins vEditarAdmins;
-    private static VConsultaAdmins vConsultaAdmins;
+    private static VConsultarAdmins vConsultarAdmins;
 
     // VISTAS USUARIOS
     private static VPanelUsuarios vpanelUsuarios;
@@ -41,7 +44,7 @@ public class Controladora {
     private static VAltaUsuarios vAltaUsuarios;
     private static VBajaUsuarios vBajaUsuarios;
     private static VEditarUsuarios vEditarUsuarios;
-    private static VConsultaUsuarios vConsultaUsuarios;
+    private static VConsultaUsuarios vConsultarUsuarios;
 
     //VISTAS DUENIOS
     private static VPanelDuenios vpanelDuenios;
@@ -49,31 +52,30 @@ public class Controladora {
     private static VAltaDuenios vAltaDuenios;
     private static VBajaDuenios vBajaDuenios;
     private static VEditarDuenios vEditarDuenios;
-    private static VConsultaDuenios vConsultaDuenios;
+    private static VConsultaDuenios vConsultarDuenios;
 
     // VISTAS JUGADORES
     private static VPanelCrudJugadores vpanelJugadores;
     private static VAltaJugadores vAltaJugadores;
     private static VBajaJugadores vBajaJugadores;
-    private static VEditarJugadores vEditarJugadores;
-    private static VConsultaJugadores vConsultaJugadores;
+    private static VAltaJugadores vEditarJugadores;
+    private static VConsultarJugadores vConsultarJugadores;
 
     // VISTAS EQUIPOS
     private static VPanelCrudEquipos vpanelCrudEquipos;
     private static VAltaEquipos vAltaEquipos;
-    private static VConsultaEquipos vBajaEquipos;
+    private static VBajaEquipos vBajaEquipos;
     private static VEditarEquipos vEditarEquipos;
-    private static VConsultaEquipos vConsultaEquipos;
+    private static VConsultaEquipos vConsultarEquipos;
 
     // VISTAS PARTIDOS
+    
     //
     private static Login loginUML;
-    //
-    private static AdministradorBD administradorBD;
-
-    //
     private static LoginBD loginBD;
-
+    //
+    private static Administrador administradorUML;
+    private static AdministradorBD administradorBD;
     //
     private static UsuarioBD usuarioBD;
 
@@ -122,7 +124,7 @@ public class Controladora {
     //REINICIAR VISTA LOGIN
     public static void reiniciarVistaLogin() {
         vLo.dispose();
-        abrirInicioSesion();
+        abrirHome(vHo);
     }
 
     ////////////////////////////////////////////////////////////////////////////////////////////////
@@ -231,8 +233,8 @@ public class Controladora {
 
     // CONSULTA ADMINS
     public static void VConsultaAdmins() {
-        vConsultaAdmins = new VConsultaAdmins();
-        vConsultaAdmins.setVisible(true);
+        vConsultarAdmins = new VConsultarAdmins();
+        vConsultarAdmins.setVisible(true);
     }
 
     // MODIFICA ADMINS
@@ -257,8 +259,8 @@ public class Controladora {
 
     // CONSULTA USUARIOS
     public static void VConsultaUsuarios() {
-        vConsultaUsuarios = new VConsultaUsuarios();
-        vConsultaUsuarios.setVisible(true);
+        vConsultarUsuarios = new VConsultaUsuarios();
+        vConsultarUsuarios.setVisible(true);
     }
 
     // MODIFICA USUARIOS
@@ -283,8 +285,8 @@ public class Controladora {
 
     // CONSULTA DUENIOS
     public static void VConsultaDuenios() {
-        vConsultaDuenios = new VConsultaDuenios();
-        vConsultaDuenios.setVisible(true);
+        vConsultarDuenios = new VConsultaDuenios();
+        vConsultarDuenios.setVisible(true);
     }
 
     // MODIFICA DUENIOS
@@ -309,13 +311,13 @@ public class Controladora {
 
     // CONSULTA JUGADORES
     public static void VConsultaJugadores() {
-        vConsultaJugadores = new VConsultaJugadores();
-        vConsultaJugadores.setVisible(true);
+        vConsultarJugadores = new VConsultarJugadores();
+        vConsultarJugadores.setVisible(true);
     }
 
     // MODIFICA JUGADORES
     public static void VModificaJugadores() {
-        vEditarJugadores = new VEditarJugadores();
+        vEditarJugadores = new VAltaJugadores();
         vEditarJugadores.setVisible(true);
     }
 
@@ -329,14 +331,14 @@ public class Controladora {
 
     // BAJA EQUIPOS
     public static void VBajaEquipos() {
-        vBajaEquipos = new VConsultaEquipos();
+        vBajaEquipos = new VBajaEquipos();
         vBajaEquipos.setVisible(true);
     }
 
     // CONSULTA EQUIPOS
     public static void VConsultaEquipos() {
-        vConsultaEquipos = new VConsultaEquipos();
-        vConsultaEquipos.setVisible(true);
+        vConsultarEquipos = new VConsultaEquipos();
+        vConsultarEquipos.setVisible(true);
     }
 
     // MODIFICA EQUIPOS
@@ -347,29 +349,95 @@ public class Controladora {
 
     ////////////////////////////////////////////////////////////////////////////////////////////////
     // SENTENCIAS ALTA / BAJA / CONSULTA / MODIFICACION > ADMINISTRADOR
-    public static void localizarAdministradorEnBD(String dni) throws Exception {
+    // ALTA
+    public static void altaAdministradorBD(String dni, String nombre, String apellido, String tipo) throws Exception {
         administradorBD = new AdministradorBD();
-        Administrador administrador = administradorBD.localizaAdministrador(dni);
-        vBajaAdmins.rellenarCamposVentana(administrador.getDni(), administrador.getNombre(), administrador.getApellido());
+        administradorUML = new Administrador(dni, nombre, apellido);
+        administradorBD.insertarAdministradorBD(administradorUML, tipo);
+
     }
 
-    public static void eliminarAdministradorDelaBD(String dni) {
+    // LOCALIZA
+    public static void localizarAdministradorEnBD(String tipoVentana, String dni) throws Exception {
 
+        switch (tipoVentana) {
+            case "VAltaAdmins": {
+
+              
+                break;
+            }
+            case "VBajaAdmins": {
+
+                administradorBD = new AdministradorBD();
+                administradorUML = administradorBD.localizarAdministrador(dni);
+                vBajaAdmins.rellenarCamposVentana(administradorUML.getDni(), administradorUML.getNombre(), administradorUML.getApellido(), administradorUML.getLogin().getCodLogin());
+                break;
+            }
+            case "VConsultarAdmins": {
+
+                administradorBD = new AdministradorBD();
+                administradorUML = administradorBD.localizarAdministrador(dni);
+                vConsultarAdmins.rellenarCamposVentana(administradorUML.getDni(), administradorUML.getNombre(), administradorUML.getApellido());
+                break;
+            }
+            case "VEditarAdmins": {
+
+                administradorBD = new AdministradorBD();
+                administradorUML = administradorBD.localizarAdministrador(dni);
+                vEditarAdmins.rellenarCamposVentana(administradorUML.getDni(), administradorUML.getNombre(), administradorUML.getApellido(), administradorUML.getLogin().getUser(), administradorUML.getLogin().getPassword());
+                break;
+            }
+            default:
+                System.err.println("Error critico en el CRUD de Administradores");
+                throw new AdminCRUDError();
+        }
+    }
+
+    // BAJA
+    public static void eliminarAdministradorDelaBD(String dni, Integer codLogin) throws SQLException, ConexionProblemas {
+        administradorBD = new AdministradorBD();
+        loginBD = new LoginBD();
+        
+        administradorBD.eliminarDeLaBDAdmin(dni);
+        loginBD.eliminarDeLaBDAdminLog(codLogin);
+    }
+
+    // EDITAR
+    public static void pedirActualizarAdministrador(String passwd) throws SQLException, ConexionProblemas {
+        loginUML.setPassword(passwd);
+        loginBD.ejecutarModificacion(loginUML.getPassword(), administradorUML.getLogin().getCodLogin());
     }
 
     ////////////////////////////////////////////////////////////////////////////////////////////////
     // SENTENCIAS ALTA / BAJA / CONSULTA / MODIFICACION > USUARIO
+    // ALTA
+    public static void altaUsuarioBD(String dni, String nombre, String apellido, String tipo) throws Exception {
+        usuarioBD = new UsuarioBD();
+        Usuario usuario = new Usuario(dni, nombre, apellido);
+        usuarioBD.insertarUsuarioBD(usuario, tipo);
+    }
+
+    // CONSULTA
     public static void localizarUsuarioEnBD(String dni) throws Exception {
         usuarioBD = new UsuarioBD();
         Usuario usuario = usuarioBD.localizaUsuario(dni);
         vBajaUsuarios.rellenarCamposVentana(usuario.getDni(), usuario.getNombre(), usuario.getApellido());
     }
 
+    // BAJA
     public static void eliminarUsuarioDelaBD(String dni) {
     }
 
     ////////////////////////////////////////////////////////////////////////////////////////////////
     // SENTENCIAS ALTA / BAJA / CONSULTA / MODIFICACION > DUENIO
+    // ALTA
+    public static void altaDuenioBD(String dni, String nombre, String apellido, String tipo) throws Exception {
+        duenioBD = new DuenioBD();
+        Duenio duenio = new Duenio(dni, nombre, apellido);
+        duenioBD.insertarDuenioBD(duenio, tipo);
+    }
+
+    // CONSULTA
     public static void localizarDuenioEnBD(String dni) throws Exception {
         duenioBD = new DuenioBD();
         Duenio duenio = duenioBD.localizaDuenio(dni);
@@ -384,7 +452,9 @@ public class Controladora {
     public static void localizarJugadorEnBD(String dni) throws Exception {
         jugadorBD = new JugadorBD();
         Jugador jugador = jugadorBD.localizaJugador(dni);
-        vBajaJugadores.rellenarCamposVentana(jugador.getDni(), jugador.getNombre(), jugador.getApellido());
+        
+        //JOptionPane.showMessageDialog(null, jugador.getFechaNacimiento());
+        vBajaJugadores.rellenarCamposVentana(jugador.getDni(), jugador.getNombre(), jugador.getApellido(), jugador.getNickname(), jugador.getSueldo(), jugador.getFechaNacimiento(), jugador.getNacionalidad(), jugador.getPosicion());
     }
 
     public static void eliminarJugadorDelaBD(String dni) {
@@ -395,7 +465,7 @@ public class Controladora {
     public static void localizarEquipoEnBD(String dni) throws Exception {
         equipoBD = new EquipoBD();
         Equipo equipo = equipoBD.localizaEquipo(dni);
-        vBajaEquipos.rellenarCamposVentana();
+        // vBajaEquipos.rellenarCamposVentana();
     }
 
     public static void eliminarEquipoDelaBD(String nombre) {

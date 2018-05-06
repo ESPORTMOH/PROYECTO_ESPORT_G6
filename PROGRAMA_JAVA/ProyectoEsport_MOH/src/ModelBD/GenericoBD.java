@@ -10,6 +10,7 @@ import java.sql.SQLException;
  */
 public class GenericoBD {
 
+/*
     // CONEXIONES / DESCONEXIONES A LA BD MEDIANTE SRVORACLE / EN CLASE
     public Connection abrirConexion(Connection conexion) throws SQLException, ConexionProblemas {
 
@@ -39,17 +40,47 @@ public class GenericoBD {
     }
 
 }
+*/
+
 ////////////////////////////////////////////////////////////////////////////////////////////////
+
+
 // DATOS PARA LA CONEXION EN MI CASA CON VAGRANT
-/*
-        Class.forName("oracle.jdbc.OracleDriver");
-        String user = "system";
-        String pass = "oracle";
-        String url = "jdbc:oracle:thin:@10.10.10.9:1521:db12102";
-        
-        
-        jdbc:oracle:thin:@172.20.225.114:1521:orcl
- */
+
+        //Class.forName("oracle.jdbc.OracleDriver");
+        //String user = "system";
+        //String pass = "oracle";
+        //String url = "jdbc:oracle:thin:@10.10.10.9:1521:db12102";
+    
+    public Connection abrirConexion(Connection conexion) throws SQLException, ConexionProblemas {
+
+        try {
+            Class.forName("oracle.jdbc.driver.OracleDriver");
+            conexion = DriverManager.getConnection("jdbc:oracle:thin:@10.10.10.9:1521:db12102", "SCOTT", "miguel");
+
+            if (conexion != null) {
+                System.out.println("Conexion Establecida");
+                return conexion;
+            } else {
+                System.out.println("Error Estableciendo Conexion");
+                return null;
+            }
+        } catch (ClassNotFoundException | SQLException E) {
+            return null;
+        }
+
+    }
+
+    public void cerrarConexion(Connection conexion) throws SQLException, ConexionProblemas {
+        try {
+            System.out.println("Conexion Cerrada");
+            conexion.close();
+        } catch (SQLException E) {
+        }
+    }
+
+}
+ 
 ////////////////////////////////////////////////////////////////////////////////////////////////
 
 /*

@@ -15,6 +15,12 @@ public class Usuario {
 
     public Usuario() {
     }
+    
+    public Usuario(String dni, String nombre, String apellido) {
+        this.dni = dni;
+        this.nombre = nombre;
+        this.apellido = apellido;
+    }
 
     public Usuario(Integer codUsuario, String dni, String nombre, String apellido) {
         this.codUsuario = codUsuario;

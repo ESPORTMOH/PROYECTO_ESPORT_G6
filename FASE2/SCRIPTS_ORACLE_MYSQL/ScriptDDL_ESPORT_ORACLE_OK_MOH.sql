@@ -69,8 +69,8 @@ CREATE TABLE login (
                    NOORDER  
                    NOCYCLE  NOT NULL ENABLE
                    CONSTRAINT LO_CDLO_PK PRIMARY KEY,
-  usuario VARCHAR2(8) NOT NULL,
-  passwd VARCHAR2(8) NOT NULL,
+  usuario VARCHAR2(9) NOT NULL,
+  passwd VARCHAR2(20) NOT NULL,
   tipo VARCHAR2(1) NOT NULL
 );
 
@@ -160,11 +160,11 @@ CREATE TABLE jugador (
   nombre VARCHAR2(20) NOT NULL,
   apellido VARCHAR2(20) NOT NULL,
   nickname VARCHAR2(10) NOT NULL,
-  sueldo NUMBER(6,2) NOT NULL,
+  sueldo NUMBER(10) NOT NULL,
   fechaNacimiento DATE NOT NULL,
   nacionalidad VARCHAR2(20) NOT NULL,
   posicion VARCHAR2(10) NOT NULL,
-  codEquipo NUMBER(4) NOT NULL -- RESERVADO FK
+  codEquipo NUMBER(4) -- RESERVADO FK
 );
 
 -- --------------------------------------------------------
@@ -334,6 +334,12 @@ COMMIT;
 INSERT INTO administrador VALUES (DEFAULT, '00000000A', 'Miguel', 'Olmo', 1);
 COMMIT;
 
+INSERT INTO login (codLogin, usuario, passwd, tipo) VALUES (DEFAULT, 'admin','admin','A');
+COMMIT;
+
+INSERT INTO administrador VALUES (DEFAULT, '00000000B', 'Jose', 'Olmo', 2);
+COMMIT;
+
 -- --------------------------------------------------------
 
 --
@@ -343,7 +349,13 @@ COMMIT;
 INSERT INTO login (codLogin, usuario, passwd, tipo) VALUES (DEFAULT, 'super','duenio','D');
 COMMIT;
 
-INSERT INTO duenio VALUES (DEFAULT, '11111111A', 'Super', 'Duenio', 2);
+INSERT INTO duenio VALUES (DEFAULT, '00000000C', 'Super', 'Duenio', 3);
+COMMIT;
+
+INSERT INTO login (codLogin, usuario, passwd, tipo) VALUES (DEFAULT, 'super','duenio','D');
+COMMIT;
+
+INSERT INTO duenio VALUES (DEFAULT, '00000000D', 'Super', 'Owner', 4);
 COMMIT;
 
 -- --------------------------------------------------------
@@ -355,27 +367,28 @@ COMMIT;
 INSERT INTO login (codLogin, usuario, passwd, tipo) VALUES (DEFAULT, 'super','usuario','U');
 COMMIT;
 
-INSERT INTO usuario VALUES (DEFAULT, '22222222A', 'Super', 'Usuario', 3);
+INSERT INTO usuario VALUES (DEFAULT, '00000000E', 'Super', 'Usuario', 4);
+COMMIT;
+
+INSERT INTO login (codLogin, usuario, passwd, tipo) VALUES (DEFAULT, 'super','usuario','U');
+COMMIT;
+
+INSERT INTO usuario VALUES (DEFAULT, '00000000F', 'Super', 'User', 5);
 COMMIT;
 
 -- --------------------------------------------------------
 
 --
--- COMPROBACIONES
+-- Datos para la tabla 'jugador' -  Creacion de JUGADORES VARIOS
 --
 
-SELECT * FROM login;
-SELECT * FROM administrador;
-SELECT * FROM duenio;
-SELECT * FROM usuario;
+-- https://github.com/martinchris6611/NBA_Oracle
+ 
+-- http://www.marca.com/baloncesto/nba/album/2016/09/13/57d7c14f468aebd25a8b4647_1.html
 
-SELECT *
-  FROM SYS.USER_CONSTRAINTS 
-  WHERE TABLE_NAME = UPPER('JUGADOR');
+INSERT INTO jugador VALUES (DEFAULT, '32317743Y', 'Pau', 'Gasol', 'Pau', 100000, TO_DATE('06/07/1980', 'dd/mm/YYYY'), 'Spain', 'F', null)
+COMMIT;
 
-SELECT *
-  FROM SYS.USER_CONSTRAINTS 
-  WHERE TABLE_NAME = UPPER('LOGIN');
 
 
 -- --------------------------------------------------------

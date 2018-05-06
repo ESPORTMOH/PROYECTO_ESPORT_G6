@@ -50,7 +50,7 @@ public class VConsultaEquipos extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setText("BAJA EQUIPOS");
+        jLabel1.setText("CONSULTAR EQUIPOS");
 
         jLabel2.setText("Nombre");
 

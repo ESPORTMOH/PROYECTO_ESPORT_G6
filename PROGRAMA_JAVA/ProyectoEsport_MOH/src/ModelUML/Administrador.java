@@ -15,6 +15,12 @@ public class Administrador {
 
     public Administrador() {
     }
+    
+     public Administrador(String dni, String nombre, String apellido) {
+        this.dni = dni;
+        this.nombre = nombre;
+        this.apellido = apellido;
+    }
 
     public Administrador(Integer codAdministrador, String dni, String nombre, String apellido) {
         this.codAdministrador = codAdministrador;
