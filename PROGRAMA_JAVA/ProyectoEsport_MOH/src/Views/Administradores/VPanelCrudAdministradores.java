@@ -1,17 +1,23 @@
 package Views.Administradores;
 
+import Exceptions.CierreVError;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import proyectoesport_moh.Controladora;
-import Exceptions.*;
+import javax.swing.JOptionPane;
 
 /**
  * @author MIGUEL
  */
 public class VPanelCrudAdministradores extends javax.swing.JFrame {
 
+    private final String tipoVentana;
+
     /**
      * Creates new form VAdministracion
      */
     public VPanelCrudAdministradores() {
+        this.tipoVentana = "VCrudAdmins";
         initComponents();
         this.setLocationRelativeTo(null);
         this.setResizable(false);
@@ -71,6 +77,11 @@ public class VPanelCrudAdministradores extends javax.swing.JFrame {
         jMenu1.setText("Archivo");
 
         jMenuItem1.setText("Retroceder");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
         jMenu1.add(jMenuItem1);
 
         jMenuItem2.setText("Salir");
@@ -115,27 +126,65 @@ public class VPanelCrudAdministradores extends javax.swing.JFrame {
 
     private void jBaltaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBaltaActionPerformed
         // ACTION ALTA
-        Controladora.VAltaAdmins();
-        Controladora.cierraMe();
+        try {
+            Controladora.VAltaAdmins();
+            Controladora.cierraTipoVentanaAdmins(tipoVentana);
+        } catch (CierreVError CVE) {
+            JOptionPane.showMessageDialog(this, CVE.getMessage());
+        } catch (Exception ex) {
+            Logger.getLogger(VPanelCrudAdministradores.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jBaltaActionPerformed
 
     private void jBbajaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBbajaActionPerformed
         // ACTION BAJA
-        Controladora.VBajaAdmins();
-        Controladora.cierraMe();
+        try {
+            Controladora.VBajaAdmins();
+            Controladora.cierraTipoVentanaAdmins(tipoVentana);
+        } catch (CierreVError CVE) {
+            JOptionPane.showMessageDialog(this, CVE.getMessage());
+        } catch (Exception ex) {
+            Logger.getLogger(VPanelCrudAdministradores.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jBbajaActionPerformed
 
     private void jBmodificaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBmodificaActionPerformed
         // ACTION MODIFICA
-        Controladora.VModificaAdmins();
-        Controladora.cierraMe();
+        try {
+            Controladora.VModificaAdmins();
+            Controladora.cierraTipoVentanaAdmins(tipoVentana);
+        } catch (CierreVError CVE) {
+            JOptionPane.showMessageDialog(this, CVE.getMessage());
+        } catch (Exception ex) {
+            Logger.getLogger(VPanelCrudAdministradores.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jBmodificaActionPerformed
 
     private void jBconsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBconsultaActionPerformed
         // ACTION CONSULTA
-        Controladora.VConsultaAdmins();
-        Controladora.cierraMe();
+        try {
+            Controladora.VConsultaAdmins();
+            Controladora.cierraTipoVentanaAdmins(tipoVentana);
+        } catch (CierreVError CVE) {
+            JOptionPane.showMessageDialog(this, CVE.getMessage());
+        } catch (Exception ex) {
+            Logger.getLogger(VPanelCrudAdministradores.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
     }//GEN-LAST:event_jBconsultaActionPerformed
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        // ARCHIVO / RETROCEDER:
+        try {
+            Controladora.abreTipoVentanaAdmins(tipoVentana);
+            Controladora.cierraTipoVentanaAdmins(tipoVentana);
+            this.dispose(); 
+        } catch (CierreVError CVE) {
+            JOptionPane.showMessageDialog(this, CVE.getMessage());
+        } catch (Exception ex) {
+            Logger.getLogger(VPanelCrudAdministradores.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -163,9 +212,7 @@ public class VPanelCrudAdministradores extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(VPanelCrudAdministradores.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
+
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {

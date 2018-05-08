@@ -1,17 +1,21 @@
 package Views.Administradores;
 
+import javax.swing.JOptionPane;
 import proyectoesport_moh.Controladora;
-import Exceptions.*;
 
 /**
  * @author MIGUEL
  */
 public class VPanelAdministracion extends javax.swing.JFrame {
 
+    private final String tipoVentana;
+    
+
     /**
      * Creates new form VAdministracion
      */
     public VPanelAdministracion() {
+        this.tipoVentana = "VPanelAdmins";
         initComponents();
         this.setLocationRelativeTo(null);
         this.setResizable(false);
@@ -28,37 +32,48 @@ public class VPanelAdministracion extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
-        jMenu2 = new javax.swing.JMenu();
+        jMcerrarSesion = new javax.swing.JMenuItem();
+        jMsalir = new javax.swing.JMenuItem();
+        jMCRUDadmin = new javax.swing.JMenu();
         jMadministradores = new javax.swing.JMenuItem();
-        jMduenios = new javax.swing.JMenuItem();
-        jMjugadores = new javax.swing.JMenuItem();
-        jMusuarios = new javax.swing.JMenuItem();
-        jMequipos = new javax.swing.JMenuItem();
+        jMCRUDduenios = new javax.swing.JMenuItem();
+        jMCRUDjugadores = new javax.swing.JMenuItem();
+        jMCRUDusuarios = new javax.swing.JMenuItem();
+        jMCRUDequipos = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
         jMcalendario = new javax.swing.JMenuItem();
         jMresultados = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setSize(new java.awt.Dimension(436, 388));
 
+        jLabel1.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 24)); // NOI18N
         jLabel1.setText("PANEL DE ADMINISTRADORES");
 
+        jLabel2.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel2.setText("Bienvenid@ de nuevo");
+
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/admins.png"))); // NOI18N
 
         jMenu1.setText("Archivo");
 
-        jMenuItem1.setText("Retroceder");
-        jMenu1.add(jMenuItem1);
+        jMcerrarSesion.setText("Cerrar Sesión");
+        jMcerrarSesion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMcerrarSesionActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMcerrarSesion);
 
-        jMenuItem2.setText("Salir");
-        jMenu1.add(jMenuItem2);
+        jMsalir.setText("Salir");
+        jMenu1.add(jMsalir);
 
         jMenuBar1.add(jMenu1);
 
-        jMenu2.setText("Administrar");
+        jMCRUDadmin.setText("Administrar");
 
         jMadministradores.setText("CRUD Administradores");
         jMadministradores.addActionListener(new java.awt.event.ActionListener() {
@@ -66,41 +81,41 @@ public class VPanelAdministracion extends javax.swing.JFrame {
                 jMadministradoresActionPerformed(evt);
             }
         });
-        jMenu2.add(jMadministradores);
+        jMCRUDadmin.add(jMadministradores);
 
-        jMduenios.setText("CRUD Duenios");
-        jMduenios.addActionListener(new java.awt.event.ActionListener() {
+        jMCRUDduenios.setText("CRUD Duenios");
+        jMCRUDduenios.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMdueniosActionPerformed(evt);
+                jMCRUDdueniosActionPerformed(evt);
             }
         });
-        jMenu2.add(jMduenios);
+        jMCRUDadmin.add(jMCRUDduenios);
 
-        jMjugadores.setText("CRUD Jugadores");
-        jMjugadores.addActionListener(new java.awt.event.ActionListener() {
+        jMCRUDjugadores.setText("CRUD Jugadores");
+        jMCRUDjugadores.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMjugadoresActionPerformed(evt);
+                jMCRUDjugadoresActionPerformed(evt);
             }
         });
-        jMenu2.add(jMjugadores);
+        jMCRUDadmin.add(jMCRUDjugadores);
 
-        jMusuarios.setText("CRUD Usuarios");
-        jMusuarios.addActionListener(new java.awt.event.ActionListener() {
+        jMCRUDusuarios.setText("CRUD Usuarios");
+        jMCRUDusuarios.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMusuariosActionPerformed(evt);
+                jMCRUDusuariosActionPerformed(evt);
             }
         });
-        jMenu2.add(jMusuarios);
+        jMCRUDadmin.add(jMCRUDusuarios);
 
-        jMequipos.setText("CRUD Equipos");
-        jMequipos.addActionListener(new java.awt.event.ActionListener() {
+        jMCRUDequipos.setText("CRUD Equipos");
+        jMCRUDequipos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMequiposActionPerformed(evt);
+                jMCRUDequiposActionPerformed(evt);
             }
         });
-        jMenu2.add(jMequipos);
+        jMCRUDadmin.add(jMCRUDequipos);
 
-        jMenuBar1.add(jMenu2);
+        jMenuBar1.add(jMCRUDadmin);
 
         jMenu3.setText("Gestionar");
 
@@ -118,23 +133,28 @@ public class VPanelAdministracion extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(113, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addGap(117, 117, 117))
             .addGroup(layout.createSequentialGroup()
-                .addGap(76, 76, 76)
-                .addComponent(jLabel2)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(49, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addGap(193, 193, 193))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel1))
+                        .addGap(50, 50, 50))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(25, 25, 25)
+                .addGap(27, 27, 27)
                 .addComponent(jLabel1)
-                .addGap(32, 32, 32)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
                 .addComponent(jLabel2)
-                .addContainerGap(188, Short.MAX_VALUE))
+                .addGap(31, 31, 31)
+                .addComponent(jLabel3)
+                .addGap(29, 29, 29))
         );
 
         pack();
@@ -143,33 +163,67 @@ public class VPanelAdministracion extends javax.swing.JFrame {
     // APERTURAS DE LAS VISTAS CRUD / ADMINISTRADORES / USUARIOS / DUENOS / JUGADORES / EQUIPOS
     private void jMadministradoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMadministradoresActionPerformed
         // ACTION CRUD ADMINISTRADORES
-        Controladora.abrirCrudAdministradores();
-        Controladora.cierraMe();
+        try {
+            Controladora.abrirCrudAdministradores();
+            Controladora.cierraTipoVentanaAdmins(tipoVentana);
+        } catch (Exception EX) {
+            JOptionPane.showMessageDialog(this, EX.getMessage());
+        }
+
     }//GEN-LAST:event_jMadministradoresActionPerformed
 
-    private void jMjugadoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMjugadoresActionPerformed
+    private void jMCRUDjugadoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMCRUDjugadoresActionPerformed
         // ACTION CRUD JUGADORES
-        Controladora.abrirCrudJugadores();
-        Controladora.cierraMe();
-    }//GEN-LAST:event_jMjugadoresActionPerformed
+        try {
+            Controladora.abrirCrudJugadores();
+            Controladora.cierraTipoVentanaAdmins(tipoVentana);
+        } catch (Exception EX) {
+            JOptionPane.showMessageDialog(this, EX.getMessage());
+        }
 
-    private void jMdueniosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMdueniosActionPerformed
+    }//GEN-LAST:event_jMCRUDjugadoresActionPerformed
+
+    private void jMCRUDdueniosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMCRUDdueniosActionPerformed
         // ACTION CRUD DUENIOS
-        Controladora.abrirCrudDuenios();
-        Controladora.cierraMe();
-    }//GEN-LAST:event_jMdueniosActionPerformed
+        try {
+            Controladora.abrirCrudDuenios();
+            Controladora.cierraTipoVentanaAdmins(tipoVentana);
+        } catch (Exception EX) {
+            JOptionPane.showMessageDialog(this, EX.getMessage());
+        }
 
-    private void jMusuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMusuariosActionPerformed
+    }//GEN-LAST:event_jMCRUDdueniosActionPerformed
+
+    private void jMCRUDusuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMCRUDusuariosActionPerformed
         // ACTION CRUD USUARIOS
-        Controladora.abrirCrudUsuarios();
-        Controladora.cierraMe();
-    }//GEN-LAST:event_jMusuariosActionPerformed
+        try {
+            Controladora.abrirCrudUsuarios();
+            Controladora.cierraTipoVentanaAdmins(tipoVentana);
+        } catch (Exception EX) {
+            JOptionPane.showMessageDialog(this, EX.getMessage());
+        }
 
-    private void jMequiposActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMequiposActionPerformed
-        // ACTION CRUD EQUIPOS
-        Controladora.abrirCrudEquipos();
-        Controladora.cierraMe();
-    }//GEN-LAST:event_jMequiposActionPerformed
+    }//GEN-LAST:event_jMCRUDusuariosActionPerformed
+
+    private void jMCRUDequiposActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMCRUDequiposActionPerformed
+        // ACTION CRUD 
+        try {
+            Controladora.abrirCrudEquipos();
+            Controladora.cierraTipoVentanaAdmins(tipoVentana);
+        } catch (Exception EX) {
+            JOptionPane.showMessageDialog(this, EX.getMessage());
+        }
+
+    }//GEN-LAST:event_jMCRUDequiposActionPerformed
+
+    private void jMcerrarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMcerrarSesionActionPerformed
+        // ARCHIVO / RETROCEDER:
+        try {
+            Controladora.cierraTipoVentanaAdmins(tipoVentana);
+        } catch (Exception EX) {
+            JOptionPane.showMessageDialog(this, EX.getMessage());
+        }
+    }//GEN-LAST:event_jMcerrarSesionActionPerformed
 
     /**
      * @param args the command line arguments
@@ -210,18 +264,19 @@ public class VPanelAdministracion extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JMenu jMCRUDadmin;
+    private javax.swing.JMenuItem jMCRUDduenios;
+    private javax.swing.JMenuItem jMCRUDequipos;
+    private javax.swing.JMenuItem jMCRUDjugadores;
+    private javax.swing.JMenuItem jMCRUDusuarios;
     private javax.swing.JMenuItem jMadministradores;
     private javax.swing.JMenuItem jMcalendario;
-    private javax.swing.JMenuItem jMduenios;
+    private javax.swing.JMenuItem jMcerrarSesion;
     private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMequipos;
-    private javax.swing.JMenuItem jMjugadores;
     private javax.swing.JMenuItem jMresultados;
-    private javax.swing.JMenuItem jMusuarios;
+    private javax.swing.JMenuItem jMsalir;
     // End of variables declaration//GEN-END:variables
 }

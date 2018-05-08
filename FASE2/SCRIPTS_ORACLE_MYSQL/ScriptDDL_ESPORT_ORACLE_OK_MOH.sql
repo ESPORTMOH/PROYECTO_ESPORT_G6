@@ -50,6 +50,16 @@ DROP TABLE jornada CASCADE CONSTRAINTS;
 -- --------------------------------------------------------
 
 --
+-- Borrado de posibles paquetes, procedimientos, disparadores existentes que puedan afectar al volcado posterior
+--
+
+DROP PACKAGE ESPORT_MOH_1;
+DROP TRIGGER TRIGG_jugadoresMaximoEquipo;
+DROP TRIGGER TRIGG_salarioMinimo;
+
+-- --------------------------------------------------------
+
+--
 -- ESTRUCTURANDO LA BASE DE DATOS 
 --
 
@@ -184,7 +194,7 @@ CREATE TABLE equipo (
                    NOCYCLE  NOT NULL ENABLE
                    CONSTRAINT EQ_CDEQ_PK PRIMARY KEY,
   nombre VARCHAR2(20) NOT NULL,
-  presupuesto VARCHAR2(6) NOT NULL,
+  presupuesto NUMBER(6) NOT NULL,
   anioFundacion VARCHAR2(4) NOT NULL,
   ciudad VARCHAR2(20) NOT NULL,
   nombreEstadio VARCHAR2(10) NOT NULL,
@@ -346,16 +356,16 @@ COMMIT;
 -- Datos para la tabla 'login' y 'duenio' -  Creacion de un duenio SUPERDUENIO
 --
 
-INSERT INTO login (codLogin, usuario, passwd, tipo) VALUES (DEFAULT, 'super','duenio','D');
+INSERT INTO login (codLogin, usuario, passwd, tipo) VALUES (DEFAULT, 'super1','duenio1','D');
 COMMIT;
 
-INSERT INTO duenio VALUES (DEFAULT, '00000000C', 'Super', 'Duenio', 3);
+INSERT INTO duenio VALUES (DEFAULT, '00000000C', 'Super1', 'Duenio1', 3);
 COMMIT;
 
-INSERT INTO login (codLogin, usuario, passwd, tipo) VALUES (DEFAULT, 'super','duenio','D');
+INSERT INTO login (codLogin, usuario, passwd, tipo) VALUES (DEFAULT, 'super2','duenio2','D');
 COMMIT;
 
-INSERT INTO duenio VALUES (DEFAULT, '00000000D', 'Super', 'Owner', 4);
+INSERT INTO duenio VALUES (DEFAULT, '00000000D', 'Super2', 'Duenio2', 4);
 COMMIT;
 
 -- --------------------------------------------------------
@@ -364,16 +374,16 @@ COMMIT;
 -- Datos para la tabla 'login' y 'usuario' -  Creacion de un usuario SUPERUSUARIO
 --
 
-INSERT INTO login (codLogin, usuario, passwd, tipo) VALUES (DEFAULT, 'super','usuario','U');
+INSERT INTO login (codLogin, usuario, passwd, tipo) VALUES (DEFAULT, 'super1','usuario1','U');
 COMMIT;
 
-INSERT INTO usuario VALUES (DEFAULT, '00000000E', 'Super', 'Usuario', 4);
+INSERT INTO usuario VALUES (DEFAULT, '00000000E', 'Super1', 'Usuario1', 4);
 COMMIT;
 
-INSERT INTO login (codLogin, usuario, passwd, tipo) VALUES (DEFAULT, 'super','usuario','U');
+INSERT INTO login (codLogin, usuario, passwd, tipo) VALUES (DEFAULT, 'super2','usuario2','U');
 COMMIT;
 
-INSERT INTO usuario VALUES (DEFAULT, '00000000F', 'Super', 'User', 5);
+INSERT INTO usuario VALUES (DEFAULT, '00000000F', 'Super1', 'Usuario2', 5);
 COMMIT;
 
 -- --------------------------------------------------------
@@ -386,10 +396,9 @@ COMMIT;
  
 -- http://www.marca.com/baloncesto/nba/album/2016/09/13/57d7c14f468aebd25a8b4647_1.html
 
-INSERT INTO jugador VALUES (DEFAULT, '32317743Y', 'Pau', 'Gasol', 'Pau', 100000, TO_DATE('06/07/1980', 'dd/mm/YYYY'), 'Spain', 'F', null)
+INSERT INTO jugador VALUES (DEFAULT, '32317743Y', 'Pau', 'Gasol', 'Pau', 100000, TO_DATE('06/07/1980', 'dd/mm/YYYY'), 'Spain', 'F', null);
 COMMIT;
 
-
-
 -- --------------------------------------------------------
+
 

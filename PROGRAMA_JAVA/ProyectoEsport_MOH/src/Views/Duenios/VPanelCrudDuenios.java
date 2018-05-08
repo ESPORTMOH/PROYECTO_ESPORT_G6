@@ -1,19 +1,25 @@
 package Views.Duenios;
 
-import Views.Jugadores.*;
-import Views.Administradores.*;
+import Exceptions.CierreVError;
+import Views.Administradores.VPanelCrudAdministradores;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import proyectoesport_moh.Controladora;
-import Exceptions.*;
+
+import javax.swing.JOptionPane;
 
 /**
  * @author MIGUEL
  */
 public class VPanelCrudDuenios extends javax.swing.JFrame {
 
+    private final String tipoVentana;
+
     /**
      * Creates new form VAdministracion
      */
     public VPanelCrudDuenios() {
+        this.tipoVentana = "VCrudDuenios";
         initComponents();
         this.setLocationRelativeTo(null);
         this.setResizable(false);
@@ -119,26 +125,50 @@ public class VPanelCrudDuenios extends javax.swing.JFrame {
 
     private void jBaltaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBaltaActionPerformed
         // ACTION ALTA
-        Controladora.VAltaDuenios();
-        Controladora.cierraMe();
+        try {
+            Controladora.VAltaDuenios();
+            Controladora.cierraTipoVentanaAdmins(tipoVentana);
+        } catch (CierreVError CVE) {
+            JOptionPane.showMessageDialog(this, CVE.getMessage());
+        } catch (Exception ex) {
+            Logger.getLogger(VPanelCrudAdministradores.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jBaltaActionPerformed
 
     private void jBbajaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBbajaActionPerformed
-        // ACTION BAJA
-        Controladora.VBajaDuenios();
-        Controladora.cierraMe();
+        // ACTION 
+        try {
+            Controladora.VBajaDuenios();
+            Controladora.cierraTipoVentanaAdmins(tipoVentana);
+        } catch (CierreVError CVE) {
+            JOptionPane.showMessageDialog(this, CVE.getMessage());
+        } catch (Exception ex) {
+            Logger.getLogger(VPanelCrudAdministradores.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jBbajaActionPerformed
 
     private void jBmodificaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBmodificaActionPerformed
         // ACTION MODIFICA
-        Controladora.VModificaDuenios();
-        Controladora.cierraMe();
+        try {
+            Controladora.VModificaDuenios();
+            Controladora.cierraTipoVentanaAdmins(tipoVentana);
+        } catch (CierreVError CVE) {
+            JOptionPane.showMessageDialog(this, CVE.getMessage());
+        } catch (Exception ex) {
+            Logger.getLogger(VPanelCrudAdministradores.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jBmodificaActionPerformed
 
     private void jBconsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBconsultaActionPerformed
         // ACTION CONSULTA
-        Controladora.VConsultaDuenios();
-        Controladora.cierraMe();
+        try {
+            Controladora.VConsultaDuenios();
+            Controladora.cierraTipoVentanaAdmins(tipoVentana);
+        } catch (CierreVError CVE) {
+            JOptionPane.showMessageDialog(this, CVE.getMessage());
+        } catch (Exception ex) {
+            Logger.getLogger(VPanelCrudAdministradores.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jBconsultaActionPerformed
 
     /**
@@ -166,38 +196,7 @@ public class VPanelCrudDuenios extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(VPanelCrudDuenios.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
+
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
