@@ -4,6 +4,7 @@
 package proyectoesport_moh;
 
 import Exceptions.AdminCRUDError;
+import Exceptions.CierreVError;
 import Exceptions.ConexionProblemas;
 import Views.*;
 import Views.Administradores.*;
@@ -38,6 +39,8 @@ public class Controladora {
     private static VEditarAdmins vEditarAdmins;
     private static VConsultarAdmins vConsultarAdmins;
 
+    private static Administrador adminTraido;
+
     // VISTAS USUARIOS
     private static VPanelUsuarios vpanelUsuarios;
     private static VPanelCrudUsuarios vpanelCrudUsuarios;
@@ -69,7 +72,6 @@ public class Controladora {
     private static VConsultaEquipos vConsultarEquipos;
 
     // VISTAS PARTIDOS
-    
     //
     private static Login loginUML;
     private static LoginBD loginBD;
@@ -93,9 +95,9 @@ public class Controladora {
 
     public static void main(String[] args) {
 
-        // INICIO MAIN
+        /// INICIO GENERICO DE VENTANAS
+        // ABRIR INICIO MAIN
         abrirHome(vHo = new VHome());
-
     }
 
     // ABRIR HOME
@@ -104,70 +106,13 @@ public class Controladora {
         abrirInicioSesion();
     }
 
-    // SALIR DE LA APLICACION
-    public static void salirAplicacion() {
-        System.exit(0);
-    }
-
-    // CERRAR VENTANA
-    public static void cierraMe() {
-        vpanelAdministracion.dispose();
-    }
-
     // ABRIR VISTA LOGIN
     public static void abrirInicioSesion() {
 
         vLo = new VLogin();
         vLo.setVisible(true);
     }
-
-    //REINICIAR VISTA LOGIN
-    public static void reiniciarVistaLogin() {
-        vLo.dispose();
-        abrirHome(vHo);
-    }
-
-    ////////////////////////////////////////////////////////////////////////////////////////////////
-    //CONSULTA PARA SOLICITAR ACCESO
-    public static void consultarLogin(String usuario, String password) throws Exception {
-
-        loginBD = new LoginBD();
-
-        loginUML = new Login(usuario, password);
-
-        Login usuarioLogeado = loginBD.validarLogin(loginUML);
-
-        System.out.println("Acceso Login como Tipo: " + usuarioLogeado.getTipo());
-
-        cargarPanelTipo(usuarioLogeado.getTipo());
-
-    }
-
-    ////////////////////////////////////////////////////////////////////////////////////////////////
-    // MENU DE CARGA SEGUN EL TIPO DE LOGIN
-    public static void cargarPanelTipo(String tipo) throws Exception {
-
-        switch (tipo.toUpperCase()) {
-            case "A":
-                vpanelAdministracion = new VPanelAdministracion();
-                vLo.dispose();
-                abrirPanelAdministracion(vpanelAdministracion);
-                break;
-            case "D":
-                vpanelDuenios = new VPanelDuenios();
-                vLo.dispose();
-                abrirPanelDuenios(vpanelDuenios);
-                break;
-            case "U":
-                vpanelUsuarios = new VPanelUsuarios();
-                vLo.dispose();
-                abrirPanelUsuarios(vpanelUsuarios);
-                break;
-
-        }
-
-    }
-
+    
     ////////////////////////////////////////////////////////////////////////////////////////////////
     // APERTURA DE PANELES PARA EL MENU
     // ABRIR PANEL TIPO ADMINISTRADOR - A
@@ -347,6 +292,122 @@ public class Controladora {
         vEditarEquipos.setVisible(true);
     }
 
+    //REINICIAR VISTA LOGIN
+    public static void reiniciarVistaLogin() {
+        vLo.dispose();
+        abrirHome(vHo);
+    }
+
+    // SALIR DE LA APLICACION
+    public static void salirAplicacion() {
+        System.exit(0);
+    }
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    // CONTROL GENERICO DE VENTANAS
+    // CERRAR VENTANAS ADMINISTRADORES
+    public static void cierraTipoVentanaAdmins(String tipoVentana) throws Exception {
+        switch (tipoVentana) {
+            case "VPanelAdmins": {
+                vpanelAdministracion.dispose();
+                break;
+            }
+            case "VCrudAdmins": {
+                vpanelCrudAdministradores.dispose();
+                break;
+            }            
+            case "VAltaAdmins": {
+                vAltaAdmins.dispose();
+                break;
+            }
+            case "VBajaAdmins": {
+                vBajaAdmins.dispose();
+                break;
+            }
+            case "VEditarAdmins": {
+                vEditarAdmins.dispose();
+                break;
+            }
+            case "VConsultarAdmins": {
+                vConsultarAdmins.dispose();
+                break;
+            }
+            default:
+                System.err.println("Error critico en el cierre de las ventanas de Administradores");
+                throw new CierreVError();
+        }
+    }
+
+    // ABRIR TIPO VENTANAS ADMINISTRADORES              
+    // CERRAR VENTANA
+    public static void abreTipoVentanaAdmins(String tipoVentana) throws Exception {
+        switch (tipoVentana) {
+            case "VCrudAdmins": {
+                vpanelAdministracion.setVisible(true);
+                break;
+            }
+            case "VAltaAdmins": {
+                vpanelCrudAdministradores.setVisible(true);
+                break;
+            }
+            case "VBajaAdmins": {
+                vpanelCrudAdministradores.setVisible(true);
+                break;
+            }
+            case "VEditarAdmins": {
+                vpanelCrudAdministradores.setVisible(true);
+                break;
+            }
+            case "VConsultarAdmins": {
+                vpanelCrudAdministradores.setVisible(true);
+                break;
+            }
+            default:
+                System.err.println("Error critico al abrir las ventanas de Administradores");
+                throw new CierreVError();
+        }
+    }
+    
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    //CONSULTA PARA SOLICITAR ACCESO
+    public static void consultarLogin(String usuario, String password) throws Exception {
+
+        loginBD = new LoginBD();
+
+        loginUML = new Login(usuario, password);
+
+        Login usuarioLogeado = loginBD.validarLogin(loginUML);
+
+        System.out.println("Acceso Login como Tipo: " + usuarioLogeado.getTipo());
+
+        cargarPanelTipo(usuarioLogeado.getTipo());
+
+    }
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    // MENU DE CARGA SEGUN EL TIPO DE LOGIN
+    public static void cargarPanelTipo(String tipo) throws Exception {
+
+        switch (tipo.toUpperCase()) {
+            case "A":
+                vpanelAdministracion = new VPanelAdministracion();
+                vLo.dispose();
+                abrirPanelAdministracion(vpanelAdministracion);
+                break;
+            case "D":
+                vpanelDuenios = new VPanelDuenios();
+                vLo.dispose();
+                abrirPanelDuenios(vpanelDuenios);
+                break;
+            case "U":
+                vpanelUsuarios = new VPanelUsuarios();
+                vLo.dispose();
+                abrirPanelUsuarios(vpanelUsuarios);
+                break;
+        }
+
+    }
+
     ////////////////////////////////////////////////////////////////////////////////////////////////
     // SENTENCIAS ALTA / BAJA / CONSULTA / MODIFICACION > ADMINISTRADOR
     // ALTA
@@ -354,34 +415,24 @@ public class Controladora {
         administradorBD = new AdministradorBD();
         administradorUML = new Administrador(dni, nombre, apellido);
         administradorBD.insertarAdministradorBD(administradorUML, tipo);
-
     }
 
     // LOCALIZA
     public static void localizarAdministradorEnBD(String tipoVentana, String dni) throws Exception {
-
         switch (tipoVentana) {
-            case "VAltaAdmins": {
-
-              
-                break;
-            }
             case "VBajaAdmins": {
-
                 administradorBD = new AdministradorBD();
                 administradorUML = administradorBD.localizarAdministrador(dni);
                 vBajaAdmins.rellenarCamposVentana(administradorUML.getDni(), administradorUML.getNombre(), administradorUML.getApellido(), administradorUML.getLogin().getCodLogin());
                 break;
             }
             case "VConsultarAdmins": {
-
                 administradorBD = new AdministradorBD();
                 administradorUML = administradorBD.localizarAdministrador(dni);
                 vConsultarAdmins.rellenarCamposVentana(administradorUML.getDni(), administradorUML.getNombre(), administradorUML.getApellido());
                 break;
             }
             case "VEditarAdmins": {
-
                 administradorBD = new AdministradorBD();
                 administradorUML = administradorBD.localizarAdministrador(dni);
                 vEditarAdmins.rellenarCamposVentana(administradorUML.getDni(), administradorUML.getNombre(), administradorUML.getApellido(), administradorUML.getLogin().getUser(), administradorUML.getLogin().getPassword());
@@ -397,7 +448,7 @@ public class Controladora {
     public static void eliminarAdministradorDelaBD(String dni, Integer codLogin) throws SQLException, ConexionProblemas {
         administradorBD = new AdministradorBD();
         loginBD = new LoginBD();
-        
+
         administradorBD.eliminarDeLaBDAdmin(dni);
         loginBD.eliminarDeLaBDAdminLog(codLogin);
     }
@@ -452,7 +503,7 @@ public class Controladora {
     public static void localizarJugadorEnBD(String dni) throws Exception {
         jugadorBD = new JugadorBD();
         Jugador jugador = jugadorBD.localizaJugador(dni);
-        
+
         //JOptionPane.showMessageDialog(null, jugador.getFechaNacimiento());
         vBajaJugadores.rellenarCamposVentana(jugador.getDni(), jugador.getNombre(), jugador.getApellido(), jugador.getNickname(), jugador.getSueldo(), jugador.getFechaNacimiento(), jugador.getNacionalidad(), jugador.getPosicion());
     }

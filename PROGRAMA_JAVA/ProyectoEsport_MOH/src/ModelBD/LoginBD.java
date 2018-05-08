@@ -24,7 +24,7 @@ public class LoginBD extends GenericoBD {
         GenericoBD genericoBD = new GenericoBD();
         con = genericoBD.abrirConexion(con);
 
-        CallableStatement cS = con.prepareCall("{call ESPORT_MOH.PROCE_generarAutoUserPass(?,?,?,?,?)}");
+        CallableStatement cS = con.prepareCall("{call ESPORT_MOH_1.PROCE_generarAutoUserPass(?,?,?,?,?)}");
 
         cS.setString(1, dni);
         cS.setString(2, nombre);

@@ -24,7 +24,7 @@ public class AdministradorBD extends GenericoBD {
         Integer codLogin = loginBD.generarLogin(administrador.getDni(), administrador.getNombre(), administrador.getApellido(), tipo);
 
         PreparedStatement pS = con.prepareStatement("INSERT INTO administrador (dni, nombre, apellido, codLogin) VALUES (?,?,?,?)");
-        pS.setString(1, administrador.getDni());
+        pS.setString(1, administrador.getDni().toUpperCase());
         pS.setString(2, administrador.getNombre());
         pS.setString(3, administrador.getApellido());
         pS.setInt(4, codLogin);
@@ -48,7 +48,7 @@ public class AdministradorBD extends GenericoBD {
          */
         PreparedStatement pS = con.prepareStatement(consultaSQL);
 
-        pS.setString(1, dni.toUpperCase());
+        pS.setString(1, dni);
 
         ResultSet datosRS = pS.executeQuery();
         if (!datosRS.next()) {

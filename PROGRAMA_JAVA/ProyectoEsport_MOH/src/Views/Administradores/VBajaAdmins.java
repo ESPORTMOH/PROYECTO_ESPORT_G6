@@ -6,6 +6,9 @@
 package Views.Administradores;
 
 import Exceptions.*;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import javax.swing.JOptionPane;
 import proyectoesport_moh.Controladora;
@@ -52,10 +55,14 @@ public class VBajaAdmins extends javax.swing.JFrame {
         jTapellido = new javax.swing.JTextField();
         jBconsultar = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
+        jBretroceder = new javax.swing.JButton();
+        jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setSize(new java.awt.Dimension(368, 387));
 
-        jLabel1.setText("BAJA ADMINISTRADOR");
+        jLabel1.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 24)); // NOI18N
+        jLabel1.setText("BAJA ADMINISTRADORES");
 
         jLabel2.setText("DNI");
 
@@ -63,6 +70,9 @@ public class VBajaAdmins extends javax.swing.JFrame {
 
         jLabel4.setText("Apellido");
 
+        jBbaja.setBackground(new java.awt.Color(153, 0, 0));
+        jBbaja.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jBbaja.setForeground(new java.awt.Color(255, 255, 255));
         jBbaja.setText("DAR DE BAJA");
         jBbaja.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -70,6 +80,15 @@ public class VBajaAdmins extends javax.swing.JFrame {
             }
         });
 
+        jTdni.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTdniActionPerformed(evt);
+            }
+        });
+
+        jBconsultar.setBackground(new java.awt.Color(0, 0, 153));
+        jBconsultar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jBconsultar.setForeground(new java.awt.Color(255, 255, 255));
         jBconsultar.setText("CONSULTAR");
         jBconsultar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -77,6 +96,9 @@ public class VBajaAdmins extends javax.swing.JFrame {
             }
         });
 
+        jButton1.setBackground(new java.awt.Color(0, 153, 51));
+        jButton1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("RESET");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -84,61 +106,82 @@ public class VBajaAdmins extends javax.swing.JFrame {
             }
         });
 
+        jBretroceder.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/retroceder.png"))); // NOI18N
+        jBretroceder.setBorder(null);
+        jBretroceder.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBretrocederActionPerformed(evt);
+            }
+        });
+
+        jLabel5.setText("* Escribe siempre en mayúsculas, gracias.");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(217, 217, 217)
-                        .addComponent(jLabel1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel5)
                             .addGroup(layout.createSequentialGroup()
-                                .addContainerGap()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel3)
+                                    .addComponent(jLabel4)
+                                    .addComponent(jLabel2))
+                                .addGap(33, 33, 33)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jTnombre, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jTdni, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jTapellido, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(0, 0, 0))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jBretroceder)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addComponent(jBconsultar)
                                 .addGap(18, 18, 18)
                                 .addComponent(jBbaja))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addGap(170, 170, 170)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel2)
-                                    .addComponent(jLabel3)
-                                    .addComponent(jLabel4))
-                                .addGap(34, 34, 34)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jTdni)
-                                    .addComponent(jTapellido)
-                                    .addComponent(jTnombre, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton1)))
-                .addContainerGap(61, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(jButton1)
+                                .addGap(97, 97, 97)))))
+                .addGap(56, 56, 56))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(54, 54, 54)
+                .addComponent(jLabel1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(26, 26, 26)
                 .addComponent(jLabel1)
-                .addGap(62, 62, 62)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel2)
-                    .addComponent(jTdni, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(41, 41, 41)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTdni, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTnombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTapellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4))
+                .addGap(18, 18, 18)
+                .addComponent(jLabel5)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jBconsultar)
+                    .addComponent(jBbaja))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jTnombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel3))
-                        .addGap(18, 18, 18)
-                        .addComponent(jTapellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 97, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jBbaja)
-                    .addComponent(jBconsultar)
-                    .addComponent(jButton1))
-                .addGap(48, 48, 48))
+                    .addComponent(jButton1)
+                    .addComponent(jBretroceder))
+                .addContainerGap())
         );
 
         pack();
@@ -151,7 +194,11 @@ public class VBajaAdmins extends javax.swing.JFrame {
                 + "\na este Administrador?");
 
         if (preguntaSalida == JOptionPane.YES_OPTION) {
-            Controladora.eliminarAdministradorDelaBD(jTdni.getText(), almacenarCodLogin);
+            try {
+                Controladora.eliminarAdministradorDelaBD(jTdni.getText(), almacenarCodLogin);
+            } catch (SQLException | ConexionProblemas ex) {
+                Logger.getLogger(VBajaAdmins.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
 
 
@@ -181,6 +228,22 @@ public class VBajaAdmins extends javax.swing.JFrame {
         // ACTION BOTON RESET
         resetearCamposParaConsultarDeNuevo();
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jTdniActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTdniActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTdniActionPerformed
+
+    private void jBretrocederActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBretrocederActionPerformed
+                // ACTION BOTON RETROCEDER      
+        try {
+            Controladora.abreTipoVentanaAdmins(tipoVentana);
+            Controladora.cierraTipoVentanaAdmins(tipoVentana);
+        } catch (CierreVError CVE) {
+            JOptionPane.showMessageDialog(this, CVE.getMessage());
+        } catch (Exception ex) {
+            Logger.getLogger(VPanelCrudAdministradores.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jBretrocederActionPerformed
 
     /**
      * @param args the command line arguments
@@ -221,11 +284,13 @@ public class VBajaAdmins extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBbaja;
     private javax.swing.JButton jBconsultar;
+    private javax.swing.JButton jBretroceder;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JTextField jTapellido;
     private javax.swing.JTextField jTdni;
     private javax.swing.JTextField jTnombre;
