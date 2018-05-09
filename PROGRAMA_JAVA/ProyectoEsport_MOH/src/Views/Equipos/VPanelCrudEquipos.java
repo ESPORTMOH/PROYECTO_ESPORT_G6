@@ -1,20 +1,24 @@
 package Views.Equipos;
 
-import Views.Usuarios.*;
-import Views.Jugadores.*;
-import Views.Administradores.*;
 import proyectoesport_moh.Controladora;
+import Views.Equipos.*;
 import Exceptions.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  * @author MIGUEL
  */
 public class VPanelCrudEquipos extends javax.swing.JFrame {
 
+    private final String tipoVentana;
+    
     /**
      * Creates new form VAdministracion
      */
     public VPanelCrudEquipos() {
+        this.tipoVentana = "VCrudEquipos";
         initComponents();
         this.setLocationRelativeTo(null);
         this.setResizable(false);
@@ -34,13 +38,14 @@ public class VPanelCrudEquipos extends javax.swing.JFrame {
         jBbaja = new javax.swing.JButton();
         jBmodifica = new javax.swing.JButton();
         jBconsulta = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
+        jMretroceder = new javax.swing.JMenuItem();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
 
+        jLabel1.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 24)); // NOI18N
         jLabel1.setText("CRUD DE EQUIPOS");
 
         jBalta.setText("DAR DE ALTA");
@@ -71,13 +76,17 @@ public class VPanelCrudEquipos extends javax.swing.JFrame {
             }
         });
 
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/equipo.png"))); // NOI18N
+
         jMenu1.setText("Archivo");
 
-        jMenuItem1.setText("Retroceder");
-        jMenu1.add(jMenuItem1);
-
-        jMenuItem2.setText("Salir");
-        jMenu1.add(jMenuItem2);
+        jMretroceder.setText("Retroceder");
+        jMretroceder.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMretrocederActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMretroceder);
 
         jMenuBar1.add(jMenu1);
 
@@ -88,23 +97,30 @@ public class VPanelCrudEquipos extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(136, 136, 136)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jBmodifica, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jBalta, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jBbaja, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jBconsulta, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(9, 9, 9)
-                        .addComponent(jLabel1)))
-                .addContainerGap(140, Short.MAX_VALUE))
+                        .addContainerGap()
+                        .addComponent(jLabel2))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(97, 97, 97)
+                        .addComponent(jLabel1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(44, 44, 44)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jBbaja, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jBalta, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jBmodifica, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jBconsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(23, 23, 23)
+                .addContainerGap()
                 .addComponent(jLabel1)
-                .addGap(27, 27, 27)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jBalta)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jBbaja)
@@ -112,7 +128,7 @@ public class VPanelCrudEquipos extends javax.swing.JFrame {
                 .addComponent(jBmodifica)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jBconsulta)
-                .addContainerGap(65, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -120,27 +136,64 @@ public class VPanelCrudEquipos extends javax.swing.JFrame {
 
     private void jBaltaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBaltaActionPerformed
         // ACTION ALTA
-        Controladora.VAltaEquipos();
-        Controladora.cierraMe();
+        try {
+            Controladora.VAltaEquipos();
+            Controladora.cierraTipoVentanas(tipoVentana);
+        } catch (CierreVError CVE) {
+            JOptionPane.showMessageDialog(this, CVE.getMessage());
+        } catch (Exception ex) {
+            Logger.getLogger(VPanelCrudEquipos.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jBaltaActionPerformed
 
     private void jBbajaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBbajaActionPerformed
         // ACTION BAJA
-        Controladora.VBajaEquipos();
-        Controladora.cierraMe();
+        try {
+            Controladora.VBajaEquipos();
+            Controladora.cierraTipoVentanas(tipoVentana);
+        } catch (CierreVError CVE) {
+            JOptionPane.showMessageDialog(this, CVE.getMessage());
+        } catch (Exception ex) {
+            Logger.getLogger(VPanelCrudEquipos.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jBbajaActionPerformed
 
     private void jBmodificaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBmodificaActionPerformed
         // ACTION MODIFICA
-        Controladora.VModificaEquipos();
-        Controladora.cierraMe();
+        try {
+            Controladora.VModificaEquipos();
+            Controladora.cierraTipoVentanas(tipoVentana);
+        } catch (CierreVError CVE) {
+            JOptionPane.showMessageDialog(this, CVE.getMessage());
+        } catch (Exception ex) {
+            Logger.getLogger(VPanelCrudEquipos.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jBmodificaActionPerformed
 
     private void jBconsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBconsultaActionPerformed
         // ACTION CONSULTA
-        Controladora.VConsultaEquipos();
-        Controladora.cierraMe();
+        try {
+            Controladora.VConsultaEquipos();
+            Controladora.cierraTipoVentanas(tipoVentana);
+        } catch (CierreVError CVE) {
+            JOptionPane.showMessageDialog(this, CVE.getMessage());
+        } catch (Exception ex) {
+            Logger.getLogger(VPanelCrudEquipos.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jBconsultaActionPerformed
+
+    private void jMretrocederActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMretrocederActionPerformed
+        // ARCHIVO / RETROCEDER:
+        try {
+            Controladora.abreTipoVentanas(tipoVentana);
+            Controladora.cierraTipoVentanas(tipoVentana);
+            this.dispose();
+        } catch (CierreVError CVE) {
+            JOptionPane.showMessageDialog(this, CVE.getMessage());
+        } catch (Exception ex) {
+            Logger.getLogger(VPanelCrudEquipos.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jMretrocederActionPerformed
 
     /**
      * @param args the command line arguments
@@ -167,38 +220,7 @@ public class VPanelCrudEquipos extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(VPanelCrudEquipos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
+
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -214,9 +236,9 @@ public class VPanelCrudEquipos extends javax.swing.JFrame {
     private javax.swing.JButton jBconsulta;
     private javax.swing.JButton jBmodifica;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMretroceder;
     // End of variables declaration//GEN-END:variables
 }

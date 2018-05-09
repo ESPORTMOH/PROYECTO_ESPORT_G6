@@ -5,10 +5,13 @@
  */
 package Views.Equipos;
 
-import Exceptions.EquipoNoExiste;
-import Views.Equipos.*;
-import javax.swing.JOptionPane;
 import proyectoesport_moh.Controladora;
+import Exceptions.*;
+import Views.Equipos.*;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -16,14 +19,18 @@ import proyectoesport_moh.Controladora;
  */
 public class VBajaEquipos extends javax.swing.JFrame {
 
+    private final String tipoVentana;
+
     /**
      * Creates new form VAltaAdmin
      */
     public VBajaEquipos() {
         initComponents();
+        this.tipoVentana = "VBajaEquipos";
         this.setLocationRelativeTo(null);
         this.setResizable(false);
-       
+        configPredeterminadaVentana();
+
     }
 
     /**
@@ -39,18 +46,21 @@ public class VBajaEquipos extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jBeliminar = new javax.swing.JButton();
+        jBbaja = new javax.swing.JButton();
         jTnombre = new javax.swing.JTextField();
         jTanioFundacion = new javax.swing.JTextField();
         jTciudad = new javax.swing.JTextField();
-        jBbuscar = new javax.swing.JButton();
+        jBconsultar = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jTestadio = new javax.swing.JTextField();
         jTpresupuesto = new javax.swing.JTextField();
+        jBreset = new javax.swing.JButton();
+        jBretroceder = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
 
+        jLabel1.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 24)); // NOI18N
         jLabel1.setText("BAJA EQUIPOS");
 
         jLabel2.setText("Nombre");
@@ -59,23 +69,47 @@ public class VBajaEquipos extends javax.swing.JFrame {
 
         jLabel4.setText("Ciudad");
 
-        jBeliminar.setText("ELIMINAR");
-        jBeliminar.addActionListener(new java.awt.event.ActionListener() {
+        jBbaja.setBackground(new java.awt.Color(153, 0, 0));
+        jBbaja.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jBbaja.setForeground(new java.awt.Color(255, 255, 255));
+        jBbaja.setText("DAR DE BAJA");
+        jBbaja.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBeliminarActionPerformed(evt);
+                jBbajaActionPerformed(evt);
             }
         });
 
-        jBbuscar.setText("BUSCAR");
-        jBbuscar.addActionListener(new java.awt.event.ActionListener() {
+        jBconsultar.setBackground(new java.awt.Color(0, 153, 51));
+        jBconsultar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jBconsultar.setForeground(new java.awt.Color(255, 255, 255));
+        jBconsultar.setText("CONSULTAR");
+        jBconsultar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBbuscarActionPerformed(evt);
+                jBconsultarActionPerformed(evt);
             }
         });
 
         jLabel5.setText("Nombre de su Estadio");
 
         jLabel6.setText("Presupuesto");
+
+        jBreset.setBackground(new java.awt.Color(0, 0, 153));
+        jBreset.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jBreset.setForeground(new java.awt.Color(255, 255, 255));
+        jBreset.setText("RESET");
+        jBreset.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBresetActionPerformed(evt);
+            }
+        });
+
+        jBretroceder.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/retroceder.png"))); // NOI18N
+        jBretroceder.setBorder(null);
+        jBretroceder.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBretrocederActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -84,12 +118,12 @@ public class VBajaEquipos extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(71, 71, 71)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGap(56, 56, 56)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jBbuscar)
-                                .addGap(40, 40, 40)
-                                .addComponent(jBeliminar))
+                                .addComponent(jBconsultar)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 64, Short.MAX_VALUE)
+                                .addComponent(jBbaja))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel2)
@@ -105,16 +139,22 @@ public class VBajaEquipos extends javax.swing.JFrame {
                                     .addComponent(jTestadio)
                                     .addComponent(jTpresupuesto)))))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(173, 173, 173)
-                        .addComponent(jLabel1)))
-                .addContainerGap(70, Short.MAX_VALUE))
+                        .addContainerGap()
+                        .addComponent(jBretroceder)
+                        .addGap(128, 128, 128)
+                        .addComponent(jBreset)))
+                .addContainerGap(42, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addGap(118, 118, 118))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(16, 16, 16)
+                .addContainerGap()
                 .addComponent(jLabel1)
-                .addGap(41, 41, 41)
+                .addGap(21, 21, 21)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel2)
                     .addComponent(jTnombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -127,32 +167,80 @@ public class VBajaEquipos extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(jTciudad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addGap(28, 28, 28)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(jTestadio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(29, 29, 29)
+                    .addComponent(jTestadio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel5))
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
-                    .addComponent(jTpresupuesto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 70, Short.MAX_VALUE)
+                    .addComponent(jTpresupuesto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel6))
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jBeliminar)
-                    .addComponent(jBbuscar))
-                .addGap(29, 29, 29))
+                    .addComponent(jBconsultar)
+                    .addComponent(jBbaja))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jBreset)
+                    .addComponent(jBretroceder))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jBeliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBeliminarActionPerformed
-        // ACTION ACEPTAR
-       
-    }//GEN-LAST:event_jBeliminarActionPerformed
+    private void jBbajaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBbajaActionPerformed
+        // ACTION ELIMINAR
+        int preguntaSalida = JOptionPane.showConfirmDialog(this, "¿Realmente deseas eliminar"
+                + "\na este Equipo?");
 
-    private void jBbuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBbuscarActionPerformed
-        
-    }//GEN-LAST:event_jBbuscarActionPerformed
+        if (preguntaSalida == JOptionPane.YES_OPTION) {
+            try {
+                Controladora.eliminarEquipoDelaBD(jTnombre.getText());
+                JOptionPane.showMessageDialog(this, "El Equipo ha sido "
+                        + "\ndado de baja correctamente");
+                resetearCamposParaConsultarDeNuevo();
+            } catch (SQLException | ConexionProblemas EX) {
+                Logger.getLogger(VBajaEquipos.class.getName()).log(Level.SEVERE, null, EX);
+            }
+        }
+
+    }//GEN-LAST:event_jBbajaActionPerformed
+
+    private void jBconsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBconsultarActionPerformed
+        // ACTION PARA BUSCAR ADMIN PRIMERO EN LA BD Y ELIMINAR DESPUES SI SE QUIERE
+        try {
+            if (jTnombre.getText().isEmpty()) {
+                throw new CampoNombreVacio();
+            } else {
+                Controladora.localizarEquipoEnBD(tipoVentana, jTnombre.getText());
+            }
+        } catch (CampoNombreVacio CNV) {
+            JOptionPane.showMessageDialog(this, CNV.getMensaje());
+        } catch (EquipoNoExiste ENE) {
+            JOptionPane.showMessageDialog(this, ENE.getMensaje());
+        } catch (EquiposCRUDError ECRUDE) {
+            JOptionPane.showMessageDialog(this, ECRUDE.getMensaje());
+        } catch (Exception E) {
+            JOptionPane.showMessageDialog(this, E.getMessage());
+        }
+    }//GEN-LAST:event_jBconsultarActionPerformed
+
+    private void jBretrocederActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBretrocederActionPerformed
+        try {
+            Controladora.abreTipoVentanas(tipoVentana);
+            Controladora.cierraTipoVentanas(tipoVentana);
+        } catch (CierreVError CVE) {
+            JOptionPane.showMessageDialog(this, CVE.getMessage());
+        } catch (Exception E) {
+            JOptionPane.showMessageDialog(this, E.getMessage());
+        }
+    }//GEN-LAST:event_jBretrocederActionPerformed
+
+    private void jBresetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBresetActionPerformed
+        // ACTION BOTON RESET
+        resetearCamposParaConsultarDeNuevo();
+    }//GEN-LAST:event_jBresetActionPerformed
 
     /**
      * @param args the command line arguments
@@ -179,262 +267,6 @@ public class VBajaEquipos extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(VBajaEquipos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -445,8 +277,10 @@ public class VBajaEquipos extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jBbuscar;
-    private javax.swing.JButton jBeliminar;
+    private javax.swing.JButton jBbaja;
+    private javax.swing.JButton jBconsultar;
+    private javax.swing.JButton jBreset;
+    private javax.swing.JButton jBretroceder;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -459,9 +293,33 @@ public class VBajaEquipos extends javax.swing.JFrame {
     private javax.swing.JTextField jTnombre;
     private javax.swing.JTextField jTpresupuesto;
     // End of variables declaration//GEN-END:variables
-    
+
     // FUNCIONES PROPIAS DE LA VISTA
+    public void rellenarCamposVentana(String nombre, Double presupuesto, String anioFundacion, String ciudad, String nombreEstadio) {
+        jTnombre.setText(nombre);
+        jTpresupuesto.setText(presupuesto.toString());
+        jTanioFundacion.setText(anioFundacion);
+        jTciudad.setText(ciudad);
+        jTestadio.setText(nombreEstadio);
+        jBbaja.setEnabled(true);
+    }
 
-    
+    public void configPredeterminadaVentana() {
+        jTpresupuesto.setEnabled(false);
+        jTanioFundacion.setEnabled(false);
+        jTciudad.setEnabled(false);
+        jTestadio.setEnabled(false);
+        jBbaja.setEnabled(false);
 
+    }
+
+    public void resetearCamposParaConsultarDeNuevo() {
+        jTnombre.setText(null);
+        jTpresupuesto.setText(null);
+        jTanioFundacion.setText(null);
+        jTciudad.setText(null);
+        jTestadio.setText(null);
+        jTnombre.setEnabled(true);
+        configPredeterminadaVentana();
+    }
 }

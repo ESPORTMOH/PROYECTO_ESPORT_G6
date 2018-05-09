@@ -2,8 +2,9 @@ package Views.Administradores;
 
 import proyectoesport_moh.Controladora;
 import Exceptions.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
-
 
 /**
  *
@@ -12,15 +13,17 @@ import javax.swing.JOptionPane;
 public class VConsultarAdmins extends javax.swing.JFrame {
 
     private final String tipoVentana;
+
     /**
      * Creates new form VAltaAdmin
      */
     public VConsultarAdmins() {
         this.tipoVentana = "VConsultarAdmins";
         initComponents();
+        this.setLocationRelativeTo(null);
         this.setResizable(false);
         configPredeterminadaVentana();
-        
+
     }
 
     /**
@@ -41,9 +44,11 @@ public class VConsultarAdmins extends javax.swing.JFrame {
         jTnombre = new javax.swing.JTextField();
         jTapellido = new javax.swing.JTextField();
         jBreset = new javax.swing.JButton();
+        jBretroceder = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
 
+        jLabel1.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 24)); // NOI18N
         jLabel1.setText("CONSULTAR ADMINISTRADORES");
 
         jLabel2.setText("DNI");
@@ -52,6 +57,9 @@ public class VConsultarAdmins extends javax.swing.JFrame {
 
         jLabel4.setText("Apellido");
 
+        jBconsultar.setBackground(new java.awt.Color(0, 153, 51));
+        jBconsultar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jBconsultar.setForeground(new java.awt.Color(255, 255, 255));
         jBconsultar.setText("CONSULTAR");
         jBconsultar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -59,10 +67,21 @@ public class VConsultarAdmins extends javax.swing.JFrame {
             }
         });
 
+        jBreset.setBackground(new java.awt.Color(0, 0, 153));
+        jBreset.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jBreset.setForeground(new java.awt.Color(255, 255, 255));
         jBreset.setText("RESET");
         jBreset.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBresetActionPerformed(evt);
+            }
+        });
+
+        jBretroceder.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/retroceder.png"))); // NOI18N
+        jBretroceder.setBorder(null);
+        jBretroceder.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBretrocederActionPerformed(evt);
             }
         });
 
@@ -73,14 +92,16 @@ public class VConsultarAdmins extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(87, 87, 87)
+                        .addGap(24, 24, 24)
                         .addComponent(jLabel1))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(71, 71, 71)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addContainerGap()
+                        .addComponent(jBretroceder)
+                        .addGap(65, 65, 65)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jBconsultar)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jBreset))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -92,14 +113,14 @@ public class VConsultarAdmins extends javax.swing.JFrame {
                                     .addComponent(jTdni)
                                     .addComponent(jTapellido)
                                     .addComponent(jTnombre, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                .addContainerGap(71, Short.MAX_VALUE))
+                .addContainerGap(30, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(18, 18, 18)
+                .addContainerGap()
                 .addComponent(jLabel1)
-                .addGap(39, 39, 39)
+                .addGap(36, 36, 36)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel2)
                     .addComponent(jTdni, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -112,11 +133,13 @@ public class VConsultarAdmins extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(jTapellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 58, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jBreset)
-                    .addComponent(jBconsultar))
-                .addGap(29, 29, 29))
+                .addGap(31, 31, 31)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jBretroceder, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jBreset)
+                        .addComponent(jBconsultar)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -129,7 +152,7 @@ public class VConsultarAdmins extends javax.swing.JFrame {
                 throw new CampoDniVacio();
             } else {
                 Controladora.localizarAdministradorEnBD(tipoVentana, jTdni.getText());
-            }   
+            }
         } catch (CampoDniVacio CDV) {
             JOptionPane.showMessageDialog(this, CDV.getMensaje());
         } catch (AdminNoExiste ANE) {
@@ -145,6 +168,18 @@ public class VConsultarAdmins extends javax.swing.JFrame {
         // ACTION BOTON RESET
         resetearCamposParaConsultarDeNuevo();
     }//GEN-LAST:event_jBresetActionPerformed
+
+    private void jBretrocederActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBretrocederActionPerformed
+        // ACTION BOTON RETROCEDER      
+        try {
+            Controladora.abreTipoVentanas(tipoVentana);
+            Controladora.cierraTipoVentanas(tipoVentana);
+        } catch (CierreVError CVE) {
+            JOptionPane.showMessageDialog(this, CVE.getMessage());
+        } catch (Exception E) {
+            Logger.getLogger(VPanelCrudAdministradores.class.getName()).log(Level.SEVERE, null, E);
+        }
+    }//GEN-LAST:event_jBretrocederActionPerformed
 
     /**
      * @param args the command line arguments
@@ -185,6 +220,7 @@ public class VConsultarAdmins extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBconsultar;
     private javax.swing.JButton jBreset;
+    private javax.swing.JButton jBretroceder;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -193,26 +229,26 @@ public class VConsultarAdmins extends javax.swing.JFrame {
     private javax.swing.JTextField jTdni;
     private javax.swing.JTextField jTnombre;
     // End of variables declaration//GEN-END:variables
-    
+
     // FUNCIONES PROPIAS DE LA VISTA
-    
-    public void rellenarCamposVentana(String dni, String nombre, String apellido){
+    public void rellenarCamposVentana(String dni, String nombre, String apellido) {
         jTnombre.setEnabled(true);
         jTapellido.setEnabled(true);
         jTdni.setText(dni);
         jTnombre.setText(nombre);
         jTapellido.setText(apellido);
     }
-    
+
     public void configPredeterminadaVentana() {
         jTnombre.setEnabled(false);
         jTapellido.setEnabled(false);
     }
-    
+
     public void resetearCamposParaConsultarDeNuevo() {
         jTdni.setText(null);
         jTnombre.setText(null);
         jTapellido.setText(null);
+        configPredeterminadaVentana();
     }
-    
+
 }

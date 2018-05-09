@@ -36,7 +36,7 @@ public class LoginBD extends GenericoBD {
 
         Integer id = cS.getInt(5);
 
-        con.close();
+        cerrarConexion(con);
 
         return id;
 
@@ -76,14 +76,14 @@ public class LoginBD extends GenericoBD {
         }
 
         // CIERRA CONEXION
-        con.close();
+        cerrarConexion(con);
 
         // RETORNO TIPO LOG A / D / U
         return tipolog;
     }
 
     // EDITAR LOGIN
-    public void ejecutarModificacion(String passwd, Integer codLoginADM) throws SQLException, ConexionProblemas {
+    public void ejecutarModificacionLog(String passwd, Integer codLoginADM) throws SQLException, ConexionProblemas {
 
         GenericoBD genericoBD = new GenericoBD();
         con = genericoBD.abrirConexion(con);
@@ -97,12 +97,42 @@ public class LoginBD extends GenericoBD {
 
         pS.executeUpdate();
 
-        con.close();
+        cerrarConexion(con);
 
     }
 
-    // ELIMINAR ADMIN LOGI
+    // ELIMINAR ADMIN LOGIN
     public void eliminarDeLaBDAdminLog(Integer codLogin) throws SQLException, ConexionProblemas {
+
+        GenericoBD genericoBD = new GenericoBD();
+
+        con = genericoBD.abrirConexion(con);
+
+        PreparedStatement pS = con.prepareStatement("DELETE FROM login WHERE codLogin = ?");
+        pS.setInt(1, codLogin);
+
+        pS.executeUpdate();
+
+        cerrarConexion(con);
+    }
+    
+    // ELIMINAR DUENIO LOGIN
+    public void eliminarDeLaBDDuenioLog(Integer codLogin) throws SQLException, ConexionProblemas {
+
+        GenericoBD genericoBD = new GenericoBD();
+
+        con = genericoBD.abrirConexion(con);
+
+        PreparedStatement pS = con.prepareStatement("DELETE FROM login WHERE codLogin = ?");
+        pS.setInt(1, codLogin);
+
+        pS.executeUpdate();
+
+        cerrarConexion(con);
+    }
+    
+    // ELIMINAR USUARIO LOGIN
+    public void eliminarDeLaBDUsuarioLog(Integer codLogin) throws SQLException, ConexionProblemas {
 
         GenericoBD genericoBD = new GenericoBD();
 

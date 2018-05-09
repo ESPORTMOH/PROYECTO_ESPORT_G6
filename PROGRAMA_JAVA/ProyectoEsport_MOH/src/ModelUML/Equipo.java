@@ -1,7 +1,7 @@
 package ModelUML;
 
 import java.util.ArrayList;
-import java.util.Date;
+
 
 /**
  * @author MIGUEL
@@ -17,7 +17,11 @@ public class Equipo {
 
     // ATRIBUTO DE LA RELACION CON JUGADOR
     private ArrayList<Jugador> listaJugadores = new ArrayList<>();
-
+    
+    // ATRIBUTO DE LA RELACION CON DUEÑO
+    private Duenio duenio;
+    
+    
     public Equipo() {
     }
 
@@ -29,9 +33,23 @@ public class Equipo {
         this.ciudad = ciudad;
         this.nombreEstadio = nombreEstadio;
     }
-    
-    public Equipo(Integer codLogin) {
+
+    public Equipo(Integer codEquipo, String nombre, Double presupuesto, String anioFundacion, String ciudad, String nombreEstadio, Duenio duenio) {
         this.codEquipo = codEquipo;
+        this.nombre = nombre;
+        this.presupuesto = presupuesto;
+        this.anioFundacion = anioFundacion;
+        this.ciudad = ciudad;
+        this.nombreEstadio = nombreEstadio;
+        this.duenio = duenio;
+    }
+
+    public Equipo(String nombre, Double presupuesto, String anioFundacion, String ciudad, String nombreEstadio) {
+        this.nombre = nombre;
+        this.presupuesto = presupuesto;
+        this.anioFundacion = anioFundacion;
+        this.ciudad = ciudad;
+        this.nombreEstadio = nombreEstadio;
     }
 
     public Integer getCodEquipo() {
@@ -89,11 +107,13 @@ public class Equipo {
     public void setListaJugadores(ArrayList<Jugador> listaJugadores) {
         this.listaJugadores = listaJugadores;
     }
-    
-    
 
-    
-    
-    
+    public Duenio getDuenio() {
+        return duenio;
+    }
+
+    public void setDuenio(Duenio duenio) {
+        this.duenio = duenio;
+    }
 
 }

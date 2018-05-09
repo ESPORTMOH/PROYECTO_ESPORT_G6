@@ -197,8 +197,8 @@ CREATE TABLE equipo (
   presupuesto NUMBER(6) NOT NULL,
   anioFundacion VARCHAR2(4) NOT NULL,
   ciudad VARCHAR2(20) NOT NULL,
-  nombreEstadio VARCHAR2(10) NOT NULL,
-  codDuenio NUMBER(4) NOT NULL -- RESERVADO FK
+  nombreEstadio VARCHAR2(20) NOT NULL,
+  codDuenio NUMBER(4) -- RESERVADO FK
 );
 
 -- --------------------------------------------------------
@@ -341,13 +341,7 @@ COMMIT;
 INSERT INTO login (codLogin, usuario, passwd, tipo) VALUES (DEFAULT, 'root','root','A');
 COMMIT;
 
-INSERT INTO administrador VALUES (DEFAULT, '00000000A', 'Miguel', 'Olmo', 1);
-COMMIT;
-
-INSERT INTO login (codLogin, usuario, passwd, tipo) VALUES (DEFAULT, 'admin','admin','A');
-COMMIT;
-
-INSERT INTO administrador VALUES (DEFAULT, '00000000B', 'Jose', 'Olmo', 2);
+INSERT INTO administrador VALUES (DEFAULT, '00000000A', 'MIGUEL', 'OLMO', 1);
 COMMIT;
 
 -- --------------------------------------------------------
@@ -356,16 +350,10 @@ COMMIT;
 -- Datos para la tabla 'login' y 'duenio' -  Creacion de un duenio SUPERDUENIO
 --
 
-INSERT INTO login (codLogin, usuario, passwd, tipo) VALUES (DEFAULT, 'super1','duenio1','D');
+INSERT INTO login (codLogin, usuario, passwd, tipo) VALUES (DEFAULT, 'SUPER','DUENIO','D');
 COMMIT;
 
-INSERT INTO duenio VALUES (DEFAULT, '00000000C', 'Super1', 'Duenio1', 3);
-COMMIT;
-
-INSERT INTO login (codLogin, usuario, passwd, tipo) VALUES (DEFAULT, 'super2','duenio2','D');
-COMMIT;
-
-INSERT INTO duenio VALUES (DEFAULT, '00000000D', 'Super2', 'Duenio2', 4);
+INSERT INTO duenio VALUES (DEFAULT, '00000000C', 'SUPER', 'DUENIO', 1);
 COMMIT;
 
 -- --------------------------------------------------------
@@ -374,16 +362,10 @@ COMMIT;
 -- Datos para la tabla 'login' y 'usuario' -  Creacion de un usuario SUPERUSUARIO
 --
 
-INSERT INTO login (codLogin, usuario, passwd, tipo) VALUES (DEFAULT, 'super1','usuario1','U');
+INSERT INTO login (codLogin, usuario, passwd, tipo) VALUES (DEFAULT, 'SUPER','USUARIO','U');
 COMMIT;
 
-INSERT INTO usuario VALUES (DEFAULT, '00000000E', 'Super1', 'Usuario1', 4);
-COMMIT;
-
-INSERT INTO login (codLogin, usuario, passwd, tipo) VALUES (DEFAULT, 'super2','usuario2','U');
-COMMIT;
-
-INSERT INTO usuario VALUES (DEFAULT, '00000000F', 'Super1', 'Usuario2', 5);
+INSERT INTO usuario VALUES (DEFAULT, '00000000E', 'SUPER', 'USUARIO', 1);
 COMMIT;
 
 -- --------------------------------------------------------
@@ -401,4 +383,36 @@ COMMIT;
 
 -- --------------------------------------------------------
 
+--
+-- Datos para la tabla 'equipo' -  Creacion de EQUIPOS VARIOS
+--
 
+INSERT INTO equipo VALUES (DEFAULT, 'LAKERS', 200000, '1947', 'Los Angeles', 'Staples Center', 1);
+COMMIT;
+
+INSERT INTO equipo VALUES (DEFAULT, 'BASKONIA', 200000, '1959', 'Vitoria', 'Buesa Arena', 1);
+COMMIT;
+
+INSERT INTO equipo VALUES (DEFAULT, 'OBRADOIRO', 200000, '1970', 'S.Compostela', 'Multiusos do Sar', 1);
+COMMIT;
+
+INSERT INTO equipo VALUES (DEFAULT, 'FUENLABRADA', 200000, '1981', 'Fuenlabrada', 'Fernando Martin', 1);
+COMMIT;
+
+INSERT INTO equipo VALUES (DEFAULT, 'BETIS', 200000, '1987', 'Sevilla', 'San Pablo', 1);
+COMMIT;
+
+INSERT INTO equipo VALUES (DEFAULT, 'MADRID', 200000, '1981', 'Madrid', 'Wizink Center', 1);
+COMMIT;
+
+INSERT INTO equipo VALUES (DEFAULT, 'ZARAGOZA', 200000, '2002', 'Zaragoza', 'Principe Felipe', 1);
+COMMIT;
+
+INSERT INTO equipo VALUES (DEFAULT, 'VALENCIA', 200000, '1986', 'Valencia', 'San Luis', 1);
+COMMIT;
+
+INSERT INTO equipo VALUES (DEFAULT, 'DONOSTI', 200000, '2001', 'San Sebastian', 'Donostia Arena', 1);
+COMMIT;
+
+INSERT INTO equipo VALUES (DEFAULT, 'MALAGA', 200000, '1977', 'Malaga', 'J.M. Martin Carpena', 1);
+COMMIT; 

@@ -3,9 +3,11 @@
  */
 package proyectoesport_moh;
 
+import Exceptions.AbreVError;
 import Exceptions.AdminCRUDError;
 import Exceptions.CierreVError;
 import Exceptions.ConexionProblemas;
+import Exceptions.DuenioCRUDError;
 import Views.*;
 import Views.Administradores.*;
 import Views.Duenios.*;
@@ -38,8 +40,6 @@ public class Controladora {
     private static VBajaAdmins vBajaAdmins;
     private static VEditarAdmins vEditarAdmins;
     private static VConsultarAdmins vConsultarAdmins;
-
-    private static Administrador adminTraido;
 
     // VISTAS USUARIOS
     private static VPanelUsuarios vpanelUsuarios;
@@ -83,6 +83,7 @@ public class Controladora {
 
     //
     private static DuenioBD duenioBD;
+    private static Duenio duenioUML;
 
     //
     private static JugadorBD jugadorBD;
@@ -112,7 +113,7 @@ public class Controladora {
         vLo = new VLogin();
         vLo.setVisible(true);
     }
-    
+
     ////////////////////////////////////////////////////////////////////////////////////////////////
     // APERTURA DE PANELES PARA EL MENU
     // ABRIR PANEL TIPO ADMINISTRADOR - A
@@ -306,7 +307,7 @@ public class Controladora {
     ////////////////////////////////////////////////////////////////////////////////////////////////
     // CONTROL GENERICO DE VENTANAS
     // CERRAR VENTANAS ADMINISTRADORES
-    public static void cierraTipoVentanaAdmins(String tipoVentana) throws Exception {
+    public static void cierraTipoVentanas(String tipoVentana) throws Exception {
         switch (tipoVentana) {
             case "VPanelAdmins": {
                 vpanelAdministracion.dispose();
@@ -315,7 +316,7 @@ public class Controladora {
             case "VCrudAdmins": {
                 vpanelCrudAdministradores.dispose();
                 break;
-            }            
+            }
             case "VAltaAdmins": {
                 vAltaAdmins.dispose();
                 break;
@@ -332,15 +333,35 @@ public class Controladora {
                 vConsultarAdmins.dispose();
                 break;
             }
+            case "VCrudDuenios": {
+                vpanelCrudDuenios.dispose();
+                break;
+            }
+            case "VAltaDuenios": {
+                vAltaDuenios.dispose();
+                break;
+            }
+            case "VBajaDuenios": {
+                vBajaDuenios.dispose();
+                break;
+            }
+            case "VConsultarDuenios": {
+                vConsultarDuenios.dispose();
+                break;
+            }
+            case "VEditarDuenios": {
+                vEditarDuenios.dispose();
+                break;
+            }
             default:
-                System.err.println("Error critico en el cierre de las ventanas de Administradores");
+                System.err.println("Error critico en el cierre de las ventanas");
                 throw new CierreVError();
         }
     }
 
     // ABRIR TIPO VENTANAS ADMINISTRADORES              
     // CERRAR VENTANA
-    public static void abreTipoVentanaAdmins(String tipoVentana) throws Exception {
+    public static void abreTipoVentanas(String tipoVentana) throws Exception {
         switch (tipoVentana) {
             case "VCrudAdmins": {
                 vpanelAdministracion.setVisible(true);
@@ -362,12 +383,32 @@ public class Controladora {
                 vpanelCrudAdministradores.setVisible(true);
                 break;
             }
+            case "VCrudDuenios": {
+                vpanelAdministracion.setVisible(true);
+                break;
+            }
+            case "VAltaDuenios": {
+                vpanelCrudDuenios.setVisible(true);
+                break;
+            }
+            case "VBajaDuenios": {
+                vpanelCrudDuenios.setVisible(true);
+                break;
+            }
+            case "VConsultarDuenios": {
+                vpanelCrudDuenios.setVisible(true);
+                break;
+            }
+            case "VEditarDuenios": {
+                vpanelCrudDuenios.setVisible(true);
+                break;
+            }
             default:
-                System.err.println("Error critico al abrir las ventanas de Administradores");
-                throw new CierreVError();
+                System.err.println("Error critico en la apertura de las ventanas");
+                throw new AbreVError();
         }
     }
-    
+
     ////////////////////////////////////////////////////////////////////////////////////////////////
     //CONSULTA PARA SOLICITAR ACCESO
     public static void consultarLogin(String usuario, String password) throws Exception {
@@ -456,7 +497,7 @@ public class Controladora {
     // EDITAR
     public static void pedirActualizarAdministrador(String passwd) throws SQLException, ConexionProblemas {
         loginUML.setPassword(passwd);
-        loginBD.ejecutarModificacion(loginUML.getPassword(), administradorUML.getLogin().getCodLogin());
+        loginBD.ejecutarModificacionLog(loginUML.getPassword(), administradorUML.getLogin().getCodLogin());
     }
 
     ////////////////////////////////////////////////////////////////////////////////////////////////
@@ -488,14 +529,46 @@ public class Controladora {
         duenioBD.insertarDuenioBD(duenio, tipo);
     }
 
-    // CONSULTA
-    public static void localizarDuenioEnBD(String dni) throws Exception {
-        duenioBD = new DuenioBD();
-        Duenio duenio = duenioBD.localizaDuenio(dni);
-        vBajaDuenios.rellenarCamposVentana(duenio.getDni(), duenio.getNombre(), duenio.getApellido());
+    // LOCALIZA
+    public static void localizarDuenioEnBD(String tipoVentana, String dni) throws Exception {
+        switch (tipoVentana) {
+            case "VBajaDuenios": {
+                duenioBD = new DuenioBD();
+                duenioUML = duenioBD.localizarDuenio(dni);
+                vBajaDuenios.rellenarCamposVentana(duenioUML.getDni(), duenioUML.getNombre(), duenioUML.getApellido(), duenioUML.getLogin().getCodLogin());
+                break;
+            }
+            case "VConsultarDuenios": {
+                duenioBD = new DuenioBD();
+                duenioUML = duenioBD.localizarDuenio(dni);
+                vConsultarDuenios.rellenarCamposVentana(duenioUML.getDni(), duenioUML.getNombre(), duenioUML.getApellido());
+                break;
+            }
+            case "VEditarDuenios": {
+                duenioBD = new DuenioBD();
+                duenioUML = duenioBD.localizarDuenio(dni);
+                vEditarDuenios.rellenarCamposVentana(duenioUML.getDni(), duenioUML.getNombre(), duenioUML.getApellido(), duenioUML.getLogin().getUser(), duenioUML.getLogin().getPassword());
+                break;
+            }
+            default:
+                System.err.println("Error critico en el CRUD de Dueños");
+                throw new DuenioCRUDError();
+        }
+    }
+    
+    // EDITAR
+    public static void pedirActualizarDuenio(String passwd) throws SQLException, ConexionProblemas {
+        loginUML.setPassword(passwd);
+        loginBD.ejecutarModificacionLog(loginUML.getPassword(), duenioUML.getLogin().getCodLogin());
     }
 
-    public static void eliminarDuenioDelaBD(String dni) {
+    // BAJA
+    public static void eliminarDuenioDelaBD(String dni, Integer codLogin) throws SQLException, ConexionProblemas {
+        duenioBD = new DuenioBD();
+        loginBD = new LoginBD();
+
+        duenioBD.eliminarDeLaBDDuenio(dni);
+        loginBD.eliminarDeLaBDDuenioLog(codLogin);
     }
 
     ////////////////////////////////////////////////////////////////////////////////////////////////
