@@ -105,7 +105,7 @@ public class VConsultaEquipos extends javax.swing.JFrame {
             }
         });
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Datos del Dueño"));
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "DATOS DEL DUEÑO", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11))); // NOI18N
 
         jLabel7.setText("DNI");
 

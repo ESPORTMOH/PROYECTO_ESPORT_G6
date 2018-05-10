@@ -2,7 +2,6 @@ package ModelUML;
 
 import java.util.ArrayList;
 
-
 /**
  * @author MIGUEL
  */
@@ -17,11 +16,10 @@ public class Equipo {
 
     // ATRIBUTO DE LA RELACION CON JUGADOR
     private ArrayList<Jugador> listaJugadores = new ArrayList<>();
-    
+
     // ATRIBUTO DE LA RELACION CON DUEÑO
     private Duenio duenio;
-    
-    
+
     public Equipo() {
     }
 
@@ -50,6 +48,15 @@ public class Equipo {
         this.anioFundacion = anioFundacion;
         this.ciudad = ciudad;
         this.nombreEstadio = nombreEstadio;
+    }
+
+    public Equipo(String nombre, Double presupuesto, String anioFundacion, String ciudad, String nombreEstadio, Integer tipoCodDuenioEquipoDefecto) {
+        this.nombre = nombre;
+        this.presupuesto = presupuesto;
+        this.anioFundacion = anioFundacion;
+        this.ciudad = ciudad;
+        this.nombreEstadio = nombreEstadio;
+        this.duenio = duenio;
     }
 
     public Integer getCodEquipo() {

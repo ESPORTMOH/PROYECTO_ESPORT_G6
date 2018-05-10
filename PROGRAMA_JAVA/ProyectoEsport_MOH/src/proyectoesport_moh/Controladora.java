@@ -87,9 +87,11 @@ public class Controladora {
 
     //
     private static JugadorBD jugadorBD;
+    private static Jugador jugadorUML;
 
     //
     private static EquipoBD equipoBD;
+    private static Equipo equipoUML;
 
     //
     private static PartidoBD partidoBD;
@@ -353,6 +355,26 @@ public class Controladora {
                 vEditarDuenios.dispose();
                 break;
             }
+            case "VCrudEquipos": {
+                vpanelCrudEquipos.dispose();
+                break;
+            }
+            case "VAltaEquipos": {
+                vAltaEquipos.dispose();
+                break;
+            }
+            case "VBajaEquipos": {
+                vBajaEquipos.dispose();
+                break;
+            }
+            case "VConsultarEquipos": {
+                vConsultarEquipos.dispose();
+                break;
+            }
+            case "VEditarEquipos": {
+                vEditarEquipos.dispose();
+                break;
+            }
             default:
                 System.err.println("Error critico en el cierre de las ventanas");
                 throw new CierreVError();
@@ -401,6 +423,26 @@ public class Controladora {
             }
             case "VEditarDuenios": {
                 vpanelCrudDuenios.setVisible(true);
+                break;
+            }
+            case "VCrudEquipos": {
+                vpanelAdministracion.setVisible(true);
+                break;
+            }
+            case "VAltaEquipos": {
+                vpanelCrudEquipos.setVisible(true);
+                break;
+            }
+            case "VBajaEquipos": {
+                vpanelCrudEquipos.setVisible(true);
+                break;
+            }
+            case "VConsultarEquipos": {
+                vpanelCrudEquipos.setVisible(true);
+                break;
+            }
+            case "VEditarEquipos": {
+                vpanelCrudEquipos.setVisible(true);
                 break;
             }
             default:
@@ -525,8 +567,8 @@ public class Controladora {
     // ALTA
     public static void altaDuenioBD(String dni, String nombre, String apellido, String tipo) throws Exception {
         duenioBD = new DuenioBD();
-        Duenio duenio = new Duenio(dni, nombre, apellido);
-        duenioBD.insertarDuenioBD(duenio, tipo);
+        duenioUML = new Duenio(dni, nombre, apellido);
+        duenioBD.insertarDuenioBD(duenioUML, tipo);
     }
 
     // LOCALIZA
@@ -555,7 +597,7 @@ public class Controladora {
                 throw new DuenioCRUDError();
         }
     }
-    
+
     // EDITAR
     public static void pedirActualizarDuenio(String passwd) throws SQLException, ConexionProblemas {
         loginUML.setPassword(passwd);
@@ -586,13 +628,50 @@ public class Controladora {
 
     ////////////////////////////////////////////////////////////////////////////////////////////////
     // SENTENCIAS ALTA / BAJA / CONSULTA / MODIFICACION > EQUIPO
-    public static void localizarEquipoEnBD(String dni) throws Exception {
+    // ALTA
+    public static void altaEquipoBD(String nombre, String presupuesto, String anioFundacion, String ciudad, String nombreEstadio) throws Exception {
         equipoBD = new EquipoBD();
-        Equipo equipo = equipoBD.localizaEquipo(dni);
-        // vBajaEquipos.rellenarCamposVentana();
+        equipoUML = new Equipo(nombre, Double.parseDouble(presupuesto), anioFundacion, ciudad, nombreEstadio);
+        equipoBD.insertarEquipoBD(equipoUML);
     }
 
-    public static void eliminarEquipoDelaBD(String nombre) {
+    // LOCALIZA
+    public static void localizarEquipoEnBD(String tipoVentana, String nombre) throws Exception {
+        switch (tipoVentana) {
+            case "VBajaEquipos": {
+                equipoBD = new EquipoBD();
+                equipoUML = equipoBD.localizarEquipo(nombre);
+                vBajaEquipos.rellenarCamposVentana(equipoUML.getNombre(), equipoUML.getPresupuesto(), equipoUML.getAnioFundacion(), equipoUML.getCiudad(), equipoUML.getNombreEstadio());
+                break;
+            }
+            case "VConsultarEquipos": {
+                equipoBD = new EquipoBD();
+                equipoUML = equipoBD.localizarEquipo(nombre);
+                vConsultarEquipos.rellenarCamposVentana(equipoUML.getNombre(), equipoUML.getPresupuesto(), equipoUML.getAnioFundacion(), equipoUML.getCiudad(), equipoUML.getNombreEstadio(), equipoUML.getDuenio().getDni(), equipoUML.getDuenio().getNombre());
+                break;
+            }
+            case "VEditarEquipos": {
+                equipoBD = new EquipoBD();
+                equipoUML = equipoBD.localizarEquipo(nombre);
+                vEditarEquipos.rellenarCamposVentana(equipoUML.getNombre(), equipoUML.getPresupuesto(), equipoUML.getAnioFundacion(), equipoUML.getCiudad(), equipoUML.getNombreEstadio());
+                break;
+            }
+            default:
+                System.err.println("Error critico en el CRUD de Equipos");
+                throw new DuenioCRUDError();
+        }
+    }
+
+    // EDITAR
+    public static void pedirActualizarEquipo(String ciudad, String estadio) throws SQLException, ConexionProblemas {
+        equipoBD = new EquipoBD();
+        equipoBD.ejecutarModificacionBDEquipo(ciudad, estadio);
+    }
+
+    // BAJA
+    public static void eliminarEquipoDelaBD(String nombre) throws SQLException, ConexionProblemas {
+        equipoBD = new EquipoBD();
+        equipoBD.eliminarDeLaBDEquipo(nombre);
     }
 
     ////////////////////////////////////////////////////////////////////////////////////////////////

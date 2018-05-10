@@ -39,7 +39,7 @@ public class Duenio {
     }
 
     public Duenio(int aInt) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+       this.codDuenio = aInt;
     }
 
     public Integer getCodDuenio() {
