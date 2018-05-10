@@ -1,0 +1,150 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="2DF7C3A9-E558-47C4-04C1-96CADEC3FC22" name="DUENO">
+<createdBy>1gdaw12</createdBy>
+<createdTime>2018-04-19 10:08:31 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>OPCION1_MER</ownerDesignName>
+<engineerTo>
+<item key="5A8C821C-4404-BFC2-4F18-A93BCD8E38CF" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="COD_DUENO" id="14624038-FB0C-616F-C354-9E45E952B48E">
+<createdBy>1gdaw12</createdBy>
+<createdTime>2018-04-19 10:08:46 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>OPCION1_MER</ownerDesignName>
+<engineerTo>
+<item key="5A8C821C-4404-BFC2-4F18-A93BCD8E38CF" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<ownDataTypeParameters>,10,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="NOMBRE" id="10468BBC-9E74-00A6-FC07-AD6B5BF42E79">
+<createdBy>1gdaw12</createdBy>
+<createdTime>2018-04-19 10:09:11 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>OPCION1_MER</ownerDesignName>
+<engineerTo>
+<item key="5A8C821C-4404-BFC2-4F18-A93BCD8E38CF" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>20</dataTypeSize>
+<ownDataTypeParameters>20,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="APELLIDOS" id="E982886F-F741-DE49-65BC-BA31C2A61B5D">
+<createdBy>1gdaw12</createdBy>
+<createdTime>2018-04-19 10:09:31 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>OPCION1_MER</ownerDesignName>
+<engineerTo>
+<item key="5A8C821C-4404-BFC2-4F18-A93BCD8E38CF" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>20</dataTypeSize>
+<ownDataTypeParameters>20,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="USER" id="8E7531E6-889F-8B08-1ECC-846156FB7147">
+<createdBy>1gdaw12</createdBy>
+<createdTime>2018-04-19 10:10:07 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>OPCION1_MER</ownerDesignName>
+<engineerTo>
+<item key="5A8C821C-4404-BFC2-4F18-A93BCD8E38CF" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>8</dataTypeSize>
+<ownDataTypeParameters>8,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="PASS" id="8296CB90-C545-7560-607B-FD2D06C803BD">
+<createdBy>1gdaw12</createdBy>
+<createdTime>2018-04-19 10:10:22 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>OPCION1_MER</ownerDesignName>
+<engineerTo>
+<item key="5A8C821C-4404-BFC2-4F18-A93BCD8E38CF" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>8</dataTypeSize>
+<ownDataTypeParameters>8,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="COD_EQUIPO" id="FC609D89-9A21-026E-1777-37B01123AB3E">
+<createdBy>1gdaw12</createdBy>
+<createdTime>2018-04-19 10:30:37 UTC</createdTime>
+<generatorID>3ACF3DE4-DEBD-A3C3-AE40-AAD6B8510426</generatorID>
+<ownerDesignName>OPCION1_MER</ownerDesignName>
+<engineerTo>
+<item key="5A8C821C-4404-BFC2-4F18-A93BCD8E38CF" value="true"/>
+</engineerTo>
+<referedAttribute>19551527-0124-166D-756D-79A85DC060C0</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>8</dataTypePrecision>
+<ownDataTypeParameters>,8,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="COD_LOGIN" id="4098247E-FEA5-32BC-6630-99F9F6D4F1D7">
+<createdBy>1gdaw12</createdBy>
+<createdTime>2018-04-19 10:56:49 UTC</createdTime>
+<generatorID>432B4458-BCEE-1732-A732-1F2753AC9C8E</generatorID>
+<ownerDesignName>OPCION1_MER</ownerDesignName>
+<engineerTo>
+<item key="5A8C821C-4404-BFC2-4F18-A93BCD8E38CF" value="true"/>
+</engineerTo>
+<referedAttribute>6D653160-16F3-61FE-D120-F90F8AB503F1</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<ownDataTypeParameters>,10,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="COD_ADMIN" id="E11B548A-2F9E-591C-D8B3-164EA75F6967">
+<createdBy>1gdaw12</createdBy>
+<createdTime>2018-04-19 10:57:01 UTC</createdTime>
+<generatorID>432B4458-BCEE-1732-A732-1F2753AC9C8E</generatorID>
+<ownerDesignName>OPCION1_MER</ownerDesignName>
+<engineerTo>
+<item key="5A8C821C-4404-BFC2-4F18-A93BCD8E38CF" value="true"/>
+</engineerTo>
+<referedAttribute>ED65C3B2-79D3-A7CC-A5A7-52A611AE833C</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>10</dataTypeSize>
+<ownDataTypeParameters>10,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="68432F5E-1963-72F4-385F-9AD2CE410850" name="DUENO PK">
+<createdBy>1gdaw12</createdBy>
+<createdTime>2018-04-19 10:09:09 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>OPCION1_MER</ownerDesignName>
+<engineerTo>
+<item key="5A8C821C-4404-BFC2-4F18-A93BCD8E38CF" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>14624038-FB0C-616F-C354-9E45E952B48E</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

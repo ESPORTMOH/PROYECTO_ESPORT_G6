@@ -1,0 +1,8 @@
+NOTA:
+-----
+
+* Si solo se puede corregir una opcion, la opcion selecccionada 
+  es la 1 y esta en la carpeta OPCION_SELECCIONADA (LA 1)
+
+
+

@@ -1,5 +1,0 @@
-[Fri Apr 27 08:32:41.159564 2018] [mpm_winnt:notice] [pid 15100:tid 840] AH00455: Apache/2.4.6 (Win32) PHP/5.4.17 configured -- resuming normal operations
-[Fri Apr 27 08:32:41.160564 2018] [mpm_winnt:notice] [pid 15100:tid 840] AH00456: Apache Lounge VC10 Server built: Jul 16 2013 11:15:41
-[Fri Apr 27 08:32:41.160564 2018] [core:notice] [pid 15100:tid 840] AH00094: Command line: 'C:\\GITHUB_MIGUEL_OLMO_NO_BORRAR\\COPIA_FORK_PROYECTO_ESPORT_G6\\PROYECTO_ESPORT_G6\\USBWEBSERVER_v8.6\\USBWebServer_v8.6/apache2/bin/httpd_usbwv8.exe -d C:/GITHUB_MIGUEL_OLMO_NO_BORRAR/COPIA_FORK_PROYECTO_ESPORT_G6/PROYECTO_ESPORT_G6/USBWEBSERVER_v8.6/USBWebServer_v8.6/apache2'
-[Fri Apr 27 08:32:41.170575 2018] [mpm_winnt:notice] [pid 15100:tid 840] AH00418: Parent: Created child process 11536
-[Fri Apr 27 08:32:42.506786 2018] [mpm_winnt:notice] [pid 11536:tid 872] AH00354: Child: Starting 64 worker threads.
