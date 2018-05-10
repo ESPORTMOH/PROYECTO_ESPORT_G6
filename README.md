@@ -17,6 +17,10 @@ Por Miguel Olmo Hernando
 
 * La Carpeta [**CAJON_DEL_DESASTRE**](https://github.com/migueloh/PROYECTO_ESPORT_G6/tree/master/CAJON_DEL_DESASTRE) es donde almaceno editables o pruebas que han sido descartadas. Se incluye una copia del programa USBWEBSERVER, esta es una version que no requiere de permisos y que funciona perfectamente en el aula del centro. NOTA: Las versiones más nuevas de este no funcionan.
 
-* La Carpeta [**ENUNCIADO**](https://github.com/migueloh/PROYECTO_ESPORT_G6/tree/master/ENUNCIADO) se encuentra una copia actualizada del mismo.
+* La Carpeta [**ENUNCIADO**](https://github.com/migueloh/PROYECTO_ESPORT_G6/tree/master/ENUNCIADO) tiene una copia actualizada del mismo.
 
-* La Carpeta [**PRGRAMACION_JAVA**](https://github.com/migueloh/PROYECTO_ESPORT_G6/tree/master/PROGRAMA_JAVA/ProyectoEsport_MOH) es donde tiene lugar la codificación del programa. Esta codificacón la realizo mediante Netbeans.
+* La Carpeta [**PRGRAMACION_JAVA**](https://github.com/migueloh/PROYECTO_ESPORT_G6/tree/master/PROGRAMA_JAVA/ProyectoEsport_MOH) es donde tiene lugar la codificación del programa. Esta codificación la realizo mediante Netbeans.
+
+# COMO EJECUTAR EL PROGRAMA:
+
+En proceso...
