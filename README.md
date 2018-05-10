@@ -13,7 +13,7 @@ Por Miguel Olmo Hernando
 			  Se incluyen los editables de estos.
 		
 
-* La Carpeta [**BLOG**](https://github.com/migueloh/PROYECTO_ESPORT_G6/tree/master/BLOG) es donde guardo las imagenes usadas en el Blog. Pueden visitar el Blog mediante el siguiente link: [**Proyectodawsport**](https://proyectodawsport.wordpress.com/). 
+* La Carpeta [**BLOG**](https://github.com/migueloh/PROYECTO_ESPORT_G6/tree/master/BLOG) es donde guardo las imagenes usadas en WordPress a modo de copia de seguridad. Pueden visitar el Blog mediante el siguiente link: [**Proyectodawsport**](https://proyectodawsport.wordpress.com/). 
 
 * La Carpeta [**CAJON_DEL_DESASTRE**](https://github.com/migueloh/PROYECTO_ESPORT_G6/tree/master/CAJON_DEL_DESASTRE) es donde almaceno editables o pruebas que han sido descartadas. Se incluye una copia del programa USBWEBSERVER, esta es una version que no requiere de permisos y que funciona perfectamente en el aula del centro. NOTA: Las versiones más nuevas de este no funcionan.
 
