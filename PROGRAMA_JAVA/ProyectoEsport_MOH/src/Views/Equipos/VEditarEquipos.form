@@ -25,12 +25,12 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="71" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                  <Group type="102" attributes="0">
+                      <EmptySpace min="-2" pref="69" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
-                              <Component id="jBbuscar" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="32767" attributes="0"/>
+                              <Component id="jBconsultar" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="70" max="-2" attributes="0"/>
                               <Component id="jBeditar" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" attributes="0">
@@ -45,28 +45,35 @@
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                   <Component id="jTnombre" max="32767" attributes="0"/>
                                   <Component id="jTciudad" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="jTanioFundacion" alignment="0" pref="140" max="32767" attributes="0"/>
+                                  <Component id="jTanioFundacion" alignment="0" max="32767" attributes="0"/>
                                   <Component id="jTestadio" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="jTpresupuesto" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="jTpresupuesto" alignment="0" min="-2" pref="140" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="173" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="107" max="-2" attributes="0"/>
                       <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace pref="70" max="32767" attributes="0"/>
+              <EmptySpace pref="69" max="32767" attributes="0"/>
+          </Group>
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="jBretroceder" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
+              <Component id="jBreset" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="173" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
               <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="1" attributes="0">
                   <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                   <Component id="jTnombre" min="-2" max="-2" attributes="0"/>
@@ -93,12 +100,19 @@
                   <Component id="jLabel6" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jTpresupuesto" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="70" max="32767" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jBeditar" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jBbuscar" alignment="3" min="-2" max="-2" attributes="0"/>
+              <EmptySpace type="separate" pref="22" max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="jBretroceder" alignment="1" min="-2" max="-2" attributes="0"/>
+                  <Group type="102" alignment="1" attributes="0">
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jBconsultar" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jBeditar" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="jBreset" min="-2" max="-2" attributes="0"/>
+                  </Group>
               </Group>
-              <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
+              <EmptySpace min="-2" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -106,6 +120,9 @@
   <SubComponents>
     <Component class="javax.swing.JLabel" name="jLabel1">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Yu Gothic UI Semibold" size="24" style="0"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="EDITAR EQUIPOS"/>
       </Properties>
     </Component>
@@ -126,6 +143,15 @@
     </Component>
     <Component class="javax.swing.JButton" name="jBeditar">
       <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="0" green="0" red="99" type="rgb"/>
+        </Property>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Tahoma" size="14" style="1"/>
+        </Property>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="ff" green="ff" red="ff" type="rgb"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="EDITAR"/>
       </Properties>
       <Events>
@@ -138,12 +164,21 @@
     </Component>
     <Component class="javax.swing.JTextField" name="jTciudad">
     </Component>
-    <Component class="javax.swing.JButton" name="jBbuscar">
+    <Component class="javax.swing.JButton" name="jBconsultar">
       <Properties>
-        <Property name="text" type="java.lang.String" value="BUSCAR"/>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="33" green="99" red="0" type="rgb"/>
+        </Property>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Tahoma" size="14" style="1"/>
+        </Property>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="ff" green="ff" red="ff" type="rgb"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="CONSULTAR"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBbuscarActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBconsultarActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel5">
@@ -159,6 +194,36 @@
     <Component class="javax.swing.JTextField" name="jTestadio">
     </Component>
     <Component class="javax.swing.JTextField" name="jTpresupuesto">
+    </Component>
+    <Component class="javax.swing.JButton" name="jBreset">
+      <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="99" green="0" red="0" type="rgb"/>
+        </Property>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Tahoma" size="14" style="1"/>
+        </Property>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="ff" green="ff" red="ff" type="rgb"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="RESET"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBresetActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="jBretroceder">
+      <Properties>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/Img/retroceder.png"/>
+        </Property>
+        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+          <Border info="null"/>
+        </Property>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBretrocederActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

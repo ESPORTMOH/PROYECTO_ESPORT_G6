@@ -5,13 +5,14 @@
  */
 package Views.Administradores;
 
+import proyectoesport_moh.Controladora;
 import Exceptions.*;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import javax.swing.JOptionPane;
-import proyectoesport_moh.Controladora;
+
 
 /**
  *
@@ -20,7 +21,7 @@ import proyectoesport_moh.Controladora;
 public class VBajaAdmins extends javax.swing.JFrame {
 
     private final String tipoVentana;
-    
+
     private static Integer almacenarCodLogin;
 
     /**
@@ -33,7 +34,6 @@ public class VBajaAdmins extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         this.setResizable(false);
         configPredeterminadaVentana();
-
     }
 
     /**
@@ -54,11 +54,10 @@ public class VBajaAdmins extends javax.swing.JFrame {
         jTnombre = new javax.swing.JTextField();
         jTapellido = new javax.swing.JTextField();
         jBconsultar = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        jBreset = new javax.swing.JButton();
         jBretroceder = new javax.swing.JButton();
-        jLabel5 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setSize(new java.awt.Dimension(368, 387));
 
         jLabel1.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 24)); // NOI18N
@@ -86,7 +85,7 @@ public class VBajaAdmins extends javax.swing.JFrame {
             }
         });
 
-        jBconsultar.setBackground(new java.awt.Color(0, 0, 153));
+        jBconsultar.setBackground(new java.awt.Color(0, 153, 51));
         jBconsultar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jBconsultar.setForeground(new java.awt.Color(255, 255, 255));
         jBconsultar.setText("CONSULTAR");
@@ -96,13 +95,13 @@ public class VBajaAdmins extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setBackground(new java.awt.Color(0, 153, 51));
-        jButton1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("RESET");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jBreset.setBackground(new java.awt.Color(0, 0, 153));
+        jBreset.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jBreset.setForeground(new java.awt.Color(255, 255, 255));
+        jBreset.setText("RESET");
+        jBreset.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                jBresetActionPerformed(evt);
             }
         });
 
@@ -114,8 +113,6 @@ public class VBajaAdmins extends javax.swing.JFrame {
             }
         });
 
-        jLabel5.setText("* Escribe siempre en mayúsculas, gracias.");
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -125,41 +122,38 @@ public class VBajaAdmins extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel5)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel3)
-                                    .addComponent(jLabel4)
-                                    .addComponent(jLabel2))
-                                .addGap(33, 33, 33)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jTnombre, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jTdni, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jTapellido, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(0, 0, 0))
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel2))
+                        .addGap(33, 33, 33)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jTnombre, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTdni, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTapellido, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(24, 24, 24))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jBretroceder)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addComponent(jBconsultar)
                                 .addGap(18, 18, 18)
                                 .addComponent(jBbaja))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(jButton1)
+                                .addComponent(jBreset)
                                 .addGap(97, 97, 97)))))
-                .addGap(56, 56, 56))
+                .addGap(50, 50, 50))
             .addGroup(layout.createSequentialGroup()
-                .addGap(54, 54, 54)
+                .addGap(37, 37, 37)
                 .addComponent(jLabel1)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(26, 26, 26)
+                .addContainerGap()
                 .addComponent(jLabel1)
-                .addGap(41, 41, 41)
+                .addGap(28, 28, 28)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTdni, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2))
@@ -171,15 +165,13 @@ public class VBajaAdmins extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTapellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4))
-                .addGap(18, 18, 18)
-                .addComponent(jLabel5)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jBconsultar)
                     .addComponent(jBbaja))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton1)
+                    .addComponent(jBreset)
                     .addComponent(jBretroceder))
                 .addContainerGap())
         );
@@ -189,19 +181,19 @@ public class VBajaAdmins extends javax.swing.JFrame {
 
     private void jBbajaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBbajaActionPerformed
         // ACTION ELIMINAR
-
         int preguntaSalida = JOptionPane.showConfirmDialog(this, "¿Realmente deseas eliminar"
                 + "\na este Administrador?");
 
         if (preguntaSalida == JOptionPane.YES_OPTION) {
             try {
                 Controladora.eliminarAdministradorDelaBD(jTdni.getText(), almacenarCodLogin);
-            } catch (SQLException | ConexionProblemas ex) {
-                Logger.getLogger(VBajaAdmins.class.getName()).log(Level.SEVERE, null, ex);
+                JOptionPane.showMessageDialog(this, "El Administrador ha sido "
+                        + "\ndado de baja correctamente");
+                resetearCamposParaConsultarDeNuevo();
+            } catch (SQLException | ConexionProblemas EX) {
+                Logger.getLogger(VBajaAdmins.class.getName()).log(Level.SEVERE, null, EX);
             }
         }
-
-
     }//GEN-LAST:event_jBbajaActionPerformed
 
     private void jBconsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBconsultarActionPerformed
@@ -210,7 +202,6 @@ public class VBajaAdmins extends javax.swing.JFrame {
             if (jTdni.getText().isEmpty()) {
                 throw new CampoDniVacio();
             } else {
-
                 Controladora.localizarAdministradorEnBD(tipoVentana, jTdni.getText());
             }
         } catch (CampoDniVacio CDV) {
@@ -224,24 +215,24 @@ public class VBajaAdmins extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jBconsultarActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void jBresetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBresetActionPerformed
         // ACTION BOTON RESET
         resetearCamposParaConsultarDeNuevo();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_jBresetActionPerformed
 
     private void jTdniActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTdniActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTdniActionPerformed
 
     private void jBretrocederActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBretrocederActionPerformed
-                // ACTION BOTON RETROCEDER      
+        // ACTION BOTON RETROCEDER      
         try {
-            Controladora.abreTipoVentanaAdmins(tipoVentana);
-            Controladora.cierraTipoVentanaAdmins(tipoVentana);
+            Controladora.abreTipoVentanas(tipoVentana);
+            Controladora.cierraTipoVentanas(tipoVentana);
         } catch (CierreVError CVE) {
             JOptionPane.showMessageDialog(this, CVE.getMessage());
-        } catch (Exception ex) {
-            Logger.getLogger(VPanelCrudAdministradores.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (Exception E) {
+            JOptionPane.showMessageDialog(this, E.getMessage());
         }
     }//GEN-LAST:event_jBretrocederActionPerformed
 
@@ -284,13 +275,12 @@ public class VBajaAdmins extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBbaja;
     private javax.swing.JButton jBconsultar;
+    private javax.swing.JButton jBreset;
     private javax.swing.JButton jBretroceder;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JTextField jTapellido;
     private javax.swing.JTextField jTdni;
     private javax.swing.JTextField jTnombre;
@@ -302,7 +292,7 @@ public class VBajaAdmins extends javax.swing.JFrame {
         jTnombre.setText(nombre);
         jTapellido.setText(apellido);
         jBbaja.setEnabled(true);
-        
+
         almacenarCodLoginRecibido(login);
     }
 
@@ -324,5 +314,6 @@ public class VBajaAdmins extends javax.swing.JFrame {
         almacenarCodLogin = login;
     }
 
-   
+
+
 }

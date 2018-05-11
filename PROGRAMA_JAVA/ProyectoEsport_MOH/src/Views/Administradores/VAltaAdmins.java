@@ -25,7 +25,6 @@ public class VAltaAdmins extends javax.swing.JFrame {
      */
     public VAltaAdmins() {
         this.tipoVentana = "VAltaAdmins";
-
         initComponents();
         this.setLocationRelativeTo(null);
         this.setResizable(false);
@@ -49,11 +48,9 @@ public class VAltaAdmins extends javax.swing.JFrame {
         jTnombre = new javax.swing.JTextField();
         jTapellido = new javax.swing.JTextField();
         jBretroceder = new javax.swing.JButton();
-        jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(365, 350));
-        setSize(new java.awt.Dimension(365, 350));
+        setSize(new java.awt.Dimension(360, 339));
 
         jLabel1.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 24)); // NOI18N
         jLabel1.setText("ALTA ADMINISTRADORES");
@@ -64,7 +61,7 @@ public class VAltaAdmins extends javax.swing.JFrame {
 
         jLabel4.setText("Apellido");
 
-        jBalta.setBackground(new java.awt.Color(0, 0, 153));
+        jBalta.setBackground(new java.awt.Color(0, 153, 51));
         jBalta.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jBalta.setForeground(new java.awt.Color(255, 255, 255));
         jBalta.setText("DAR DE ALTA");
@@ -84,8 +81,6 @@ public class VAltaAdmins extends javax.swing.JFrame {
             }
         });
 
-        jLabel5.setText("* Escribe siempre en mayúsculas, gracias.");
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -96,36 +91,30 @@ public class VAltaAdmins extends javax.swing.JFrame {
                         .addGap(40, 40, 40)
                         .addComponent(jLabel1))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(50, 50, 50)
-                        .addComponent(jLabel2)
-                        .addGap(101, 101, 101)
-                        .addComponent(jTdni, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(50, 50, 50)
-                        .addComponent(jLabel3)
-                        .addGap(75, 75, 75)
-                        .addComponent(jTnombre, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jBretroceder)
-                        .addGap(64, 64, 64)
-                        .addComponent(jBalta))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(50, 50, 50)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel5)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel4)
-                                .addGap(75, 75, 75)
-                                .addComponent(jTapellido, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(37, Short.MAX_VALUE))
+                        .addGap(81, 81, 81)
+                        .addComponent(jBalta)))
+                .addContainerGap(38, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel4))
+                .addGap(66, 66, 66)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jTapellido, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTnombre, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTdni, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(52, 52, 52))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(20, 20, 20)
+                .addContainerGap()
                 .addComponent(jLabel1)
-                .addGap(38, 38, 38)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(10, 10, 10)
@@ -138,17 +127,18 @@ public class VAltaAdmins extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addComponent(jTnombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTapellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4))
-                .addGap(23, 23, 23)
-                .addComponent(jLabel5)
-                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(24, 24, 24)
+                        .addComponent(jLabel4))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(jTapellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(28, 28, 28)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jBalta)
                     .addComponent(jBretroceder))
-                .addContainerGap(21, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jBretroceder.getAccessibleContext().setAccessibleDescription("");
@@ -157,7 +147,7 @@ public class VAltaAdmins extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jBaltaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBaltaActionPerformed
-        // ACTION ALTA ADMINISTRADOR
+        // BOTON ACTION ALTA ADMINISTRADOR
         try {
             if (jTdni.getText().isEmpty() | jTnombre.getText().isEmpty() | jTapellido.getText().isEmpty()) {
                 throw new CamposVacios();
@@ -180,14 +170,13 @@ public class VAltaAdmins extends javax.swing.JFrame {
     private void jBretrocederActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBretrocederActionPerformed
         // ACTION BOTON RETROCEDER      
         try {
-            Controladora.abreTipoVentanaAdmins(tipoVentana);
-            Controladora.cierraTipoVentanaAdmins(tipoVentana);
+            Controladora.abreTipoVentanas(tipoVentana);
+            Controladora.cierraTipoVentanas(tipoVentana);
         } catch (CierreVError CVE) {
             JOptionPane.showMessageDialog(this, CVE.getMessage());
         } catch (Exception ex) {
             Logger.getLogger(VPanelCrudAdministradores.class.getName()).log(Level.SEVERE, null, ex);
         }
-
     }//GEN-LAST:event_jBretrocederActionPerformed
 
     /**
@@ -233,12 +222,12 @@ public class VAltaAdmins extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JTextField jTapellido;
     private javax.swing.JTextField jTdni;
     private javax.swing.JTextField jTnombre;
     // End of variables declaration//GEN-END:variables
 
+    // FUNCIONES PROPIAS DE LA VISTA
     public void resetearCampos() {
         jTdni.setText(null);
         jTnombre.setText(null);

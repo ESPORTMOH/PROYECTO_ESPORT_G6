@@ -36,7 +36,6 @@ public class VPanelAdministracion extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMcerrarSesion = new javax.swing.JMenuItem();
-        jMsalir = new javax.swing.JMenuItem();
         jMCRUDadmin = new javax.swing.JMenu();
         jMadministradores = new javax.swing.JMenuItem();
         jMCRUDduenios = new javax.swing.JMenuItem();
@@ -47,7 +46,7 @@ public class VPanelAdministracion extends javax.swing.JFrame {
         jMcalendario = new javax.swing.JMenuItem();
         jMresultados = new javax.swing.JMenuItem();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setSize(new java.awt.Dimension(436, 388));
 
         jLabel1.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 24)); // NOI18N
@@ -67,9 +66,6 @@ public class VPanelAdministracion extends javax.swing.JFrame {
             }
         });
         jMenu1.add(jMcerrarSesion);
-
-        jMsalir.setText("Salir");
-        jMenu1.add(jMsalir);
 
         jMenuBar1.add(jMenu1);
 
@@ -165,7 +161,7 @@ public class VPanelAdministracion extends javax.swing.JFrame {
         // ACTION CRUD ADMINISTRADORES
         try {
             Controladora.abrirCrudAdministradores();
-            Controladora.cierraTipoVentanaAdmins(tipoVentana);
+            Controladora.cierraTipoVentanas(tipoVentana);
         } catch (Exception EX) {
             JOptionPane.showMessageDialog(this, EX.getMessage());
         }
@@ -176,7 +172,7 @@ public class VPanelAdministracion extends javax.swing.JFrame {
         // ACTION CRUD JUGADORES
         try {
             Controladora.abrirCrudJugadores();
-            Controladora.cierraTipoVentanaAdmins(tipoVentana);
+            Controladora.cierraTipoVentanas(tipoVentana);
         } catch (Exception EX) {
             JOptionPane.showMessageDialog(this, EX.getMessage());
         }
@@ -187,7 +183,7 @@ public class VPanelAdministracion extends javax.swing.JFrame {
         // ACTION CRUD DUENIOS
         try {
             Controladora.abrirCrudDuenios();
-            Controladora.cierraTipoVentanaAdmins(tipoVentana);
+            Controladora.cierraTipoVentanas(tipoVentana);
         } catch (Exception EX) {
             JOptionPane.showMessageDialog(this, EX.getMessage());
         }
@@ -198,7 +194,7 @@ public class VPanelAdministracion extends javax.swing.JFrame {
         // ACTION CRUD USUARIOS
         try {
             Controladora.abrirCrudUsuarios();
-            Controladora.cierraTipoVentanaAdmins(tipoVentana);
+            Controladora.cierraTipoVentanas(tipoVentana);
         } catch (Exception EX) {
             JOptionPane.showMessageDialog(this, EX.getMessage());
         }
@@ -209,7 +205,7 @@ public class VPanelAdministracion extends javax.swing.JFrame {
         // ACTION CRUD 
         try {
             Controladora.abrirCrudEquipos();
-            Controladora.cierraTipoVentanaAdmins(tipoVentana);
+            Controladora.cierraTipoVentanas(tipoVentana);
         } catch (Exception EX) {
             JOptionPane.showMessageDialog(this, EX.getMessage());
         }
@@ -219,7 +215,7 @@ public class VPanelAdministracion extends javax.swing.JFrame {
     private void jMcerrarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMcerrarSesionActionPerformed
         // ARCHIVO / RETROCEDER:
         try {
-            Controladora.cierraTipoVentanaAdmins(tipoVentana);
+            Controladora.cierraTipoVentanas(tipoVentana);
         } catch (Exception EX) {
             JOptionPane.showMessageDialog(this, EX.getMessage());
         }
@@ -277,6 +273,5 @@ public class VPanelAdministracion extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMresultados;
-    private javax.swing.JMenuItem jMsalir;
     // End of variables declaration//GEN-END:variables
 }

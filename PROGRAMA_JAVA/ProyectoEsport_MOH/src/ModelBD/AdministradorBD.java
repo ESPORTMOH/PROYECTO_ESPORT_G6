@@ -34,7 +34,7 @@ public class AdministradorBD extends GenericoBD {
     }
 
     // LOCALIZAR ADMINISTRADOR
-    public Administrador localizarAdministrador(String dni) throws SQLException, Exception {
+    public Administrador localizarAdministrador(String dni) throws Exception {
 
         GenericoBD genericoBD = new GenericoBD();
         con = genericoBD.abrirConexion(con);
@@ -43,12 +43,9 @@ public class AdministradorBD extends GenericoBD {
 
         String consultaSQL = "SELECT a.codAdministrador, a.dni, a.nombre, a.apellido, a.codLogin, l.codLogin, l.usuario, l.passwd FROM administrador a, login l  WHERE (a.codLogin = l.codLogin) AND a.dni = ?";
 
-        /*
-        SELECT codAdministrador, dni, nombre, apellido, codLogin FROM administrador WHERE dni = ?
-         */
         PreparedStatement pS = con.prepareStatement(consultaSQL);
 
-        pS.setString(1, dni);
+        pS.setString(1, dni.toUpperCase());
 
         ResultSet datosRS = pS.executeQuery();
         if (!datosRS.next()) {
@@ -71,15 +68,15 @@ public class AdministradorBD extends GenericoBD {
 
     // ELIMINAR ADMINISTRADOR
     public void eliminarDeLaBDAdmin(String dni) throws SQLException, ConexionProblemas {
-        
+
         GenericoBD genericoBD = new GenericoBD();
         con = genericoBD.abrirConexion(con);
-        
+
         PreparedStatement pS = con.prepareStatement("DELETE FROM administrador WHERE dni = ?");
         pS.setString(1, dni);
-        
+
         pS.executeUpdate();
-        
+
         cerrarConexion(con);
 
     }

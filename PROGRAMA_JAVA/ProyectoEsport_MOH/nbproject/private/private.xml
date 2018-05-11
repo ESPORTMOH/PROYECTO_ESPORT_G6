@@ -3,13 +3,16 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/GITHUB_TRABAJOS_MIGUEL_CURSO_2018/DAW_CURSO_2017_2018/COPIA_FORK_PROYECTO_ESPORT_G6/PROYECTO_ESPORT_G6/PROGRAMA_JAVA/ProyectoEsport_MOH/src/Views/Administradores/VEditarAdmins.java</file>
-            <file>file:/D:/GITHUB_TRABAJOS_MIGUEL_CURSO_2018/DAW_CURSO_2017_2018/COPIA_FORK_PROYECTO_ESPORT_G6/PROYECTO_ESPORT_G6/PROGRAMA_JAVA/ProyectoEsport_MOH/src/Views/Administradores/VBajaAdmins.java</file>
-            <file>file:/D:/GITHUB_TRABAJOS_MIGUEL_CURSO_2018/DAW_CURSO_2017_2018/COPIA_FORK_PROYECTO_ESPORT_G6/PROYECTO_ESPORT_G6/PROGRAMA_JAVA/ProyectoEsport_MOH/src/Views/Administradores/VAltaAdmins.java</file>
-            <file>file:/D:/GITHUB_TRABAJOS_MIGUEL_CURSO_2018/DAW_CURSO_2017_2018/COPIA_FORK_PROYECTO_ESPORT_G6/PROYECTO_ESPORT_G6/PROGRAMA_JAVA/ProyectoEsport_MOH/src/Views/Administradores/VConsultarAdmins.java</file>
-            <file>file:/D:/GITHUB_TRABAJOS_MIGUEL_CURSO_2018/DAW_CURSO_2017_2018/COPIA_FORK_PROYECTO_ESPORT_G6/PROYECTO_ESPORT_G6/PROGRAMA_JAVA/ProyectoEsport_MOH/src/Views/Administradores/VPanelCrudAdministradores.java</file>
-            <file>file:/D:/GITHUB_TRABAJOS_MIGUEL_CURSO_2018/DAW_CURSO_2017_2018/COPIA_FORK_PROYECTO_ESPORT_G6/PROYECTO_ESPORT_G6/PROGRAMA_JAVA/ProyectoEsport_MOH/src/proyectoesport_moh/Controladora.java</file>
-            <file>file:/D:/GITHUB_TRABAJOS_MIGUEL_CURSO_2018/DAW_CURSO_2017_2018/COPIA_FORK_PROYECTO_ESPORT_G6/PROYECTO_ESPORT_G6/PROGRAMA_JAVA/ProyectoEsport_MOH/src/Views/Administradores/VPanelAdministracion.java</file>
+            <file>file:/C:/GITHUB_MIGUEL_OLMO_NO_BORRAR/COPIA_FORK_PROYECTO_ESPORT_G6/PROYECTO_ESPORT_G6/PROGRAMA_JAVA/ProyectoEsport_MOH/src/Views/Equipos/VConsultaEquipos.java</file>
+            <file>file:/C:/GITHUB_MIGUEL_OLMO_NO_BORRAR/COPIA_FORK_PROYECTO_ESPORT_G6/PROYECTO_ESPORT_G6/PROGRAMA_JAVA/ProyectoEsport_MOH/src/ModelBD/AdministradorBD.java</file>
+            <file>file:/C:/GITHUB_MIGUEL_OLMO_NO_BORRAR/COPIA_FORK_PROYECTO_ESPORT_G6/PROYECTO_ESPORT_G6/PROGRAMA_JAVA/ProyectoEsport_MOH/src/ModelBD/EquipoBD.java</file>
+            <file>file:/C:/GITHUB_MIGUEL_OLMO_NO_BORRAR/COPIA_FORK_PROYECTO_ESPORT_G6/PROYECTO_ESPORT_G6/PROGRAMA_JAVA/ProyectoEsport_MOH/src/proyectoesport_moh/Controladora.java</file>
+            <file>file:/C:/GITHUB_MIGUEL_OLMO_NO_BORRAR/COPIA_FORK_PROYECTO_ESPORT_G6/PROYECTO_ESPORT_G6/PROGRAMA_JAVA/ProyectoEsport_MOH/src/Views/Equipos/VAltaEquipos.java</file>
+            <file>file:/C:/GITHUB_MIGUEL_OLMO_NO_BORRAR/COPIA_FORK_PROYECTO_ESPORT_G6/PROYECTO_ESPORT_G6/PROGRAMA_JAVA/ProyectoEsport_MOH/src/ModelBD/LoginBD.java</file>
+            <file>file:/C:/GITHUB_MIGUEL_OLMO_NO_BORRAR/COPIA_FORK_PROYECTO_ESPORT_G6/PROYECTO_ESPORT_G6/PROGRAMA_JAVA/ProyectoEsport_MOH/src/Views/Duenios/VEditarDuenios.java</file>
+            <file>file:/C:/GITHUB_MIGUEL_OLMO_NO_BORRAR/COPIA_FORK_PROYECTO_ESPORT_G6/PROYECTO_ESPORT_G6/PROGRAMA_JAVA/ProyectoEsport_MOH/src/Exceptions/EquiposCRUDError.java</file>
+            <file>file:/C:/GITHUB_MIGUEL_OLMO_NO_BORRAR/COPIA_FORK_PROYECTO_ESPORT_G6/PROYECTO_ESPORT_G6/PROGRAMA_JAVA/ProyectoEsport_MOH/src/Views/Equipos/VEditarEquipos.java</file>
+            <file>file:/C:/GITHUB_MIGUEL_OLMO_NO_BORRAR/COPIA_FORK_PROYECTO_ESPORT_G6/PROYECTO_ESPORT_G6/PROGRAMA_JAVA/ProyectoEsport_MOH/src/ModelBD/DuenioBD.java</file>
         </group>
     </open-files>
 </project-private>

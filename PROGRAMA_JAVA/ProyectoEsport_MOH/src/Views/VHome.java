@@ -16,7 +16,8 @@ public class VHome extends javax.swing.JFrame {
      */
     public VHome() {
         initComponents();
-        this.setExtendedState(this.getExtendedState() | VHome.MAXIMIZED_BOTH);
+        this.setLocationRelativeTo(null);
+        this.setResizable(false);
     }
 
     /**
@@ -36,8 +37,9 @@ public class VHome extends javax.swing.JFrame {
         jMinicioSesion = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/wallp.jpg.png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/wall.jpg"))); // NOI18N
 
         jMarchivo.setText("Archivo");
 
@@ -70,9 +72,9 @@ public class VHome extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(331, 331, 331)
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(58, 58, 58))
+                .addContainerGap()
+                .addComponent(jLabel1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

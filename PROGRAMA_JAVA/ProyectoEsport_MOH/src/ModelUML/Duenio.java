@@ -38,6 +38,10 @@ public class Duenio {
         this.login = login;
     }
 
+    public Duenio(int aInt) {
+       this.codDuenio = aInt;
+    }
+
     public Integer getCodDuenio() {
         return codDuenio;
     }

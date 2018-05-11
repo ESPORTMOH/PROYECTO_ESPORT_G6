@@ -5,10 +5,14 @@
  */
 package Views.Duenios;
 
-import Exceptions.DuenioNoExiste;
-import Views.Duenios.*;
-import javax.swing.JOptionPane;
 import proyectoesport_moh.Controladora;
+import Exceptions.*;
+import Views.Duenios.*;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+
 
 /**
  *
@@ -16,10 +20,16 @@ import proyectoesport_moh.Controladora;
  */
 public class VBajaDuenios extends javax.swing.JFrame {
 
+    private final String tipoVentana;
+
+    private static Integer almacenarCodLogin;
+
     /**
      * Creates new form VAltaAdmin
      */
     public VBajaDuenios() {
+        this.tipoVentana = "VBajaDuenios";
+
         initComponents();
         this.setLocationRelativeTo(null);
         this.setResizable(false);
@@ -39,14 +49,17 @@ public class VBajaDuenios extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jBeliminar = new javax.swing.JButton();
+        jBbaja = new javax.swing.JButton();
         jTdni = new javax.swing.JTextField();
         jTnombre = new javax.swing.JTextField();
         jTapellido = new javax.swing.JTextField();
-        jBbuscar = new javax.swing.JButton();
+        jBconsultar = new javax.swing.JButton();
+        jBreset = new javax.swing.JButton();
+        jBretroceder = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
 
+        jLabel1.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 24)); // NOI18N
         jLabel1.setText("BAJA DUEÑOS");
 
         jLabel2.setText("DNI");
@@ -55,17 +68,41 @@ public class VBajaDuenios extends javax.swing.JFrame {
 
         jLabel4.setText("Apellido");
 
-        jBeliminar.setText("ELIMINAR");
-        jBeliminar.addActionListener(new java.awt.event.ActionListener() {
+        jBbaja.setBackground(new java.awt.Color(153, 0, 0));
+        jBbaja.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jBbaja.setForeground(new java.awt.Color(255, 255, 255));
+        jBbaja.setText("DAR DE BAJA");
+        jBbaja.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBeliminarActionPerformed(evt);
+                jBbajaActionPerformed(evt);
             }
         });
 
-        jBbuscar.setText("BUSCAR");
-        jBbuscar.addActionListener(new java.awt.event.ActionListener() {
+        jBconsultar.setBackground(new java.awt.Color(0, 153, 51));
+        jBconsultar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jBconsultar.setForeground(new java.awt.Color(255, 255, 255));
+        jBconsultar.setText("CONSULTAR");
+        jBconsultar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBbuscarActionPerformed(evt);
+                jBconsultarActionPerformed(evt);
+            }
+        });
+
+        jBreset.setBackground(new java.awt.Color(0, 0, 153));
+        jBreset.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jBreset.setForeground(new java.awt.Color(255, 255, 255));
+        jBreset.setText("RESET");
+        jBreset.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBresetActionPerformed(evt);
+            }
+        });
+
+        jBretroceder.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/retroceder.png"))); // NOI18N
+        jBretroceder.setBorder(null);
+        jBretroceder.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBretrocederActionPerformed(evt);
             }
         });
 
@@ -73,36 +110,43 @@ public class VBajaDuenios extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 52, Short.MAX_VALUE)
+                .addComponent(jBconsultar)
+                .addGap(18, 18, 18)
+                .addComponent(jBbaja)
+                .addGap(50, 50, 50))
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(71, 71, 71)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jBbuscar)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jBeliminar))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel2)
-                                    .addComponent(jLabel3)
-                                    .addComponent(jLabel4))
-                                .addGap(34, 34, 34)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jTdni)
-                                    .addComponent(jTapellido)
-                                    .addComponent(jTnombre, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(139, 139, 139)
-                        .addComponent(jLabel1)))
-                .addContainerGap(71, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jBretroceder)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jBreset)
+                        .addGap(158, 158, 158))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jLabel1)
+                        .addGap(113, 113, 113))))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(71, 71, 71)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel4))
+                .addGap(34, 34, 34)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jTdni)
+                    .addComponent(jTapellido)
+                    .addComponent(jTnombre, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(19, 19, 19)
+                .addContainerGap()
                 .addComponent(jLabel1)
-                .addGap(38, 38, 38)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel2)
                     .addComponent(jTdni, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -115,31 +159,72 @@ public class VBajaDuenios extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(jTapellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 58, Short.MAX_VALUE)
+                .addGap(23, 23, 23)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jBeliminar)
-                    .addComponent(jBbuscar))
-                .addGap(29, 29, 29))
+                    .addComponent(jBbaja)
+                    .addComponent(jBconsultar))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jBreset)
+                    .addComponent(jBretroceder))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jBbuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBbuscarActionPerformed
-        // ACTION PARA BUSCAR DUENIO PRIMERO EN LA BD Y ELIMINAR DESPUES SI SE QUIERE
+    private void jBconsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBconsultarActionPerformed
+        // ACTION PARA BUSCAR DUEÑO PRIMERO EN LA BD Y ELIMINAR DESPUES SI SE QUIERE
         try {
-            Controladora.localizarDuenioEnBD(jTdni.getText());
+            if (jTdni.getText().isEmpty()) {
+                throw new CampoDniVacio();
+            } else {
+                Controladora.localizarDuenioEnBD(tipoVentana, jTdni.getText());
+            }
+        } catch (CampoDniVacio CDV) {
+            JOptionPane.showMessageDialog(this, CDV.getMensaje());
         } catch (DuenioNoExiste DNE) {
             JOptionPane.showMessageDialog(this, DNE.getMensaje());
+        } catch (DuenioCRUDError DCRUDE) {
+            JOptionPane.showMessageDialog(this, DCRUDE.getMensaje());
         } catch (Exception E) {
             JOptionPane.showMessageDialog(this, E.getMessage());
         }
-    }//GEN-LAST:event_jBbuscarActionPerformed
+    }//GEN-LAST:event_jBconsultarActionPerformed
 
-    private void jBeliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBeliminarActionPerformed
-        // ACTION ELIMINAR
-        Controladora.eliminarDuenioDelaBD(jTdni.getText());
-    }//GEN-LAST:event_jBeliminarActionPerformed
+    private void jBbajaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBbajaActionPerformed
+                // ACTION ELIMINAR
+        int preguntaSalida = JOptionPane.showConfirmDialog(this, "¿Realmente deseas eliminar"
+                + "\na este Dueño?");
+
+        if (preguntaSalida == JOptionPane.YES_OPTION) {
+            try {
+                Controladora.eliminarAdministradorDelaBD(jTdni.getText(), almacenarCodLogin);
+                JOptionPane.showMessageDialog(this, "El Dueño ha sido dado"
+                        + "\nde baja correctamente");
+                resetearCamposParaConsultarDeNuevo();
+            } catch (SQLException | ConexionProblemas EX) {
+                Logger.getLogger(VBajaDuenios.class.getName()).log(Level.SEVERE, null, EX);
+            }
+        }
+    }//GEN-LAST:event_jBbajaActionPerformed
+
+    private void jBretrocederActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBretrocederActionPerformed
+        // ACTION BOTON RETROCEDER      
+        try {
+            Controladora.abreTipoVentanas(tipoVentana);
+            Controladora.cierraTipoVentanas(tipoVentana);
+        } catch (CierreVError CVE) {
+            JOptionPane.showMessageDialog(this, CVE.getMessage());
+        } catch (Exception E) {
+            JOptionPane.showMessageDialog(this, E.getMessage());
+        }
+    }//GEN-LAST:event_jBretrocederActionPerformed
+
+    private void jBresetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBresetActionPerformed
+        // ACTION BOTON RESET
+        resetearCamposParaConsultarDeNuevo();
+    }//GEN-LAST:event_jBresetActionPerformed
 
     /**
      * @param args the command line arguments
@@ -166,22 +251,6 @@ public class VBajaDuenios extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(VBajaDuenios.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -192,8 +261,10 @@ public class VBajaDuenios extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jBbuscar;
-    private javax.swing.JButton jBeliminar;
+    private javax.swing.JButton jBbaja;
+    private javax.swing.JButton jBconsultar;
+    private javax.swing.JButton jBreset;
+    private javax.swing.JButton jBretroceder;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -202,22 +273,32 @@ public class VBajaDuenios extends javax.swing.JFrame {
     private javax.swing.JTextField jTdni;
     private javax.swing.JTextField jTnombre;
     // End of variables declaration//GEN-END:variables
-    
-    public void rellenarCamposVentana(String dni, String nombre, String apellido){
+
+    // FUNCIONES PROPIAS DE LA VISTA
+    public void rellenarCamposVentana(String dni, String nombre, String apellido, Integer login) {
         jTdni.setText(dni);
         jTnombre.setText(nombre);
         jTapellido.setText(apellido);
-        jBeliminar.setEnabled(true);
+        jBbaja.setEnabled(true);
+
+        almacenarCodLoginRecibido(login);
     }
-    
-    // FUNCIONES PROPIAS DE LA VISTA
-    
+
     public void configPredeterminadaVentana() {
-        jTdni.setText("");
-        jTnombre.setText("");
-        jTapellido.setText("");
         jTnombre.setEnabled(false);
         jTapellido.setEnabled(false);
-        jBeliminar.setEnabled(false);
+        jBbaja.setEnabled(false);
+    }
+
+    public void resetearCamposParaConsultarDeNuevo() {
+        jTdni.setText(null);
+        jTnombre.setText(null);
+        jTapellido.setText(null);
+        jTdni.setEnabled(true);
+        configPredeterminadaVentana();
+    }
+
+    public void almacenarCodLoginRecibido(Integer login) {
+        almacenarCodLogin = login;
     }
 }

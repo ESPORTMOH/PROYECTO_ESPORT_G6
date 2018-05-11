@@ -2,7 +2,8 @@ package Views.Administradores;
 
 import proyectoesport_moh.Controladora;
 import Exceptions.*;
-import ModelUML.Administrador;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -19,6 +20,7 @@ public class VEditarAdmins extends javax.swing.JFrame {
     public VEditarAdmins() {
         this.tipoVentana = "VEditarAdmins";
         initComponents();
+        this.setLocationRelativeTo(null);
         this.setResizable(false);
         configPredeterminadaVentana();
 
@@ -47,9 +49,11 @@ public class VEditarAdmins extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jTusuario = new javax.swing.JTextField();
         jTpasswd = new javax.swing.JTextField();
+        jBretroceder = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
 
+        jLabel1.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 24)); // NOI18N
         jLabel1.setText("EDITAR ADMINISTRADORES");
 
         jLabel2.setText("DNI");
@@ -58,6 +62,9 @@ public class VEditarAdmins extends javax.swing.JFrame {
 
         jLabel4.setText("Apellido");
 
+        jBconsultar.setBackground(new java.awt.Color(0, 153, 51));
+        jBconsultar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jBconsultar.setForeground(new java.awt.Color(255, 255, 255));
         jBconsultar.setText("CONSULTAR");
         jBconsultar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -65,6 +72,9 @@ public class VEditarAdmins extends javax.swing.JFrame {
             }
         });
 
+        jBeditar.setBackground(new java.awt.Color(153, 0, 0));
+        jBeditar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jBeditar.setForeground(new java.awt.Color(255, 255, 255));
         jBeditar.setText("EDITAR");
         jBeditar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -72,6 +82,9 @@ public class VEditarAdmins extends javax.swing.JFrame {
             }
         });
 
+        jBreset.setBackground(new java.awt.Color(0, 0, 153));
+        jBreset.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jBreset.setForeground(new java.awt.Color(255, 255, 255));
         jBreset.setText("RESET");
         jBreset.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -83,46 +96,58 @@ public class VEditarAdmins extends javax.swing.JFrame {
 
         jLabel6.setText("Constraseña");
 
+        jBretroceder.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/retroceder.png"))); // NOI18N
+        jBretroceder.setBorder(null);
+        jBretroceder.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBretrocederActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(118, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jBconsultar)
-                        .addGap(18, 18, 18)
-                        .addComponent(jBeditar)
-                        .addGap(22, 22, 22)
-                        .addComponent(jBreset)
-                        .addGap(44, 44, 44))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel5)
-                            .addComponent(jLabel6))
-                        .addGap(34, 34, 34)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jTdni)
-                            .addComponent(jTapellido)
-                            .addComponent(jTnombre, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
-                            .addComponent(jTusuario)
-                            .addComponent(jTpasswd))
-                        .addGap(138, 138, 138))))
             .addGroup(layout.createSequentialGroup()
-                .addGap(177, 177, 177)
+                .addGap(35, 35, 35)
                 .addComponent(jLabel1)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(0, 32, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jBretroceder)
+                        .addGap(108, 108, 108)
+                        .addComponent(jBreset))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(60, 60, 60)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel2)
+                                    .addComponent(jLabel3)
+                                    .addComponent(jLabel4)
+                                    .addComponent(jLabel5)
+                                    .addComponent(jLabel6))
+                                .addGap(34, 34, 34)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jTdni)
+                                    .addComponent(jTapellido)
+                                    .addComponent(jTnombre)
+                                    .addComponent(jTusuario)
+                                    .addComponent(jTpasswd, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jBconsultar)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jBeditar)))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(21, 21, 21)
+                .addContainerGap()
                 .addComponent(jLabel1)
-                .addGap(64, 64, 64)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel2)
                     .addComponent(jTdni, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -143,12 +168,15 @@ public class VEditarAdmins extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
                     .addComponent(jTpasswd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 54, Short.MAX_VALUE)
+                .addGap(25, 25, 25)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jBeditar)
                     .addComponent(jBconsultar)
-                    .addComponent(jBreset))
-                .addGap(23, 23, 23))
+                    .addComponent(jBeditar))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jBreset)
+                    .addComponent(jBretroceder))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -175,26 +203,38 @@ public class VEditarAdmins extends javax.swing.JFrame {
 
     // ACTION BOTON EDITAR
     private void jBeditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBeditarActionPerformed
-
         try {
             if (jTpasswd.getText().isEmpty()) {
                 throw new AdminPassVacia();
             } else {
                 Controladora.pedirActualizarAdministrador(jTpasswd.getText());
+                JOptionPane.showMessageDialog(this, "El Administrador ha sido "
+                        + "\neditado correctamente");
+                resetearCamposParaConsultarDeNuevo();
             }
         } catch (AdminPassVacia ANV) {
             JOptionPane.showMessageDialog(this, ANV.getMensaje());
-        }catch (Exception ex) {
-
+        } catch (Exception E) {
+            JOptionPane.showMessageDialog(this, E.getMessage());
         }
-
-
     }//GEN-LAST:event_jBeditarActionPerformed
 
     private void jBresetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBresetActionPerformed
         // ACTION BOTON RESET
         resetearCamposParaConsultarDeNuevo();
     }//GEN-LAST:event_jBresetActionPerformed
+
+    private void jBretrocederActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBretrocederActionPerformed
+        // ACTION BOTON RETROCEDER      
+        try {
+            Controladora.abreTipoVentanas(tipoVentana);
+            Controladora.cierraTipoVentanas(tipoVentana);
+        } catch (CierreVError CVE) {
+            JOptionPane.showMessageDialog(this, CVE.getMessage());
+        } catch (Exception E) {
+            Logger.getLogger(VPanelCrudAdministradores.class.getName()).log(Level.SEVERE, null, E);
+        }
+    }//GEN-LAST:event_jBretrocederActionPerformed
 
     /**
      * @param args the command line arguments
@@ -237,6 +277,7 @@ public class VEditarAdmins extends javax.swing.JFrame {
     private javax.swing.JButton jBconsultar;
     private javax.swing.JButton jBeditar;
     private javax.swing.JButton jBreset;
+    private javax.swing.JButton jBretroceder;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -254,16 +295,12 @@ public class VEditarAdmins extends javax.swing.JFrame {
     public void rellenarCamposVentana(String dni, String nombre, String apellido, String usuario, String passwd) {
         jTdni.setText(dni);
         jTdni.setEnabled(false);
-        
         jTnombre.setText(nombre);
-        
         jTapellido.setText(apellido);
-        
         jTusuario.setText(usuario);
-        
         jTpasswd.setEnabled(true);
         jTpasswd.setText(passwd);
-        
+        jBeditar.setEnabled(true);
     }
 
     public void configPredeterminadaVentana() {
@@ -271,6 +308,7 @@ public class VEditarAdmins extends javax.swing.JFrame {
         jTapellido.setEnabled(false);
         jTusuario.setEnabled(false);
         jTpasswd.setEnabled(false);
+        jBeditar.setEnabled(false);
     }
 
     public void resetearCamposParaConsultarDeNuevo() {
@@ -280,7 +318,6 @@ public class VEditarAdmins extends javax.swing.JFrame {
         jTapellido.setText(null);
         jTusuario.setText(null);
         jTpasswd.setText(null);
-
         configPredeterminadaVentana();
     }
 

@@ -1,5 +1,6 @@
 package ModelBD;
 
+import Exceptions.ConexionProblemas;
 import ModelUML.*;
 import Exceptions.EquipoNoExiste;
 
@@ -11,25 +12,43 @@ import java.sql.SQLException;
 /**
  * @author MIGUEL
  */
+public class EquipoBD extends GenericoBD {
 
-public class EquipoBD {
-    
     private Connection con;
 
-    public Equipo localizaEquipo(String nombre) throws SQLException, Exception {
+    // INSERTAR EQUIPO
+    public void insertarEquipoBD(Equipo equipo) throws SQLException, ClassNotFoundException, Exception {
+
+        GenericoBD genericoBD = new GenericoBD();
+        con = genericoBD.abrirConexion(con);
+
+        PreparedStatement pS = con.prepareStatement("INSERT INTO equipo e(e.nombre, e.presupuesto, e.anioFundacion, e.ciudad, e.nombreEstadio, e.codDuenio) VALUES (?,?,?,?,?)");
+        pS.setString(1, equipo.getNombre().toUpperCase());
+        pS.setDouble(2, equipo.getPresupuesto());
+        pS.setString(3, equipo.getAnioFundacion());
+        pS.setString(4, equipo.getCiudad());
+        pS.setString(5, equipo.getNombreEstadio());
+         
+        pS.executeUpdate();
+
+        cerrarConexion(con);
+    }
+
+    // LOCALIZAR EQUIPO
+    public Equipo localizarEquipo(String nombre) throws SQLException, Exception {
 
         GenericoBD genericoBD = new GenericoBD();
         con = genericoBD.abrirConexion(con);
 
         Equipo equipo = new Equipo();
 
-        String consultaSQL = "SELECT codEquipo, dni, nombre, apellido, codLogin FROM equipo WHERE nombre = ?";
-        
-        PreparedStatement pS=con.prepareStatement(consultaSQL);
+        String consultaSQL = "SELECT e.codEquipo, e.nombre, e.presupuesto, e.anioFundacion, e.ciudad, e.nombreEstadio, e.codDuenio, d.codDuenio, d.dni, d.nombre FROM equipo e, duenio d  WHERE (e.codDuenio = d.codDuenio) AND e.nombre = ?";
+
+        PreparedStatement pS = con.prepareStatement(consultaSQL);
 
         pS.setString(1, nombre.toUpperCase());
 
-        try (ResultSet datosRS = pS.executeQuery()) {
+            ResultSet datosRS = pS.executeQuery();
             if (!datosRS.next()) {
                 throw new EquipoNoExiste();
             } else {
@@ -39,18 +58,48 @@ public class EquipoBD {
                 equipo.setAnioFundacion(datosRS.getString("anioFundacion"));
                 equipo.setCiudad(datosRS.getString("ciudad"));
                 equipo.setNombreEstadio(datosRS.getString("nombreEstadio"));
-                
+                equipo.setDuenio(new Duenio(datosRS.getInt("codDuenio")));
+                equipo.getDuenio().setDni(datosRS.getString("dni"));
+                equipo.getDuenio().setNombre(datosRS.getString("nombre"));
             }
-        }
-        con.close();
+        
+        cerrarConexion(con);
         return equipo;
-
     }
     
-    
-    
+    // EDITAR EQUIPO
+    public void ejecutarModificacionBDEquipo(String ciudad, String estadio) throws SQLException, ConexionProblemas {
+
+        GenericoBD genericoBD = new GenericoBD();
+        con = genericoBD.abrirConexion(con);
+
+        String editaSQL = "UPDATE equipo e SET e.ciudad = ?, e.estadio = ? WHERE e.nombre = ?";
+
+        PreparedStatement pS = con.prepareStatement(editaSQL);
+
+        pS.setString(1, ciudad);
+        pS.setString(2, estadio);
+        // me falta pasarle un parametro
+
+        pS.executeUpdate();
+
+        cerrarConexion(con);
+
+    }
+
+    // ELIMINAR EQUIPO
+    public void eliminarDeLaBDEquipo(String nombre) throws SQLException, ConexionProblemas {
+
+        GenericoBD genericoBD = new GenericoBD();
+        con = genericoBD.abrirConexion(con);
+
+        PreparedStatement pS = con.prepareStatement("DELETE FROM equipo e WHERE e.nombre = ?");
+        pS.setString(1, nombre);
+
+        pS.executeUpdate();
+
+        cerrarConexion(con);
+
+    }
+
 }
-
-
-    
-   
