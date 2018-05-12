@@ -11,6 +11,8 @@ public class Duenio {
     private String nombre;
     private String apellido;
 
+    private boolean duenioEncontrado;
+
     // ATRIBUTO DE LA RELACION CON LOGIN
     private Login login;
 
@@ -39,7 +41,7 @@ public class Duenio {
     }
 
     public Duenio(int aInt) {
-       this.codDuenio = aInt;
+        this.codDuenio = aInt;
     }
 
     public Integer getCodDuenio() {
@@ -80,6 +82,14 @@ public class Duenio {
 
     public void setLogin(Login login) {
         this.login = login;
+    }
+
+    public boolean getDuenioEncontrado() {
+        return duenioEncontrado;
+    }
+
+    public void setDuenioEncontrado(boolean duenioEncontrado) {
+        this.duenioEncontrado = duenioEncontrado;
     }
 
 }

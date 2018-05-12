@@ -115,7 +115,12 @@ public class VPanelAdministracion extends javax.swing.JFrame {
 
         jMenu3.setText("Gestionar");
 
-        jMcalendario.setText("Calendarios");
+        jMcalendario.setText("Jornada");
+        jMcalendario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMcalendarioActionPerformed(evt);
+            }
+        });
         jMenu3.add(jMcalendario);
 
         jMresultados.setText("Resultados");
@@ -202,7 +207,7 @@ public class VPanelAdministracion extends javax.swing.JFrame {
     }//GEN-LAST:event_jMCRUDusuariosActionPerformed
 
     private void jMCRUDequiposActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMCRUDequiposActionPerformed
-        // ACTION CRUD 
+        // ACTION CRUD EQUIPOS  
         try {
             Controladora.abrirCrudEquipos();
             Controladora.cierraTipoVentanas(tipoVentana);
@@ -220,6 +225,16 @@ public class VPanelAdministracion extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, EX.getMessage());
         }
     }//GEN-LAST:event_jMcerrarSesionActionPerformed
+
+    private void jMcalendarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMcalendarioActionPerformed
+        // ARCHIVO / GESTION / JORNADAS
+        try {
+            Controladora.abrirCrudJornadas();
+            Controladora.cierraTipoVentanas(tipoVentana);
+        } catch (Exception EX) {
+            JOptionPane.showMessageDialog(this, EX.getMessage());
+        }
+    }//GEN-LAST:event_jMcalendarioActionPerformed
 
     /**
      * @param args the command line arguments

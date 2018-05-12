@@ -240,10 +240,10 @@ CREATE TABLE jornada (
                    NOORDER  
                    NOCYCLE  NOT NULL ENABLE
                    CONSTRAINT JO_CDJO_PK PRIMARY KEY,
-  fechaInicio DATE NOT NULL,
-  fechaFin DATE NOT NULL,
   numeroJornada VARCHAR2(3) NOT NULL,
-  numeroTemporada VARCHAR2(3) NOT NULL
+  numeroTemporada VARCHAR2(3) NOT NULL,
+  codEquipoLocal NUMBER(4) NOT NULL,
+  codEquipoVisitante NUMBER(4) NOT NULL
 );
 
 -- --------------------------------------------------------
@@ -260,7 +260,6 @@ CREATE TABLE jornada (
 
 ALTER TABLE login ADD (
   CONSTRAINT LO_LOTI_CK CHECK (tipo IN('A','a','U','u','D','d')));
-COMMIT;
 
 -- --------------------------------------------------------
 
@@ -270,7 +269,6 @@ COMMIT;
 
 ALTER TABLE administrador
   ADD CONSTRAINT AD_ADCL_FK FOREIGN KEY (codLogin) REFERENCES login (codLogin) ON DELETE CASCADE;
-COMMIT;
 
 -- --------------------------------------------------------
 
@@ -280,7 +278,6 @@ COMMIT;
 
 ALTER TABLE usuario
   ADD CONSTRAINT US_USCL_FK FOREIGN KEY (codLogin) REFERENCES login (codLogin) ON DELETE CASCADE;
-COMMIT;
 
 -- --------------------------------------------------------
 
@@ -289,7 +286,6 @@ COMMIT;
 --
 ALTER TABLE duenio
   ADD CONSTRAINT DU_DUCL_FK FOREIGN KEY (codLogin) REFERENCES login (codLogin) ON DELETE CASCADE;
-COMMIT;
 
 -- --------------------------------------------------------
 
@@ -301,7 +297,6 @@ ALTER TABLE jugador ADD (
   CONSTRAINT JU_JUEQ_FK FOREIGN KEY (codEquipo) REFERENCES equipo (codEquipo) ON DELETE CASCADE,
   CONSTRAINT JU_SUMN_CK CHECK (sueldo >= 735));
 -- Siguiendo las referencias salariales de la siguiente pagina web: http://www.salariominimo.es/2018.html
-COMMIT;
 
 -- --------------------------------------------------------
   
@@ -311,7 +306,6 @@ COMMIT;
 
 ALTER TABLE equipo
   ADD CONSTRAINT EQ_EQDU_FK FOREIGN KEY (codDuenio) REFERENCES duenio (codDuenio) ON DELETE CASCADE;
-COMMIT;
 
 -- --------------------------------------------------------
 
@@ -323,7 +317,6 @@ ALTER TABLE partido ADD(
   CONSTRAINT PA_PEQL_FK FOREIGN KEY (codLocal) REFERENCES equipo (codEquipo) ON DELETE CASCADE,
   CONSTRAINT PA_PEQV_FK FOREIGN KEY (codVisitante) REFERENCES equipo (codEquipo) ON DELETE CASCADE,
   CONSTRAINT PA_PAJO_FK FOREIGN KEY (codJornada) REFERENCES jornada (codJornada) ON DELETE CASCADE);
-COMMIT;
 
 -- --------------------------------------------------------
 

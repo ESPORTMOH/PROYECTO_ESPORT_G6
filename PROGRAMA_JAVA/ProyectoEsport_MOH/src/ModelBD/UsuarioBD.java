@@ -1,7 +1,7 @@
 package ModelBD;
 
-import Exceptions.DuenioNoExiste;
 import ModelUML.*;
+import Exceptions.*;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -11,7 +11,7 @@ import java.sql.SQLException;
  *
  * @author MIGUEL
  */
-public class UsuarioBD {
+public class UsuarioBD extends GenericoBD{
 
     private Connection con;
 
@@ -24,46 +24,65 @@ public class UsuarioBD {
         LoginBD loginBD = new LoginBD();
         Integer codLogin = loginBD.generarLogin(usuario.getDni(), usuario.getNombre(), usuario.getApellido(), tipo);
 
-        PreparedStatement pS = con.prepareStatement("INSERT INTO usuario (dni, nombre, apellido, codLogin) VALUES (?,?,?,?)");
-        pS.setString(1, usuario.getDni());
+        PreparedStatement pS = con.prepareStatement("INSERT INTO usuario u(u.dni, u.nombre, u.apellido, u.codLogin) VALUES (?,?,?,?)");
+        pS.setString(1, usuario.getDni().toUpperCase());
         pS.setString(2, usuario.getNombre());
         pS.setString(3, usuario.getApellido());
         pS.setInt(4, codLogin);
         pS.executeUpdate();
 
-        con.close();
+        cerrarConexion(con);
     }
 
-    // CONSULTAR
-    public Usuario localizaUsuario(String dni) throws SQLException, Exception {
+    // LOCALIZAR USUARIO
+    public Usuario localizarUsuario(String dni) throws SQLException, Exception {
 
         GenericoBD genericoBD = new GenericoBD();
         con = genericoBD.abrirConexion(con);
 
         Usuario usuario = new Usuario();
 
-        String consultaSQL = "SELECT codUsuario, dni, nombre, apellido, codLogin FROM usuario WHERE dni = ?";
+        String consultaSQL = "SELECT u.codUsuario, u.dni, u.nombre, u.apellido, u.codLogin, l.codLogin, l.usuario, l.passwd FROM usuario u, login l  WHERE (u.codLogin = l.codLogin) AND u.dni = ?";
 
         PreparedStatement pS = con.prepareStatement(consultaSQL);
 
         pS.setString(1, dni.toUpperCase());
 
-        try (ResultSet datosRS = pS.executeQuery()) {
-            if (!datosRS.next()) {
-                throw new DuenioNoExiste();
-            } else {
+        ResultSet datosRS = pS.executeQuery();
+        if (!datosRS.next()) {
+            throw new UsuarioNoExiste();
+        } else {
 
-                usuario.setCodUsuario(datosRS.getInt("codUsuario"));
-                usuario.setDni(datosRS.getString("dni"));
-                usuario.setNombre(datosRS.getString("nombre"));
-                usuario.setApellido(datosRS.getString("apellido"));
-
-                usuario.setLogin(new Login(datosRS.getInt("codLogin")));
-            }
+            usuario.setCodUsuario(datosRS.getInt("codUsuario"));
+            usuario.setDni(datosRS.getString("dni"));
+            usuario.setNombre(datosRS.getString("nombre"));
+            usuario.setApellido(datosRS.getString("apellido"));
+            usuario.setLogin(new Login(datosRS.getInt("codLogin")));
+            usuario.getLogin().setUser(datosRS.getString("usuario"));
+            usuario.getLogin().setPassword(datosRS.getString("passwd"));
         }
-        con.close();
-        return usuario;
 
+        cerrarConexion(con);
+
+        return usuario;
+    }
+    
+        // EDITAR LOGIN
+    public void ejecutarModificacionLog(String passwd, Integer codLoginADM) throws SQLException, ConexionProblemas {
+
+        GenericoBD genericoBD = new GenericoBD();
+        con = genericoBD.abrirConexion(con);
+
+        String editaSQL = "UPDATE login l SET l.passwd = ? WHERE (l.codLogin = ?)";
+
+        PreparedStatement pS = con.prepareStatement(editaSQL);
+
+        pS.setString(1, passwd);
+        pS.setString(2, codLoginADM.toString());
+
+        pS.executeUpdate();
+
+        cerrarConexion(con);
     }
 
 }

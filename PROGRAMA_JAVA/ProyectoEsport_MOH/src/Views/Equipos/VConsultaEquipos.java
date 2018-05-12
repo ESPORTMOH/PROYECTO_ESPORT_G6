@@ -58,9 +58,7 @@ public class VConsultaEquipos extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
         jTdniDuenio = new javax.swing.JTextField();
-        jTnombreDuenio = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
 
@@ -109,35 +107,25 @@ public class VConsultaEquipos extends javax.swing.JFrame {
 
         jLabel7.setText("DNI");
 
-        jLabel8.setText("Nombre");
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(40, 40, 40)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel7)
-                    .addComponent(jLabel8))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 70, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jTnombreDuenio, javax.swing.GroupLayout.DEFAULT_SIZE, 135, Short.MAX_VALUE)
-                    .addComponent(jTdniDuenio))
-                .addGap(39, 39, 39))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel7)
+                .addGap(43, 43, 43)
+                .addComponent(jTdniDuenio, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(61, 61, 61))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(18, 18, 18)
+                .addGap(15, 15, 15)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
                     .addComponent(jTdniDuenio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel8)
-                    .addComponent(jTnombreDuenio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(17, 17, 17))
+                .addContainerGap(18, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -295,26 +283,28 @@ public class VConsultaEquipos extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField jTanioFundacion;
     private javax.swing.JTextField jTciudad;
     private javax.swing.JTextField jTdniDuenio;
     private javax.swing.JTextField jTestadio;
     private javax.swing.JTextField jTnombre;
-    private javax.swing.JTextField jTnombreDuenio;
     private javax.swing.JTextField jTpresupuesto;
     // End of variables declaration//GEN-END:variables
 
 // FUNCIONES PROPIAS DE LA VISTA
-    public void rellenarCamposVentana(String nombre, Double presupuesto, String anioFundacion, String ciudad, String nombreEstadio, String dni, String nombreD) {
+    public void rellenarCamposVentana(String nombre, Double presupuesto, String anioFundacion, String ciudad, String nombreEstadio, String dni) {
         jTnombre.setText(nombre);
+        jTpresupuesto.setEnabled(true);
         jTpresupuesto.setText(presupuesto.toString());
+        jTanioFundacion.setEnabled(true);
         jTanioFundacion.setText(anioFundacion);
+        jTciudad.setEnabled(true);
         jTciudad.setText(ciudad);
+        jTestadio.setEnabled(true);
         jTestadio.setText(nombreEstadio);
+        jTdniDuenio.setEnabled(true);
         jTdniDuenio.setText(dni);
-        jTnombreDuenio.setText(nombreD);
     }
 
     public void configPredeterminadaVentana() {
@@ -323,7 +313,6 @@ public class VConsultaEquipos extends javax.swing.JFrame {
         jTciudad.setEnabled(false);
         jTestadio.setEnabled(false);
         jTdniDuenio.setEnabled(false);
-        jTnombreDuenio.setEnabled(false);
     }
 
     public void resetearCamposParaConsultarDeNuevo() {
@@ -333,8 +322,8 @@ public class VConsultaEquipos extends javax.swing.JFrame {
         jTciudad.setText(null);
         jTestadio.setText(null);
         jTnombre.setEnabled(true);
+        jTdniDuenio.setText(null);
         jTdniDuenio.setEnabled(true);
-        jTnombreDuenio.setEnabled(true);
         configPredeterminadaVentana();
     }
 }

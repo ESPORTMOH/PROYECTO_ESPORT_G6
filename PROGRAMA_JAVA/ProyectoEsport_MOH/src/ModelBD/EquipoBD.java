@@ -8,6 +8,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
 
 /**
  * @author MIGUEL
@@ -60,7 +62,6 @@ public class EquipoBD extends GenericoBD {
                 equipo.setNombreEstadio(datosRS.getString("nombreEstadio"));
                 equipo.setDuenio(new Duenio(datosRS.getInt("codDuenio")));
                 equipo.getDuenio().setDni(datosRS.getString("dni"));
-                equipo.getDuenio().setNombre(datosRS.getString("nombre"));
             }
         
         cerrarConexion(con);
@@ -102,4 +103,34 @@ public class EquipoBD extends GenericoBD {
 
     }
 
+    public ArrayList<Equipo> getAllEquipos() throws SQLException, Exception {
+
+        GenericoBD genericoBD = new GenericoBD();
+        con = genericoBD.abrirConexion(con);
+
+        ArrayList <Equipo> listaEquipos = new ArrayList();
+        String consultaSQL = "SELECT CODEQUIPO, NOMBRE, PRESUPUESTO, ANIOFUNDACION, CIUDAD, NOMBREESTADIO, CODDUENIO FROM equipo WHERE CODEQUIPO <> 41 ";
+        
+        Statement stmt=con.createStatement();
+        
+        ResultSet rs = stmt.executeQuery(consultaSQL);
+        while (rs.next()) {
+            Equipo eq = new Equipo();
+            eq.setCodEquipo(rs.getInt("CODEQUIPO"));
+            eq.setNombre(rs.getString("NOMBRE"));
+            eq.setPresupuesto(rs.getDouble("CODEQUIPO"));
+            //eq.setAnioFundacion(rs.getDate("ANIOFUNDACION"));
+            eq.setCiudad(rs.getString("CIUDAD"));
+            eq.setNombreEstadio(rs.getString("NOMBREESTADIO"));
+            eq.setDuenio(new Duenio(rs.getInt("CODDUENIO")));
+  
+            listaEquipos.add(eq);
+        }
+
+        con.close();
+
+        return listaEquipos;
+
+    }
+    
 }

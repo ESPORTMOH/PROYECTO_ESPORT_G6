@@ -7,9 +7,13 @@ package Views.Equipos;
 
 import proyectoesport_moh.Controladora;
 import Exceptions.*;
+import ModelUML.Duenio;
 import Views.Equipos.*;
+import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 /**
@@ -19,17 +23,28 @@ import javax.swing.JOptionPane;
 public class VAltaEquipos extends javax.swing.JFrame {
 
     private final String tipoVentana;
-    
+
+
     /**
-     * Creates new form VAltaAdmin
+     * Creates new form VAltaEquipos
      */
     public VAltaEquipos() {
         this.tipoVentana = "VAltaEquipos";
         initComponents();
         this.setLocationRelativeTo(null);
         this.setResizable(false);
-
     }
+    
+    public VAltaEquipos(ArrayList <Duenio> listaDuenios ){
+        initComponents();
+        this.tipoVentana = "VAltaEquipos";
+        this.setLocationRelativeTo(null);
+        this.setResizable(false);
+        
+        rellenarComboListaDuenios(listaDuenios);
+    }
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -54,7 +69,7 @@ public class VAltaEquipos extends javax.swing.JFrame {
         jTpresupuesto = new javax.swing.JTextField();
         jBretroceder = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        jComboBduenios = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
 
@@ -91,27 +106,21 @@ public class VAltaEquipos extends javax.swing.JFrame {
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "ASIGNAR DUEÑO", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11))); // NOI18N
 
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(54, 54, 54)
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jComboBduenios, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(58, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(29, 29, 29)
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(31, Short.MAX_VALUE))
+                .addGap(15, 15, 15)
+                .addComponent(jComboBduenios, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(15, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -221,10 +230,6 @@ public class VAltaEquipos extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jBretrocederActionPerformed
 
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox1ActionPerformed
-
     /**
      * @param args the command line arguments
      */
@@ -263,7 +268,7 @@ public class VAltaEquipos extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBalta;
     private javax.swing.JButton jBretroceder;
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JComboBox<String> jComboBduenios;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -287,4 +292,13 @@ public class VAltaEquipos extends javax.swing.JFrame {
         jTestadio.setText(null);
     }
 
+   
+    private void rellenarComboListaDuenios(ArrayList<Duenio> listaDuenios) {
+        
+        jComboBduenios.addItem("Selecciona una opcion");
+        for (int i = 0; i < listaDuenios.size(); i++) {
+
+                jComboBduenios.addItem(listaDuenios.get(i).getDni() + " " + listaDuenios.get(i).getNombre());
+            }
+    }
 }
