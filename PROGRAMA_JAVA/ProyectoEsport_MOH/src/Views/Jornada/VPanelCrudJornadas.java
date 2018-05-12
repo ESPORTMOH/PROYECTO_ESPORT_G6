@@ -136,7 +136,7 @@ public class VPanelCrudJornadas extends javax.swing.JFrame {
     private void jBbajaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBbajaActionPerformed
         // ACTION BAJA
         try {
-            Controladora.VBajaAdmins();
+            Controladora.VbajaJorandas();
             Controladora.cierraTipoVentanas(tipoVentana);
         } catch (CierreVError CVE) {
             JOptionPane.showMessageDialog(this, CVE.getMessage());

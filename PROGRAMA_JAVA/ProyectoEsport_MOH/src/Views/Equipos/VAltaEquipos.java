@@ -203,16 +203,16 @@ public class VAltaEquipos extends javax.swing.JFrame {
             if (jTnombre.getText().isEmpty() | jTpresupuesto.getText().isEmpty() | jTanioFundacion.getText().isEmpty() | jTciudad.getText().isEmpty() | jTestadio.getText().isEmpty()) {
                 throw new CamposVacios();
             } else {
-                Controladora.altaEquipoBD(jTnombre.getText(), jTpresupuesto.getText(), jTanioFundacion.getText(), jTciudad.getText(), jTestadio.getText());
+                Controladora.altaEquipoBD(jTnombre.getText(), jTpresupuesto.getText(), jTanioFundacion.getText(), jTciudad.getText(), jTestadio.getText(),jComboBduenios.getSelectedItem().toString());
                 JOptionPane.showMessageDialog(this, "El Equipo ha sido "
                         + "\ndado de alta correctamente");
                 resetearCampos();
             }
         } catch (CamposVacios CV) {
             JOptionPane.showMessageDialog(this, CV.getMensaje());
-        } catch (EquiposCRUDError ECRUDE) {
+        } /*catch (EquiposCRUDError ECRUDE) {
             JOptionPane.showMessageDialog(this, ECRUDE.getMensaje());
-        } catch (Exception EX) {
+        } */catch (Exception EX) {
             JOptionPane.showMessageDialog(this, EX.getMessage());
         }
 

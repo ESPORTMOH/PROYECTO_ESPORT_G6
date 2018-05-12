@@ -24,12 +24,13 @@ public class EquipoBD extends GenericoBD {
         GenericoBD genericoBD = new GenericoBD();
         con = genericoBD.abrirConexion(con);
 
-        PreparedStatement pS = con.prepareStatement("INSERT INTO equipo e(e.nombre, e.presupuesto, e.anioFundacion, e.ciudad, e.nombreEstadio, e.codDuenio) VALUES (?,?,?,?,?)");
+        PreparedStatement pS = con.prepareStatement("INSERT INTO equipo e(e.nombre, e.presupuesto, e.anioFundacion, e.ciudad, e.nombreEstadio, e.codDuenio) VALUES (?,?,?,?,?,?)");
         pS.setString(1, equipo.getNombre().toUpperCase());
         pS.setDouble(2, equipo.getPresupuesto());
         pS.setString(3, equipo.getAnioFundacion());
         pS.setString(4, equipo.getCiudad());
         pS.setString(5, equipo.getNombreEstadio());
+        pS.setInt(6, equipo.getDuenio().getCodDuenio());
          
         pS.executeUpdate();
 
@@ -69,17 +70,18 @@ public class EquipoBD extends GenericoBD {
     }
     
     // EDITAR EQUIPO
-    public void ejecutarModificacionBDEquipo(String ciudad, String estadio) throws SQLException, ConexionProblemas {
+    public void ejecutarModificacionBDEquipo(String nombre, String ciudad, String estadio) throws SQLException, ConexionProblemas {
 
         GenericoBD genericoBD = new GenericoBD();
         con = genericoBD.abrirConexion(con);
 
-        String editaSQL = "UPDATE equipo e SET e.ciudad = ?, e.estadio = ? WHERE e.nombre = ?";
+        String editaSQL = "UPDATE equipo e SET e.ciudad = ?, e.nombreEstadio = ? WHERE e.nombre = ?";
 
         PreparedStatement pS = con.prepareStatement(editaSQL);
 
         pS.setString(1, ciudad);
         pS.setString(2, estadio);
+        pS.setString(3, nombre);
         // me falta pasarle un parametro
 
         pS.executeUpdate();

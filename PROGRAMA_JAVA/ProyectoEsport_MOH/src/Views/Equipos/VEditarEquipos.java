@@ -193,7 +193,7 @@ public class VEditarEquipos extends javax.swing.JFrame {
             if (jTciudad.getText().isEmpty() | jTestadio.getText().isEmpty()) {
                 throw new DuenioPassVacia();
             } else {
-                Controladora.pedirActualizarEquipo(jTciudad.getText(), jTestadio.getText());
+                Controladora.pedirActualizarEquipo(jTnombre.getText(),jTciudad.getText(), jTestadio.getText());
                 JOptionPane.showMessageDialog(this, "El Equipo ha sido "
                         + "\neditado correctamente");
                 resetearCamposParaConsultarDeNuevo();

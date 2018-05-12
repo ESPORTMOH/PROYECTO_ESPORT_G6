@@ -21,17 +21,18 @@ import javax.swing.JOptionPane;
  */
 public class VBajaJornadas extends javax.swing.JFrame {
 
+    private final String tipoVentana;
     private static Integer almacenarCodLogin;
 
     /**
-     * Creates new form VAltaAdmin
+     * Creates new form VBajaJornadas
      */
     public VBajaJornadas() {
-
         initComponents();
+        this.tipoVentana = "VBajaJornadas";
         this.setLocationRelativeTo(null);
         this.setResizable(false);
-        configPredeterminadaVentana();
+        this.configPredeterminadaVentana();
     }
 
     /**
@@ -171,10 +172,12 @@ public class VBajaJornadas extends javax.swing.JFrame {
             if (jTnumTemporada.getText().isEmpty()) {
                 throw new CampoNumTemporadaVacio();
             } else {
-                Controladora.localizarTemporadaEnJornadaBD(jTnumTemporada.getText());
+                Controladora.localizarTemporadaEnJornadaBD(tipoVentana, jTnumTemporada.getText());
             }
         } catch (CampoNumTemporadaVacio CNTV) {
             JOptionPane.showMessageDialog(this, CNTV.getMensaje());
+        } catch (TemporadaNoExiste TNE) {
+            JOptionPane.showMessageDialog(this, TNE.getMensaje());
         } catch (Exception E) {
             JOptionPane.showMessageDialog(this, E.getMessage());
         }
@@ -261,12 +264,19 @@ public class VBajaJornadas extends javax.swing.JFrame {
 
     public void resetearCamposParaConsultarDeNuevo() {
         jTnumTemporada.setText(null);
-
         configPredeterminadaVentana();
     }
 
     public void almacenarCodLoginRecibido(Integer login) {
         almacenarCodLogin = login;
+    }
+    
+    public void mensajeRespuesta(String mensaje){
+        JOptionPane.showMessageDialog(this, mensaje);
+    }
+    
+    public void actibarBotonTrasRespuesta(){
+        jBbaja.setEnabled(true);
     }
 
 

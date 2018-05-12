@@ -18,7 +18,6 @@ import Views.Jornada.VPanelCrudJornadas;
 import java.sql.*;
 import java.util.*;
 
-
 /**
  * @author MIGUEL OLMO HERNANDO
  */
@@ -78,10 +77,6 @@ public class Controladora {
     private static VConsultarJornadas vConsultarJornadas;
 
     // VISTAS PARTIDOS
-    
-    
-    
-    
     // DECLARACION DE OBJETOS
     // LOGIN
     private static Login loginUML;
@@ -326,8 +321,8 @@ public class Controladora {
     // ABRIR PANELES GESTION / CALENDARIO / JORNADAS
     // ALTA JORNADA
     public static void ValtaJorandas() {
-        vgeneradorjornadas = new VAltaJornadas();
-        vgeneradorjornadas.setVisible(true);
+        vAltaJornadas = new VAltaJornadas();
+        vAltaJornadas.setVisible(true);
     }
 
     // BAJA JORNADAS
@@ -565,9 +560,7 @@ public class Controladora {
     }
 
     ////////////////////////////////////////////////////////////////////////////////////////////////
-            //CONSULTA PARA SOLICITAR ACCESO
-
-
+    //CONSULTA PARA SOLICITAR ACCESO
     public static void consultarLogin(String usuario, String password) throws Exception {
 
         loginBD = new LoginBD();
@@ -770,9 +763,10 @@ public class Controladora {
     ////////////////////////////////////////////////////////////////////////////////////////////////
     // SENTENCIAS ALTA / BAJA / CONSULTA / MODIFICACION > EQUIPO
     // ALTA
-    public static void altaEquipoBD(String nombre, String presupuesto, String anioFundacion, String ciudad, String nombreEstadio) throws Exception {
+    public static void altaEquipoBD(String nombre, String presupuesto, String anioFundacion, String ciudad, String nombreEstadio, String dniDuenio) throws Exception {
         equipoBD = new EquipoBD();
-        equipoUML = new Equipo(nombre, Double.parseDouble(presupuesto), anioFundacion, ciudad, nombreEstadio);
+        Duenio duenio = duenioBD.localizarDuenio(dniDuenio);
+        equipoUML = new Equipo(nombre, Double.parseDouble(presupuesto), anioFundacion, ciudad, nombreEstadio,duenio);
         equipoBD.insertarEquipoBD(equipoUML);
     }
 
@@ -804,9 +798,9 @@ public class Controladora {
     }
 
     // EDITAR
-    public static void pedirActualizarEquipo(String ciudad, String estadio) throws SQLException, ConexionProblemas {
+    public static void pedirActualizarEquipo(String nombre, String ciudad, String estadio) throws SQLException, ConexionProblemas {
         equipoBD = new EquipoBD();
-        equipoBD.ejecutarModificacionBDEquipo(ciudad, estadio);
+        equipoBD.ejecutarModificacionBDEquipo(nombre, ciudad, estadio);
     }
 
     // BAJA
@@ -818,6 +812,9 @@ public class Controladora {
     ////////////////////////////////////////////////////////////////////////////////////////////////
     // SENTENCIAS ALTA / BAJA / CONSULTA / MODIFICACION > PARTIDO
     ////////////////////////////////////////////////////////////////////////////////////////////////
+    
+    
+    
     ////////////////////////////////////////////////////////////////////////////////////////////////
     // SENTENCIAS ALTA > JORNADA
     ////////////////////////////////////////////////////////////////////////////////////////////////
@@ -896,29 +893,33 @@ public class Controladora {
     }
 
     // LOCALIZA
-    public static void localizarJornadaTemporadaEnBD(String tipoVentana, String dni) throws Exception {
+    public static void localizarTemporadaEnJornadaBD(String tipoVentana, String numTemporada) throws Exception, TempNoExiste {
         switch (tipoVentana) {
-            case "VBajaAdmins": {
+            case "VBajaJornadas": {
                 jornadaBD = new JornadaBD();
-                administradorUML = administradorBD.localizarAdministrador(dni);
-                vBajaAdmins.rellenarCamposVentana(administradorUML.getDni(), administradorUML.getNombre(), administradorUML.getApellido(), administradorUML.getLogin().getCodLogin());
+                Boolean existe = jornadaBD.localizarTemporadaEnJornadaBD(numTemporada);
+               
+                if (existe) {
+                    vBajaJornadas.mensajeRespuesta("Existe temporada introducida");
+                    vBajaJornadas.actibarBotonTrasRespuesta();
+                }                 
                 break;
             }
-            case "VConsultarAdmins": {
+            case "VConsultarJornadas": {
                 jornadaBD = new JornadaBD();
-                administradorUML = administradorBD.localizarAdministrador(dni);
-                vConsultarAdmins.rellenarCamposVentana(administradorUML.getDni(), administradorUML.getNombre(), administradorUML.getApellido());
+                jornadaUML = administradorBD.localizarAdministrador(nombre);
+                vConsultarJornadas.rellenarCamposVentana(administradorUML.getDni(), administradorUML.getNombre(), administradorUML.getApellido());
                 break;
             }
             default:
                 System.err.println("Error critico en el CRUD de Jornadas");
                 throw new JornadaCRUDError();
         }
-    
-    
-    // LOCALIZAR
+
+        /* LOCALIZAR
     public static void localizarTemporadaEnJornadaBD(String numTemporada) {
         jornadaBD.localizarTemporadaEnJornadaBD(numTemporada);
+    }*/
+    
     }
-
 }

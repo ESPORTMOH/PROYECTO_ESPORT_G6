@@ -59,6 +59,15 @@ public class Equipo {
         this.duenio = duenio;
     }
 
+    public Equipo(String nombre, double presupuesto, String anioFundacion, String ciudad, String nombreEstadio, Duenio duenio) {
+        this.nombre = nombre;
+        this.presupuesto = presupuesto;
+        this.anioFundacion = anioFundacion;
+        this.ciudad = ciudad;
+        this.nombreEstadio = nombreEstadio;
+        this.duenio = duenio;
+    }
+
     public Integer getCodEquipo() {
         return codEquipo;
     }
