@@ -10,7 +10,7 @@
 -- Fecha creacion del Script: 22-04-2018 a las 13:36:24
 -- Fecha alteracion del Script: 11-05-2018 v3
 
--- Proyecto DAW 2012-2018
+-- Proyecto DAW 2017-2018
 -- Realizado por Miguel Olmo Hernando
 
 -- --------------------------------------------------------
@@ -26,6 +26,28 @@
 --
 
 -- --------------------------------------------------------
+
+--
+-- Truncado de posibles datos en tablas existentes que puedan afectar al volcado posterior
+--
+
+TRUNCATE TABLE login CASCADE;
+
+TRUNCATE TABLE administrador CASCADE;
+
+TRUNCATE TABLE usuario CASCADE;
+
+TRUNCATE TABLE duenio CASCADE;
+
+TRUNCATE TABLE jugador CASCADE;
+
+TRUNCATE TABLE equipo CASCADE;
+
+TRUNCATE TABLE partido CASCADE;
+
+TRUNCATE TABLE jornada CASCADE;
+
+TRUNCATE TABLE clasificacion CASCADE;
 
 --
 -- Borrado de posibles tablas existentes que puedan afectar al volcado posterior
@@ -219,6 +241,7 @@ CREATE TABLE partido (
                    NOORDER  
                    NOCYCLE  NOT NULL ENABLE
                    CONSTRAINT PA_CDPA_PK PRIMARY KEY,
+  fechaPartido DATE NOT NULL,                 
   horaInicio DATE NOT NULL, -- EN PROGRAMACION ESTE ATRIBUTO SERA TIME
   puntosLocal NUMBER(3) NOT NULL,
   puntosVisitante NUMBER(3) NOT NULL,
@@ -255,16 +278,16 @@ CREATE TABLE jornada (
 --
 
 CREATE TABLE clasificacion (
-  codClasificacion       NUMBER(4)
-                   GENERATED ALWAYS AS IDENTITY 
-                   MINVALUE 1 
-                   MAXVALUE 9999
-                   INCREMENT BY 1 
-                   START WITH 1  
-                   NOORDER  
-                   NOCYCLE  NOT NULL ENABLE
-                   CONSTRAINT CL_CDCL_PK PRIMARY KEY,
-  puntos NUMBER(10) NOT NULL,
+  codClasificacion      NUMBER(4)
+						GENERATED ALWAYS AS IDENTITY 
+						MINVALUE 1 
+						MAXVALUE 9999
+						INCREMENT BY 1 
+						START WITH 1  
+						NOORDER  
+						NOCYCLE  NOT NULL ENABLE
+						CONSTRAINT CL_CDCL_PK PRIMARY KEY,
+  puntos NUMBER(5) NOT NULL,
   numeroTemporada VARCHAR2(3) NOT NULL,
   codEquipo NUMBER(4) -- RESERVADO FK
 );
@@ -409,10 +432,10 @@ COMMIT;
 -- Datos para la tabla 'jugador' -  Creacion de JUGADORES VARIOS
 --
 
-INSERT INTO jugador VALUES (DEFAULT, '32317743Y', 'Pau', 'Gasol', 'PauG', 100000, TO_DATE('06/07/1980', 'dd/mm/YYYY'), 'Spain', 'F', 1);
+INSERT INTO jugador VALUES (DEFAULT, '32317743Y', 'Pau', 'Gasol', 'PauG', 10000, TO_DATE('06/07/1980', 'dd/mm/YYYY'), 'Spain', 'F', 1);
 COMMIT;
 
-INSERT INTO jugador VALUES (DEFAULT, '32317743Y', 'Michael', 'Jordan', 'Air', 150000, TO_DATE('17/02/1963', 'dd/mm/YYYY'), 'USA', 'G', 1);
+INSERT INTO jugador VALUES (DEFAULT, '32317743Y', 'Michael', 'Jordan', 'Air', 15000, TO_DATE('17/02/1963', 'dd/mm/YYYY'), 'USA', 'G', 1);
 COMMIT;
 
 -- --------------------------------------------------------

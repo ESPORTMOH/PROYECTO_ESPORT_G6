@@ -348,5 +348,4 @@ public class VEditarAdmins extends javax.swing.JFrame {
         jTpasswd.setText(null);
         configPredeterminadaVentana();
     }
-
 }

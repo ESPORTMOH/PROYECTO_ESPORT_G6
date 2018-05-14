@@ -1,14 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
-    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="2">
+        <file>
+            <url>src/proyectoesport_moh/Controladora.java</url>
+            <bookmark id="2">
+                <name/>
+                <line>0</line>
+                <key/>
+            </bookmark>
+        </file>
+    </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/GITHUB_TRABAJOS_MIGUEL_CURSO_2018/DAW_CURSO_2017_2018/COPIA_FORK_PROYECTO_ESPORT_G6/PROYECTO_ESPORT_G6/PROGRAMA_JAVA/ProyectoEsport_MOH/src/Views/Duenios/VConsultaDuenios.java</file>
-            <file>file:/D:/GITHUB_TRABAJOS_MIGUEL_CURSO_2018/DAW_CURSO_2017_2018/COPIA_FORK_PROYECTO_ESPORT_G6/PROYECTO_ESPORT_G6/PROGRAMA_JAVA/ProyectoEsport_MOH/src/Views/Administradores/VEditarAdmins.java</file>
-            <file>file:/D:/GITHUB_TRABAJOS_MIGUEL_CURSO_2018/DAW_CURSO_2017_2018/COPIA_FORK_PROYECTO_ESPORT_G6/PROYECTO_ESPORT_G6/PROGRAMA_JAVA/ProyectoEsport_MOH/src/Views/Jornada/VAltaJornadas.java</file>
-            <file>file:/D:/GITHUB_TRABAJOS_MIGUEL_CURSO_2018/DAW_CURSO_2017_2018/COPIA_FORK_PROYECTO_ESPORT_G6/PROYECTO_ESPORT_G6/PROGRAMA_JAVA/ProyectoEsport_MOH/src/Views/Administradores/VConsultarAdmins.java</file>
+            <file>file:/D:/GITHUB_TRABAJOS_MIGUEL_CURSO_2018/DAW_CURSO_2017_2018/COPIA_FORK_PROYECTO_ESPORT_G6/PROYECTO_ESPORT_G6/PROGRAMA_JAVA/ProyectoEsport_MOH/src/ModelBD/DuenioBD.java</file>
+            <file>file:/D:/GITHUB_TRABAJOS_MIGUEL_CURSO_2018/DAW_CURSO_2017_2018/COPIA_FORK_PROYECTO_ESPORT_G6/PROYECTO_ESPORT_G6/PROGRAMA_JAVA/ProyectoEsport_MOH/src/Views/Equipos/VAltaEquipos.java</file>
             <file>file:/D:/GITHUB_TRABAJOS_MIGUEL_CURSO_2018/DAW_CURSO_2017_2018/COPIA_FORK_PROYECTO_ESPORT_G6/PROYECTO_ESPORT_G6/PROGRAMA_JAVA/ProyectoEsport_MOH/src/proyectoesport_moh/Controladora.java</file>
-            <file>file:/D:/GITHUB_TRABAJOS_MIGUEL_CURSO_2018/DAW_CURSO_2017_2018/COPIA_FORK_PROYECTO_ESPORT_G6/PROYECTO_ESPORT_G6/PROGRAMA_JAVA/ProyectoEsport_MOH/src/Views/Usuarios/VConsultaUsuarios.java</file>
         </group>
     </open-files>
 </project-private>

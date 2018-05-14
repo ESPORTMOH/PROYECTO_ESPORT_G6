@@ -17,7 +17,7 @@ import java.sql.SQLException;
  *
  * @author MIGUEL
  */
-public class JornadaBD extends GenericoBD {
+public class JornadaBD extends GenericoBD{
 
     private Connection con;
 
@@ -39,6 +39,7 @@ public class JornadaBD extends GenericoBD {
                 pS.executeUpdate();
 
                 cerrarConexion(con);
+        
             }
             jorn++;
         }

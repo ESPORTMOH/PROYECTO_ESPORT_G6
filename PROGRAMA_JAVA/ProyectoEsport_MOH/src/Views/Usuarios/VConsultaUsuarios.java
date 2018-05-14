@@ -55,8 +55,8 @@ public class VConsultaUsuarios extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
+        jTusuario = new javax.swing.JTextField();
+        jTpasswd = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
 
@@ -114,8 +114,8 @@ public class VConsultaUsuarios extends javax.swing.JFrame {
                     .addComponent(jLabel6))
                 .addGap(31, 31, 31)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 132, Short.MAX_VALUE)
-                    .addComponent(jTextField2))
+                    .addComponent(jTusuario, javax.swing.GroupLayout.DEFAULT_SIZE, 132, Short.MAX_VALUE)
+                    .addComponent(jTpasswd))
                 .addContainerGap(28, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -124,12 +124,12 @@ public class VConsultaUsuarios extends javax.swing.JFrame {
                 .addGap(16, 16, 16)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTusuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(34, Short.MAX_VALUE))
+                    .addComponent(jTpasswd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(22, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -215,7 +215,7 @@ public class VConsultaUsuarios extends javax.swing.JFrame {
             if (jTdni.getText().isEmpty()) {
                 throw new CampoDniVacio();
             } else {
-                Controladora.localizarDuenioEnBD(tipoVentana, jTdni.getText());
+                Controladora.localizarUsuarioEnBD(tipoVentana, jTdni.getText());
             }
         } catch (CampoDniVacio CDV) {
             JOptionPane.showMessageDialog(this, CDV.getMensaje());
@@ -280,29 +280,36 @@ public class VConsultaUsuarios extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField jTapellido;
     private javax.swing.JTextField jTdni;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTnombre;
+    private javax.swing.JTextField jTpasswd;
+    private javax.swing.JTextField jTusuario;
     // End of variables declaration//GEN-END:variables
 
     // FUNCIONES PROPIAS DE LA VISTA
-    public void rellenarCamposVentana(String dni, String nombre, String apellido) {
-        jTnombre.setEnabled(true);
-        jTapellido.setEnabled(true);
+    public void rellenarCamposVentana(String dni, String nombre, String apellido, String usuario, String passwd) {
         jTdni.setText(dni);
+        jTdni.setEnabled(false);
         jTnombre.setText(nombre);
         jTapellido.setText(apellido);
+        jTusuario.setText(usuario);
+        jTpasswd.setEnabled(true);
+        jTpasswd.setText(passwd);
     }
 
     public void configPredeterminadaVentana() {
         jTnombre.setEnabled(false);
         jTapellido.setEnabled(false);
+        jTusuario.setEnabled(false);
+        jTpasswd.setEnabled(false);
     }
 
     public void resetearCamposParaConsultarDeNuevo() {
+        jTdni.setEnabled(true);
         jTdni.setText(null);
         jTnombre.setText(null);
         jTapellido.setText(null);
+        jTusuario.setText(null);
+        jTpasswd.setText(null);
         configPredeterminadaVentana();
     }
 }

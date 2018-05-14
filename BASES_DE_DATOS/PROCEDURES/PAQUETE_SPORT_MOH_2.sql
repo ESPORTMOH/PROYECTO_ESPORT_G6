@@ -17,6 +17,7 @@ IS
   TYPE c_cursor IS REF CURSOR;
   PROCEDURE PROCE_rellenarcomboDuenios(d_duenios OUT c_cursor);
   PROCEDURE PROCE_rellenarcomboEquipos(e_equipos OUT c_cursor);
+  PROCEDURE PROCE_rellenarcomboJugadores(j_jugadores OUT c_cursor);
 END;
 
 -- FIN CABECERA DEL PAQUETE
@@ -25,6 +26,7 @@ END;
 
 CREATE OR REPLACE PACKAGE BODY ESPORT_MOH_2
 IS
+-- PRIMER PROCEDIMIENTO
   PROCEDURE PROCE_rellenarcomboDuenios(d_duenios OUT c_cursor)
   IS
 	BEGIN
@@ -48,6 +50,18 @@ END PROCE_rellenarcomboDuenios;
     WHEN OTHERS THEN
       RAISE_APPLICATION_ERROR(-20100, 'ERROR INEXPERADO');
   END PROCE_rellenarcomboEquipos;
+-- TERCER PROCEDIMIENTO
+    PROCEDURE PROCE_rellenarcomboJugadores(j_jugadores OUT c_cursor)
+  IS 
+    BEGIN
+		OPEN j_jugadores 
+			FOR
+				SELECT *
+				FROM jugador;
+  EXCEPTION
+    WHEN OTHERS THEN
+      RAISE_APPLICATION_ERROR(-20100, 'ERROR INEXPERADO');
+  END PROCE_rellenarcomboJugadores;
 END ESPORT_MOH_2;
 
 -- FIN CUERPO DEL PAQUETE

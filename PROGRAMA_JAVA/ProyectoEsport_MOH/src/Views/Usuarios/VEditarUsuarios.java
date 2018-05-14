@@ -57,7 +57,7 @@ public class VEditarUsuarios extends javax.swing.JFrame {
         jTusuario = new javax.swing.JTextField();
         jTpasswd = new javax.swing.JTextField();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 24)); // NOI18N
         jLabel1.setText("EDITAR USUARIOS");
@@ -92,6 +92,11 @@ public class VEditarUsuarios extends javax.swing.JFrame {
         jBreset.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jBreset.setForeground(new java.awt.Color(255, 255, 255));
         jBreset.setText("RESET");
+        jBreset.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBresetActionPerformed(evt);
+            }
+        });
 
         jBretroceder.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/retroceder.png"))); // NOI18N
         jBretroceder.setBorder(null);
@@ -217,7 +222,7 @@ public class VEditarUsuarios extends javax.swing.JFrame {
 
     private void jBeditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBeditarActionPerformed
         // ACTION BOTON EDITAR
-        try {
+         try {
             if (jTpasswd.getText().isEmpty()) {
                 throw new UsuarioPassVacia();
             } else {
@@ -251,6 +256,11 @@ public class VEditarUsuarios extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, E.getMessage());
         }
     }//GEN-LAST:event_jBconsultarActionPerformed
+
+    private void jBresetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBresetActionPerformed
+         // ACTION BOTON RESET
+        resetearCamposParaConsultarDeNuevo();
+    }//GEN-LAST:event_jBresetActionPerformed
 
     /**
      * @param args the command line arguments
@@ -305,7 +315,7 @@ public class VEditarUsuarios extends javax.swing.JFrame {
     private javax.swing.JTextField jTusuario;
     // End of variables declaration//GEN-END:variables
     
-    // FUNCIONES PROPIAS DE LA VISTA
+// FUNCIONES PROPIAS DE LA VISTA
     public void rellenarCamposVentana(String dni, String nombre, String apellido, String usuario, String passwd) {
         jTdni.setText(dni);
         jTdni.setEnabled(false);

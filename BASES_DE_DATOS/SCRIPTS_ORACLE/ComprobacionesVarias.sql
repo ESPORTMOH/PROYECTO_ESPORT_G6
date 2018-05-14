@@ -1,5 +1,5 @@
 /*
-COMPROBACIONES VARIAS
+COMPROBACIONES VARIAS PARA JAVA Y ORACLE
 */
 
 -- SIMPLES
@@ -10,6 +10,7 @@ select * from equipo;
 select * from partido;
 select * from jugador;
 select * from clasificacion;
+select * from equipo;
 select * from jornada;
 
 -- COMPUESTAS
@@ -31,3 +32,15 @@ DECLARE
 BEGIN
   generarAutoUserPass ('12345678A', 'Miguel', 'Miguel', 'A',v_codlogin);
 END;
+
+/*
+COMPROBACION TRIGGER SALARIOMINIMOTOTAL
+
+*/
+
+INSERT INTO jugador VALUES (DEFAULT, '32317745Y', 'Prueba1', 'Jugador1', 'PG1', 150000, TO_DATE('06/07/1985', 'dd/mm/YYYY'), 'Spain', 'F', 1);
+COMMIT;
+INSERT INTO jugador VALUES (DEFAULT, '32317745Y', 'Prueba1', 'Jugador1', 'PG1', 50000, TO_DATE('06/07/1985', 'dd/mm/YYYY'), 'Spain', 'F', 1);
+COMMIT;
+
+SELECT d.codDuenio, d.dni, d.nombre, d.apellido, d.codLogin, l.codLogin, l.usuario, l.passwd FROM duenio d, login l  WHERE (d.codLogin = l.codLogin) AND d.dni = '00000000C';

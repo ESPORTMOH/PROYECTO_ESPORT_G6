@@ -5,8 +5,10 @@
  */
 package Views.Jornada;
 
+import Exceptions.CampoTempVacio;
 import Exceptions.CierreVError;
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Container;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -51,6 +53,8 @@ public class VAltaJornadas extends javax.swing.JFrame {
         jTntemporada = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jBretroceder = new javax.swing.JButton();
+        jProgressBarT = new javax.swing.JProgressBar();
+        jLaviso = new javax.swing.JLabel();
 
         jButton1.setText("jButton1");
 
@@ -79,26 +83,37 @@ public class VAltaJornadas extends javax.swing.JFrame {
             }
         });
 
+        jLaviso.setText("Generando, espere un momento...");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(45, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addGap(32, 32, 32)
-                        .addComponent(jTntemporada, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(19, 19, 19))
-                    .addComponent(jLabel1))
-                .addGap(47, 47, 47))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jBretroceder)
-                .addGap(81, 81, 81)
-                .addComponent(jBgenerarTemporada)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jBretroceder)
+                        .addGap(81, 81, 81)
+                        .addComponent(jBgenerarTemporada)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 39, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel1)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLaviso)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel2)
+                                        .addGap(32, 32, 32)
+                                        .addComponent(jTntemporada, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(19, 19, 19)))
+                        .addGap(47, 47, 47))))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(90, 90, 90)
+                .addComponent(jProgressBarT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -109,7 +124,11 @@ public class VAltaJornadas extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTntemporada, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2))
-                .addGap(91, 91, 91)
+                .addGap(24, 24, 24)
+                .addComponent(jLaviso)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jProgressBarT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jBgenerarTemporada)
                     .addComponent(jBretroceder))
@@ -123,12 +142,14 @@ public class VAltaJornadas extends javax.swing.JFrame {
         try {
             // GENERAR TEMPORADA
             if (jTntemporada.getText().isEmpty()) {
-                JOptionPane.showMessageDialog(this, "eeeee");
+                throw new CampoTempVacio();
             } else {
-                gestionarMomento();   
+                JProgressBar jProg = Controladora.generaBarraProgreso(jProgressBarT);
                 Controladora.generarJornadas(jTntemporada.getText());
-            }
 
+            }
+        } catch (CampoTempVacio CTV) {
+            JOptionPane.showMessageDialog(this, CTV.getMensaje());
         } catch (Exception ex) {
             Logger.getLogger(VAltaJornadas.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -185,25 +206,20 @@ public class VAltaJornadas extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLaviso;
+    private javax.swing.JProgressBar jProgressBarT;
     private javax.swing.JTextField jTntemporada;
     // End of variables declaration//GEN-END:variables
 
     // FUNCIONES PROPIAS DE LA VISTA
-    public void configPredeterminadaVentana() {
-        
+    private void configPredeterminadaVentana() {
+        jProgressBarT.setVisible(false);
+        jLaviso.setVisible(false);
+    }
+    
+    private void cargarAvisoBarra(){
+        jProgressBarT.setVisible(true);
+        jLaviso.setVisible(true);
     }
 
-    private void gestionarMomento() {
-        JFrame f = new JFrame("JProgressBar Sample");
-        f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        Container content = f.getContentPane();
-        JProgressBar progressBar = new JProgressBar();
-        progressBar.setValue(25);
-        progressBar.setStringPainted(true);
-        Border border = BorderFactory.createTitledBorder("Espere un momento");
-        progressBar.setBorder(border);
-        content.add(progressBar, BorderLayout.NORTH);
-        f.setSize(300, 100);
-        f.setVisible(true);
-    }
 }
