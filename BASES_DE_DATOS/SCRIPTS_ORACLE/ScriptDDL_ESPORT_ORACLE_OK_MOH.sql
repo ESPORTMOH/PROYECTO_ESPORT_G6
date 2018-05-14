@@ -8,9 +8,9 @@
 -- SID orcl
 
 -- Fecha creacion del Script: 22-04-2018 a las 13:36:24
--- Fecha alteracion del Script: 23-04-2018 v2
+-- Fecha alteracion del Script: 11-05-2018 v3
 
--- Proyecto DAW 2012-2018
+-- Proyecto DAW 2017-2018
 -- Realizado por Miguel Olmo Hernando
 
 -- --------------------------------------------------------
@@ -26,6 +26,28 @@
 --
 
 -- --------------------------------------------------------
+
+--
+-- Truncado de posibles datos en tablas existentes que puedan afectar al volcado posterior
+--
+
+TRUNCATE TABLE login CASCADE;
+
+TRUNCATE TABLE administrador CASCADE;
+
+TRUNCATE TABLE usuario CASCADE;
+
+TRUNCATE TABLE duenio CASCADE;
+
+TRUNCATE TABLE jugador CASCADE;
+
+TRUNCATE TABLE equipo CASCADE;
+
+TRUNCATE TABLE partido CASCADE;
+
+TRUNCATE TABLE jornada CASCADE;
+
+TRUNCATE TABLE clasificacion CASCADE;
 
 --
 -- Borrado de posibles tablas existentes que puedan afectar al volcado posterior
@@ -46,6 +68,8 @@ DROP TABLE equipo CASCADE CONSTRAINTS;
 DROP TABLE partido CASCADE CONSTRAINTS;
 
 DROP TABLE jornada CASCADE CONSTRAINTS;
+
+DROP TABLE clasificacion CASCADE CONSTRAINTS;
 
 -- --------------------------------------------------------
 
@@ -217,6 +241,7 @@ CREATE TABLE partido (
                    NOORDER  
                    NOCYCLE  NOT NULL ENABLE
                    CONSTRAINT PA_CDPA_PK PRIMARY KEY,
+  fechaPartido DATE NOT NULL,                 
   horaInicio DATE NOT NULL, -- EN PROGRAMACION ESTE ATRIBUTO SERA TIME
   puntosLocal NUMBER(3) NOT NULL,
   puntosVisitante NUMBER(3) NOT NULL,
@@ -243,8 +268,28 @@ CREATE TABLE jornada (
                    CONSTRAINT JO_CDJO_PK PRIMARY KEY,
   numeroJornada VARCHAR2(3) NOT NULL,
   numeroTemporada VARCHAR2(3) NOT NULL,
-  codEquipoLocal NUMBER(4) NOT NULL,
-  codEquipoVisitante NUMBER(4) NOT NULL
+  codEquipoLocal NUMBER(4) NOT NULL, -- RESERVADO FK
+  codEquipoVisitante NUMBER(4) NOT NULL -- RESERVADO FK
+); 
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla 'clasificacion'
+--
+
+CREATE TABLE clasificacion (
+  codClasificacion      NUMBER(4)
+						GENERATED ALWAYS AS IDENTITY 
+						MINVALUE 1 
+						MAXVALUE 9999
+						INCREMENT BY 1 
+						START WITH 1  
+						NOORDER  
+						NOCYCLE  NOT NULL ENABLE
+						CONSTRAINT CL_CDCL_PK PRIMARY KEY,
+  puntos NUMBER(5) NOT NULL,
+  numeroTemporada VARCHAR2(3) NOT NULL,
+  codEquipo NUMBER(4) -- RESERVADO FK
 );
 
 -- --------------------------------------------------------
@@ -318,6 +363,15 @@ ALTER TABLE partido ADD(
   CONSTRAINT PA_PEQL_FK FOREIGN KEY (codLocal) REFERENCES equipo (codEquipo) ON DELETE CASCADE,
   CONSTRAINT PA_PEQV_FK FOREIGN KEY (codVisitante) REFERENCES equipo (codEquipo) ON DELETE CASCADE,
   CONSTRAINT PA_PAJO_FK FOREIGN KEY (codJornada) REFERENCES jornada (codJornada) ON DELETE CASCADE);
+  
+-- --------------------------------------------------------
+
+--
+-- Filtros para la tabla 'clasificacion'
+--
+
+ALTER TABLE clasificacion ADD(
+  CONSTRAINT CL_CLEQ_FK FOREIGN KEY (codEquipo) REFERENCES equipo (codEquipo) ON DELETE CASCADE);
 
 -- --------------------------------------------------------
 
@@ -365,14 +419,23 @@ COMMIT;
 -- --------------------------------------------------------
 
 --
+-- Datos para la tabla 'equipo' -  Creacion de un equipo SUPEREQUIPO
+--
+
+INSERT INTO equipo VALUES (DEFAULT, 'ALL STARS', 200000, '1988', 'Vitoria', 'Mi PC', 1);
+COMMIT;
+
+
+-- --------------------------------------------------------
+
+--
 -- Datos para la tabla 'jugador' -  Creacion de JUGADORES VARIOS
 --
 
--- https://github.com/martinchris6611/NBA_Oracle
- 
--- http://www.marca.com/baloncesto/nba/album/2016/09/13/57d7c14f468aebd25a8b4647_1.html
+INSERT INTO jugador VALUES (DEFAULT, '32317743Y', 'Pau', 'Gasol', 'PauG', 10000, TO_DATE('06/07/1980', 'dd/mm/YYYY'), 'Spain', 'F', 1);
+COMMIT;
 
-INSERT INTO jugador VALUES (DEFAULT, '32317743Y', 'Pau', 'Gasol', 'Pau', 100000, TO_DATE('06/07/1980', 'dd/mm/YYYY'), 'Spain', 'F', null);
+INSERT INTO jugador VALUES (DEFAULT, '32317743Y', 'Michael', 'Jordan', 'Air', 15000, TO_DATE('17/02/1963', 'dd/mm/YYYY'), 'USA', 'G', 1);
 COMMIT;
 
 -- --------------------------------------------------------
@@ -387,26 +450,7 @@ COMMIT;
 INSERT INTO equipo VALUES (DEFAULT, 'BASKONIA', 200000, '1959', 'Vitoria', 'Buesa Arena', 1);
 COMMIT;
 
-INSERT INTO equipo VALUES (DEFAULT, 'OBRADOIRO', 200000, '1970', 'S.Compostela', 'Multiusos do Sar', 1);
-COMMIT;
-
-INSERT INTO equipo VALUES (DEFAULT, 'FUENLABRADA', 200000, '1981', 'Fuenlabrada', 'Fernando Martin', 1);
-COMMIT;
-
-INSERT INTO equipo VALUES (DEFAULT, 'BETIS', 200000, '1987', 'Sevilla', 'San Pablo', 1);
-COMMIT;
-
 INSERT INTO equipo VALUES (DEFAULT, 'MADRID', 200000, '1981', 'Madrid', 'Wizink Center', 1);
 COMMIT;
 
-INSERT INTO equipo VALUES (DEFAULT, 'ZARAGOZA', 200000, '2002', 'Zaragoza', 'Principe Felipe', 1);
-COMMIT;
 
-INSERT INTO equipo VALUES (DEFAULT, 'VALENCIA', 200000, '1986', 'Valencia', 'San Luis', 1);
-COMMIT;
-
-INSERT INTO equipo VALUES (DEFAULT, 'DONOSTI', 200000, '2001', 'San Sebastian', 'Donostia Arena', 1);
-COMMIT;
-
-INSERT INTO equipo VALUES (DEFAULT, 'MALAGA', 200000, '1977', 'Malaga', 'J.M. Martin Carpena', 1);
-COMMIT; 

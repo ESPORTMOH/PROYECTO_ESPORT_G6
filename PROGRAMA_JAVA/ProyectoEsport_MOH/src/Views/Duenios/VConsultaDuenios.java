@@ -147,6 +147,7 @@ public class VConsultaDuenios extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jBconsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBconsultarActionPerformed
+        // ACTION PARA CONSULTAR EL DUENIO EN LA BD
         try {
             if (jTdni.getText().isEmpty()) {
                 throw new CampoDniVacio();

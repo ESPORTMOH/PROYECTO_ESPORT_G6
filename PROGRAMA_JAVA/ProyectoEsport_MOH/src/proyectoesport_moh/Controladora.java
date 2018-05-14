@@ -17,6 +17,8 @@ import Views.Jornada.VBajaJornadas;
 import Views.Jornada.VPanelCrudJornadas;
 import java.sql.*;
 import java.util.*;
+import javax.swing.JOptionPane;
+import javax.swing.JProgressBar;
 
 /**
  * @author MIGUEL OLMO HERNANDO
@@ -331,6 +333,12 @@ public class Controladora {
         vBajaJornadas.setVisible(true);
     }
 
+    // CONSULTA JORNADAS
+    public static void VConsultaJornadas() {
+        vConsultarJornadas = new VConsultarJornadas();
+        vConsultarJornadas.setVisible(true);
+    }
+
     //REINICIAR VISTA LOGIN
     public static void reiniciarVistaLogin() {
         vLo.dispose();
@@ -620,7 +628,7 @@ public class Controladora {
             case "VConsultarAdmins": {
                 administradorBD = new AdministradorBD();
                 administradorUML = administradorBD.localizarAdministrador(dni);
-                vConsultarAdmins.rellenarCamposVentana(administradorUML.getDni(), administradorUML.getNombre(), administradorUML.getApellido());
+                vConsultarAdmins.rellenarCamposVentana(administradorUML.getDni(), administradorUML.getNombre(), administradorUML.getApellido(), administradorUML.getLogin().getUser(), administradorUML.getLogin().getPassword());
                 break;
             }
             case "VEditarAdmins": {
@@ -689,7 +697,7 @@ public class Controladora {
     // EDITAR
     public static void pedirActualizarUsuario(String passwd) throws SQLException, ConexionProblemas {
         loginUML.setPassword(passwd);
-        loginBD.ejecutarModificacionLog(loginUML.getPassword(), duenioUML.getLogin().getCodLogin());
+        loginBD.ejecutarModificacionLog(loginUML.getPassword(), usuarioUML.getLogin().getCodLogin());
     }
 
     // BAJA
@@ -765,8 +773,11 @@ public class Controladora {
     // ALTA
     public static void altaEquipoBD(String nombre, String presupuesto, String anioFundacion, String ciudad, String nombreEstadio, String dniDuenio) throws Exception {
         equipoBD = new EquipoBD();
-        Duenio duenio = duenioBD.localizarDuenio(dniDuenio);
-        equipoUML = new Equipo(nombre, Double.parseDouble(presupuesto), anioFundacion, ciudad, nombreEstadio,duenio);
+        duenioBD = new DuenioBD();
+        //split
+        String[]dniDue = dniDuenio.split(" ");
+        Duenio duenio = duenioBD.localizarDuenio(dniDue[0]);
+        equipoUML = new Equipo(nombre, Double.parseDouble(presupuesto), anioFundacion, ciudad, nombreEstadio, duenio); 
         equipoBD.insertarEquipoBD(equipoUML);
     }
 
@@ -812,9 +823,6 @@ public class Controladora {
     ////////////////////////////////////////////////////////////////////////////////////////////////
     // SENTENCIAS ALTA / BAJA / CONSULTA / MODIFICACION > PARTIDO
     ////////////////////////////////////////////////////////////////////////////////////////////////
-    
-    
-    
     ////////////////////////////////////////////////////////////////////////////////////////////////
     // SENTENCIAS ALTA > JORNADA
     ////////////////////////////////////////////////////////////////////////////////////////////////
@@ -837,22 +845,22 @@ public class Controladora {
 
         matriz1 = new String[N - 1][N / 2];
         matriz2 = new String[N - 1][N / 2];
-        jornadas = new String[N - 1][N / 2]; //primera vuelta
-        jornadas2 = new String[N - 1][N / 2]; //segunda vuelta
+        jornadas = new String[N - 1][N / 2]; // PRIMERA VUELTA 
+        jornadas2 = new String[N - 1][N / 2]; // SEGUNDA VUELTA
 
         int cont = 0;
         int cont2 = N - 2;
 
         for (int i = 0; i < N - 1; i++) {
             for (int j = 0; j < N / 2; j++) {
-                //matriz1
+                // MATRIZ 1
                 matriz1[i][j] = String.valueOf(listacodEquipos[cont]);
                 cont++;
                 if (cont == (N - 1)) {
                     cont = 0;
                 }
 
-                //matriz2
+                //MATRIZ 2
                 if (j == 0) {
                     matriz2[i][j] = String.valueOf(N);
                 } else {
@@ -863,7 +871,8 @@ public class Controladora {
                     }
                 }
 
-                //Elaboro la matriz final de enfrentamientos por jornada (primera vuelta)
+                // ELABORO LA MATRIZ FINAL DE ENFRENTAMIENTOS POR JORNADA
+                // PRIMERA VUELTA
                 if (j == 0) {
                     if (i % 2 == 0) {
                         jornadas[i][j] = matriz2[i][j] + "-" + matriz1[i][j];
@@ -874,7 +883,7 @@ public class Controladora {
                     jornadas[i][j] = matriz1[i][j] + "-" + matriz2[i][j];
                 }
 
-                //segunda vuelta - al reves que la primera
+                // SEGUNDA VUELTA - AL REVES
                 if (j == 0) {
                     if (i % 2 == 0) {
                         jornadas2[i][j] = matriz1[i][j] + "-" + matriz2[i][j];
@@ -884,12 +893,9 @@ public class Controladora {
                 } else {
                     jornadas2[i][j] = matriz2[i][j] + "-" + matriz1[i][j];
                 }
-
             }
         }
-
         jornadaBD.insertJornadas(jornadas, jornadas2, numeroTemporada, N);
-
     }
 
     // LOCALIZA
@@ -898,11 +904,11 @@ public class Controladora {
             case "VBajaJornadas": {
                 jornadaBD = new JornadaBD();
                 Boolean existe = jornadaBD.localizarTemporadaEnJornadaBD(numTemporada);
-               
+
                 if (existe) {
                     vBajaJornadas.mensajeRespuesta("Existe temporada introducida");
                     vBajaJornadas.actibarBotonTrasRespuesta();
-                }                 
+                }
                 break;
             }
             case "VConsultarJornadas": {
@@ -920,6 +926,12 @@ public class Controladora {
     public static void localizarTemporadaEnJornadaBD(String numTemporada) {
         jornadaBD.localizarTemporadaEnJornadaBD(numTemporada);
     }*/
-    
+    }
+
+    // GENERA BARRA PROGRESO
+    public static JProgressBar generaBarraProgreso(JProgressBar jProgressBarT) {
+        jProgressBarT = new JProgressBar();
+
+        return jProgressBarT;
     }
 }
