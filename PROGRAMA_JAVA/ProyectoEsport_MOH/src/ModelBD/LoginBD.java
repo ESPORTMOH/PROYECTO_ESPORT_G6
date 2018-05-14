@@ -39,7 +39,6 @@ public class LoginBD extends GenericoBD {
         cerrarConexion(con);
 
         return id;
-
     }
 
     //VALIDAR LOGIN
@@ -98,7 +97,6 @@ public class LoginBD extends GenericoBD {
         pS.executeUpdate();
 
         cerrarConexion(con);
-
     }
 
     // ELIMINAR ADMIN LOGIN

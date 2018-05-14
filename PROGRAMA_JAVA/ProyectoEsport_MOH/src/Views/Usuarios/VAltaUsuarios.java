@@ -6,10 +6,11 @@
 package Views.Usuarios;
 
 import proyectoesport_moh.Controladora;
+import Exceptions.*;
 import Views.Administradores.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -17,11 +18,17 @@ import java.util.logging.Logger;
  */
 public class VAltaUsuarios extends javax.swing.JFrame {
 
+    private final String tipoVentana;
+    private static final String tipoPersonaAlta = "U";
+
     /**
      * Creates new form VAltaUsuario
      */
     public VAltaUsuarios() {
         initComponents();
+        this.tipoVentana = "VAltaUsuarios";
+        this.setLocationRelativeTo(null);
+        this.setResizable(false);
     }
 
     /**
@@ -41,9 +48,11 @@ public class VAltaUsuarios extends javax.swing.JFrame {
         jTdni = new javax.swing.JTextField();
         jTnombre = new javax.swing.JTextField();
         jTapellido = new javax.swing.JTextField();
+        jBretroceder = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jLabel1.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 24)); // NOI18N
         jLabel1.setText("ALTA USUARIOS");
 
         jLabel2.setText("DNI");
@@ -52,10 +61,21 @@ public class VAltaUsuarios extends javax.swing.JFrame {
 
         jLabel4.setText("Apellido");
 
-        jBaceptar.setText("ACEPTAR");
+        jBaceptar.setBackground(new java.awt.Color(0, 153, 51));
+        jBaceptar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jBaceptar.setForeground(new java.awt.Color(255, 255, 255));
+        jBaceptar.setText("DAR DE ALTA");
         jBaceptar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBaceptarActionPerformed(evt);
+            }
+        });
+
+        jBretroceder.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/retroceder.png"))); // NOI18N
+        jBretroceder.setBorder(null);
+        jBretroceder.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBretrocederActionPerformed(evt);
             }
         });
 
@@ -66,30 +86,33 @@ public class VAltaUsuarios extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(71, 71, 71)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jBaceptar)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel2)
-                                    .addComponent(jLabel3)
-                                    .addComponent(jLabel4))
-                                .addGap(34, 34, 34)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jTdni)
-                                    .addComponent(jTapellido)
-                                    .addComponent(jTnombre, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                        .addGap(56, 56, 56)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel4))
+                        .addGap(34, 34, 34)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jTdni)
+                            .addComponent(jTapellido)
+                            .addComponent(jTnombre, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(126, 126, 126)
-                        .addComponent(jLabel1)))
-                .addContainerGap(71, Short.MAX_VALUE))
+                        .addContainerGap()
+                        .addComponent(jBretroceder)
+                        .addGap(64, 64, 64)
+                        .addComponent(jBaceptar)))
+                .addContainerGap(56, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addGap(74, 74, 74))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(15, 15, 15)
+                .addContainerGap()
                 .addComponent(jLabel1)
-                .addGap(42, 42, 42)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel2)
                     .addComponent(jTdni, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -102,22 +125,47 @@ public class VAltaUsuarios extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(jTapellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 58, Short.MAX_VALUE)
-                .addComponent(jBaceptar)
-                .addGap(29, 29, 29))
+                .addGap(31, 31, 31)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jBaceptar)
+                    .addComponent(jBretroceder))
+                .addContainerGap(12, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jBaceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBaceptarActionPerformed
-                // ACTION ALTA ADMINISTRADOR
+        // ACTION ALTA USUARIO
         try {
-            Controladora.altaUsuarioBD(jTdni.getText(), jTnombre.getText(), jTapellido.getText(), "U");
-        } catch (Exception ex) {
-            Logger.getLogger(VAltaAdmins.class.getName()).log(Level.SEVERE, null, ex);
+            if (jTdni.getText().isEmpty() | jTnombre.getText().isEmpty() | jTapellido.getText().isEmpty()) {
+                throw new CamposVacios();
+            } else {
+                Controladora.altaUsuarioBD(jTdni.getText(), jTnombre.getText(), jTapellido.getText(), tipoPersonaAlta);
+                JOptionPane.showMessageDialog(this, "El Usuario ha sido dado"
+                        + "\nde alta correctamente");
+                resetearCampos();
+            }
+        } catch (CamposVacios CV) {
+            JOptionPane.showMessageDialog(this, CV.getMensaje());
+        } catch (UsuarioCRUDError UCRUDE) {
+            JOptionPane.showMessageDialog(this, UCRUDE.getMensaje());
+        } catch (Exception EX) {
+            JOptionPane.showMessageDialog(this, EX.getMessage());
         }
     }//GEN-LAST:event_jBaceptarActionPerformed
+
+    private void jBretrocederActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBretrocederActionPerformed
+        // ACTION BOTON RETROCEDER      
+        try {
+            Controladora.abreTipoVentanas(tipoVentana);
+            Controladora.cierraTipoVentanas(tipoVentana);
+        } catch (CierreVError CVE) {
+            JOptionPane.showMessageDialog(this, CVE.getMessage());
+        } catch (Exception ex) {
+            Logger.getLogger(VPanelCrudAdministradores.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jBretrocederActionPerformed
 
     /**
      * @param args the command line arguments
@@ -157,6 +205,7 @@ public class VAltaUsuarios extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBaceptar;
+    private javax.swing.JButton jBretroceder;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -165,4 +214,12 @@ public class VAltaUsuarios extends javax.swing.JFrame {
     private javax.swing.JTextField jTdni;
     private javax.swing.JTextField jTnombre;
     // End of variables declaration//GEN-END:variables
+    
+    // FUNCIONES PROPIAS DE LA VISTA
+    public void resetearCampos() {
+        jTdni.setText(null);
+        jTnombre.setText(null);
+        jTapellido.setText(null);
+    }
+
 }

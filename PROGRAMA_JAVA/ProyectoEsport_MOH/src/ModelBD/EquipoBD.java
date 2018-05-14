@@ -8,6 +8,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
 
 /**
  * @author MIGUEL
@@ -22,12 +24,13 @@ public class EquipoBD extends GenericoBD {
         GenericoBD genericoBD = new GenericoBD();
         con = genericoBD.abrirConexion(con);
 
-        PreparedStatement pS = con.prepareStatement("INSERT INTO equipo e(e.nombre, e.presupuesto, e.anioFundacion, e.ciudad, e.nombreEstadio, e.codDuenio) VALUES (?,?,?,?,?)");
+        PreparedStatement pS = con.prepareStatement("INSERT INTO equipo e(e.nombre, e.presupuesto, e.anioFundacion, e.ciudad, e.nombreEstadio, e.codDuenio) VALUES (?,?,?,?,?,?)");
         pS.setString(1, equipo.getNombre().toUpperCase());
         pS.setDouble(2, equipo.getPresupuesto());
         pS.setString(3, equipo.getAnioFundacion());
         pS.setString(4, equipo.getCiudad());
         pS.setString(5, equipo.getNombreEstadio());
+        pS.setInt(6, equipo.getDuenio().getCodDuenio());
          
         pS.executeUpdate();
 
@@ -60,7 +63,6 @@ public class EquipoBD extends GenericoBD {
                 equipo.setNombreEstadio(datosRS.getString("nombreEstadio"));
                 equipo.setDuenio(new Duenio(datosRS.getInt("codDuenio")));
                 equipo.getDuenio().setDni(datosRS.getString("dni"));
-                equipo.getDuenio().setNombre(datosRS.getString("nombre"));
             }
         
         cerrarConexion(con);
@@ -68,17 +70,18 @@ public class EquipoBD extends GenericoBD {
     }
     
     // EDITAR EQUIPO
-    public void ejecutarModificacionBDEquipo(String ciudad, String estadio) throws SQLException, ConexionProblemas {
+    public void ejecutarModificacionBDEquipo(String nombre, String ciudad, String estadio) throws SQLException, ConexionProblemas {
 
         GenericoBD genericoBD = new GenericoBD();
         con = genericoBD.abrirConexion(con);
 
-        String editaSQL = "UPDATE equipo e SET e.ciudad = ?, e.estadio = ? WHERE e.nombre = ?";
+        String editaSQL = "UPDATE equipo e SET e.ciudad = ?, e.nombreEstadio = ? WHERE e.nombre = ?";
 
         PreparedStatement pS = con.prepareStatement(editaSQL);
 
         pS.setString(1, ciudad);
         pS.setString(2, estadio);
+        pS.setString(3, nombre);
         // me falta pasarle un parametro
 
         pS.executeUpdate();
@@ -102,4 +105,34 @@ public class EquipoBD extends GenericoBD {
 
     }
 
+    public ArrayList<Equipo> getAllEquipos() throws SQLException, Exception {
+
+        GenericoBD genericoBD = new GenericoBD();
+        con = genericoBD.abrirConexion(con);
+
+        ArrayList <Equipo> listaEquipos = new ArrayList();
+        String consultaSQL = "SELECT CODEQUIPO, NOMBRE, PRESUPUESTO, ANIOFUNDACION, CIUDAD, NOMBREESTADIO, CODDUENIO FROM equipo WHERE CODEQUIPO <> 41 ";
+        
+        Statement stmt=con.createStatement();
+        
+        ResultSet rs = stmt.executeQuery(consultaSQL);
+        while (rs.next()) {
+            Equipo eq = new Equipo();
+            eq.setCodEquipo(rs.getInt("CODEQUIPO"));
+            eq.setNombre(rs.getString("NOMBRE"));
+            eq.setPresupuesto(rs.getDouble("CODEQUIPO"));
+            //eq.setAnioFundacion(rs.getDate("ANIOFUNDACION"));
+            eq.setCiudad(rs.getString("CIUDAD"));
+            eq.setNombreEstadio(rs.getString("NOMBREESTADIO"));
+            eq.setDuenio(new Duenio(rs.getInt("CODDUENIO")));
+  
+            listaEquipos.add(eq);
+        }
+
+        con.close();
+
+        return listaEquipos;
+
+    }
+    
 }

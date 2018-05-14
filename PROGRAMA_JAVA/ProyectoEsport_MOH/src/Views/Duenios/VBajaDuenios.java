@@ -21,16 +21,14 @@ import javax.swing.JOptionPane;
 public class VBajaDuenios extends javax.swing.JFrame {
 
     private final String tipoVentana;
-
     private static Integer almacenarCodLogin;
 
     /**
-     * Creates new form VAltaAdmin
+     * Creates new form VBajaDuenios
      */
     public VBajaDuenios() {
-        this.tipoVentana = "VBajaDuenios";
-
         initComponents();
+        this.tipoVentana = "VBajaDuenios";
         this.setLocationRelativeTo(null);
         this.setResizable(false);
         configPredeterminadaVentana();
@@ -118,16 +116,10 @@ public class VBajaDuenios extends javax.swing.JFrame {
                 .addGap(50, 50, 50))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jBretroceder)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jBreset)
-                        .addGap(158, 158, 158))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jLabel1)
-                        .addGap(113, 113, 113))))
+                .addComponent(jBretroceder)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jBreset)
+                .addGap(158, 158, 158))
             .addGroup(layout.createSequentialGroup()
                 .addGap(71, 71, 71)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -140,6 +132,10 @@ public class VBajaDuenios extends javax.swing.JFrame {
                     .addComponent(jTapellido)
                     .addComponent(jTnombre, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addGap(96, 96, 96))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -193,7 +189,7 @@ public class VBajaDuenios extends javax.swing.JFrame {
     }//GEN-LAST:event_jBconsultarActionPerformed
 
     private void jBbajaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBbajaActionPerformed
-                // ACTION ELIMINAR
+        // ACTION ELIMINAR
         int preguntaSalida = JOptionPane.showConfirmDialog(this, "¿Realmente deseas eliminar"
                 + "\na este Dueño?");
 

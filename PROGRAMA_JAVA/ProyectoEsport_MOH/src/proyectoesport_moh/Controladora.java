@@ -3,21 +3,20 @@
  */
 package proyectoesport_moh;
 
-import Exceptions.AbreVError;
-import Exceptions.AdminCRUDError;
-import Exceptions.CierreVError;
-import Exceptions.ConexionProblemas;
-import Exceptions.DuenioCRUDError;
+import Exceptions.*;
+import ModelUML.*;
+import ModelBD.*;
 import Views.*;
 import Views.Administradores.*;
 import Views.Duenios.*;
 import Views.Equipos.*;
 import Views.Jugadores.*;
 import Views.Usuarios.*;
-
-import ModelUML.*;
-import ModelBD.*;
-import java.sql.SQLException;
+import Views.Jornada.VAltaJornadas;
+import Views.Jornada.VBajaJornadas;
+import Views.Jornada.VPanelCrudJornadas;
+import java.sql.*;
+import java.util.*;
 
 /**
  * @author MIGUEL OLMO HERNANDO
@@ -71,30 +70,46 @@ public class Controladora {
     private static VEditarEquipos vEditarEquipos;
     private static VConsultaEquipos vConsultarEquipos;
 
+    // VISTAS JORNADAS
+    private static VPanelCrudJornadas vpanelCrudJornadas;
+    private static VAltaJornadas vAltaJornadas;
+    private static VBajaJornadas vBajaJornadas;
+    private static VConsultarJornadas vConsultarJornadas;
+
     // VISTAS PARTIDOS
-    //
+    // DECLARACION DE OBJETOS
+    // LOGIN
     private static Login loginUML;
     private static LoginBD loginBD;
-    //
+
+    // ADMIN
     private static Administrador administradorUML;
     private static AdministradorBD administradorBD;
-    //
-    private static UsuarioBD usuarioBD;
 
-    //
+    // USER
+    private static UsuarioBD usuarioBD;
+    private static Usuario usuarioUML;
+
+    // DUEÑO
     private static DuenioBD duenioBD;
     private static Duenio duenioUML;
+    //private static ArrayList<Duenio> listaDuenios;
 
-    //
+    // JUGADOR
     private static JugadorBD jugadorBD;
     private static Jugador jugadorUML;
 
-    //
+    // EQUIPO
     private static EquipoBD equipoBD;
     private static Equipo equipoUML;
 
-    //
+    // PARTIDO
     private static PartidoBD partidoBD;
+    private static Partido partidoUML;
+
+    // JORNADA
+    private static JornadaBD jornadaBD;
+    private static Jornada jornadaUML;
 
     public static void main(String[] args) {
 
@@ -163,6 +178,12 @@ public class Controladora {
     public static void abrirCrudEquipos() {
         vpanelCrudEquipos = new VPanelCrudEquipos();
         vpanelCrudEquipos.setVisible(true);
+    }
+
+    // ABRIR PANEL CRUD JORNADAS
+    public static void abrirCrudJornadas() {
+        vpanelCrudJornadas = new VPanelCrudJornadas();
+        vpanelCrudJornadas.setVisible(true);
     }
 
     ////////////////////////////////////////////////////////////////////////////////////////////////
@@ -272,8 +293,9 @@ public class Controladora {
     ////////////////////////////////////////////////////////////////////////////////////////////////
     // ABRIR PANELES ALTA / BAJA / CONSULTA / MODIFICACION > EQUIPOS
     // ALTA EQUIPOS
-    public static void VAltaEquipos() {
-        vAltaEquipos = new VAltaEquipos();
+    public static void VAltaEquipos() throws SQLException, ConexionProblemas {
+        DuenioBD duenioBD = new DuenioBD();
+        vAltaEquipos = new VAltaEquipos(duenioBD.traerTodosLosDueniosBD());
         vAltaEquipos.setVisible(true);
     }
 
@@ -293,6 +315,20 @@ public class Controladora {
     public static void VModificaEquipos() {
         vEditarEquipos = new VEditarEquipos();
         vEditarEquipos.setVisible(true);
+    }
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    // ABRIR PANELES GESTION / CALENDARIO / JORNADAS
+    // ALTA JORNADA
+    public static void ValtaJorandas() {
+        vAltaJornadas = new VAltaJornadas();
+        vAltaJornadas.setVisible(true);
+    }
+
+    // BAJA JORNADAS
+    public static void VbajaJorandas() {
+        vBajaJornadas = new VBajaJornadas();
+        vBajaJornadas.setVisible(true);
     }
 
     //REINICIAR VISTA LOGIN
@@ -375,6 +411,42 @@ public class Controladora {
                 vEditarEquipos.dispose();
                 break;
             }
+            case "VCrudUsuarios": {
+                vpanelCrudUsuarios.dispose();
+                break;
+            }
+            case "VAltaUsuarios": {
+                vAltaUsuarios.dispose();
+                break;
+            }
+            case "VBajaUsuarios": {
+                vBajaUsuarios.dispose();
+                break;
+            }
+            case "VConsultarUsuarios": {
+                vConsultarUsuarios.dispose();
+                break;
+            }
+            case "VEditarUsuarios": {
+                vEditarUsuarios.dispose();
+                break;
+            }
+            case "VCrudJornadas": {
+                vpanelCrudJornadas.dispose();
+                break;
+            }
+            case "VAltaJornadas": {
+                vAltaJornadas.dispose();
+                break;
+            }
+            case "VBajaJornadas": {
+                vBajaJornadas.dispose();
+                break;
+            }
+            case "VConsultarJornadas": {
+                vConsultarJornadas.dispose();
+                break;
+            }
             default:
                 System.err.println("Error critico en el cierre de las ventanas");
                 throw new CierreVError();
@@ -443,6 +515,42 @@ public class Controladora {
             }
             case "VEditarEquipos": {
                 vpanelCrudEquipos.setVisible(true);
+                break;
+            }
+            case "VCrudUsuarios": {
+                vpanelAdministracion.setVisible(true);
+                break;
+            }
+            case "VAltaUsuarios": {
+                vpanelCrudUsuarios.setVisible(true);
+                break;
+            }
+            case "VBajaUsuarios": {
+                vpanelCrudUsuarios.setVisible(true);
+                break;
+            }
+            case "VConsultarUsuarios": {
+                vpanelCrudUsuarios.setVisible(true);
+                break;
+            }
+            case "VEditarUsuarios": {
+                vpanelCrudUsuarios.setVisible(true);
+                break;
+            }
+            case "VCrudJornadas": {
+                vpanelAdministracion.setVisible(true);
+                break;
+            }
+            case "VAltaJornadas": {
+                vpanelCrudJornadas.setVisible(true);
+                break;
+            }
+            case "VBajaJornadas": {
+                vpanelCrudJornadas.setVisible(true);
+                break;
+            }
+            case "VConsultarJornadas": {
+                vpanelCrudJornadas.setVisible(true);
                 break;
             }
             default:
@@ -551,11 +659,37 @@ public class Controladora {
         usuarioBD.insertarUsuarioBD(usuario, tipo);
     }
 
-    // CONSULTA
-    public static void localizarUsuarioEnBD(String dni) throws Exception {
-        usuarioBD = new UsuarioBD();
-        Usuario usuario = usuarioBD.localizaUsuario(dni);
-        vBajaUsuarios.rellenarCamposVentana(usuario.getDni(), usuario.getNombre(), usuario.getApellido());
+    // LOCALIZA
+    public static void localizarUsuarioEnBD(String tipoVentana, String dni) throws Exception {
+        switch (tipoVentana) {
+            case "VBajaUsuarios": {
+                usuarioBD = new UsuarioBD();
+                usuarioUML = usuarioBD.localizarUsuario(dni);
+                vBajaUsuarios.rellenarCamposVentana(usuarioUML.getDni(), usuarioUML.getNombre(), usuarioUML.getApellido(), usuarioUML.getLogin().getCodLogin());
+                break;
+            }
+            case "VConsultarUsuarios": {
+                usuarioBD = new UsuarioBD();
+                usuarioUML = usuarioBD.localizarUsuario(dni);
+                vConsultarUsuarios.rellenarCamposVentana(usuarioUML.getDni(), usuarioUML.getNombre(), usuarioUML.getApellido(), usuarioUML.getLogin().getUser(), usuarioUML.getLogin().getPassword());
+                break;
+            }
+            case "VEditarUsuarios": {
+                usuarioBD = new UsuarioBD();
+                usuarioUML = usuarioBD.localizarUsuario(dni);
+                vEditarUsuarios.rellenarCamposVentana(usuarioUML.getDni(), usuarioUML.getNombre(), usuarioUML.getApellido(), usuarioUML.getLogin().getUser(), usuarioUML.getLogin().getPassword());
+                break;
+            }
+            default:
+                System.err.println("Error critico en el CRUD de Usuarios");
+                throw new UsuarioCRUDError();
+        }
+    }
+
+    // EDITAR
+    public static void pedirActualizarUsuario(String passwd) throws SQLException, ConexionProblemas {
+        loginUML.setPassword(passwd);
+        loginBD.ejecutarModificacionLog(loginUML.getPassword(), duenioUML.getLogin().getCodLogin());
     }
 
     // BAJA
@@ -629,9 +763,10 @@ public class Controladora {
     ////////////////////////////////////////////////////////////////////////////////////////////////
     // SENTENCIAS ALTA / BAJA / CONSULTA / MODIFICACION > EQUIPO
     // ALTA
-    public static void altaEquipoBD(String nombre, String presupuesto, String anioFundacion, String ciudad, String nombreEstadio) throws Exception {
+    public static void altaEquipoBD(String nombre, String presupuesto, String anioFundacion, String ciudad, String nombreEstadio, String dniDuenio) throws Exception {
         equipoBD = new EquipoBD();
-        equipoUML = new Equipo(nombre, Double.parseDouble(presupuesto), anioFundacion, ciudad, nombreEstadio);
+        Duenio duenio = duenioBD.localizarDuenio(dniDuenio);
+        equipoUML = new Equipo(nombre, Double.parseDouble(presupuesto), anioFundacion, ciudad, nombreEstadio,duenio);
         equipoBD.insertarEquipoBD(equipoUML);
     }
 
@@ -647,7 +782,7 @@ public class Controladora {
             case "VConsultarEquipos": {
                 equipoBD = new EquipoBD();
                 equipoUML = equipoBD.localizarEquipo(nombre);
-                vConsultarEquipos.rellenarCamposVentana(equipoUML.getNombre(), equipoUML.getPresupuesto(), equipoUML.getAnioFundacion(), equipoUML.getCiudad(), equipoUML.getNombreEstadio(), equipoUML.getDuenio().getDni(), equipoUML.getDuenio().getNombre());
+                vConsultarEquipos.rellenarCamposVentana(equipoUML.getNombre(), equipoUML.getPresupuesto(), equipoUML.getAnioFundacion(), equipoUML.getCiudad(), equipoUML.getNombreEstadio(), equipoUML.getDuenio().getDni());
                 break;
             }
             case "VEditarEquipos": {
@@ -663,9 +798,9 @@ public class Controladora {
     }
 
     // EDITAR
-    public static void pedirActualizarEquipo(String ciudad, String estadio) throws SQLException, ConexionProblemas {
+    public static void pedirActualizarEquipo(String nombre, String ciudad, String estadio) throws SQLException, ConexionProblemas {
         equipoBD = new EquipoBD();
-        equipoBD.ejecutarModificacionBDEquipo(ciudad, estadio);
+        equipoBD.ejecutarModificacionBDEquipo(nombre, ciudad, estadio);
     }
 
     // BAJA
@@ -677,4 +812,114 @@ public class Controladora {
     ////////////////////////////////////////////////////////////////////////////////////////////////
     // SENTENCIAS ALTA / BAJA / CONSULTA / MODIFICACION > PARTIDO
     ////////////////////////////////////////////////////////////////////////////////////////////////
+    
+    
+    
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    // SENTENCIAS ALTA > JORNADA
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    // ALTA
+    public static void generarJornadas(String numeroTemporada) throws Exception {
+        equipoBD = new EquipoBD();
+        jornadaBD = new JornadaBD();
+
+        ArrayList<Equipo> listaEquipos = equipoBD.getAllEquipos();
+        System.out.println("Arraylist : " + listaEquipos.size());
+
+        int[] listacodEquipos = new int[listaEquipos.size()];
+
+        for (int i = 0; i < listacodEquipos.length; i++) {
+            listacodEquipos[i] = listaEquipos.get(i).getCodEquipo();
+        }
+        int N = listacodEquipos.length;
+        System.out.println("array: " + listacodEquipos.length);
+        String[][] matriz1, matriz2, jornadas, jornadas2;
+
+        matriz1 = new String[N - 1][N / 2];
+        matriz2 = new String[N - 1][N / 2];
+        jornadas = new String[N - 1][N / 2]; //primera vuelta
+        jornadas2 = new String[N - 1][N / 2]; //segunda vuelta
+
+        int cont = 0;
+        int cont2 = N - 2;
+
+        for (int i = 0; i < N - 1; i++) {
+            for (int j = 0; j < N / 2; j++) {
+                //matriz1
+                matriz1[i][j] = String.valueOf(listacodEquipos[cont]);
+                cont++;
+                if (cont == (N - 1)) {
+                    cont = 0;
+                }
+
+                //matriz2
+                if (j == 0) {
+                    matriz2[i][j] = String.valueOf(N);
+                } else {
+                    matriz2[i][j] = String.valueOf(listacodEquipos[cont2]);
+                    cont2--;
+                    if (cont2 == -1) {
+                        cont2 = N - 2;
+                    }
+                }
+
+                //Elaboro la matriz final de enfrentamientos por jornada (primera vuelta)
+                if (j == 0) {
+                    if (i % 2 == 0) {
+                        jornadas[i][j] = matriz2[i][j] + "-" + matriz1[i][j];
+                    } else {
+                        jornadas[i][j] = matriz1[i][j] + "-" + matriz2[i][j];
+                    }
+                } else {
+                    jornadas[i][j] = matriz1[i][j] + "-" + matriz2[i][j];
+                }
+
+                //segunda vuelta - al reves que la primera
+                if (j == 0) {
+                    if (i % 2 == 0) {
+                        jornadas2[i][j] = matriz1[i][j] + "-" + matriz2[i][j];
+                    } else {
+                        jornadas2[i][j] = matriz2[i][j] + "-" + matriz1[i][j];
+                    }
+                } else {
+                    jornadas2[i][j] = matriz2[i][j] + "-" + matriz1[i][j];
+                }
+
+            }
+        }
+
+        jornadaBD.insertJornadas(jornadas, jornadas2, numeroTemporada, N);
+
+    }
+
+    // LOCALIZA
+    public static void localizarTemporadaEnJornadaBD(String tipoVentana, String numTemporada) throws Exception, TempNoExiste {
+        switch (tipoVentana) {
+            case "VBajaJornadas": {
+                jornadaBD = new JornadaBD();
+                Boolean existe = jornadaBD.localizarTemporadaEnJornadaBD(numTemporada);
+               
+                if (existe) {
+                    vBajaJornadas.mensajeRespuesta("Existe temporada introducida");
+                    vBajaJornadas.actibarBotonTrasRespuesta();
+                }                 
+                break;
+            }
+            case "VConsultarJornadas": {
+                jornadaBD = new JornadaBD();
+                jornadaUML = administradorBD.localizarAdministrador(nombre);
+                vConsultarJornadas.rellenarCamposVentana(administradorUML.getDni(), administradorUML.getNombre(), administradorUML.getApellido());
+                break;
+            }
+            default:
+                System.err.println("Error critico en el CRUD de Jornadas");
+                throw new JornadaCRUDError();
+        }
+
+        /* LOCALIZAR
+    public static void localizarTemporadaEnJornadaBD(String numTemporada) {
+        jornadaBD.localizarTemporadaEnJornadaBD(numTemporada);
+    }*/
+    
+    }
 }

@@ -16,7 +16,7 @@ public class VPanelCrudDuenios extends javax.swing.JFrame {
     private final String tipoVentana;
 
     /**
-     * Creates new form VAdministracion
+     * Creates new form VPanelCrudDuenios
      */
     public VPanelCrudDuenios() {
         this.tipoVentana = "VCrudDuenios";
@@ -149,7 +149,7 @@ public class VPanelCrudDuenios extends javax.swing.JFrame {
     }//GEN-LAST:event_jBaltaActionPerformed
 
     private void jBbajaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBbajaActionPerformed
-        // ACTION 
+        // ACTION BAJA
         try {
             Controladora.VBajaDuenios();
             Controladora.cierraTipoVentanas(tipoVentana);
