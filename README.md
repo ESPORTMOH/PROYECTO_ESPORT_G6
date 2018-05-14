@@ -35,7 +35,7 @@ Por Miguel Olmo Hernando
 
 # REQUISITOS PARA EJECUTAR EL PROGRAMA:
 
-* [**1º.-**] Descargar el repositorio o clonarlo.
+* [**1º.-**] Descargar el repositorio o clonarlo en tu PC. Abrirlo o descomprimirlo, etc...
 
 * [**2º.-**] Realiza los siguientes pasos para la instalación de [**Oracle 12c en Linux con Vagrant**](https://github.com/migueloh/PROYECTO_ESPORT_G6/tree/master/PROGRAMA_JAVA/ProyectoEsport_MOH)
 
