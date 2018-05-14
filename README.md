@@ -37,14 +37,14 @@ Por Miguel Olmo Hernando
 
 * [**1º.-**] Descargar el repositorio o clonarlo.
 
-* [**2º.-**] Seguir los pasos siguientes para la instalación de [**Oracle 12c en Linux con Vagrant**](https://github.com/migueloh/PROYECTO_ESPORT_G6/tree/master/PROGRAMA_JAVA/ProyectoEsport_MOH)
+* [**2º.-**] Realiza los siguientes pasos para la instalación de [**Oracle 12c en Linux con Vagrant**](https://github.com/migueloh/PROYECTO_ESPORT_G6/tree/master/PROGRAMA_JAVA/ProyectoEsport_MOH)
 
-* [**3º.-**] Utiliza SQL Developer generar la Base de Datos mediante el SCRIPTS_ORACLE, los PAQUETES y los DISPARADORES mencionados anteriormente.
+* [**3º.-**] Utiliza SQL Developer para generar la Base de Datos mediante el SCRIPT DDL DE ORACLE, cargar los PAQUETES y los DISPARADORES mencionados anteriormente.
 
 * [**4º.-**] Instalar [**Netbeans**](https://netbeans.org/)
 
 * [**5º.-**] Ejecuta Netbeans e importa [**MyCalendar y MyLibrary**](https://github.com/migueloh/PROYECTO_ESPORT_G6/tree/master/PROGRAMA_JAVA/ProyectoEsport_MOH/src)
 
-* [**6º.-**] Edita la Clase  [**MyCalendar y MyLibrary**] (https://github.com/migueloh/PROYECTO_ESPORT_G6/blob/master/PROGRAMA_JAVA/ProyectoEsport_MOH/src/ModelBD/GenericoBD.java) con los datos que utilices en el paso **2º**.
+* [**6º.-**] Edita la Clase  [**GenericoBD**] (https://github.com/migueloh/PROYECTO_ESPORT_G6/blob/master/PROGRAMA_JAVA/ProyectoEsport_MOH/src/ModelBD/GenericoBD.java) con los datos que utilices en el paso **2º**.
 
-* [**7º.-**] Ejecuta el programa. El usuario y clave por defecto del usuario Administrador es root / root.
+* [**7º.-**] Ejecuta el programa. El **usuario y clave** por defecto del usuario **Administrador** son **root / root**.
