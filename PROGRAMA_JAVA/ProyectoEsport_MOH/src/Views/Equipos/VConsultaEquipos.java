@@ -55,7 +55,7 @@ public class VConsultaEquipos extends javax.swing.JFrame {
         jTestadio = new javax.swing.JTextField();
         jTpresupuesto = new javax.swing.JTextField();
         jBreset = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        jBretroceder = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
         jTdniDuenio = new javax.swing.JTextField();
@@ -95,11 +95,11 @@ public class VConsultaEquipos extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/retroceder.png"))); // NOI18N
-        jButton1.setBorder(null);
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jBretroceder.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/retroceder.png"))); // NOI18N
+        jBretroceder.setBorder(null);
+        jBretroceder.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                jBretrocederActionPerformed(evt);
             }
         });
 
@@ -136,7 +136,7 @@ public class VConsultaEquipos extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jButton1)
+                        .addComponent(jBretroceder)
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(layout.createSequentialGroup()
@@ -196,7 +196,7 @@ public class VConsultaEquipos extends javax.swing.JFrame {
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jBreset)
                         .addComponent(jBconsultar))
-                    .addComponent(jButton1))
+                    .addComponent(jBretroceder))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -222,7 +222,7 @@ public class VConsultaEquipos extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jBconsultarActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void jBretrocederActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBretrocederActionPerformed
         // ACTION BOTON RETROCEDER      
         try {
             Controladora.abreTipoVentanas(tipoVentana);
@@ -232,7 +232,7 @@ public class VConsultaEquipos extends javax.swing.JFrame {
         } catch (Exception E) {
             Logger.getLogger(VPanelCrudDuenios.class.getName()).log(Level.SEVERE, null, E);
         }
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_jBretrocederActionPerformed
 
     private void jBresetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBresetActionPerformed
         resetearCamposParaConsultarDeNuevo();
@@ -275,7 +275,7 @@ public class VConsultaEquipos extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBconsultar;
     private javax.swing.JButton jBreset;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jBretroceder;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

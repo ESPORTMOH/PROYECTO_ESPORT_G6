@@ -6,9 +6,15 @@
 package Views.Jornada;
 
 import Exceptions.CierreVError;
+import java.awt.BorderLayout;
+import java.awt.Container;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.BorderFactory;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.JProgressBar;
+import javax.swing.border.Border;
 import proyectoesport_moh.Controladora;
 
 /**
@@ -27,6 +33,7 @@ public class VAltaJornadas extends javax.swing.JFrame {
         this.tipoVentana = "VAltaJornadas";
         this.setLocationRelativeTo(null);
         this.setResizable(false);
+        configPredeterminadaVentana();
     }
 
     /**
@@ -102,7 +109,7 @@ public class VAltaJornadas extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTntemporada, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2))
-                .addGap(40, 40, 40)
+                .addGap(91, 91, 91)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jBgenerarTemporada)
                     .addComponent(jBretroceder))
@@ -114,8 +121,14 @@ public class VAltaJornadas extends javax.swing.JFrame {
 
     private void jBgenerarTemporadaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBgenerarTemporadaActionPerformed
         try {
-            // GENERAR
-            Controladora.generarJornadas(jTntemporada.getText());
+            // GENERAR TEMPORADA
+            if (jTntemporada.getText().isEmpty()) {
+                JOptionPane.showMessageDialog(this, "eeeee");
+            } else {
+                gestionarMomento();   
+                Controladora.generarJornadas(jTntemporada.getText());
+            }
+
         } catch (Exception ex) {
             Logger.getLogger(VAltaJornadas.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -174,4 +187,23 @@ public class VAltaJornadas extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JTextField jTntemporada;
     // End of variables declaration//GEN-END:variables
+
+    // FUNCIONES PROPIAS DE LA VISTA
+    public void configPredeterminadaVentana() {
+        
+    }
+
+    private void gestionarMomento() {
+        JFrame f = new JFrame("JProgressBar Sample");
+        f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        Container content = f.getContentPane();
+        JProgressBar progressBar = new JProgressBar();
+        progressBar.setValue(25);
+        progressBar.setStringPainted(true);
+        Border border = BorderFactory.createTitledBorder("Espere un momento");
+        progressBar.setBorder(border);
+        content.add(progressBar, BorderLayout.NORTH);
+        f.setSize(300, 100);
+        f.setVisible(true);
+    }
 }
