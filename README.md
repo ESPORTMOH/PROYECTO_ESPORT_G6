@@ -5,7 +5,7 @@ Por Miguel Olmo Hernando
 
 * Esta versión Fase 4 v4 incluye lo siguiente:
 
-	* Se han realizado varios cambios en los atributos de la BD y generado una nueva tabla llamada Clasificación. Regeneracion del SCRIPT_ORACLE
+	* Se han realizado varios cambios en los atributos de la BD y generado una nueva tabla llamada Clasificación. Se han creado las alteraciones necesarias para la nueva tabla y generado un nuevo SCRIPT DDL para ORACLE.
 	* Se han creado 3 procedimientos nuevos que se incluyen en el paquete PAQUETE_SPORT_MOH_2, todos ellos tienen como fin rellenar un combo utilizando un cursor.
 	* Se han realizado cambios en los CRUD. A falta de pulir unos detalles.
 	* Se ha codificado lo necesario para la autogeneracion de la jornada.
@@ -45,6 +45,6 @@ Por Miguel Olmo Hernando
 
 * [**5º.-**] Ejecuta Netbeans e importa [**MyCalendar y MyLibrary**](https://github.com/migueloh/PROYECTO_ESPORT_G6/tree/master/PROGRAMA_JAVA/ProyectoEsport_MOH/src)
 
-* [**6º.-**] Edita la Clase  [**GenericoBD**] (https://github.com/migueloh/PROYECTO_ESPORT_G6/blob/master/PROGRAMA_JAVA/ProyectoEsport_MOH/src/ModelBD/GenericoBD.java) con los datos que utilices en el paso **2º**.
+* [**6º.-**] Edita la Clase  [**GenericoBD**](https://github.com/migueloh/PROYECTO_ESPORT_G6/blob/master/PROGRAMA_JAVA/ProyectoEsport_MOH/src/ModelBD/GenericoBD.java) con los datos que utilices en el paso **2º**.
 
 * [**7º.-**] Ejecuta el programa. El **usuario y clave** por defecto del usuario **Administrador** son **root / root**.
