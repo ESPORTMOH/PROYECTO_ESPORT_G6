@@ -11,6 +11,7 @@ Por Miguel Olmo Hernando
 	* Se ha codificado lo necesario para la autogeneracion de la jornada.
 	* Se ha mejorado la interfaz gráfica.
 
+* La versión Fase 4 v5 corrige varios problemas en los CRUD
 
 # CONTENIDO DEL REPOSITORIO
 

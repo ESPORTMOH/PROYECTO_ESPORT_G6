@@ -179,7 +179,7 @@ public class VConsultarAdmins extends javax.swing.JFrame {
                     .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addGap(18, 18, 18)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(24, 24, 24)
+                .addGap(21, 21, 21)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jBretroceder, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -283,11 +283,15 @@ public class VConsultarAdmins extends javax.swing.JFrame {
 
     // FUNCIONES PROPIAS DE LA VISTA
     public void rellenarCamposVentana(String dni, String nombre, String apellido, String usuario, String passwd) {
+        jTdni.setEnabled(true);
         jTdni.setText(dni);
-        jTdni.setEnabled(false);
+        jTnombre.setEnabled(true);
         jTnombre.setText(nombre);
+        jTapellido.setEnabled(true);
         jTapellido.setText(apellido);
+        jTusuario.setEnabled(true);
         jTusuario.setText(usuario);
+        jTpasswd.setEnabled(true);
         jTpasswd.setText(passwd);
     }
 

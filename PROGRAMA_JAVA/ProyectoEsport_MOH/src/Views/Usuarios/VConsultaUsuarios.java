@@ -287,10 +287,13 @@ public class VConsultaUsuarios extends javax.swing.JFrame {
 
     // FUNCIONES PROPIAS DE LA VISTA
     public void rellenarCamposVentana(String dni, String nombre, String apellido, String usuario, String passwd) {
+        jTdni.setEnabled(true);
         jTdni.setText(dni);
-        jTdni.setEnabled(false);
+        jTnombre.setEnabled(true);
         jTnombre.setText(nombre);
+        jTapellido.setEnabled(true);
         jTapellido.setText(apellido);
+        jTusuario.setEnabled(true);
         jTusuario.setText(usuario);
         jTpasswd.setEnabled(true);
         jTpasswd.setText(passwd);

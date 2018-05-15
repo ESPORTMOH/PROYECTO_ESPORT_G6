@@ -67,7 +67,7 @@ public class UsuarioBD extends GenericoBD{
         return usuario;
     }
     
-        // EDITAR LOGIN
+    // EDITAR LOGIN
     public void ejecutarModificacionLog(String passwd, Integer codLoginADM) throws SQLException, ConexionProblemas {
 
         GenericoBD genericoBD = new GenericoBD();
@@ -83,6 +83,21 @@ public class UsuarioBD extends GenericoBD{
         pS.executeUpdate();
 
         cerrarConexion(con);
+    }
+    
+    // ELIMINAR ADMINISTRADOR
+    public void eliminarUsuarioDelaBD(String dni) throws SQLException, ConexionProblemas {
+
+        GenericoBD genericoBD = new GenericoBD();
+        con = genericoBD.abrirConexion(con);
+
+        PreparedStatement pS = con.prepareStatement("DELETE FROM usuario WHERE dni = ?");
+        pS.setString(1, dni);
+
+        pS.executeUpdate();
+
+        cerrarConexion(con);
+
     }
 
 }
