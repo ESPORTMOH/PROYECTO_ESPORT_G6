@@ -41,6 +41,7 @@ public class VAltaEquipos extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         this.setResizable(false);
         
+        
         rellenarComboListaDuenios(listaDuenios);
     }
     
@@ -315,10 +316,12 @@ public class VAltaEquipos extends javax.swing.JFrame {
    
     private void rellenarComboListaDuenios(ArrayList<Duenio> listaDuenios) {
         
-        jComboBduenios.addItem("Selecciona una opcion");
+  
         for (int i = 0; i < listaDuenios.size(); i++) {
 
                 jComboBduenios.addItem(listaDuenios.get(i).getDni() + " " + listaDuenios.get(i).getNombre());
             }
+    jComboBduenios.setSelectedIndex(-1);
+
     }
 }
