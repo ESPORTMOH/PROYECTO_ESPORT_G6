@@ -144,7 +144,7 @@ public class VPanelCrudDuenios extends javax.swing.JFrame {
         } catch (CierreVError CVE) {
             JOptionPane.showMessageDialog(this, CVE.getMessage());
         } catch (Exception ex) {
-            Logger.getLogger(VPanelCrudAdministradores.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(VPanelCrudDuenios.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jBaltaActionPerformed
 

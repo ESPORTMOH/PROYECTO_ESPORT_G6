@@ -226,7 +226,7 @@ public class VConsultaEquipos extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, CNV.getMensaje());
         } catch (EquipoNoExiste ENE) {
             JOptionPane.showMessageDialog(this, ENE.getMensaje());
-        } catch (EquiposCRUDError ECRUDE) {
+        } catch (DuenioCRUDError ECRUDE) {
             JOptionPane.showMessageDialog(this, ECRUDE.getMensaje());
         } catch (Exception E) {
             JOptionPane.showMessageDialog(this, E.getMessage());

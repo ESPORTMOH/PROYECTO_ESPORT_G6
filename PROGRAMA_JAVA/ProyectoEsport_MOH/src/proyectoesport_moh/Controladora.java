@@ -25,7 +25,6 @@ public class Controladora {
     /**
      * @param args the command line arguments
      */
-    
     // INICIO DECLARACION DE OBJETOS PARA LAS VISTAS
     //VISTA MENU
     private static VHome vHo;
@@ -77,10 +76,11 @@ public class Controladora {
     private static VBajaJornadas vBajaJornadas;
     private static VConsultaJornadas vConsultarJornadas;
 
+    // VISTAS FICHAJES
+    private static VFichajes vFichajes;
+
     // VISTAS PARTIDOS
-    
     // FIN DECLARACION DE OBJETOS PARA LAS VISTAS
-    
     // DECLARACION DE OBJETOS UML / BD
     // LOGIN
     private static Login loginUML;
@@ -115,8 +115,7 @@ public class Controladora {
     private static JornadaBD jornadaBD;
     private static Jornada jornadaUML;
     // FIN DECLARACION DE OBJETOS UML / BD
-    
-    
+
     /// INICIO MAIN
     public static void main(String[] args) {
 
@@ -135,7 +134,7 @@ public class Controladora {
         vLo = new VLogin();
         vLo.setVisible(true);
     }
-    
+
     //REINICIAR VISTA LOGIN
     public static void reiniciarVistaLogin() {
         vLo.dispose();
@@ -201,6 +200,12 @@ public class Controladora {
     public static void abrirCrudJornadas() {
         vpanelCrudJornadas = new VPanelCrudJornadas();
         vpanelCrudJornadas.setVisible(true);
+    }
+
+    // ABRIR PANEL FICHAJES
+    public static void abrirFichajes() {
+        vFichajes = new VFichajes();
+        vFichajes.setVisible(true);
     }
 
     ////////////////////////////////////////////////////////////////////////////////////////////////
@@ -478,6 +483,14 @@ public class Controladora {
                 vEditarJugadores.dispose();
                 break;
             }
+            case "vPanelDuenios": {
+                vpanelDuenios.dispose();
+                break;
+            }
+            case "VFichajes": {
+                vFichajes.dispose();
+                break;
+            }
             default:
                 System.err.println("Error critico en el cierre de las ventanas");
                 throw new CierreVError();
@@ -600,8 +613,13 @@ public class Controladora {
                 vpanelCrudJugadores.setVisible(true);
                 break;
             }
+
             case "VEditarJugadores": {
                 vpanelCrudJugadores.setVisible(true);
+                break;
+            }
+            case "VFichajes": {
+                vpanelCrudDuenios.setVisible(true);
                 break;
             }
             default:
@@ -745,7 +763,7 @@ public class Controladora {
     }
 
     // BAJA
-    public static void eliminarUsuarioDelaBD(String dni, Integer codLogin) throws SQLException, ConexionProblemas{
+    public static void eliminarUsuarioDelaBD(String dni, Integer codLogin) throws SQLException, ConexionProblemas {
         usuarioBD = new UsuarioBD();
         loginBD = new LoginBD();
 
@@ -824,9 +842,9 @@ public class Controladora {
         equipoBD = new EquipoBD();
         duenioBD = new DuenioBD();
         //split
-        String[]dniDue = dniDuenio.split(" ");
+        String[] dniDue = dniDuenio.split(" ");
         Duenio duenio = duenioBD.localizarDuenio(dniDue[0]);
-        equipoUML = new Equipo(nombre, Double.parseDouble(presupuesto), anioFundacion, ciudad, nombreEstadio, duenio); 
+        equipoUML = new Equipo(nombre, Double.parseDouble(presupuesto), anioFundacion, ciudad, nombreEstadio, duenio);
         equipoBD.insertarEquipoBD(equipoUML);
     }
 
@@ -872,11 +890,6 @@ public class Controladora {
     ////////////////////////////////////////////////////////////////////////////////////////////////
     // SENTENCIAS ALTA / BAJA / CONSULTA / MODIFICACION > PARTIDO
     ////////////////////////////////////////////////////////////////////////////////////////////////
-    
-    
-    
-    
-    
     ////////////////////////////////////////////////////////////////////////////////////////////////
     // SENTENCIAS ALTA > JORNADA
     ////////////////////////////////////////////////////////////////////////////////////////////////
@@ -978,10 +991,16 @@ public class Controladora {
 
     }
 
-    // GENERA BARRA PROGRESO
+    /* GENERA BARRA PROGRESO
     public static JProgressBar generaBarraProgreso(JProgressBar jProgressBarT) {
         jProgressBarT = new JProgressBar();
 
         return jProgressBarT;
+    }
+     */
+    public static ArrayList<Jugador> consultarJugadoresParaCombo() throws SQLException, ConexionProblemas {
+        JugadorBD jugadorBD = new JugadorBD();
+        return jugadorBD.traerTodosLosJuagdoresBD();
+      
     }
 }

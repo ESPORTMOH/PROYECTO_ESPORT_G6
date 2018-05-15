@@ -1,18 +1,24 @@
 package Views.Duenios;
 
-import Views.Administradores.*;
+import Exceptions.CierreVError;
+import Views.Administradores.VPanelCrudAdministradores;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import proyectoesport_moh.Controladora;
-import Exceptions.*;
 
 /**
  * @author MIGUEL
  */
 public class VPanelDuenios extends javax.swing.JFrame {
 
+    private final String tipoVentana;
+
     /**
      * Creates new form VAdministracion
      */
     public VPanelDuenios() {
+        this.tipoVentana = "vPanelDuenios";
         initComponents();
         this.setLocationRelativeTo(null);
         this.setResizable(false);
@@ -28,44 +34,55 @@ public class VPanelDuenios extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
+        jMretroceder = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
-        jMenuItem8 = new javax.swing.JMenuItem();
+        jMfichar = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
-        jMenuItem10 = new javax.swing.JMenuItem();
-        jMenuItem11 = new javax.swing.JMenuItem();
+        jMultimaJornada = new javax.swing.JMenuItem();
+        jMultimaClasi = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jLabel1.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 24)); // NOI18N
         jLabel1.setText("PANEL DE DUEÑOS");
+
+        jLabel2.setFont(new java.awt.Font("Tahoma", 3, 18)); // NOI18N
+        jLabel2.setText("Bienvenid@ de nuevo");
 
         jMenu1.setText("Archivo");
 
-        jMenuItem1.setText("Retroceder");
-        jMenu1.add(jMenuItem1);
-
-        jMenuItem2.setText("Salir");
-        jMenu1.add(jMenuItem2);
+        jMretroceder.setText("Retroceder");
+        jMretroceder.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMretrocederActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMretroceder);
 
         jMenuBar1.add(jMenu1);
 
         jMenu3.setText("Gestionar");
 
-        jMenuItem8.setText("Equipo");
-        jMenu3.add(jMenuItem8);
+        jMfichar.setText("Fichajes");
+        jMfichar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMficharActionPerformed(evt);
+            }
+        });
+        jMenu3.add(jMfichar);
 
         jMenuBar1.add(jMenu3);
 
         jMenu4.setText("Visualizar");
 
-        jMenuItem10.setText("Resultados Última Jornada");
-        jMenu4.add(jMenuItem10);
+        jMultimaJornada.setText("Resultados Última Jornada");
+        jMenu4.add(jMultimaJornada);
 
-        jMenuItem11.setText("Resultados Última Clasificación");
-        jMenu4.add(jMenuItem11);
+        jMultimaClasi.setText("Resultados Última Clasificación");
+        jMenu4.add(jMultimaClasi);
 
         jMenuBar1.add(jMenu4);
 
@@ -75,21 +92,53 @@ public class VPanelDuenios extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(150, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addGap(143, 143, 143))
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(39, 39, 39)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(90, 90, 90)
+                        .addComponent(jLabel1)))
+                .addContainerGap(100, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(25, 25, 25)
+                .addGap(39, 39, 39)
                 .addComponent(jLabel1)
-                .addContainerGap(236, Short.MAX_VALUE))
+                .addGap(39, 39, 39)
+                .addComponent(jLabel2)
+                .addContainerGap(198, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jMficharActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMficharActionPerformed
+        // ARCHIVO / GESTIONAR / FICHAJES 
+        try {
+            Controladora.abrirFichajes();
+            Controladora.cierraTipoVentanas(tipoVentana);
+        } catch (CierreVError CVE) {
+            JOptionPane.showMessageDialog(this, CVE.getMessage());
+        } catch (Exception ex) {
+            Logger.getLogger(VPanelDuenios.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jMficharActionPerformed
+
+    private void jMretrocederActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMretrocederActionPerformed
+        // ARCHIVO / RETROCEDER
+        try {
+            Controladora.abreTipoVentanas(tipoVentana);
+            Controladora.cierraTipoVentanas(tipoVentana);
+            this.dispose();
+        } catch (CierreVError CVE) {
+            JOptionPane.showMessageDialog(this, CVE.getMessage());
+        } catch (Exception ex) {
+            Logger.getLogger(VPanelCrudAdministradores.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jMretrocederActionPerformed
 
     /**
      * @param args the command line arguments
@@ -116,10 +165,6 @@ public class VPanelDuenios extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(VPanelDuenios.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -131,14 +176,14 @@ public class VPanelDuenios extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem10;
-    private javax.swing.JMenuItem jMenuItem11;
-    private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem8;
+    private javax.swing.JMenuItem jMfichar;
+    private javax.swing.JMenuItem jMretroceder;
+    private javax.swing.JMenuItem jMultimaClasi;
+    private javax.swing.JMenuItem jMultimaJornada;
     // End of variables declaration//GEN-END:variables
 }

@@ -3,18 +3,20 @@ package ModelBD;
 import Exceptions.ConexionProblemas;
 import ModelUML.*;
 import Exceptions.JugadorNoExiste;
+import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import oracle.jdbc.OracleTypes;
 
 /**
  *
  * @author MIGUEL
  */
-public class JugadorBD {
+public class JugadorBD extends GenericoBD{
 
     private Connection con;
 
@@ -98,7 +100,7 @@ public class JugadorBD {
             ju.setFechaNacimiento(rs.getDate("FECHANACIMIENTO"));
             ju.setNacionalidad(rs.getString("NACIONALIDAD"));
             ju.setPosicion(rs.getString("POSICION"));
-            ju.setEquipo(new Equipo(rs.getInt("CODEQUIPO")));
+            //ju.setEquipo(new Equipo(rs.getInt("CODEQUIPO")));
             
             listaJugadores.add(ju);
         }
@@ -107,6 +109,46 @@ public class JugadorBD {
 
         return listaJugadores;
 
+    }
+    
+    // LOCALIZAR TODOS LOS DUENIOS PARA RELLENAR EL COMBO EN EQUIPO / ALTA
+    public ArrayList traerTodosLosJuagdoresBD() throws SQLException, ConexionProblemas {
+        
+        GenericoBD genericoBD = new GenericoBD();
+        con = genericoBD.abrirConexion(con);
+ 
+        ArrayList<Jugador> listaJugadores = new ArrayList();
+           
+        try {
+           
+            CallableStatement cS = con.prepareCall("{call ESPORT_MOH_2.PROCE_rellenarcomboJugadores(?)}");
+            
+            // CADENA DEVUELTA POR EL CURSOR
+            cS.registerOutParameter(1, OracleTypes.CURSOR); 
+
+            // EJECUTO EL PROCEDIMIENTO
+            cS.execute(); 
+            ResultSet rS = (ResultSet) cS.getObject(1);
+
+            if (rS.next()) {
+                do {
+                    Jugador jUg = new Jugador();
+                    jUg.setDni(rS.getString("dni"));
+                    jUg.setNombre(rS.getString("nombre"));
+                    
+                    listaJugadores.add(jUg);
+                } while (rS.next());
+            } else {
+                System.out.println("No hay nada");
+            }
+
+            cerrarConexion(con);
+        } catch (Exception e) {
+            System.out.println(e);
+
+        }
+
+        return listaJugadores;
     }
 
 }
