@@ -73,33 +73,7 @@ public class DuenioBD extends GenericoBD {
         return duenio;
     }
 
-    /*
     // LOCALIZAR TODOS LOS DUENIOS PARA RELLENAR EL COMBO EN EQUIPO / ALTA
-    public ArrayList<Duenio> traerTodosLosDuenioBD() throws SQLException, ConexionProblemas {
-        GenericoBD genericoBD = new GenericoBD();
-        con = genericoBD.abrirConexion(con);
-
-        ArrayList <Duenio> listaDuenios = new ArrayList();
-        String consultaSQL = "SELECT * FROM duenio";
-        
-        Statement sT=con.createStatement();
-        
-        ResultSet rS = sT.executeQuery(consultaSQL);
-        while (rS.next()) {
-            Duenio dUn = new Duenio();
-        
-            dUn.setDni(rS.getString("dni"));
-            
-            listaDuenios.add(dUn);
-        }
-
-        cerrarConexion(con);
-
-        return listaDuenios;
-
-    }
-     */
-// VOY A POR OTRO
     public ArrayList traerTodosLosDueniosBD() throws SQLException, ConexionProblemas {
         
         GenericoBD genericoBD = new GenericoBD();
@@ -129,7 +103,6 @@ public class DuenioBD extends GenericoBD {
                 System.out.println("No hay nada");
             }
 
-            //cadena = llamada.getString(2);// recupero la cadena
             cerrarConexion(con);
         } catch (Exception e) {
             System.out.println(e);

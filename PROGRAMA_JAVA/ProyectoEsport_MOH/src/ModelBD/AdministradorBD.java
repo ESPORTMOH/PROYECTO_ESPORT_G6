@@ -78,7 +78,6 @@ public class AdministradorBD extends GenericoBD {
         pS.executeUpdate();
 
         cerrarConexion(con);
-
     }
 
 }

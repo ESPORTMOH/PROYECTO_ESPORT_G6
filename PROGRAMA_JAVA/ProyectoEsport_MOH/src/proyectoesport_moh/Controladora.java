@@ -12,12 +12,9 @@ import Views.Duenios.*;
 import Views.Equipos.*;
 import Views.Jugadores.*;
 import Views.Usuarios.*;
-import Views.Jornada.VAltaJornadas;
-import Views.Jornada.VBajaJornadas;
-import Views.Jornada.VPanelCrudJornadas;
+import Views.Jornada.*;
 import java.sql.*;
 import java.util.*;
-import javax.swing.JOptionPane;
 import javax.swing.JProgressBar;
 
 /**
@@ -28,6 +25,8 @@ public class Controladora {
     /**
      * @param args the command line arguments
      */
+    
+    // INICIO DECLARACION DE OBJETOS PARA LAS VISTAS
     //VISTA MENU
     private static VHome vHo;
 
@@ -59,10 +58,10 @@ public class Controladora {
     private static VConsultaDuenios vConsultarDuenios;
 
     // VISTAS JUGADORES
-    private static VPanelCrudJugadores vpanelJugadores;
+    private static VPanelCrudJugadores vpanelCrudJugadores;
     private static VAltaJugadores vAltaJugadores;
     private static VBajaJugadores vBajaJugadores;
-    private static VAltaJugadores vEditarJugadores;
+    private static VEditarJugadores vEditarJugadores;
     private static VConsultarJugadores vConsultarJugadores;
 
     // VISTAS EQUIPOS
@@ -76,10 +75,13 @@ public class Controladora {
     private static VPanelCrudJornadas vpanelCrudJornadas;
     private static VAltaJornadas vAltaJornadas;
     private static VBajaJornadas vBajaJornadas;
-    private static VConsultarJornadas vConsultarJornadas;
+    private static VConsultaJornadas vConsultarJornadas;
 
     // VISTAS PARTIDOS
-    // DECLARACION DE OBJETOS
+    
+    // FIN DECLARACION DE OBJETOS PARA LAS VISTAS
+    
+    // DECLARACION DE OBJETOS UML / BD
     // LOGIN
     private static Login loginUML;
     private static LoginBD loginBD;
@@ -112,11 +114,13 @@ public class Controladora {
     // JORNADA
     private static JornadaBD jornadaBD;
     private static Jornada jornadaUML;
-
+    // FIN DECLARACION DE OBJETOS UML / BD
+    
+    
+    /// INICIO MAIN
     public static void main(String[] args) {
 
-        /// INICIO GENERICO DE VENTANAS
-        // ABRIR INICIO MAIN
+        // INICIO GENERICO DE LAS VENTANAS DE INICIO / RESET / SALIDA DE LA APLICACION
         abrirHome(vHo = new VHome());
     }
 
@@ -128,10 +132,21 @@ public class Controladora {
 
     // ABRIR VISTA LOGIN
     public static void abrirInicioSesion() {
-
         vLo = new VLogin();
         vLo.setVisible(true);
     }
+    
+    //REINICIAR VISTA LOGIN
+    public static void reiniciarVistaLogin() {
+        vLo.dispose();
+        abrirHome(vHo);
+    }
+
+    // SALIR DE LA APLICACION
+    public static void salirAplicacion() {
+        System.exit(0);
+    }
+    // FIN GENERICO DE LAS VENTANAS DE INICIO / RESET / SALIDA DE LA APLICACION
 
     ////////////////////////////////////////////////////////////////////////////////////////////////
     // APERTURA DE PANELES PARA EL MENU
@@ -151,7 +166,7 @@ public class Controladora {
     }
 
     ////////////////////////////////////////////////////////////////////////////////////////////////
-    //ABRIR PANELES CRUD / ADMINISTRADORES / USUARIOS / DUENOS / JUGADORES / EQUIPOS
+    //ABRIR PANELES CRUD > ADMINISTRADORES / USUARIOS / DUENOS / JUGADORES / EQUIPOS
     //ABRIR PANEL CRUD ADMINISTRADORES
     public static void abrirCrudAdministradores() {
         vpanelCrudAdministradores = new VPanelCrudAdministradores();
@@ -172,8 +187,8 @@ public class Controladora {
 
     // ABRIR PANEL CRUD JUGADORES
     public static void abrirCrudJugadores() {
-        vpanelJugadores = new VPanelCrudJugadores();
-        vpanelJugadores.setVisible(true);
+        vpanelCrudJugadores = new VPanelCrudJugadores();
+        vpanelCrudJugadores.setVisible(true);
     }
 
     // ABRIR PANEL CRUD EQUIPOS
@@ -288,7 +303,7 @@ public class Controladora {
 
     // MODIFICA JUGADORES
     public static void VModificaJugadores() {
-        vEditarJugadores = new VAltaJugadores();
+        vEditarJugadores = new VEditarJugadores();
         vEditarJugadores.setVisible(true);
     }
 
@@ -320,7 +335,7 @@ public class Controladora {
     }
 
     ////////////////////////////////////////////////////////////////////////////////////////////////
-    // ABRIR PANELES GESTION / CALENDARIO / JORNADAS
+    // ABRIR PANELES GESTION / CALENDARIO > JORNADAS
     // ALTA JORNADA
     public static void ValtaJorandas() {
         vAltaJornadas = new VAltaJornadas();
@@ -335,24 +350,12 @@ public class Controladora {
 
     // CONSULTA JORNADAS
     public static void VConsultaJornadas() {
-        vConsultarJornadas = new VConsultarJornadas();
+        vConsultarJornadas = new VConsultaJornadas();
         vConsultarJornadas.setVisible(true);
     }
 
-    //REINICIAR VISTA LOGIN
-    public static void reiniciarVistaLogin() {
-        vLo.dispose();
-        abrirHome(vHo);
-    }
-
-    // SALIR DE LA APLICACION
-    public static void salirAplicacion() {
-        System.exit(0);
-    }
-
     ////////////////////////////////////////////////////////////////////////////////////////////////
-    // CONTROL GENERICO DE VENTANAS
-    // CERRAR VENTANAS ADMINISTRADORES
+    // INICIO CONTROL GENERICO DE VENTANAS > CERRADO DE VENTANAS 
     public static void cierraTipoVentanas(String tipoVentana) throws Exception {
         switch (tipoVentana) {
             case "VPanelAdmins": {
@@ -455,14 +458,34 @@ public class Controladora {
                 vConsultarJornadas.dispose();
                 break;
             }
+            case "VCrudJugadores": {
+                vpanelCrudJugadores.dispose();
+                break;
+            }
+            case "VAltaJugadores": {
+                vAltaJugadores.dispose();
+                break;
+            }
+            case "VBajaJugadores": {
+                vBajaJugadores.dispose();
+                break;
+            }
+            case "VConsultarJugadores": {
+                vConsultarJugadores.dispose();
+                break;
+            }
+            case "VEditarJugadores": {
+                vEditarJugadores.dispose();
+                break;
+            }
             default:
                 System.err.println("Error critico en el cierre de las ventanas");
                 throw new CierreVError();
         }
     }
+    // FIN CONTROL GENERICO DE VENTANAS > CERRADO DE VENTANAS 
 
-    // ABRIR TIPO VENTANAS ADMINISTRADORES              
-    // CERRAR VENTANA
+    // INICIO CONTROL GENERICO DE VENTANAS > APERTURA DE VENTANAS 
     public static void abreTipoVentanas(String tipoVentana) throws Exception {
         switch (tipoVentana) {
             case "VCrudAdmins": {
@@ -561,14 +584,35 @@ public class Controladora {
                 vpanelCrudJornadas.setVisible(true);
                 break;
             }
+            case "VCrudJugadores": {
+                vpanelAdministracion.setVisible(true);
+                break;
+            }
+            case "VAltaJugadores": {
+                vpanelCrudJugadores.setVisible(true);
+                break;
+            }
+            case "VBajaJugadores": {
+                vpanelCrudJugadores.setVisible(true);
+                break;
+            }
+            case "VConsultarJugadores": {
+                vpanelCrudJugadores.setVisible(true);
+                break;
+            }
+            case "VEditarJugadores": {
+                vpanelCrudJugadores.setVisible(true);
+                break;
+            }
             default:
                 System.err.println("Error critico en la apertura de las ventanas");
                 throw new AbreVError();
         }
     }
+    // FIN CONTROL GENERICO DE VENTANAS > APERTURA DE VENTANAS 
 
     ////////////////////////////////////////////////////////////////////////////////////////////////
-    //CONSULTA PARA SOLICITAR ACCESO
+    // CONSULTA PARA SOLICITAR ACCESO
     public static void consultarLogin(String usuario, String password) throws Exception {
 
         loginBD = new LoginBD();
@@ -701,7 +745,12 @@ public class Controladora {
     }
 
     // BAJA
-    public static void eliminarUsuarioDelaBD(String dni) {
+    public static void eliminarUsuarioDelaBD(String dni, Integer codLogin) throws SQLException, ConexionProblemas{
+        usuarioBD = new UsuarioBD();
+        loginBD = new LoginBD();
+
+        usuarioBD.eliminarUsuarioDelaBD(dni);
+        loginBD.eliminarDeLaBDUsuarioLog(codLogin);
     }
 
     ////////////////////////////////////////////////////////////////////////////////////////////////
@@ -725,7 +774,7 @@ public class Controladora {
             case "VConsultarDuenios": {
                 duenioBD = new DuenioBD();
                 duenioUML = duenioBD.localizarDuenio(dni);
-                vConsultarDuenios.rellenarCamposVentana(duenioUML.getDni(), duenioUML.getNombre(), duenioUML.getApellido());
+                vConsultarDuenios.rellenarCamposVentana(duenioUML.getDni(), duenioUML.getNombre(), duenioUML.getApellido(), duenioUML.getLogin().getUser(), duenioUML.getLogin().getPassword());
                 break;
             }
             case "VEditarDuenios": {
@@ -793,7 +842,7 @@ public class Controladora {
             case "VConsultarEquipos": {
                 equipoBD = new EquipoBD();
                 equipoUML = equipoBD.localizarEquipo(nombre);
-                vConsultarEquipos.rellenarCamposVentana(equipoUML.getNombre(), equipoUML.getPresupuesto(), equipoUML.getAnioFundacion(), equipoUML.getCiudad(), equipoUML.getNombreEstadio(), equipoUML.getDuenio().getDni());
+                vConsultarEquipos.rellenarCamposVentana(equipoUML.getNombre(), equipoUML.getPresupuesto(), equipoUML.getAnioFundacion(), equipoUML.getCiudad(), equipoUML.getNombreEstadio(), equipoUML.getDuenio().getDni(), equipoUML.getDuenio().getNombre());
                 break;
             }
             case "VEditarEquipos": {
@@ -823,6 +872,11 @@ public class Controladora {
     ////////////////////////////////////////////////////////////////////////////////////////////////
     // SENTENCIAS ALTA / BAJA / CONSULTA / MODIFICACION > PARTIDO
     ////////////////////////////////////////////////////////////////////////////////////////////////
+    
+    
+    
+    
+    
     ////////////////////////////////////////////////////////////////////////////////////////////////
     // SENTENCIAS ALTA > JORNADA
     ////////////////////////////////////////////////////////////////////////////////////////////////
@@ -898,8 +952,8 @@ public class Controladora {
         jornadaBD.insertJornadas(jornadas, jornadas2, numeroTemporada, N);
     }
 
-    // LOCALIZA
-    public static void localizarTemporadaEnJornadaBD(String tipoVentana, String numTemporada) throws Exception, TempNoExiste {
+    // LOCALIZAR
+    public static void pedirLocalizarTemporada(String tipoVentana, String numTemporada) throws Exception, TempNoExiste {
         switch (tipoVentana) {
             case "VBajaJornadas": {
                 jornadaBD = new JornadaBD();
@@ -913,8 +967,8 @@ public class Controladora {
             }
             case "VConsultarJornadas": {
                 jornadaBD = new JornadaBD();
-                jornadaUML = administradorBD.localizarAdministrador(nombre);
-                vConsultarJornadas.rellenarCamposVentana(administradorUML.getDni(), administradorUML.getNombre(), administradorUML.getApellido());
+                jornadaUML = jornadaBD.localizarTemporadaEnJornadaBD(numTemporada);
+                vConsultarJornadas.rellenarCamposVentana();
                 break;
             }
             default:
@@ -922,10 +976,6 @@ public class Controladora {
                 throw new JornadaCRUDError();
         }
 
-        /* LOCALIZAR
-    public static void localizarTemporadaEnJornadaBD(String numTemporada) {
-        jornadaBD.localizarTemporadaEnJornadaBD(numTemporada);
-    }*/
     }
 
     // GENERA BARRA PROGRESO

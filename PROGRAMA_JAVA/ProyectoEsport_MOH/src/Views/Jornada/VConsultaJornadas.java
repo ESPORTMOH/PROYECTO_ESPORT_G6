@@ -1,14 +1,10 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package Views.Usuarios;
+package Views.Jornada;
 
 import Exceptions.CierreVError;
 
 import proyectoesport_moh.Controladora;
 import Exceptions.*;
+import Views.Usuarios.VPanelCrudUsuarios;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -43,12 +39,8 @@ public class VConsultaJornadas extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
         jBconsultar = new javax.swing.JButton();
-        jTdni = new javax.swing.JTextField();
-        jTnombre = new javax.swing.JTextField();
-        jTapellido = new javax.swing.JTextField();
+        jTnumeroTemporada = new javax.swing.JTextField();
         jBreset = new javax.swing.JButton();
         jBretroceder = new javax.swing.JButton();
 
@@ -57,11 +49,7 @@ public class VConsultaJornadas extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 24)); // NOI18N
         jLabel1.setText("CONSULTAR JORNADAS");
 
-        jLabel2.setText("DNI");
-
-        jLabel3.setText("Nombre");
-
-        jLabel4.setText("Apellido");
+        jLabel2.setText("Nº Temporada");
 
         jBconsultar.setBackground(new java.awt.Color(0, 153, 51));
         jBconsultar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -96,29 +84,21 @@ public class VConsultaJornadas extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel1)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
+                        .addComponent(jLabel2)
+                        .addGap(34, 34, 34)
+                        .addComponent(jTnumeroTemporada, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
                         .addComponent(jBretroceder)
-                        .addGap(63, 63, 63)
+                        .addGap(45, 45, 45)
                         .addComponent(jBconsultar)
                         .addGap(35, 35, 35)
-                        .addComponent(jBreset))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(84, 84, 84)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel4))
-                        .addGap(34, 34, 34)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jTdni)
-                            .addComponent(jTapellido)
-                            .addComponent(jTnombre, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(54, 54, 54)
-                        .addComponent(jLabel1)))
-                .addContainerGap(70, Short.MAX_VALUE))
+                        .addComponent(jBreset)
+                        .addGap(18, 18, 18)))
+                .addContainerGap(50, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -128,17 +108,8 @@ public class VConsultaJornadas extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel2)
-                    .addComponent(jTdni, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jTnombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel3))
-                        .addGap(18, 18, 18)
-                        .addComponent(jTapellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addGap(18, 30, Short.MAX_VALUE)
+                    .addComponent(jTnumeroTemporada, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jBretroceder, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -165,10 +136,10 @@ public class VConsultaJornadas extends javax.swing.JFrame {
     private void jBconsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBconsultarActionPerformed
         // ACTION PARA CONSULTAR LA JORNADA EN LA BD
         try {
-            if (jTdni.getText().isEmpty()) {
+            if (jTnumeroTemporada.getText().isEmpty()) {
                 throw new CampoNumTemporadaVacio();
             } else {
-                Controladora.localizarJornadaEnBD(tipoVentana, jTdni.getText());
+                Controladora.pedirLocalizarTemporada(tipoVentana, jTnumeroTemporada.getText());
             }
         } catch (CampoNumTemporadaVacio CNTV) {
             JOptionPane.showMessageDialog(this, CNTV.getMensaje());
@@ -224,33 +195,18 @@ public class VConsultaJornadas extends javax.swing.JFrame {
     private javax.swing.JButton jBretroceder;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JTextField jTapellido;
-    private javax.swing.JTextField jTdni;
-    private javax.swing.JTextField jTnombre;
+    private javax.swing.JTextField jTnumeroTemporada;
     // End of variables declaration//GEN-END:variables
 
     // FUNCIONES PROPIAS DE LA VISTA
-    public void rellenarCamposVentana(String dni, String nombre, String apellido, String usuario, String passwd) {
-        jTdni.setText(dni);
-        jTdni.setEnabled(false);
-        jTnombre.setText(nombre);
-        jTapellido.setText(apellido);
-    }
+
 
     public void configPredeterminadaVentana() {
-        jTnombre.setEnabled(false);
-        jTapellido.setEnabled(false);
-
+        jTnumeroTemporada.setEnabled(true);
     }
-
+    
     public void resetearCamposParaConsultarDeNuevo() {
-        jTdni.setEnabled(true);
-        jTdni.setText(null);
-        jTnombre.setText(null);
-        jTapellido.setText(null);
-
+        jTnumeroTemporada.setText(null);
         configPredeterminadaVentana();
     }
 }

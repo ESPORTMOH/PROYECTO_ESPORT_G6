@@ -1,13 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package ModelBD;
 
-import Exceptions.ConexionProblemas;
-import Exceptions.TempNoExiste;
-import Exceptions.TemporadaNoExiste;
+import Exceptions.*;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -21,6 +14,7 @@ public class JornadaBD extends GenericoBD{
 
     private Connection con;
 
+    // INSERTAR JORNADA
     public void insertJornadas(String[][] jornadas, String[][] jornadas2, String numeroTemporada, int numeroEquipos) throws SQLException, ConexionProblemas {
 
         int jorn = 1;
@@ -30,7 +24,7 @@ public class JornadaBD extends GenericoBD{
                 GenericoBD genericoBD = new GenericoBD();
                 con = genericoBD.abrirConexion(con);
 
-                PreparedStatement pS = con.prepareStatement("INSERT INTO jornada (NUMEROJORNADA, NUMEROTEMPORADA, CODEQUIPOLOCAL, CODEQUIPOVISITANTE) VALUES (?,?,?,?)");
+                PreparedStatement pS = con.prepareStatement("INSERT INTO jornada (numerojornada, numerotemporada, codequipolocal, codequipovisitante) VALUES (?,?,?,?)");
                 pS.setString(1, "J" + jorn);
                 pS.setString(2, numeroTemporada.toUpperCase());
                 String[] parts = jornadas[i][j].split("-");
@@ -51,7 +45,7 @@ public class JornadaBD extends GenericoBD{
                 GenericoBD genericoBD = new GenericoBD();
                 con = genericoBD.abrirConexion(con);
 
-                PreparedStatement pS = con.prepareStatement("INSERT INTO jornada (NUMEROJORNADA, NUMEROTEMPORADA, CODEQUIPOLOCAL, CODEQUIPOVISITANTE) VALUES (?,?,?,?)");
+                PreparedStatement pS = con.prepareStatement("INSERT INTO jornada (numerojornada, numerotemporada, codequipolocal, codequipovisitante) VALUES (?,?,?,?)");
                 pS.setString(1, "J" + jorn);
                 pS.setString(2, numeroTemporada.toUpperCase());
                 String[] parts = jornadas2[i][j].split("-");
@@ -63,15 +57,15 @@ public class JornadaBD extends GenericoBD{
             }
             jorn++;
         }
-
     }
 
+    // LOCALIZAR JORNADA
     public Boolean localizarTemporadaEnJornadaBD(String numTemporada) throws SQLException, ConexionProblemas, TemporadaNoExiste {
         Boolean respuesta = false;
         GenericoBD genericoBD = new GenericoBD();
         con = genericoBD.abrirConexion(con);
 
-        PreparedStatement pS = con.prepareStatement("select count(*) from jornada where NUMEROTEMPORADA=?");
+        PreparedStatement pS = con.prepareStatement("select count(*) from jornada where numerotemporada=?");
         pS.setString(1, numTemporada.toUpperCase());
 
         ResultSet datosRS = pS.executeQuery();
@@ -79,18 +73,17 @@ public class JornadaBD extends GenericoBD{
         if (datosRS.next()) {
 
             int numberOfRows = datosRS.getInt(1);
-            if (numberOfRows != 0) {
-                respuesta = true;
-                System.out.println("existe temporada: " + numberOfRows);
-            }else{
-             throw new TemporadaNoExiste();
-            }
-        }
-       
-
+                if (numberOfRows != 0) {
+                    respuesta = true;
+                    System.out.println("existe temporada: " + numberOfRows);
+                }else{
+                    throw new TemporadaNoExiste();
+                }
+            }  
         cerrarConexion(con);
 
         return respuesta;
     }
+    
 
 }

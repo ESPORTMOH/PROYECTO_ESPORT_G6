@@ -88,7 +88,6 @@ public class LoginBD extends GenericoBD {
         con = genericoBD.abrirConexion(con);
 
         String editaSQL = "UPDATE login l SET l.passwd = ? WHERE (l.codLogin = ?)";
-
         PreparedStatement pS = con.prepareStatement(editaSQL);
 
         pS.setString(1, passwd);
@@ -103,7 +102,6 @@ public class LoginBD extends GenericoBD {
     public void eliminarDeLaBDAdminLog(Integer codLogin) throws SQLException, ConexionProblemas {
 
         GenericoBD genericoBD = new GenericoBD();
-
         con = genericoBD.abrirConexion(con);
 
         PreparedStatement pS = con.prepareStatement("DELETE FROM login WHERE codLogin = ?");
@@ -118,7 +116,6 @@ public class LoginBD extends GenericoBD {
     public void eliminarDeLaBDDuenioLog(Integer codLogin) throws SQLException, ConexionProblemas {
 
         GenericoBD genericoBD = new GenericoBD();
-
         con = genericoBD.abrirConexion(con);
 
         PreparedStatement pS = con.prepareStatement("DELETE FROM login WHERE codLogin = ?");
@@ -133,7 +130,6 @@ public class LoginBD extends GenericoBD {
     public void eliminarDeLaBDUsuarioLog(Integer codLogin) throws SQLException, ConexionProblemas {
 
         GenericoBD genericoBD = new GenericoBD();
-
         con = genericoBD.abrirConexion(con);
 
         PreparedStatement pS = con.prepareStatement("DELETE FROM login WHERE codLogin = ?");

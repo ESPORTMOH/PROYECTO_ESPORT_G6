@@ -401,7 +401,7 @@ COMMIT;
 INSERT INTO login (codLogin, usuario, passwd, tipo) VALUES (DEFAULT, 'SUPER','DUENIO','D');
 COMMIT;
 
-INSERT INTO duenio VALUES (DEFAULT, '00000000C', 'SUPER', 'DUENIO', 1);
+INSERT INTO duenio VALUES (DEFAULT, '00000000D', 'SUPER', 'DUENIO', 1);
 COMMIT;
 
 -- --------------------------------------------------------
@@ -413,7 +413,7 @@ COMMIT;
 INSERT INTO login (codLogin, usuario, passwd, tipo) VALUES (DEFAULT, 'SUPER','USUARIO','U');
 COMMIT;
 
-INSERT INTO usuario VALUES (DEFAULT, '00000000E', 'SUPER', 'USUARIO', 1);
+INSERT INTO usuario VALUES (DEFAULT, '00000000U', 'SUPER', 'USUARIO', 1);
 COMMIT;
 
 -- --------------------------------------------------------

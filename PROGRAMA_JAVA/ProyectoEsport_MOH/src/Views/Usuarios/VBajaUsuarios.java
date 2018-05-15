@@ -50,7 +50,7 @@ public class VBajaUsuarios extends javax.swing.JFrame {
         jBreset = new javax.swing.JButton();
         jBretroceder = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 24)); // NOI18N
         jLabel1.setText("BAJA USUARIOS");
@@ -172,9 +172,9 @@ public class VBajaUsuarios extends javax.swing.JFrame {
 
         if (preguntaSalida == JOptionPane.YES_OPTION) {
             try {
-                Controladora.eliminarAdministradorDelaBD(jTdni.getText(), almacenarCodLogin);
-                JOptionPane.showMessageDialog(this, "El Usuario ha sido dado"
-                        + "\nde baja correctamente");
+                Controladora.eliminarUsuarioDelaBD(jTdni.getText(), almacenarCodLogin);
+                JOptionPane.showMessageDialog(this, "El Usuario ha sido "
+                        + "\ndado de baja correctamente");
                 resetearCamposParaConsultarDeNuevo();
             } catch (SQLException | ConexionProblemas EX) {
                 Logger.getLogger(VBajaUsuarios.class.getName()).log(Level.SEVERE, null, EX);

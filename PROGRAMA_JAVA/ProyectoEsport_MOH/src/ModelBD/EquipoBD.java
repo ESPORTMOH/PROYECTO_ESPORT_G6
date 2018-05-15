@@ -63,6 +63,7 @@ public class EquipoBD extends GenericoBD {
                 equipo.setNombreEstadio(datosRS.getString("nombreEstadio"));
                 equipo.setDuenio(new Duenio(datosRS.getInt("codDuenio")));
                 equipo.getDuenio().setDni(datosRS.getString("dni"));
+                equipo.getDuenio().setNombre(datosRS.getString("nombre"));
             }
         
         cerrarConexion(con);
@@ -111,20 +112,20 @@ public class EquipoBD extends GenericoBD {
         con = genericoBD.abrirConexion(con);
 
         ArrayList <Equipo> listaEquipos = new ArrayList();
-        String consultaSQL = "SELECT CODEQUIPO, NOMBRE, PRESUPUESTO, ANIOFUNDACION, CIUDAD, NOMBREESTADIO, CODDUENIO FROM equipo WHERE CODEQUIPO <> 41 ";
+        String consultaSQL = "SELECT codequipo, nombre, presupuesto, aniofundacion, ciudad, nombreestadio, codduenio FROM equipo WHERE codequipo <> 41 ";
         
         Statement stmt=con.createStatement();
         
         ResultSet rs = stmt.executeQuery(consultaSQL);
         while (rs.next()) {
             Equipo eq = new Equipo();
-            eq.setCodEquipo(rs.getInt("CODEQUIPO"));
-            eq.setNombre(rs.getString("NOMBRE"));
-            eq.setPresupuesto(rs.getDouble("CODEQUIPO"));
+            eq.setCodEquipo(rs.getInt("codequipo"));
+            eq.setNombre(rs.getString("nombre"));
+            eq.setPresupuesto(rs.getDouble("presupuesto"));
             //eq.setAnioFundacion(rs.getDate("ANIOFUNDACION"));
-            eq.setCiudad(rs.getString("CIUDAD"));
-            eq.setNombreEstadio(rs.getString("NOMBREESTADIO"));
-            eq.setDuenio(new Duenio(rs.getInt("CODDUENIO")));
+            eq.setCiudad(rs.getString("ciudad"));
+            eq.setNombreEstadio(rs.getString("nombreestadio"));
+            eq.setDuenio(new Duenio(rs.getInt("codduenio")));
   
             listaEquipos.add(eq);
         }

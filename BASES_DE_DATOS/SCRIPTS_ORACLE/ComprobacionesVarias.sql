@@ -4,14 +4,24 @@ COMPROBACIONES VARIAS PARA JAVA Y ORACLE
 
 -- SIMPLES
 select * from login;
+
 select * from administrador;
+
 select * from usuario;
+
 select * from equipo;
+
 select * from partido;
+
 select * from jugador;
+
 select * from clasificacion;
+
 select * from equipo;
+
 select * from jornada;
+
+select * from duenio;
 
 -- COMPUESTAS
 select j.*, e.nombre
@@ -19,6 +29,8 @@ select j.*, e.nombre
   where j.CODEQUIPO = e.CODEQUIPO and e.CODEQUIPO = 1;
 
 SELECT u.codUsuario, u.dni, u.nombre, u.apellido, u.codLogin, l.codLogin, l.usuario, l.passwd FROM usuario u, login l  WHERE (u.codLogin = l.codLogin) AND u.dni = ?;
+
+SELECT a.codAdministrador, a.dni, a.nombre, a.apellido, a.codLogin, l.codLogin, l.usuario, l.passwd FROM administrador a, login l  WHERE (a.codLogin = l.codLogin) AND a.dni = ?";
 
 /*  
 COMPROBACIONES PARA LLAMAR AL PROCEDIMIENTO ALMCENADO PROCE_generarAutoUserPass
