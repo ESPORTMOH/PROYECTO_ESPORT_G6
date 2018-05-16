@@ -10,6 +10,7 @@ import java.sql.SQLException;
  */
 public class GenericoBD {
 
+    /*
     // CONEXIONES / DESCONEXIONES A LA BD MEDIANTE SRVORACLE / EN CLASE
     public Connection abrirConexion(Connection conexion) throws SQLException, ConexionProblemas {
 
@@ -39,8 +40,7 @@ public class GenericoBD {
     }
 
 }
-
-/*    
+     */
 ////////////////////////////////////////////////////////////////////////////////////////////////
 // DATOS PARA LA CONEXION EN MI CASA CON VAGRANT
 //Class.forName("oracle.jdbc.OracleDriver");
@@ -75,7 +75,7 @@ public class GenericoBD {
     }
 
 }
- */
+
 ////////////////////////////////////////////////////////////////////////////////////////////////
 
 /*

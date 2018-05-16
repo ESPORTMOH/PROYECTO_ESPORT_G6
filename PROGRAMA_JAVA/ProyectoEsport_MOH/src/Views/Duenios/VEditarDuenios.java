@@ -238,7 +238,7 @@ public class VEditarDuenios extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, CDV.getMensaje());
         } catch (DuenioNoExiste DNE) {
             JOptionPane.showMessageDialog(this, DNE.getMensaje());
-        } catch (DuenioCRUDError DCRUDE) {
+        } catch (PanelDuenios DCRUDE) {
             JOptionPane.showMessageDialog(this, DCRUDE.getMensaje());
         } catch (Exception E) {
             JOptionPane.showMessageDialog(this, E.getMessage());

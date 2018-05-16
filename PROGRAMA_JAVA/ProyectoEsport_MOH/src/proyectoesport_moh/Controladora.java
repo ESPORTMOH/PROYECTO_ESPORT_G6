@@ -25,7 +25,6 @@ public class Controladora {
     /**
      * @param args the command line arguments
      */
-    
     // INICIO DECLARACION DE OBJETOS PARA LAS VISTAS
     //VISTA MENU
     private static VHome vHo;
@@ -48,6 +47,8 @@ public class Controladora {
     private static VBajaUsuarios vBajaUsuarios;
     private static VEditarUsuarios vEditarUsuarios;
     private static VConsultaUsuarios vConsultarUsuarios;
+    private static VJornadas vJornadas;
+    private static VClasificaciones vClasificaciones;
 
     //VISTAS DUENIOS
     private static VPanelDuenios vpanelDuenios;
@@ -56,6 +57,8 @@ public class Controladora {
     private static VBajaDuenios vBajaDuenios;
     private static VEditarDuenios vEditarDuenios;
     private static VConsultaDuenios vConsultarDuenios;
+    private static VUltimaJornada vultimaJornada;
+    private static VUltimaClasificacion vultimaClasificacion;
 
     // VISTAS JUGADORES
     private static VPanelCrudJugadores vpanelCrudJugadores;
@@ -77,10 +80,11 @@ public class Controladora {
     private static VBajaJornadas vBajaJornadas;
     private static VConsultaJornadas vConsultarJornadas;
 
+    // VISTAS FICHAJES
+    private static VFichajes vFichajes;
+
     // VISTAS PARTIDOS
-    
     // FIN DECLARACION DE OBJETOS PARA LAS VISTAS
-    
     // DECLARACION DE OBJETOS UML / BD
     // LOGIN
     private static Login loginUML;
@@ -115,8 +119,7 @@ public class Controladora {
     private static JornadaBD jornadaBD;
     private static Jornada jornadaUML;
     // FIN DECLARACION DE OBJETOS UML / BD
-    
-    
+
     /// INICIO MAIN
     public static void main(String[] args) {
 
@@ -135,7 +138,7 @@ public class Controladora {
         vLo = new VLogin();
         vLo.setVisible(true);
     }
-    
+
     //REINICIAR VISTA LOGIN
     public static void reiniciarVistaLogin() {
         vLo.dispose();
@@ -166,7 +169,7 @@ public class Controladora {
     }
 
     ////////////////////////////////////////////////////////////////////////////////////////////////
-    //ABRIR PANELES CRUD > ADMINISTRADORES / USUARIOS / DUENOS / JUGADORES / EQUIPOS
+    //ABRIR PANELES / CRUD > ADMINISTRADORES / USUARIOS / DUENOS / JUGADORES / EQUIPOS / VISTAS VARIAS
     //ABRIR PANEL CRUD ADMINISTRADORES
     public static void abrirCrudAdministradores() {
         vpanelCrudAdministradores = new VPanelCrudAdministradores();
@@ -201,6 +204,36 @@ public class Controladora {
     public static void abrirCrudJornadas() {
         vpanelCrudJornadas = new VPanelCrudJornadas();
         vpanelCrudJornadas.setVisible(true);
+    }
+
+    // ABRIR PANEL FICHAJES
+    public static void abrirFichajes() {
+        vFichajes = new VFichajes();
+        vFichajes.setVisible(true);
+    }
+
+    // ABRIR VISTA ULTIMA JORNADA
+    public static void abrirUltimaJornada() {
+        vultimaJornada = new VUltimaJornada();
+        vultimaJornada.setVisible(true);
+    }
+
+    // ABRIR VISTA ULTIMA CLASIFICACION
+    public static void abrirUltimaClasi() {
+        vultimaClasificacion = new VUltimaClasificacion();
+        vultimaClasificacion.setVisible(true);
+    }
+    
+        // ABRIR VISTA ULTIMA JORNADA
+    public static void abrirJornadas() {
+        vJornadas = new VJornadas();
+        vJornadas.setVisible(true);
+    }
+
+    // ABRIR VISTA ULTIMA CLASIFICACION
+    public static void abrirClasificaciones() {
+        vClasificaciones = new VClasificaciones();
+        vClasificaciones.setVisible(true);
     }
 
     ////////////////////////////////////////////////////////////////////////////////////////////////
@@ -478,6 +511,34 @@ public class Controladora {
                 vEditarJugadores.dispose();
                 break;
             }
+            case "vPanelDuenios": {
+                vpanelDuenios.dispose();
+                break;
+            }
+            case "VFichajes": {
+                vFichajes.dispose();
+                break;
+            }
+            case "VUltimaJornada": {
+                vultimaJornada.dispose();
+                break;
+            }
+            case "VUltimaClasificacion": {
+                vultimaClasificacion.dispose();
+                break;
+            }
+            case "vPanelUsuarios": {
+                vpanelUsuarios.dispose();
+                break;
+            }
+            case "VJornadas": {
+                vJornadas.dispose();
+                break;
+            }
+            case "VClasificaciones": {
+                vClasificaciones.dispose();
+                break;
+            }
             default:
                 System.err.println("Error critico en el cierre de las ventanas");
                 throw new CierreVError();
@@ -600,8 +661,29 @@ public class Controladora {
                 vpanelCrudJugadores.setVisible(true);
                 break;
             }
+
             case "VEditarJugadores": {
                 vpanelCrudJugadores.setVisible(true);
+                break;
+            }
+            case "VFichajes": {
+                vpanelDuenios.setVisible(true);
+                break;
+            }
+            case "VUltimaJornada": {
+                vpanelDuenios.setVisible(true);
+                break;
+            }
+            case "VUltimaClasificacion": {
+                vpanelDuenios.setVisible(true);
+                break;
+            }
+            case "VJornadas": {
+                vpanelUsuarios.setVisible(true);
+                break;
+            }
+            case "VClasificaciones": {
+                vpanelUsuarios.setVisible(true);
                 break;
             }
             default:
@@ -745,7 +827,7 @@ public class Controladora {
     }
 
     // BAJA
-    public static void eliminarUsuarioDelaBD(String dni, Integer codLogin) throws SQLException, ConexionProblemas{
+    public static void eliminarUsuarioDelaBD(String dni, Integer codLogin) throws SQLException, ConexionProblemas {
         usuarioBD = new UsuarioBD();
         loginBD = new LoginBD();
 
@@ -824,9 +906,9 @@ public class Controladora {
         equipoBD = new EquipoBD();
         duenioBD = new DuenioBD();
         //split
-        String[]dniDue = dniDuenio.split(" ");
+        String[] dniDue = dniDuenio.split(" ");
         Duenio duenio = duenioBD.localizarDuenio(dniDue[0]);
-        equipoUML = new Equipo(nombre, Double.parseDouble(presupuesto), anioFundacion, ciudad, nombreEstadio, duenio); 
+        equipoUML = new Equipo(nombre, Double.parseDouble(presupuesto), anioFundacion, ciudad, nombreEstadio, duenio);
         equipoBD.insertarEquipoBD(equipoUML);
     }
 
@@ -869,14 +951,15 @@ public class Controladora {
         equipoBD.eliminarDeLaBDEquipo(nombre);
     }
 
+    // FICHAJES PARA EL EQUIPO
+    public static ArrayList<Jugador> consultarJugadoresParaCombo() throws SQLException, ConexionProblemas {
+        JugadorBD jugadorBD = new JugadorBD();
+        return jugadorBD.traerTodosLosJuagdoresBD();
+    }
+
     ////////////////////////////////////////////////////////////////////////////////////////////////
     // SENTENCIAS ALTA / BAJA / CONSULTA / MODIFICACION > PARTIDO
     ////////////////////////////////////////////////////////////////////////////////////////////////
-    
-    
-    
-    
-    
     ////////////////////////////////////////////////////////////////////////////////////////////////
     // SENTENCIAS ALTA > JORNADA
     ////////////////////////////////////////////////////////////////////////////////////////////////
@@ -978,10 +1061,11 @@ public class Controladora {
 
     }
 
-    // GENERA BARRA PROGRESO
+    /* GENERA BARRA PROGRESO
     public static JProgressBar generaBarraProgreso(JProgressBar jProgressBarT) {
         jProgressBarT = new JProgressBar();
 
         return jProgressBarT;
     }
+     */
 }

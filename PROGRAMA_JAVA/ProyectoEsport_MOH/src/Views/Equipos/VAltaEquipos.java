@@ -9,11 +9,9 @@ import proyectoesport_moh.Controladora;
 import Exceptions.*;
 import ModelUML.Duenio;
 import Views.Equipos.*;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 /**
@@ -24,7 +22,6 @@ public class VAltaEquipos extends javax.swing.JFrame {
 
     private final String tipoVentana;
 
-
     /**
      * Creates new form VAltaEquipos
      */
@@ -34,17 +31,15 @@ public class VAltaEquipos extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         this.setResizable(false);
     }
-    
-    public VAltaEquipos(ArrayList <Duenio> listaDuenios ){
+
+    public VAltaEquipos(ArrayList<Duenio> listaDuenios) {
         initComponents();
         this.tipoVentana = "VAltaEquipos";
         this.setLocationRelativeTo(null);
         this.setResizable(false);
-        
+
         rellenarComboListaDuenios(listaDuenios);
     }
-    
-    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -216,9 +211,9 @@ public class VAltaEquipos extends javax.swing.JFrame {
         } catch (Exception EX) {
             JOptionPane.showMessageDialog(this, EX.getMessage());
         }
-        */
-        
-               try {
+         */
+
+        try {
             if (jTnombre.getText().isEmpty() | jTpresupuesto.getText().isEmpty() | jTanioFundacion.getText().isEmpty() | jTciudad.getText().isEmpty() | jTestadio.getText().isEmpty()) {
                 throw new CamposVacios();
             } else {
@@ -230,7 +225,7 @@ public class VAltaEquipos extends javax.swing.JFrame {
 
         } catch (CamposVacios CV) {
             JOptionPane.showMessageDialog(this, CV.getMensaje());
-        } catch (EquiposCRUDError ECRUDE) {
+        } catch (DuenioCRUDError ECRUDE) {
             JOptionPane.showMessageDialog(this, ECRUDE.getMensaje());
         } catch (Exception EX) {
             JOptionPane.showMessageDialog(this, EX.getMessage());
@@ -312,13 +307,13 @@ public class VAltaEquipos extends javax.swing.JFrame {
         jTestadio.setText(null);
     }
 
-   
     private void rellenarComboListaDuenios(ArrayList<Duenio> listaDuenios) {
-        
-        jComboBduenios.addItem("Selecciona una opcion");
+
         for (int i = 0; i < listaDuenios.size(); i++) {
 
-                jComboBduenios.addItem(listaDuenios.get(i).getDni() + " " + listaDuenios.get(i).getNombre());
-            }
+            jComboBduenios.addItem(listaDuenios.get(i).getDni() + " " + listaDuenios.get(i).getNombre());
+        }
+        jComboBduenios.setSelectedIndex(-1);
+
     }
 }

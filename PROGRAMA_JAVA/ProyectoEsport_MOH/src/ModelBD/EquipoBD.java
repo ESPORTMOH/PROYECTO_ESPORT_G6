@@ -133,7 +133,8 @@ public class EquipoBD extends GenericoBD {
         con.close();
 
         return listaEquipos;
-
     }
+    
+    
     
 }

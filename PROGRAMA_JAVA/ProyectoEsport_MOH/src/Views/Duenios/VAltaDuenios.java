@@ -144,7 +144,7 @@ public class VAltaDuenios extends javax.swing.JFrame {
             }
         } catch (CamposVacios CV) {
             JOptionPane.showMessageDialog(this, CV.getMensaje());
-        } catch (DuenioCRUDError DCRUDE) {
+        } catch (PanelDuenios DCRUDE) {
             JOptionPane.showMessageDialog(this, DCRUDE.getMensaje());
         } catch (Exception EX) {
             JOptionPane.showMessageDialog(this, EX.getMessage());

@@ -57,7 +57,8 @@ END PROCE_rellenarcomboDuenios;
 		OPEN j_jugadores 
 			FOR
 				SELECT *
-				FROM jugador;
+				FROM jugador
+        WHERE codEquipo = 1;
   EXCEPTION
     WHEN OTHERS THEN
       RAISE_APPLICATION_ERROR(-20100, 'ERROR INEXPERADO');
