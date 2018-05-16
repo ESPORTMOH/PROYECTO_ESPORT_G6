@@ -14,7 +14,10 @@ import Views.Jugadores.*;
 import Views.Usuarios.*;
 import Views.Jornada.*;
 import java.sql.*;
-import java.util.*;
+import java.text.*;
+import java.util.ArrayList;
+import java.util.Date;
+
 import javax.swing.JProgressBar;
 
 /**
@@ -195,10 +198,10 @@ public class Controladora {
     }
 
     // ABRIR PANEL CRUD EQUIPOS
-    public static void abrirCrudEquipos() {
+   public static void abrirCrudEquipos() {
         vpanelCrudEquipos = new VPanelCrudEquipos();
         vpanelCrudEquipos.setVisible(true);
-    }
+   }
 
     // ABRIR PANEL CRUD JORNADAS
     public static void abrirCrudJornadas() {
@@ -888,6 +891,19 @@ public class Controladora {
 
     ////////////////////////////////////////////////////////////////////////////////////////////////
     // SENTENCIAS ALTA / BAJA / CONSULTA / MODIFICACION > JUGADOR
+    // ALTA
+    public static void pedirInsertarJugadorBD(String dni, String nombre, String apellido, String nickname, String sueldo, Date fechaNacimiento, String nacionalidad, String posicion) throws Exception {
+        
+        jugadorBD = new JugadorBD();
+        //DateFormat formatter = new SimpleDateFormat("dd-mm-yyyy");
+        //Date fnacimiento = formatter.parse(fechaNacimiento);
+      
+        jugadorUML = new Jugador(dni, nombre, apellido, nickname, Double.parseDouble(sueldo), fechaNacimiento, nacionalidad, posicion);
+        jugadorBD.insertarJugadorEnBD(jugadorUML);
+ 
+    }
+    
+    //
     public static void localizarJugadorEnBD(String dni) throws Exception {
         jugadorBD = new JugadorBD();
         Jugador jugador = jugadorBD.localizaJugador(dni);
@@ -960,6 +976,12 @@ public class Controladora {
     ////////////////////////////////////////////////////////////////////////////////////////////////
     // SENTENCIAS ALTA / BAJA / CONSULTA / MODIFICACION > PARTIDO
     ////////////////////////////////////////////////////////////////////////////////////////////////
+    
+    
+    
+    
+    
+    
     ////////////////////////////////////////////////////////////////////////////////////////////////
     // SENTENCIAS ALTA > JORNADA
     ////////////////////////////////////////////////////////////////////////////////////////////////
@@ -1068,4 +1090,6 @@ public class Controladora {
         return jProgressBarT;
     }
      */
+
+ 
 }

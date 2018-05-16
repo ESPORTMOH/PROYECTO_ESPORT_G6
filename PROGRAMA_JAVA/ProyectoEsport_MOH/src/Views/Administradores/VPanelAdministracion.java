@@ -9,7 +9,6 @@ import proyectoesport_moh.Controladora;
 public class VPanelAdministracion extends javax.swing.JFrame {
 
     private final String tipoVentana;
-    
 
     /**
      * Creates new form VAdministracion
@@ -203,7 +202,7 @@ public class VPanelAdministracion extends javax.swing.JFrame {
     }//GEN-LAST:event_jMCRUDusuariosActionPerformed
 
     private void jMCRUDequiposActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMCRUDequiposActionPerformed
-        // ACTION CRUD EQUIPOS  
+        // ACTION CRUD EQUIPOS
         try {
             Controladora.abrirCrudEquipos();
             Controladora.cierraTipoVentanas(tipoVentana);

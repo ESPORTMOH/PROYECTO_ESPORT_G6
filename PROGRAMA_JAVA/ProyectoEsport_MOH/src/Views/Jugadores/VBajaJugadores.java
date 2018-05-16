@@ -52,7 +52,6 @@ public class VBajaJugadores extends javax.swing.JFrame {
         jTnacionalidad = new javax.swing.JTextField();
         jTposicion = new javax.swing.JTextField();
         jBbuscar = new javax.swing.JButton();
-        jTpruebaFecha = new javax.swing.JTextField();
         jBretroceder = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
@@ -125,9 +124,8 @@ public class VBajaJugadores extends javax.swing.JFrame {
                                     .addComponent(jTnombre, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jTdni, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jTapellido, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jTnik, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jTpruebaFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(0, 70, Short.MAX_VALUE))))
+                                    .addComponent(jTnik, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(0, 73, Short.MAX_VALUE))))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel9)
@@ -183,9 +181,7 @@ public class VBajaJugadores extends javax.swing.JFrame {
                             .addComponent(jTsueldo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel6))
                         .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel7)
-                            .addComponent(jTpruebaFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jLabel7)
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jTnacionalidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -194,7 +190,7 @@ public class VBajaJugadores extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel9)
                             .addComponent(jTposicion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 95, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 103, Short.MAX_VALUE)
                         .addComponent(jBretroceder)))
                 .addContainerGap())
         );
@@ -221,7 +217,7 @@ public class VBajaJugadores extends javax.swing.JFrame {
 
     private void jBeliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBeliminarActionPerformed
         // ACTION ELIMINAR JUGADOR
-        Controladora.eliminarUsuarioDelaBD(jTdni.getText());
+
     }//GEN-LAST:event_jBeliminarActionPerformed
 
     private void jBretrocederActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBretrocederActionPerformed
@@ -290,7 +286,6 @@ public class VBajaJugadores extends javax.swing.JFrame {
     private javax.swing.JTextField jTnik;
     private javax.swing.JTextField jTnombre;
     private javax.swing.JTextField jTposicion;
-    private javax.swing.JTextField jTpruebaFecha;
     private javax.swing.JTextField jTsueldo;
     // End of variables declaration//GEN-END:variables
 
@@ -302,7 +297,7 @@ public class VBajaJugadores extends javax.swing.JFrame {
         jTnik.setText(nickname);
         jTsueldo.setText(sueldo.toString());
 
-        jTpruebaFecha.setText(fechaNacimiento.toString());
+
 
         jTnacionalidad.setText(nacionalidad);
         jTposicion.setText(posicion);
