@@ -3,16 +3,23 @@ package Views.Usuarios;
 import Views.Administradores.*;
 import proyectoesport_moh.Controladora;
 import Exceptions.*;
+import Views.Duenios.VPanelDuenios;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  * @author MIGUEL
  */
 public class VPanelUsuarios extends javax.swing.JFrame {
 
+    private final String tipoVentana;
+
     /**
-     * Creates new form VAdministracion
+     * Creates new form VPanerlUsuarios
      */
     public VPanelUsuarios() {
+        this.tipoVentana = "vPanelUsuarios";
         initComponents();
         this.setLocationRelativeTo(null);
         this.setResizable(false);
@@ -28,35 +35,54 @@ public class VPanelUsuarios extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
+        jMcerrarSesion = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
-        jMenuItem8 = new javax.swing.JMenuItem();
-        jMenuItem9 = new javax.swing.JMenuItem();
+        jMjornadas = new javax.swing.JMenuItem();
+        jMclasificaciones = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jLabel1.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 24)); // NOI18N
         jLabel1.setText("PANEL DE USUARIOS");
+
+        jLabel2.setFont(new java.awt.Font("Tahoma", 3, 18)); // NOI18N
+        jLabel2.setText("Bienvenid@ de nuevo");
+
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/users.png"))); // NOI18N
 
         jMenu1.setText("Archivo");
 
-        jMenuItem1.setText("Retroceder");
-        jMenu1.add(jMenuItem1);
-
-        jMenuItem2.setText("Salir");
-        jMenu1.add(jMenuItem2);
+        jMcerrarSesion.setText("Cerrar Sesión");
+        jMcerrarSesion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMcerrarSesionActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMcerrarSesion);
 
         jMenuBar1.add(jMenu1);
 
         jMenu3.setText("Visualizar");
 
-        jMenuItem8.setText("Resultados Jornadas");
-        jMenu3.add(jMenuItem8);
+        jMjornadas.setText("Resultados Jornadas");
+        jMjornadas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMjornadasActionPerformed(evt);
+            }
+        });
+        jMenu3.add(jMjornadas);
 
-        jMenuItem9.setText("Resultados Clasificaciones");
-        jMenu3.add(jMenuItem9);
+        jMclasificaciones.setText("Resultados Clasificaciones");
+        jMclasificaciones.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMclasificacionesActionPerformed(evt);
+            }
+        });
+        jMenu3.add(jMclasificaciones);
 
         jMenuBar1.add(jMenu3);
 
@@ -67,20 +93,64 @@ public class VPanelUsuarios extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(133, 133, 133)
-                .addComponent(jLabel1)
-                .addContainerGap(148, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(79, 79, 79)
+                        .addComponent(jLabel1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(33, 33, 33)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel3))))
+                .addContainerGap(28, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(25, 25, 25)
+                .addGap(27, 27, 27)
                 .addComponent(jLabel1)
-                .addContainerGap(236, Short.MAX_VALUE))
+                .addGap(35, 35, 35)
+                .addComponent(jLabel2)
+                .addGap(37, 37, 37)
+                .addComponent(jLabel3)
+                .addContainerGap(28, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jMcerrarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMcerrarSesionActionPerformed
+        // ARCHIVO / CERRAR SESION
+        try {
+            Controladora.cierraTipoVentanas(tipoVentana);
+        } catch (Exception EX) {
+            JOptionPane.showMessageDialog(this, EX.getMessage());
+        }
+    }//GEN-LAST:event_jMcerrarSesionActionPerformed
+
+    private void jMjornadasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMjornadasActionPerformed
+        // ARCHIVO / VISUALIZAR / JORNADAS
+        try {
+            Controladora.abrirJornadas();
+            Controladora.cierraTipoVentanas(tipoVentana);
+        } catch (CierreVError CVE) {
+            JOptionPane.showMessageDialog(this, CVE.getMessage());
+        } catch (Exception ex) {
+            Logger.getLogger(VPanelUsuarios.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jMjornadasActionPerformed
+
+    private void jMclasificacionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMclasificacionesActionPerformed
+        // ARCHIVO / VISUALIZAR / CLASIFICACIONES
+        try {
+            Controladora.abrirClasificaciones();
+            Controladora.cierraTipoVentanas(tipoVentana);
+        } catch (CierreVError CVE) {
+            JOptionPane.showMessageDialog(this, CVE.getMessage());
+        } catch (Exception ex) {
+            Logger.getLogger(VPanelUsuarios.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jMclasificacionesActionPerformed
 
     /**
      * @param args the command line arguments
@@ -107,10 +177,6 @@ public class VPanelUsuarios extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(VPanelUsuarios.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -122,12 +188,13 @@ public class VPanelUsuarios extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JMenuItem jMcerrarSesion;
+    private javax.swing.JMenuItem jMclasificaciones;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem8;
-    private javax.swing.JMenuItem jMenuItem9;
+    private javax.swing.JMenuItem jMjornadas;
     // End of variables declaration//GEN-END:variables
 }

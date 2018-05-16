@@ -23,6 +23,8 @@ import proyectoesport_moh.Controladora;
 public class VFichajes extends javax.swing.JFrame {
 
     private final String tipoVentana;
+    private final int nJugadores = 6;
+    private final int presupuestoMaximo = 200000;
 
     /**
      * Creates new form VFichajes
@@ -32,6 +34,7 @@ public class VFichajes extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         this.setResizable(false);
+        configPredeterminadaVentana();
     }
 
     /**
@@ -48,8 +51,12 @@ public class VFichajes extends javax.swing.JFrame {
         jComboBoxJugadores = new javax.swing.JComboBox<>();
         jLabel2 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
+        jTcontadorJugadores = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        jTpresupuestoMaximo = new javax.swing.JTextField();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 24)); // NOI18N
         jLabel1.setText("MERCADO DE FICHAJES");
@@ -68,45 +75,66 @@ public class VFichajes extends javax.swing.JFrame {
             }
         });
 
-        jLabel2.setText("Jugadores");
+        jLabel2.setText("Seleccione un jugador de la lista");
 
         jButton1.setBackground(new java.awt.Color(0, 153, 51));
         jButton1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("REALIZAR FICHAJE");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        jLabel3.setText("Nº Jugadores del Equipo");
+
+        jLabel4.setText("Presupuesto Total");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(40, 40, 40)
+                .addComponent(jLabel1)
+                .addGap(0, 46, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jBretroceder)
+                .addGap(43, 43, 43)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(67, 67, 67)
-                        .addComponent(jLabel1))
+                        .addComponent(jLabel4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jTpresupuestoMaximo))
+                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jComboBoxJugadores, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jBretroceder)
-                        .addGap(81, 81, 81)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jComboBoxJugadores, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addContainerGap(72, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jLabel2)
-                .addGap(165, 165, 165))
+                        .addComponent(jLabel3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jTcontadorJugadores, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addGap(45, 45, 45)
+                .addGap(31, 31, 31)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jComboBoxJugadores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(38, 38, 38)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(jTcontadorJugadores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(19, 19, 19)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel4)
+                    .addComponent(jTpresupuestoMaximo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(26, 26, 26)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jBretroceder)
                     .addComponent(jButton1))
@@ -117,6 +145,7 @@ public class VFichajes extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jBretrocederActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBretrocederActionPerformed
+        // ACTION BOTON RETROCEDER 
         try {
             Controladora.abreTipoVentanas(tipoVentana);
             Controladora.cierraTipoVentanas(tipoVentana);
@@ -127,12 +156,16 @@ public class VFichajes extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jBretrocederActionPerformed
 
-    private void jComboBoxJugadoresMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jComboBoxJugadoresMousePressed
-        // TODO add your handling code here:
-        
-                try {
-            // ACTION SOBRE EL COMBO
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // ACTION FICHAR
 
+
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jComboBoxJugadoresMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jComboBoxJugadoresMousePressed
+        // PRESSED SOBRE EL COMBO
+        jComboBoxJugadores.removeAllItems();
+        try {
             this.rellenarComboListaJugadores(Controladora.consultarJugadoresParaCombo());
         } catch (SQLException ex) {
             Logger.getLogger(VFichajes.class.getName()).log(Level.SEVERE, null, ex);
@@ -182,17 +215,32 @@ public class VFichajes extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> jComboBoxJugadores;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JTextField jTcontadorJugadores;
+    private javax.swing.JTextField jTpresupuestoMaximo;
     // End of variables declaration//GEN-END:variables
-    
+
     // FUNCIONES PROPIAS DE LA VISTA
-    
+    // RELLENAR COMBO 
     private void rellenarComboListaJugadores(ArrayList<Jugador> listaJugador) {
 
         for (int i = 0; i < listaJugador.size(); i++) {
 
-            jComboBoxJugadores.addItem(listaJugador.get(i).getDni() + " " + listaJugador.get(i).getNombre());
+            jComboBoxJugadores.addItem(listaJugador.get(i).getNombre() + " " + listaJugador.get(i).getApellido() + " - " + listaJugador.get(i).getSueldo() + "€");
         }
         jComboBoxJugadores.setSelectedIndex(-1);
+    }
+
+    private void configPredeterminadaVentana() {
+        jTcontadorJugadores.setEnabled(false);
+        jTpresupuestoMaximo.setEnabled(false);
+        preestablecerValores();
+    }
+
+    private void preestablecerValores() {
+        jTcontadorJugadores.setText(Integer.toString(nJugadores));
+        jTpresupuestoMaximo.setText(Integer.toString(presupuestoMaximo));
 
     }
 }

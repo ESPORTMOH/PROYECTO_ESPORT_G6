@@ -135,6 +135,8 @@ public class JugadorBD extends GenericoBD{
                     Jugador jUg = new Jugador();
                     jUg.setDni(rS.getString("dni"));
                     jUg.setNombre(rS.getString("nombre"));
+                    jUg.setApellido(rS.getString("apellido"));
+                    jUg.setSueldo(rS.getDouble("sueldo"));
                     
                     listaJugadores.add(jUg);
                 } while (rS.next());

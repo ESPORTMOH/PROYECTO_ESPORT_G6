@@ -1,17 +1,15 @@
 package ModelBD;
 
-import Exceptions.ConexionProblemas;
-import Exceptions.DuenioNoExiste;
+import Exceptions.*;
 import ModelUML.*;
 import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
 import oracle.jdbc.OracleTypes;
-import proyectoesport_moh.Controladora;
+
 
 /**
  *

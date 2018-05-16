@@ -214,7 +214,7 @@ public class VPanelAdministracion extends javax.swing.JFrame {
     }//GEN-LAST:event_jMCRUDequiposActionPerformed
 
     private void jMcerrarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMcerrarSesionActionPerformed
-        // ARCHIVO / RETROCEDER:
+        // ARCHIVO / CERRAR SESION
         try {
             Controladora.cierraTipoVentanas(tipoVentana);
         } catch (Exception EX) {

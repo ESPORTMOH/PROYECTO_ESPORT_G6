@@ -1,7 +1,6 @@
 package Views.Duenios;
 
 import Exceptions.CierreVError;
-import Views.Administradores.VPanelCrudAdministradores;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -35,9 +34,10 @@ public class VPanelDuenios extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
-        jMretroceder = new javax.swing.JMenuItem();
+        jMcerrarSesion = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
         jMfichar = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
@@ -52,15 +52,17 @@ public class VPanelDuenios extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Tahoma", 3, 18)); // NOI18N
         jLabel2.setText("Bienvenid@ de nuevo");
 
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/duenios.png"))); // NOI18N
+
         jMenu1.setText("Archivo");
 
-        jMretroceder.setText("Retroceder");
-        jMretroceder.addActionListener(new java.awt.event.ActionListener() {
+        jMcerrarSesion.setText("Cerrar Sesión");
+        jMcerrarSesion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMretrocederActionPerformed(evt);
+                jMcerrarSesionActionPerformed(evt);
             }
         });
-        jMenu1.add(jMretroceder);
+        jMenu1.add(jMcerrarSesion);
 
         jMenuBar1.add(jMenu1);
 
@@ -79,9 +81,19 @@ public class VPanelDuenios extends javax.swing.JFrame {
         jMenu4.setText("Visualizar");
 
         jMultimaJornada.setText("Resultados Última Jornada");
+        jMultimaJornada.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMultimaJornadaActionPerformed(evt);
+            }
+        });
         jMenu4.add(jMultimaJornada);
 
         jMultimaClasi.setText("Resultados Última Clasificación");
+        jMultimaClasi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMultimaClasiActionPerformed(evt);
+            }
+        });
         jMenu4.add(jMultimaClasi);
 
         jMenuBar1.add(jMenu4);
@@ -95,21 +107,25 @@ public class VPanelDuenios extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(39, 39, 39)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(90, 90, 90)
-                        .addComponent(jLabel1)))
-                .addContainerGap(100, Short.MAX_VALUE))
+                        .addComponent(jLabel1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(39, 39, 39)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(37, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(39, 39, 39)
+                .addGap(27, 27, 27)
                 .addComponent(jLabel1)
-                .addGap(39, 39, 39)
+                .addGap(36, 36, 36)
                 .addComponent(jLabel2)
-                .addContainerGap(198, Short.MAX_VALUE))
+                .addGap(36, 36, 36)
+                .addComponent(jLabel3)
+                .addContainerGap(27, Short.MAX_VALUE))
         );
 
         pack();
@@ -127,18 +143,38 @@ public class VPanelDuenios extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jMficharActionPerformed
 
-    private void jMretrocederActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMretrocederActionPerformed
-        // ARCHIVO / RETROCEDER
+    private void jMcerrarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMcerrarSesionActionPerformed
+        // ARCHIVO / CERRAR SESION
         try {
-            Controladora.abreTipoVentanas(tipoVentana);
             Controladora.cierraTipoVentanas(tipoVentana);
-            this.dispose();
+        } catch (Exception EX) {
+            JOptionPane.showMessageDialog(this, EX.getMessage());
+        }
+    }//GEN-LAST:event_jMcerrarSesionActionPerformed
+
+    private void jMultimaJornadaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMultimaJornadaActionPerformed
+        // ARCHIVO / VISUALIZAR / ULTIMA JORNADA
+        try {
+            Controladora.abrirUltimaJornada();
+            Controladora.cierraTipoVentanas(tipoVentana);
         } catch (CierreVError CVE) {
             JOptionPane.showMessageDialog(this, CVE.getMessage());
         } catch (Exception ex) {
-            Logger.getLogger(VPanelCrudAdministradores.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(VPanelDuenios.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }//GEN-LAST:event_jMretrocederActionPerformed
+    }//GEN-LAST:event_jMultimaJornadaActionPerformed
+
+    private void jMultimaClasiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMultimaClasiActionPerformed
+        // ARCHIVO / VISUALIZAR / ULTIMA CLASIFICACION
+        try {
+            Controladora.abrirUltimaClasi();
+            Controladora.cierraTipoVentanas(tipoVentana);
+        } catch (CierreVError CVE) {
+            JOptionPane.showMessageDialog(this, CVE.getMessage());
+        } catch (Exception ex) {
+            Logger.getLogger(VPanelDuenios.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jMultimaClasiActionPerformed
 
     /**
      * @param args the command line arguments
@@ -177,12 +213,13 @@ public class VPanelDuenios extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JMenuItem jMcerrarSesion;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMfichar;
-    private javax.swing.JMenuItem jMretroceder;
     private javax.swing.JMenuItem jMultimaClasi;
     private javax.swing.JMenuItem jMultimaJornada;
     // End of variables declaration//GEN-END:variables
