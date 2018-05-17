@@ -1,6 +1,3 @@
-/*
- * PROYECTO DAW 2017 - 2018
- */
 package proyectoesport_moh;
 
 import Exceptions.*;
@@ -8,6 +5,7 @@ import ModelUML.*;
 import ModelBD.*;
 import Views.*;
 import Views.Administradores.*;
+import Views.Clasificacion.*;
 import Views.Duenios.*;
 import Views.Equipos.*;
 import Views.Jugadores.*;
@@ -17,18 +15,29 @@ import Views.Partido.VPartido;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
-import javax.swing.JProgressBar;
-
+//import javax.swing.JProgressBar;
 /**
  * @author MIGUEL OLMO HERNANDO
+ * @proyect_name PROYECTO DAW 2017 - 2018 - GRUPO 6
+ * @version Fase4 v10
+ * @param (methods and constructors only)
+ * @return (methods only)
+ * @exception (Package Exceptions - @throws)
+ * @since 2018
+ * @serial no serial required
  */
 public class Controladora {
 
     /**
      * @param args the command line arguments
      */
-    // INICIO DECLARACION DE OBJETOS PARA LAS VISTAS
+    /**
+     * INICIO DECLARACION DE OBJETOS PARA LAS VISTAS
+     *
+     */
     //VISTA MENU
     private static VHome vHo;
 
@@ -89,9 +98,20 @@ public class Controladora {
     // VISTAS PARTIDOS
     private static VPartido vPartido;
 
-    // VISTAS PARTIDOS
-    // FIN DECLARACION DE OBJETOS PARA LAS VISTAS
-    // DECLARACION DE OBJETOS UML / BD
+    // VISTAS CLASIFICACION
+    private static VPanelClasificacion vpanelClasificacion;
+    private static VAltaClasificacion vAltaClasificacion;
+    private static VBajaClasificacion vBajaClasificacion;
+    private static VConsultaClasificacion vConsultaClasificacion;
+    /**
+     * FIN DECLARACION DE OBJETOS PARA LAS VISTAS
+     *
+     */
+
+    /**
+     * INICIO DECLARACION DE OBJETOS UML / BD
+     *
+     */
     // LOGIN
     private static Login loginUML;
     private static LoginBD loginBD;
@@ -124,12 +144,27 @@ public class Controladora {
     // JORNADA
     private static JornadaBD jornadaBD;
     private static Jornada jornadaUML;
-    // FIN DECLARACION DE OBJETOS UML / BD
 
+    // CLASIFICACION
+    private static ClasificacionBD clasificacionBD;
+    private static Clasificacion clasificacionUML;
+
+    /**
+     * FIN DECLARACION DE OBJETOS UML / BD
+     *
+     */
     /// INICIO MAIN
     public static void main(String[] args) {
 
-        // INICIO GENERICO DE LAS VENTANAS DE INICIO / RESET / SALIDA DE LA APLICACION
+        /**
+         * INICIO GENERICO DE LAS VENTANAS DE INICIO / RESET / SALIDA DE LA
+         * APLICACION
+         *
+         * @param
+         * @return all void
+         *
+         */
+        // 
         abrirHome(vHo = new VHome());
     }
 
@@ -155,10 +190,18 @@ public class Controladora {
     public static void salirAplicacion() {
         System.exit(0);
     }
-    // FIN GENERICO DE LAS VENTANAS DE INICIO / RESET / SALIDA DE LA APLICACION
 
-    ////////////////////////////////////////////////////////////////////////////////////////////////
-    // APERTURA DE PANELES PARA EL MENU
+    /**
+     * FIN GENERICO DE LAS VENTANAS DE INICIO / RESET / SALIDA DE LA APLICACION
+     *
+     */
+    /**
+     * INICIO APERTURA DE PANELES PARA EL MENU SEGUN EL LOGEO APLICACION
+     *
+     * @param
+     * @return all void
+     *
+     */
     // ABRIR PANEL TIPO ADMINISTRADOR - A
     public static void abrirPanelAdministracion(VPanelAdministracion vpanelAdministracion) {
         vpanelAdministracion.setVisible(true);
@@ -174,9 +217,19 @@ public class Controladora {
         vpanelDuenios.setVisible(true);
     }
 
-    ////////////////////////////////////////////////////////////////////////////////////////////////
-    //ABRIR PANELES / CRUD > ADMINISTRADORES / USUARIOS / DUENOS / JUGADORES / EQUIPOS / VISTAS VARIAS
-    //ABRIR PANEL CRUD ADMINISTRADORES
+    /**
+     * FIN APERTURA DE PANELES PARA EL MENU SEGUN EL LOGEO APLICACION
+     *
+     */
+    /**
+     * INICIO ABRIR PANELES / CRUD > ADMINISTRADORES / USUARIOS / DUENOS /
+     * JUGADORES / EQUIPOS / VISTAS VARIAS
+     *
+     * @param
+     * @return all void
+     *
+     */
+    // ABRIR PANEL CRUD ADMINISTRADORES
     public static void abrirCrudAdministradores() {
         vpanelCrudAdministradores = new VPanelCrudAdministradores();
         vpanelCrudAdministradores.setVisible(true);
@@ -248,8 +301,25 @@ public class Controladora {
         vPartido.setVisible(true);
     }
 
-    ////////////////////////////////////////////////////////////////////////////////////////////////
-    // ABRIR PANELES ALTA / BAJA / CONSULTA / MODIFICACION > ADMINISTRADORES 
+    // ABRIR PANEL CLASIFICACION            
+    public static void abrirPanelClasificacion() {
+        vpanelClasificacion = new VPanelClasificacion();
+        vpanelClasificacion.setVisible(true);
+    }
+
+    /**
+     * FIN PANELES / CRUD > ADMINISTRADORES / USUARIOS / DUENOS / JUGADORES /
+     * EQUIPOS / VISTAS VARIAS
+     *
+     */
+    /**
+     * INICIO ABRIR PANELES ALTA / BAJA / CONSULTA / MODIFICACION >
+     * ADMINISTRADORES
+     *
+     * @param
+     * @return all void
+     *
+     */
     // ALTA ADMINS
     public static void VAltaAdmins() {
         vAltaAdmins = new VAltaAdmins();
@@ -274,8 +344,17 @@ public class Controladora {
         vEditarAdmins.setVisible(true);
     }
 
-    ////////////////////////////////////////////////////////////////////////////////////////////////
-    // ABRIR PANELES ALTA / BAJA / CONSULTA / MODIFICACION > USUARIOS
+    /**
+     * FIN ABRIR PANELES ALTA / BAJA / CONSULTA / MODIFICACION > ADMINISTRADORES
+     *
+     */
+    /**
+     * INICIO ABRIR PANELES ALTA / BAJA / CONSULTA / MODIFICACION > USUARIOS
+     *
+     * @param
+     * @return all void
+     *
+     */
     // ALTA USUARIOS
     public static void VAltaUsuarios() {
         vAltaUsuarios = new VAltaUsuarios();
@@ -300,8 +379,17 @@ public class Controladora {
         vEditarUsuarios.setVisible(true);
     }
 
-    ////////////////////////////////////////////////////////////////////////////////////////////////
-    // ABRIR PANELES ALTA / BAJA / CONSULTA / MODIFICACION > DUENIOS
+    /**
+     * FIN ABRIR PANELES ALTA / BAJA / CONSULTA / MODIFICACION > USUARIOS
+     *
+     */
+    /**
+     * INICIO ABRIR PANELES ALTA / BAJA / CONSULTA / MODIFICACION > DUENIOS
+     *
+     * @param
+     * @return all void
+     *
+     */
     // ALTA DUENIOS
     public static void VAltaDuenios() {
         vAltaDuenios = new VAltaDuenios();
@@ -326,8 +414,17 @@ public class Controladora {
         vEditarDuenios.setVisible(true);
     }
 
-    ////////////////////////////////////////////////////////////////////////////////////////////////
-    // ABRIR PANELES ALTA / BAJA / CONSULTA / MODIFICACION > JUGADORES
+    /**
+     * FIN ABRIR PANELES ALTA / BAJA / CONSULTA / MODIFICACION > DUENIOS
+     *
+     */
+    /**
+     * INICIO ABRIR PANELES ALTA / BAJA / CONSULTA / MODIFICACION > JUGADORES
+     *
+     * @param
+     * @return all void
+     *
+     */
     // ALTA JUGADORES
     public static void VAltaJugadores() {
         vAltaJugadores = new VAltaJugadores();
@@ -352,8 +449,18 @@ public class Controladora {
         vEditarJugadores.setVisible(true);
     }
 
-    ////////////////////////////////////////////////////////////////////////////////////////////////
-    // ABRIR PANELES ALTA / BAJA / CONSULTA / MODIFICACION > EQUIPOS
+    /**
+     * FIN ABRIR PANELES ALTA / BAJA / CONSULTA / MODIFICACION > JUGADORES
+     *
+     */
+    /**
+     * INICIO ABRIR PANELES ALTA / BAJA / CONSULTA / MODIFICACION > EQUIPOS
+     *
+     * @param
+     * @return all void
+     * @throws SQLException, ConexionProblemas
+     *
+     */
     // ALTA EQUIPOS
     public static void VAltaEquipos() throws SQLException, ConexionProblemas {
         DuenioBD duenioBD = new DuenioBD();
@@ -379,8 +486,17 @@ public class Controladora {
         vEditarEquipos.setVisible(true);
     }
 
-    ////////////////////////////////////////////////////////////////////////////////////////////////
-    // ABRIR PANELES GESTION / CALENDARIO > JORNADAS
+    /**
+     * FIN ABRIR PANELES ALTA / BAJA / CONSULTA / MODIFICACION > EQUIPOS
+     *
+     */
+    /**
+     * INICIO ABRIR PANELES GESTION / CALENDARIO > JORNADAS
+     *
+     * @param
+     * @return all void
+     *
+     */
     // ALTA JORNADA
     public static void ValtaJorandas() {
         vAltaJornadas = new VAltaJornadas();
@@ -399,8 +515,47 @@ public class Controladora {
         vConsultarJornadas.setVisible(true);
     }
 
-    ////////////////////////////////////////////////////////////////////////////////////////////////
-    // INICIO CONTROL GENERICO DE VENTANAS > CERRADO DE VENTANAS 
+    /**
+     * FIN ABRIR PANELES GESTION / CALENDARIO > JORNADAS
+     *
+     */
+    /**
+     * INICIO ABRIR PANELES GESTION / CLASIFICACION
+     *
+     * @param
+     * @return all void
+     *
+     */
+    // ABRIR ALTA CLASIFICACION            
+    public static void abrirAltaClasificacion() {
+        vAltaClasificacion = new VAltaClasificacion();
+        vAltaClasificacion.setVisible(true);
+    }
+
+    // ABRIR CONSULTA CLASIFICACION            
+    public static void abrirConsultaClasificacion() {
+        vConsultaClasificacion = new VConsultaClasificacion();
+        vConsultaClasificacion.setVisible(true);
+    }
+
+    // ABRIR BAJA CLASIFICACION            
+    public static void abrirBajaClasificacion() {
+        vBajaClasificacion = new VBajaClasificacion();
+        vBajaClasificacion.setVisible(true);
+    }
+
+    /**
+     * FIN ABRIR PANELES GESTION / CLASIFICACION
+     *
+     */
+    /**
+     * INICIO CONTROL GENERICO DE VENTANAS > CERRADO DE VENTANAS
+     *
+     * @param String tipoVentana
+     * @return all void
+     * @throws Exception
+     *
+     */
     public static void cierraTipoVentanas(String tipoVentana) throws Exception {
         switch (tipoVentana) {
             case "VPanelAdmins": {
@@ -555,14 +710,41 @@ public class Controladora {
                 vPartido.dispose();
                 break;
             }
+            case "VPanelClasificacion": {
+                vpanelClasificacion.dispose();
+                break;
+            }
+            case "VAltaClasificacion": {
+                vAltaClasificacion.dispose();
+                break;
+            }
+            case "VBajaClasificacion": {
+                vBajaClasificacion.dispose();
+                break;
+            }
+            case "VConsultarClasificacion": {
+                vConsultaClasificacion.dispose();
+                break;
+            }
+
             default:
                 System.err.println("Error critico en el cierre de las ventanas");
                 throw new CierreVError();
         }
     }
-    // FIN CONTROL GENERICO DE VENTANAS > CERRADO DE VENTANAS 
 
-    // INICIO CONTROL GENERICO DE VENTANAS > APERTURA DE VENTANAS 
+    /**
+     * FIN CONTROL GENERICO DE VENTANAS > CERRADO DE VENTANAS
+     *
+     */
+    /**
+     * INICIO CONTROL GENERICO DE VENTANAS > APERTURA DE VENTANAS
+     *
+     * @param String tipoVentana
+     * @return all void
+     * @throws Exception
+     *
+     */
     public static void abreTipoVentanas(String tipoVentana) throws Exception {
         switch (tipoVentana) {
             case "VCrudAdmins": {
@@ -706,15 +888,40 @@ public class Controladora {
                 vpanelAdministracion.setVisible(true);
                 break;
             }
+            case "VAltaClasificacion": {
+                vpanelClasificacion.setVisible(true);
+                break;
+            }
+            case "VBajaClasificacion": {
+                vpanelClasificacion.setVisible(true);
+                break;
+            }
+            case "VConsultarClasificacion": {
+                vpanelClasificacion.setVisible(true);
+                break;
+            }
+            case "VPanelClasificacion": {
+                vpanelAdministracion.setVisible(true);
+                break;
+            }
             default:
                 System.err.println("Error critico en la apertura de las ventanas");
                 throw new AbreVError();
         }
     }
-    // FIN CONTROL GENERICO DE VENTANAS > APERTURA DE VENTANAS 
 
-    ////////////////////////////////////////////////////////////////////////////////////////////////
-    // CONSULTA PARA SOLICITAR ACCESO
+    /**
+     * FIN CONTROL GENERICO DE VENTANAS > APERTURA DE VENTANAS
+     *
+     */
+    /**
+     * INICIO CONSULTA PARA SOLICITAR ACCESO
+     *
+     * @param String usuario, String password
+     * @return void
+     * @throws Exception
+     *
+     */
     public static void consultarLogin(String usuario, String password) throws Exception {
 
         loginBD = new LoginBD();
@@ -726,11 +933,20 @@ public class Controladora {
         System.out.println("Acceso Login como Tipo: " + usuarioLogeado.getTipo());
 
         cargarPanelTipo(usuarioLogeado.getTipo());
-
     }
 
-    ////////////////////////////////////////////////////////////////////////////////////////////////
-    // MENU DE CARGA SEGUN EL TIPO DE LOGIN
+    /**
+     * FIN CONSULTA PARA SOLICITAR ACCESO
+     *
+     */
+    /**
+     * INICIO MENU DE CARGA SEGUN EL TIPO DE LOGIN
+     *
+     * @param String tipo
+     * @return void
+     * @throws Exception
+     *
+     */
     public static void cargarPanelTipo(String tipo) throws Exception {
 
         switch (tipo.toUpperCase()) {
@@ -750,11 +966,20 @@ public class Controladora {
                 abrirPanelUsuarios(vpanelUsuarios);
                 break;
         }
-
     }
 
-    ////////////////////////////////////////////////////////////////////////////////////////////////
-    // SENTENCIAS ALTA / BAJA / CONSULTA / MODIFICACION > ADMINISTRADOR
+    /**
+     * FIN MENU DE CARGA SEGUN EL TIPO DE LOGIN
+     *
+     */
+    /**
+     * INICIO SENTENCIAS ALTA / BAJA / CONSULTA / MODIFICACION > ADMINISTRADOR
+     *
+     * @param String dni, String nombre, String apellido, String tipo
+     * @return void
+     * @throws Exception, SQLException, ConexionProblemas
+     *
+     */
     // ALTA
     public static void altaAdministradorBD(String dni, String nombre, String apellido, String tipo) throws Exception {
         administradorBD = new AdministradorBD();
@@ -804,8 +1029,18 @@ public class Controladora {
         loginBD.ejecutarModificacionLog(loginUML.getPassword(), administradorUML.getLogin().getCodLogin());
     }
 
-    ////////////////////////////////////////////////////////////////////////////////////////////////
-    // SENTENCIAS ALTA / BAJA / CONSULTA / MODIFICACION > USUARIO
+    /**
+     * FIN SENTENCIAS ALTA / BAJA / CONSULTA / MODIFICACION > ADMINISTRADOR
+     *
+     */
+    /**
+     * INICIO SENTENCIAS ALTA / BAJA / CONSULTA / MODIFICACION > USUARIO
+     *
+     * @param String dni, String nombre, String apellido, String tipo
+     * @return void
+     * @throws Exception, SQLException, ConexionProblemas
+     *
+     */
     // ALTA
     public static void altaUsuarioBD(String dni, String nombre, String apellido, String tipo) throws Exception {
         usuarioBD = new UsuarioBD();
@@ -855,8 +1090,21 @@ public class Controladora {
         loginBD.eliminarDeLaBDUsuarioLog(codLogin);
     }
 
-    ////////////////////////////////////////////////////////////////////////////////////////////////
-    // SENTENCIAS ALTA / BAJA / CONSULTA / MODIFICACION > DUENIO
+    /**
+     * FIN SENTENCIAS ALTA / BAJA / CONSULTA / MODIFICACION > USUARIO
+     *
+     * @param String dni, String nombre, String apellido, String tipo
+     * @return void
+     *
+     */
+    /**
+     * INICIO SENTENCIAS ALTA / BAJA / CONSULTA / MODIFICACION > DUENIO
+     *
+     * @param String dni, String nombre, String apellido, String tipo
+     * @return void
+     * @throws Exception
+     *
+     */
     // ALTA
     public static void altaDuenioBD(String dni, String nombre, String apellido, String tipo) throws Exception {
         duenioBD = new DuenioBD();
@@ -906,8 +1154,19 @@ public class Controladora {
         loginBD.eliminarDeLaBDDuenioLog(codLogin);
     }
 
-    ////////////////////////////////////////////////////////////////////////////////////////////////
-    // SENTENCIAS ALTA / BAJA / CONSULTA / MODIFICACION > JUGADOR
+    /**
+     * FIN SENTENCIAS ALTA / BAJA / CONSULTA / MODIFICACION > DUENIO
+     *
+     */
+    /**
+     * INICIO SENTENCIAS ALTA / BAJA / CONSULTA / MODIFICACION > JUGADOR
+     *
+     * @param String dni, String nombre, String apellido, String nickname,
+     * String sueldo, Date fechaNacimiento, String nacionalidad, String posicion
+     * @return void
+     * @throws Exception
+     *
+     */
     // ALTA
     public static void pedirInsertarJugadorBD(String dni, String nombre, String apellido, String nickname, String sueldo, Date fechaNacimiento, String nacionalidad, String posicion) throws Exception {
 
@@ -925,7 +1184,6 @@ public class Controladora {
         jugadorBD = new JugadorBD();
         Jugador jugador = jugadorBD.localizaJugador(dni);
 
-        //JOptionPane.showMessageDialog(null, jugador.getFechaNacimiento());
         vBajaJugadores.rellenarCamposVentana(jugador.getDni(), jugador.getNombre(), jugador.getApellido(), jugador.getNickname(), jugador.getSueldo(), jugador.getFechaNacimiento(), jugador.getNacionalidad(), jugador.getPosicion());
     }
 
@@ -945,8 +1203,19 @@ public class Controladora {
         jugadorBD.eliminarJugadorDelaBD(dni);
     }
 
-    ////////////////////////////////////////////////////////////////////////////////////////////////
-    // SENTENCIAS ALTA / BAJA / CONSULTA / MODIFICACION > EQUIPO
+    /**
+     * FIN SENTENCIAS ALTA / BAJA / CONSULTA / MODIFICACION > JUGADOR
+     *
+     */
+    /**
+     * INICIO SENTENCIAS ALTA / BAJA / CONSULTA / MODIFICACION > EQUIPO
+     *
+     * @param String nombre, String presupuesto, String anioFundacion, String
+     * ciudad, String nombreEstadio, String dniDuenio
+     * @return void
+     * @throws Exception
+     *
+     */
     // ALTA
     public static void altaEquipoBD(String nombre, String presupuesto, String anioFundacion, String ciudad, String nombreEstadio, String dniDuenio) throws Exception {
         equipoBD = new EquipoBD();
@@ -959,16 +1228,6 @@ public class Controladora {
     }
 
     // LOCALIZA
-    /**
-     * Localiza equipo en BD
-     *
-     * @param String tipoVentana, String nombre
-     * @return Boolean
-     * @ ArrayList<Jugador> list
-     *
-     *
-     *
-     */
     public static void localizarEquipoEnBD(String tipoVentana, String nombre) throws Exception {
         switch (tipoVentana) {
             case "VBajaEquipos": {
@@ -1007,18 +1266,30 @@ public class Controladora {
         equipoBD.eliminarDeLaBDEquipo(nombre);
     }
 
-    // FICHAJES PARA EL EQUIPO
+    /**
+     * FICHAJES PARA EL EQUIPO
+     *
+     * @return ArrayList
+     * @throws SQLException, ConexionProblemas
+     */
     public static ArrayList<Jugador> consultarJugadoresParaCombo() throws SQLException, ConexionProblemas {
         JugadorBD jugadorBD = new JugadorBD();
         return jugadorBD.traerTodosLosJuagdoresBD();
     }
 
+    /**
+     * FIN SENTENCIAS ALTA / BAJA / CONSULTA / MODIFICACION > EQUIPO
+     *
+     */
     ////////////////////////////////////////////////////////////////////////////////////////////////
     // SENTENCIAS ALTA / BAJA / CONSULTA / MODIFICACION > PARTIDO
     ////////////////////////////////////////////////////////////////////////////////////////////////
-    ////////////////////////////////////////////////////////////////////////////////////////////////
-    // SENTENCIAS ALTA > JORNADA
-    ////////////////////////////////////////////////////////////////////////////////////////////////
+    /**
+     * INICIO SENTENCIAS ALTA / BAJA / CONSULTA / MODIFICACION > JORNADA
+     *
+     * @return all void
+     * @throws Exception, SQLException, ConexionProblemas, TempNoExiste
+     */
     // ALTA
     public static void generarJornadas(String numeroTemporada) throws Exception {
         equipoBD = new EquipoBD();
@@ -1091,7 +1362,17 @@ public class Controladora {
         jornadaBD.insertJornadas(jornadas, jornadas2, numeroTemporada, N);
     }
 
-    // LOCALIZAR
+    /**
+     * FIN SENTENCIAS ALTA / BAJA / CONSULTA / MODIFICACION > JORNADA
+     *
+     */
+    /**
+     * INICIO LOCALIZAR PARA CONFIRMAR SI EXISTE Y BORRAR A POSTERIORI SI SE
+     * DESEA
+     *
+     * @return all void
+     * @throws Exception, SQLException, ConexionProblemas, TempNoExiste
+     */
     public static void pedirLocalizarTemporada(String tipoVentana, String numTemporada) throws Exception, TempNoExiste {
         switch (tipoVentana) {
             case "VBajaJornadas": {
@@ -1117,11 +1398,52 @@ public class Controladora {
 
     }
 
-    /* GENERA BARRA PROGRESO
-    public static JProgressBar generaBarraProgreso(JProgressBar jProgressBarT) {
-        jProgressBarT = new JProgressBar();
-
-        return jProgressBarT;
-    }
+    /**
+     * FIN LOCALIZAR PARA CONFIRMAR SI EXISTE Y BORRAR A POSTERIORI SI SE DESEA
+     *
+     * @return all void
+     * @throws Exception, SQLException, ConexionProblemas, TempNoExiste
      */
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    // SENTENCIAS ALTA / BAJA / CONSULTA / MODIFICACION > CLASIFICACION
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    public static void localizarClasificacionEnBD() {
+    }
+
+    /**
+     * INICIO VALIDACIONES
+     *
+     * @param String dni
+     * @return boolean
+     * @throws Exception, SQLException, ConexionProblemas, TempNoExiste
+     */
+
+    // PARA EL DNI
+    public static boolean validarNIF(String dni) {
+        boolean correcto = false;
+        Pattern pattern = Pattern.compile("(\\d{1,8})([TRWAGMYFPDXBNJZSQVHLCKEtrwagmyfpdxbnjzsqvhlcke])");
+        Matcher matcher = pattern.matcher(dni);
+
+        if (matcher.matches()) {
+            String letra = matcher.group(2);
+            String letras = "TRWAGMYFPDXBNJZSQVHLCKE";
+            int index = Integer.parseInt(matcher.group(1));
+            index = index % 23;
+            String reference = letras.substring(index, index + 1);
+            if (reference.equalsIgnoreCase(letra)) {
+                correcto = true;
+            } else {
+                correcto = false;
+            }
+        } else {
+            correcto = false;
+        }
+        return correcto;
+    }
+    
+        /**
+     * FIN VALIDACIONES
+     *
+     */
+
 }

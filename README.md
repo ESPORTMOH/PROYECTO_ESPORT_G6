@@ -34,6 +34,8 @@ Por Miguel Olmo Hernando
 
 * La Carpeta [**PROGRAMACION_JAVA**](https://github.com/migueloh/PROYECTO_ESPORT_G6/tree/master/PROGRAMA_JAVA/ProyectoEsport_MOH) es donde tiene lugar la codificación del programa. Esta codificación la realizo mediante Netbeans.
 
+* La Carpeta [**JAVADOC**](https://github.com/migueloh/PROYECTO_ESPORT_G6/tree/master/PROGRAMA_JAVA/ProyectoEsport_MOH) contiene la documentación de la APi en formato HTML. Esta le permitirá analizar la estructura de la aplicación. **Destacar** que la aplicación se encuentra con comentarios, procedimientos, funciones, clases y métodos desarrollados de tal forma que explican que hacen cada uno y cómo.
+
 # REQUISITOS PARA EJECUTAR EL PROGRAMA:
 
 * [**1º.-**] Descargar el repositorio o clonarlo en tu PC. Abrirlo o descomprimirlo, etc...

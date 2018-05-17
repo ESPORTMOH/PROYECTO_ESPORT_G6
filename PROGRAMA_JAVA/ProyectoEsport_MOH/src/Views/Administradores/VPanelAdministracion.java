@@ -134,6 +134,11 @@ public class VPanelAdministracion extends javax.swing.JFrame {
         jMpartidos.add(jMresultados);
 
         jMclasificacion.setText("Clasificación");
+        jMclasificacion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMclasificacionActionPerformed(evt);
+            }
+        });
         jMpartidos.add(jMclasificacion);
 
         jMenuBar1.add(jMpartidos);
@@ -242,7 +247,7 @@ public class VPanelAdministracion extends javax.swing.JFrame {
     }//GEN-LAST:event_jMCRUDequiposActionPerformed
 
     private void jMresultadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMresultadosActionPerformed
-        // ACTION REGISTRAR RESULTADOS
+        // ACTION REGISTRAR RESULTADOS DE LOS PARTIDOS
         try {
             Controladora.abrirPanelPartidosPuntos();
             Controladora.cierraTipoVentanas(tipoVentana);
@@ -250,6 +255,16 @@ public class VPanelAdministracion extends javax.swing.JFrame {
             Logger.getLogger(VPanelAdministracion.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jMresultadosActionPerformed
+
+    private void jMclasificacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMclasificacionActionPerformed
+        // ACTION REGISTRAR CLASIFICACION
+        try {
+            Controladora.abrirPanelClasificacion();
+            Controladora.cierraTipoVentanas(tipoVentana);
+        } catch (Exception ex) {
+            Logger.getLogger(VPanelAdministracion.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jMclasificacionActionPerformed
 
     /**
      * @param args the command line arguments
