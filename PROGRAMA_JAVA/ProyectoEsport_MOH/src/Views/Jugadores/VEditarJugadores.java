@@ -350,6 +350,8 @@ public class VEditarJugadores extends javax.swing.JFrame {
         jTnacionalidad.setText(nacionalidad);
         jTposicion.setText(posicion);
         jBeditar.setEnabled(true);
+        jTnacionalidad.setEnabled(true);
+        jTposicion.setEnabled(true);
     }
 
     public void configPredeterminadaVentana() {

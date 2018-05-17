@@ -23,17 +23,10 @@ import java.util.regex.Pattern;
  * @author MIGUEL OLMO HERNANDO
  * @proyect_name PROYECTO DAW 2017 - 2018 - GRUPO 6
  * @version Fase4 v10
- * @param (methods and constructors only)
- * @return (methods only)
- * @exception (Package Exceptions - @throws)
  * @since 2018
- * @serial no serial required
  */
 public class Controladora {
 
-    /**
-     * @param args the command line arguments
-     */
     /**
      * INICIO DECLARACION DE OBJETOS PARA LAS VISTAS
      *
@@ -160,7 +153,7 @@ public class Controladora {
          * INICIO GENERICO DE LAS VENTANAS DE INICIO / RESET / SALIDA DE LA
          * APLICACION
          *
-         * @param
+         * @param VHome vHome
          * @return all void
          *
          */
@@ -198,8 +191,8 @@ public class Controladora {
     /**
      * INICIO APERTURA DE PANELES PARA EL MENU SEGUN EL LOGEO APLICACION
      *
-     * @param
-     * @return all void
+     * @param VPanelAdministracion vpanelAdministracion
+     * @return void
      *
      */
     // ABRIR PANEL TIPO ADMINISTRADOR - A
@@ -986,9 +979,10 @@ public class Controladora {
         administradorUML = new Administrador(dni, nombre, apellido);
         administradorBD.insertarAdministradorBD(administradorUML, tipo);
     }
-
+    
     // LOCALIZA
     public static void localizarAdministradorEnBD(String tipoVentana, String dni) throws Exception {
+        
         switch (tipoVentana) {
             case "VBajaAdmins": {
                 administradorBD = new AdministradorBD();
@@ -1007,11 +1001,13 @@ public class Controladora {
                 administradorUML = administradorBD.localizarAdministrador(dni);
                 vEditarAdmins.rellenarCamposVentana(administradorUML.getDni(), administradorUML.getNombre(), administradorUML.getApellido(), administradorUML.getLogin().getUser(), administradorUML.getLogin().getPassword());
                 break;
-            }
+            } 
             default:
                 System.err.println("Error critico en el CRUD de Administradores");
                 throw new AdminCRUDError();
         }
+        
+     
     }
 
     // BAJA
@@ -1439,6 +1435,11 @@ public class Controladora {
             correcto = false;
         }
         return correcto;
+    }
+
+    public static boolean localizarSiexixteDni(String dni) throws SQLException, ConexionProblemas {
+        administradorBD = new AdministradorBD();
+        return administradorBD.localizarSiexixteDni(dni);
     }
     
         /**
