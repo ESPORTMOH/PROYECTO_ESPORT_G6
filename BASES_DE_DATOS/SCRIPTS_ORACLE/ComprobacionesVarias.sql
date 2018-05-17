@@ -13,6 +13,7 @@ select * from equipo;
 
 select * from partido;
 
+truncate table jugador cascade;
 select * from jugador;
 
 select * from clasificacion;

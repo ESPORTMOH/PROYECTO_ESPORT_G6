@@ -34,8 +34,8 @@ public class JugadorBD extends GenericoBD {
         pS.setDate(6, new java.sql.Date(jugador.getFechaNacimiento().getTime()));
         pS.setString(7, jugador.getNacionalidad());
         pS.setString(8, jugador.getPosicion());
-        
-        pS.setInt(9, (jugador.getEquipo() != null ? jugador.getEquipo().getCodEquipo() : 41));
+
+        pS.setInt(9, (jugador.getEquipo() != null ? jugador.getEquipo().getCodEquipo() : 1));
         pS.executeUpdate();
 
         cerrarConexion(con);
@@ -75,42 +75,8 @@ public class JugadorBD extends GenericoBD {
             //jugador.setEquipo(new Equipo(datosRS.getInt("codEquipo")));
         }
 
-        con.close();
+        cerrarConexion(con);
         return jugador;
-
-    }
-
-    public ArrayList<Jugador> getAllJugadorEnBD() throws SQLException, ConexionProblemas {
-        GenericoBD genericoBD = new GenericoBD();
-        con = genericoBD.abrirConexion(con);
-
-        ArrayList<Jugador> listaJugadores = new ArrayList();
-        String consultaSQL = "SELECT * FROM jugador";
-
-        Statement stmt = con.createStatement();
-
-        ResultSet rs = stmt.executeQuery(consultaSQL);
-        while (rs.next()) {
-            Jugador ju = new Jugador();
-
-            ju.setCodJugador(rs.getInt("CODJUGADOR"));
-            ju.setDni(rs.getString("DNI"));
-            ju.setNombre(rs.getString("NOMBRE"));
-            ju.setApellido(rs.getString("APELLIDO"));
-            ju.setNickname(rs.getString("NICKNAME"));
-            ju.setSueldo(rs.getDouble("SUELDO"));
-            ju.setFechaNacimiento(rs.getDate("FECHANACIMIENTO"));
-            ju.setNacionalidad(rs.getString("NACIONALIDAD"));
-            ju.setPosicion(rs.getString("POSICION"));
-            //ju.setEquipo(new Equipo(rs.getInt("CODEQUIPO")));
-
-            listaJugadores.add(ju);
-        }
-
-        con.close();
-
-        return listaJugadores;
-
     }
 
     // LOCALIZAR TODOS LOS DUENIOS PARA RELLENAR EL COMBO EN EQUIPO / ALTA
@@ -151,8 +117,38 @@ public class JugadorBD extends GenericoBD {
             System.out.println(e);
 
         }
-
+        cerrarConexion(con);
         return listaJugadores;
+    }
+    
+    // EDITAR JUGADOR
+     public void editarJugadorEnBD(Jugador jugador) throws SQLException, ConexionProblemas {
+        
+        GenericoBD genericoBD = new GenericoBD();
+        con = genericoBD.abrirConexion(con);
+        
+        PreparedStatement pS = con.prepareStatement("UPDATE jugador SET nacionalidad = ?, posicion = ? WHERE dni = ? ");
+
+        pS.setString(1, jugador.getNacionalidad());
+        pS.setString(2, jugador.getPosicion());
+        pS.setString(3, jugador.getDni());
+     
+        pS.executeUpdate();
+
+        cerrarConexion(con);  
+    }
+
+    // ELIMINAR JUGADOR
+    public void eliminarJugadorDelaBD(String dni) throws SQLException, ConexionProblemas {
+        GenericoBD genericoBD = new GenericoBD();
+        con = genericoBD.abrirConexion(con);
+
+        PreparedStatement pS = con.prepareStatement("DELETE FROM JUGADOR WHERE dni = ? ");
+        pS.setString(1, dni);
+
+        pS.executeUpdate();
+
+        cerrarConexion(con);     
     }
 
 }

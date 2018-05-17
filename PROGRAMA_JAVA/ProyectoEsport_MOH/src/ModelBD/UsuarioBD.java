@@ -85,7 +85,7 @@ public class UsuarioBD extends GenericoBD{
         cerrarConexion(con);
     }
     
-    // ELIMINAR ADMINISTRADOR
+    // ELIMINAR USUARIO
     public void eliminarUsuarioDelaBD(String dni) throws SQLException, ConexionProblemas {
 
         GenericoBD genericoBD = new GenericoBD();
@@ -97,7 +97,6 @@ public class UsuarioBD extends GenericoBD{
         pS.executeUpdate();
 
         cerrarConexion(con);
-
     }
 
 }

@@ -188,7 +188,7 @@ public class VEditarEquipos extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jBeditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBeditarActionPerformed
-                // ACTION BOTON EDITAR
+    // ACTION BOTON EDITAR
         try {
             if (jTciudad.getText().isEmpty() | jTestadio.getText().isEmpty()) {
                 throw new DuenioPassVacia();
@@ -203,7 +203,6 @@ public class VEditarEquipos extends javax.swing.JFrame {
         } catch (Exception E) {
             JOptionPane.showMessageDialog(this, E.getMessage());
         }
-
     }//GEN-LAST:event_jBeditarActionPerformed
 
     private void jBconsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBconsultarActionPerformed

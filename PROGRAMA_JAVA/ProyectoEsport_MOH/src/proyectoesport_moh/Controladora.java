@@ -13,8 +13,8 @@ import Views.Equipos.*;
 import Views.Jugadores.*;
 import Views.Usuarios.*;
 import Views.Jornada.*;
+import Views.Partido.VPartido;
 import java.sql.*;
-import java.text.*;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -85,6 +85,9 @@ public class Controladora {
 
     // VISTAS FICHAJES
     private static VFichajes vFichajes;
+
+    // VISTAS PARTIDOS
+    private static VPartido vPartido;
 
     // VISTAS PARTIDOS
     // FIN DECLARACION DE OBJETOS PARA LAS VISTAS
@@ -198,10 +201,10 @@ public class Controladora {
     }
 
     // ABRIR PANEL CRUD EQUIPOS
-   public static void abrirCrudEquipos() {
+    public static void abrirCrudEquipos() {
         vpanelCrudEquipos = new VPanelCrudEquipos();
         vpanelCrudEquipos.setVisible(true);
-   }
+    }
 
     // ABRIR PANEL CRUD JORNADAS
     public static void abrirCrudJornadas() {
@@ -226,8 +229,8 @@ public class Controladora {
         vultimaClasificacion = new VUltimaClasificacion();
         vultimaClasificacion.setVisible(true);
     }
-    
-        // ABRIR VISTA ULTIMA JORNADA
+
+    // ABRIR VISTA ULTIMA JORNADA
     public static void abrirJornadas() {
         vJornadas = new VJornadas();
         vJornadas.setVisible(true);
@@ -237,6 +240,12 @@ public class Controladora {
     public static void abrirClasificaciones() {
         vClasificaciones = new VClasificaciones();
         vClasificaciones.setVisible(true);
+    }
+
+    // ABRIR PANEL REGISTRAR PUNTOS PARTIDOS
+    public static void abrirPanelPartidosPuntos() {
+        vPartido = new VPartido();
+        vPartido.setVisible(true);
     }
 
     ////////////////////////////////////////////////////////////////////////////////////////////////
@@ -542,6 +551,10 @@ public class Controladora {
                 vClasificaciones.dispose();
                 break;
             }
+            case "VPartidos": {
+                vPartido.dispose();
+                break;
+            }
             default:
                 System.err.println("Error critico en el cierre de las ventanas");
                 throw new CierreVError();
@@ -687,6 +700,10 @@ public class Controladora {
             }
             case "VClasificaciones": {
                 vpanelUsuarios.setVisible(true);
+                break;
+            }
+            case "VPartidos": {
+                vpanelAdministracion.setVisible(true);
                 break;
             }
             default:
@@ -893,17 +910,17 @@ public class Controladora {
     // SENTENCIAS ALTA / BAJA / CONSULTA / MODIFICACION > JUGADOR
     // ALTA
     public static void pedirInsertarJugadorBD(String dni, String nombre, String apellido, String nickname, String sueldo, Date fechaNacimiento, String nacionalidad, String posicion) throws Exception {
-        
+
         jugadorBD = new JugadorBD();
         //DateFormat formatter = new SimpleDateFormat("dd-mm-yyyy");
         //Date fnacimiento = formatter.parse(fechaNacimiento);
-      
+
         jugadorUML = new Jugador(dni, nombre, apellido, nickname, Double.parseDouble(sueldo), fechaNacimiento, nacionalidad, posicion);
         jugadorBD.insertarJugadorEnBD(jugadorUML);
- 
+
     }
-    
-    //
+    // LOCALIZA
+
     public static void localizarJugadorEnBD(String dni) throws Exception {
         jugadorBD = new JugadorBD();
         Jugador jugador = jugadorBD.localizaJugador(dni);
@@ -912,7 +929,20 @@ public class Controladora {
         vBajaJugadores.rellenarCamposVentana(jugador.getDni(), jugador.getNombre(), jugador.getApellido(), jugador.getNickname(), jugador.getSueldo(), jugador.getFechaNacimiento(), jugador.getNacionalidad(), jugador.getPosicion());
     }
 
-    public static void eliminarJugadorDelaBD(String dni) {
+    // EDITA
+    public static void pedirEditarJugador(String dni, String nacionalidad, String posicion) throws SQLException, ConexionProblemas {
+        jugadorBD = new JugadorBD();
+        Jugador jugador = new Jugador();
+        jugador.setDni(dni);
+        jugador.setNacionalidad(nacionalidad);
+        jugador.setPosicion(posicion);
+        jugadorBD.editarJugadorEnBD(jugador);
+    }
+
+    // BAJA
+    public static void pedirEliminarJugadorDelaBD(String dni) throws SQLException, ConexionProblemas {
+        jugadorBD = new JugadorBD();
+        jugadorBD.eliminarJugadorDelaBD(dni);
     }
 
     ////////////////////////////////////////////////////////////////////////////////////////////////
@@ -929,6 +959,16 @@ public class Controladora {
     }
 
     // LOCALIZA
+    /**
+     * Localiza equipo en BD
+     *
+     * @param String tipoVentana, String nombre
+     * @return Boolean
+     * @ ArrayList<Jugador> list
+     *
+     *
+     *
+     */
     public static void localizarEquipoEnBD(String tipoVentana, String nombre) throws Exception {
         switch (tipoVentana) {
             case "VBajaEquipos": {
@@ -976,12 +1016,6 @@ public class Controladora {
     ////////////////////////////////////////////////////////////////////////////////////////////////
     // SENTENCIAS ALTA / BAJA / CONSULTA / MODIFICACION > PARTIDO
     ////////////////////////////////////////////////////////////////////////////////////////////////
-    
-    
-    
-    
-    
-    
     ////////////////////////////////////////////////////////////////////////////////////////////////
     // SENTENCIAS ALTA > JORNADA
     ////////////////////////////////////////////////////////////////////////////////////////////////
@@ -1072,8 +1106,8 @@ public class Controladora {
             }
             case "VConsultarJornadas": {
                 jornadaBD = new JornadaBD();
-                jornadaUML = jornadaBD.localizarTemporadaEnJornadaBD(numTemporada);
-                vConsultarJornadas.rellenarCamposVentana();
+                //jornadaUML = jornadaBD.localizarTemporadaEnJornadaBD(numTemporada);
+                //vConsultarJornadas.rellenarCamposVentana();
                 break;
             }
             default:
@@ -1090,6 +1124,4 @@ public class Controladora {
         return jProgressBarT;
     }
      */
-
- 
 }
