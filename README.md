@@ -3,15 +3,14 @@ Por Miguel Olmo Hernando
 
 # NOVEDADES
 
-* Esta versión Fase 4 v4 incluye lo siguiente:
+* Esta versión Fase 4 v7 incluye lo siguiente:
 
-	* Se han realizado varios cambios en los atributos de la BD y generado una nueva tabla llamada Clasificación. Se han creado las alteraciones necesarias para la nueva tabla y generado un nuevo SCRIPT DDL para ORACLE.
-	* Se han creado 3 procedimientos nuevos que se incluyen en el paquete PAQUETE_SPORT_MOH_2, todos ellos tienen como fin rellenar un combo utilizando un cursor.
-	* Se han realizado cambios en los CRUD. A falta de pulir unos detalles.
-	* Se ha codificado lo necesario para la autogeneracion de la jornada.
+	* Se ha codificado lo necesario para la autogeneración de las temporadas/jornadas.
+	* Todos los CRUD finalizados y funcionando.
+	* Creaciónn del Javadoc.
 	* Se ha mejorado la interfaz gráfica.
-
-* La versión Fase 4 v5 corrige varios problemas en los CRUD
+	* Codificada la clasificacion y Partido (Actualmente trabajando en ello)
+	
 
 # CONTENIDO DEL REPOSITORIO
 
@@ -34,7 +33,7 @@ Por Miguel Olmo Hernando
 
 * La Carpeta [**PROGRAMACION_JAVA**](https://github.com/migueloh/PROYECTO_ESPORT_G6/tree/master/PROGRAMA_JAVA/ProyectoEsport_MOH) es donde tiene lugar la codificación del programa. Esta codificación la realizo mediante Netbeans.
 
-* La Carpeta [**JAVADOC**](https://github.com/migueloh/PROYECTO_ESPORT_G6/tree/master/PROGRAMA_JAVA/ProyectoEsport_MOH) contiene la documentación de la APi en formato HTML. Esta le permitirá analizar la estructura de la aplicación. **Destacar** que la aplicación se encuentra con comentarios, procedimientos, funciones, clases y métodos desarrollados de tal forma que explican que hacen cada uno y cómo.
+* La Carpeta [**JAVADOC**](https://github.com/migueloh/PROYECTO_ESPORT_G6/tree/master/PROGRAMA_JAVA/ProyectoEsport_MOH/dist/javadoc) contiene la documentación de la APi en formato HTML. Abrir INDEX.HTML con un Navegador Web de vuestra elección, esto le permitirá analizar la estructura de la aplicación. **Destacar** que la aplicación se encuentra con comentarios, procedimientos, funciones, clases y métodos desarrollados de tal forma que explican al detalle que hace cada uno y cómo.
 
 # REQUISITOS PARA EJECUTAR EL PROGRAMA:
 
