@@ -9,7 +9,8 @@ Por Miguel Olmo Hernando
 	* Todos los CRUD finalizados y funcionando.
 	* Creaciónn del Javadoc.
 	* Se ha mejorado la interfaz gráfica.
-	* Codificada la clasificacion y Partido (Actualmente trabajando en ello)
+	* Codificada la clasificacion y Partido (Actualmente trabajando en ello).
+	* Trabajando en los diferentes manuales y la presentación.
 	
 
 # CONTENIDO DEL REPOSITORIO
@@ -49,7 +50,7 @@ Por Miguel Olmo Hernando
 
 * [**7º.-**] Ejecuta el programa. El **usuario y clave** por defecto del usuario **Administrador** son **root / root**.
 
-* [**8º.-**]* Pueden consultar la Carpeta:
+* [**8º.-**]* Si quieren entender el funcionamiento de la aplicación al detalle, revisen la siguiente carpeta:
 	* [**JAVADOC**](https://github.com/migueloh/PROYECTO_ESPORT_G6/tree/master/PROGRAMA_JAVA/ProyectoEsport_MOH/dist/javadoc) Esta contiene la documentación de la APi en formato HTML. Si abren el INDEX.HTML con un Navegador Web de su elección, le permitirá analizar la estructura de la aplicación. **Destacar** que la aplicación se encuentra con comentarios, procedimientos, funciones, clases y métodos desarrollados de tal forma que explican al detalle que hace cada uno y cómo.
 
 ![alt text](https://github.com/migueloh/PROYECTO_ESPORT_G6/blob/master/BLOG/Captura1.PNG)
