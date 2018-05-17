@@ -33,8 +33,6 @@ Por Miguel Olmo Hernando
 
 * La Carpeta [**PROGRAMACION_JAVA**](https://github.com/migueloh/PROYECTO_ESPORT_G6/tree/master/PROGRAMA_JAVA/ProyectoEsport_MOH) es donde tiene lugar la codificación del programa. Esta codificación la realizo mediante Netbeans.
 
-* La Carpeta [**JAVADOC**](https://github.com/migueloh/PROYECTO_ESPORT_G6/tree/master/PROGRAMA_JAVA/ProyectoEsport_MOH/dist/javadoc) contiene la documentación de la APi en formato HTML. Abrir INDEX.HTML con un Navegador Web de vuestra elección, esto le permitirá analizar la estructura de la aplicación. **Destacar** que la aplicación se encuentra con comentarios, procedimientos, funciones, clases y métodos desarrollados de tal forma que explican al detalle que hace cada uno y cómo.
-
 # REQUISITOS PARA EJECUTAR EL PROGRAMA:
 
 * [**1º.-**] Descargar el repositorio o clonarlo en tu PC. Abrirlo o descomprimirlo, etc...
@@ -50,5 +48,8 @@ Por Miguel Olmo Hernando
 * [**6º.-**] Edita la Clase  [**GenericoBD**](https://github.com/migueloh/PROYECTO_ESPORT_G6/blob/master/PROGRAMA_JAVA/ProyectoEsport_MOH/src/ModelBD/GenericoBD.java) con los datos que utilices en el paso **2º**.
 
 * [**7º.-**] Ejecuta el programa. El **usuario y clave** por defecto del usuario **Administrador** son **root / root**.
+
+* [**8º.-**]* Pueden consultar la Carpeta:
+	* [**JAVADOC**](https://github.com/migueloh/PROYECTO_ESPORT_G6/tree/master/PROGRAMA_JAVA/ProyectoEsport_MOH/dist/javadoc) Esta contiene la documentación de la APi en formato HTML. Si abren el INDEX.HTML con un Navegador Web de su elección, le permitirá analizar la estructura de la aplicación. **Destacar** que la aplicación se encuentra con comentarios, procedimientos, funciones, clases y métodos desarrollados de tal forma que explican al detalle que hace cada uno y cómo.
 
 ![alt text](https://github.com/migueloh/PROYECTO_ESPORT_G6/blob/master/BLOG/Captura1.PNG)
