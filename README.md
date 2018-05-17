@@ -50,3 +50,5 @@ Por Miguel Olmo Hernando
 * [**6º.-**] Edita la Clase  [**GenericoBD**](https://github.com/migueloh/PROYECTO_ESPORT_G6/blob/master/PROGRAMA_JAVA/ProyectoEsport_MOH/src/ModelBD/GenericoBD.java) con los datos que utilices en el paso **2º**.
 
 * [**7º.-**] Ejecuta el programa. El **usuario y clave** por defecto del usuario **Administrador** son **root / root**.
+
+![alt text](https://github.com/migueloh/PROYECTO_ESPORT_G6/blob/master/BLOG/Captura1.PNG)
