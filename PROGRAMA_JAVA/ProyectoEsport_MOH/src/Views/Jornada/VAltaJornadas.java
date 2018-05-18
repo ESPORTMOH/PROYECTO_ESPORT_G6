@@ -143,7 +143,7 @@ public class VAltaJornadas extends javax.swing.JFrame {
             if (jTntemporada.getText().isEmpty()) {
                 throw new CampoTempVacio();
             } else {
-                JProgressBar jProg = Controladora.generaBarraProgreso(jProgressBarT);
+                //JProgressBar jProg = Controladora.generaBarraProgreso(jProgressBarT);
                 Controladora.generarJornadas(jTntemporada.getText());
 
             }

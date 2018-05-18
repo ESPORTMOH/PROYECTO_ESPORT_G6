@@ -1,5 +1,5 @@
 CREATE OR REPLACE TRIGGER TRIGG_salarioMinimoTotal
-  BEFORE INSERT OR UPDATE ON jugador
+  BEFORE INSERT ON jugador
     FOR EACH ROW
       DECLARE
         v_sueldosTotales NUMBER;

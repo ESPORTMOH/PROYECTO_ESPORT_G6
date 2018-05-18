@@ -3,15 +3,15 @@ Por Miguel Olmo Hernando
 
 # NOVEDADES
 
-* Esta versión Fase 4 v4 incluye lo siguiente:
+* Esta versión Fase 4 v7 incluye lo siguiente:
 
-	* Se han realizado varios cambios en los atributos de la BD y generado una nueva tabla llamada Clasificación. Se han creado las alteraciones necesarias para la nueva tabla y generado un nuevo SCRIPT DDL para ORACLE.
-	* Se han creado 3 procedimientos nuevos que se incluyen en el paquete PAQUETE_SPORT_MOH_2, todos ellos tienen como fin rellenar un combo utilizando un cursor.
-	* Se han realizado cambios en los CRUD. A falta de pulir unos detalles.
-	* Se ha codificado lo necesario para la autogeneracion de la jornada.
+	* Se ha codificado lo necesario para la autogeneración de las temporadas/jornadas.
+	* Todos los CRUD funcionando (pero a falta de unos peños retoques).
+	* Creaciónn del Javadoc.
 	* Se ha mejorado la interfaz gráfica.
-
-* La versión Fase 4 v5 corrige varios problemas en los CRUD
+	* Codificada la clasificacion y Partido (Actualmente trabajando en ello).
+	* Trabajando en los diferentes manuales y la presentación.
+	
 
 # CONTENIDO DEL REPOSITORIO
 
@@ -48,4 +48,9 @@ Por Miguel Olmo Hernando
 
 * [**6º.-**] Edita la Clase  [**GenericoBD**](https://github.com/migueloh/PROYECTO_ESPORT_G6/blob/master/PROGRAMA_JAVA/ProyectoEsport_MOH/src/ModelBD/GenericoBD.java) con los datos que utilices en el paso **2º**.
 
-* [**7º.-**] Ejecuta el programa. El **usuario y clave** por defecto del usuario **Administrador** son **root / root**.
+* [**7º.-**]* Si quieren entender el funcionamiento de la aplicación al detalle, revisen la siguiente carpeta:
+	* [**JAVADOC**](https://github.com/migueloh/PROYECTO_ESPORT_G6/tree/master/PROGRAMA_JAVA/ProyectoEsport_MOH/dist/javadoc) Esta contiene la documentación de la APi en formato HTML. Si abren el INDEX.HTML con un Navegador Web de su elección, le permitirá analizar la estructura de la aplicación. **Destacar** que la aplicación se encuentra con comentarios, procedimientos, funciones, clases y métodos desarrollados de tal forma que explican al detalle que hace cada uno y cómo.
+	
+* [**8º.-**] Ejecuta el programa. El **usuario y clave** por defecto del usuario **Administrador** son **root / root**.
+
+![alt text](https://github.com/migueloh/PROYECTO_ESPORT_G6/blob/master/BLOG/Captura1.PNG)

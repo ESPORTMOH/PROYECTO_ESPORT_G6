@@ -435,7 +435,7 @@ COMMIT;
 INSERT INTO jugador VALUES (DEFAULT, '32317743Y', 'Pau', 'Gasol', 'PauG', 10000, TO_DATE('06/07/1980', 'dd/mm/YYYY'), 'Spain', 'F', 1);
 COMMIT;
 
-INSERT INTO jugador VALUES (DEFAULT, '32317743Y', 'Michael', 'Jordan', 'Air', 15000, TO_DATE('17/02/1963', 'dd/mm/YYYY'), 'USA', 'G', 1);
+INSERT INTO jugador VALUES (DEFAULT, '40576612N', 'Michael', 'Jordan', 'Air', 15000, TO_DATE('17/02/1963', 'dd/mm/YYYY'), 'USA', 'G', 1);
 COMMIT;
 
 -- --------------------------------------------------------

@@ -48,6 +48,17 @@ public class Jugador {
         this.equipo = equipo;
     }
 
+    public Jugador(String dni, String nombre, String apellido, String nickname, Double sueldo, Date fechaNacimiento, String nacionalidad, String posicion) {
+        this.dni = dni;
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.nickname = nickname;
+        this.sueldo = sueldo;
+        this.fechaNacimiento = fechaNacimiento;
+        this.nacionalidad = nacionalidad;
+        this.posicion = posicion;
+    }
+
     public Integer getCodJugador() {
         return codJugador;
     }

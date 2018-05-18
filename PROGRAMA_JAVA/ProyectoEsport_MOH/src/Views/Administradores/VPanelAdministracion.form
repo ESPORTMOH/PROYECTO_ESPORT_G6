@@ -66,7 +66,7 @@
             </MenuItem>
           </SubComponents>
         </Menu>
-        <Menu class="javax.swing.JMenu" name="jMenu3">
+        <Menu class="javax.swing.JMenu" name="jMpartidos">
           <Properties>
             <Property name="text" type="java.lang.String" value="Gestionar"/>
           </Properties>
@@ -81,8 +81,19 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMresultados">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Resultados"/>
+                <Property name="text" type="java.lang.String" value="Partidos"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMresultadosActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="jMclasificacion">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Clasificaci&#xf3;n"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMclasificacionActionPerformed"/>
+              </Events>
             </MenuItem>
           </SubComponents>
         </Menu>
