@@ -8,7 +8,7 @@
 -- SID orcl
 
 -- Fecha creacion del Script: 22-04-2018 a las 13:36:24
--- Fecha alteracion del Script: 11-05-2018 v3
+-- Fecha alteracion del Script: 18-05-2018 v4
 
 -- Proyecto DAW 2017-2018
 -- Realizado por Miguel Olmo Hernando
@@ -172,6 +172,7 @@ CREATE TABLE duenio (
   dni VARCHAR2(9) NOT NULL,
   nombre VARCHAR2(20) NOT NULL,
   apellido VARCHAR2(20) NOT NULL,
+  estado NUMBER(1) NOT NULL,
   codLogin NUMBER(4) NOT NULL -- RESERVADO FK
 );
 
@@ -199,6 +200,7 @@ CREATE TABLE jugador (
   fechaNacimiento DATE NOT NULL,
   nacionalidad VARCHAR2(20) NOT NULL,
   posicion VARCHAR2(10) NOT NULL,
+  estado NUMBER(1) NOT NULL,
   codEquipo NUMBER(4) -- RESERVADO FK
 );
 
@@ -224,6 +226,7 @@ CREATE TABLE equipo (
   ciudad VARCHAR2(20) NOT NULL,
   nombreEstadio VARCHAR2(20) NOT NULL,
   codDuenio NUMBER(4) -- RESERVADO FK
+  -- EQUIPO COD CLASSIFICACION
 );
 
 -- --------------------------------------------------------
@@ -289,7 +292,7 @@ CREATE TABLE clasificacion (
 						CONSTRAINT CL_CDCL_PK PRIMARY KEY,
   puntos NUMBER(5) NOT NULL,
   numeroTemporada VARCHAR2(3) NOT NULL,
-  codEquipo NUMBER(4) -- RESERVADO FK
+  codEquipo NUMBER(4) -- RESERVADO FK -- quitar
 );
 
 -- --------------------------------------------------------
@@ -330,8 +333,9 @@ ALTER TABLE usuario
 --
 -- Filtros para la tabla 'duenio'
 --
-ALTER TABLE duenio
-  ADD CONSTRAINT DU_DUCL_FK FOREIGN KEY (codLogin) REFERENCES login (codLogin) ON DELETE CASCADE;
+ALTER TABLE duenio ADD (
+  CONSTRAINT DU_DUCL_FK FOREIGN KEY (codLogin) REFERENCES login (codLogin) ON DELETE CASCADE,
+  CONSTRAINT DU_ESTA_CK CHECK (estado IN(0,1)));
 
 -- --------------------------------------------------------
 
@@ -341,7 +345,8 @@ ALTER TABLE duenio
 
 ALTER TABLE jugador ADD (
   CONSTRAINT JU_JUEQ_FK FOREIGN KEY (codEquipo) REFERENCES equipo (codEquipo) ON DELETE CASCADE,
-  CONSTRAINT JU_SUMN_CK CHECK (sueldo >= 735));
+  CONSTRAINT JU_SUMN_CK CHECK (sueldo >= 735),
+  CONSTRAINT JU_ESTA_CK CHECK (estado IN(0,1)));
 -- Siguiendo las referencias salariales de la siguiente pagina web: http://www.salariominimo.es/2018.html
 
 -- --------------------------------------------------------
@@ -386,10 +391,10 @@ ALTER TABLE clasificacion ADD(
 -- Datos para la tabla 'login' y 'administracion' -  Creacion del usuario SUPERAMINISTRADOR
 --
 
-INSERT INTO login (codLogin, usuario, passwd, tipo) VALUES (DEFAULT, 'root','root','A');
+INSERT INTO login (codLogin, usuario, passwd, tipo) VALUES (DEFAULT, 'ROOT','ROOT','A');
 COMMIT;
 
-INSERT INTO administrador VALUES (DEFAULT, '00000000A', 'MIGUEL', 'OLMO', 1);
+INSERT INTO administrador VALUES (DEFAULT, '31232696F', 'MIGUEL', 'OLMO', 1);
 COMMIT;
 
 -- --------------------------------------------------------
@@ -401,7 +406,7 @@ COMMIT;
 INSERT INTO login (codLogin, usuario, passwd, tipo) VALUES (DEFAULT, 'SUPER','DUENIO','D');
 COMMIT;
 
-INSERT INTO duenio VALUES (DEFAULT, '00000000D', 'SUPER', 'DUENIO', 2);
+INSERT INTO duenio VALUES (DEFAULT, '60172008Y', 'SUPER', 'DUENIO',0, 2);
 COMMIT;
 
 -- --------------------------------------------------------
@@ -413,7 +418,7 @@ COMMIT;
 INSERT INTO login (codLogin, usuario, passwd, tipo) VALUES (DEFAULT, 'SUPER','USUARIO','U');
 COMMIT;
 
-INSERT INTO usuario VALUES (DEFAULT, '00000000U', 'SUPER', 'USUARIO', 3);
+INSERT INTO usuario VALUES (DEFAULT, '81935469Q', 'SUPER', 'USUARIO', 3);
 COMMIT;
 
 -- --------------------------------------------------------
@@ -431,18 +436,43 @@ COMMIT;
 --
 -- Datos para la tabla 'jugador' -  Creacion de JUGADORES VARIOS
 --
+--B Base
+--E Escolta
+--A Alero
+--F Ala Pivot
+--P Pivot
+--
 
-INSERT INTO jugador VALUES (DEFAULT, '32317743Y', 'Pau', 'Gasol', 'PauG', 10000, TO_DATE('06/07/1980', 'dd/mm/YYYY'), 'Spain', 'F', 1);
+
+INSERT INTO jugador VALUES (DEFAULT, '32317743Y', 'Pau', 'Gasol', 'PauG', 10000, TO_DATE('06/07/1980', 'dd/mm/YYYY'), 'Spain', 'F', 0, 1);
 COMMIT;
 
-INSERT INTO jugador VALUES (DEFAULT, '40576612N', 'Michael', 'Jordan', 'Air', 15000, TO_DATE('17/02/1963', 'dd/mm/YYYY'), 'USA', 'G', 1);
+INSERT INTO jugador VALUES (DEFAULT, '40576612N', 'Michael', 'Jordan', 'Air', 15000, TO_DATE('17/02/1963', 'dd/mm/YYYY'), 'USA', 'E', 0, 1);
+COMMIT;
+
+INSERT INTO jugador VALUES (DEFAULT, '56777539S', 'Sergi', 'Vidal', 'Vidal', 3500, TO_DATE('06/07/1980', 'dd/mm/YYYY'), 'Spain', 'E', 0, 1);
+COMMIT;
+
+INSERT INTO jugador VALUES (DEFAULT, '57797697P', 'Albert', 'Ventura', 'Ventura', 9500, TO_DATE('07/04/1992', 'dd/mm/YYYY'), 'Spain', 'E', 0, 1);
+COMMIT;
+
+INSERT INTO jugador VALUES (DEFAULT, '38528433Y', 'Thomas', 'Heurtel', 'Heurtel', 95000, TO_DATE('10/04/1989', 'dd/mm/YYYY'), 'France', 'B', 0, 1);
+COMMIT;
+
+INSERT INTO jugador VALUES (DEFAULT, '35827998R', 'Tornike', 'Sengelia', 'Sengelia', 42000, TO_DATE('05/10/1981', 'dd/mm/YYYY'), 'Georgia', 'P', 0, 1);
+COMMIT;
+
+INSERT INTO jugador VALUES (DEFAULT, '27121811G', 'Illmane', 'Diop', 'Diop', 25500, TO_DATE('04/04/1995', 'dd/mm/YYYY'), 'Spain', 'F', 0, 1);
 COMMIT;
 
 -- --------------------------------------------------------
 
 --
 -- Datos para la tabla 'equipo' -  Creacion de EQUIPOS VARIOS
---
+--.
+
+INSERT INTO equipo VALUES (DEFAULT, 'SIN EQUIPO', 200000, '1988', 'Vitoria', 'Mi PC', 1);
+COMMIT;
 
 INSERT INTO equipo VALUES (DEFAULT, 'LAKERS', 200000, '1947', 'Los Angeles', 'Staples Center', 1);
 COMMIT;
@@ -453,4 +483,21 @@ COMMIT;
 INSERT INTO equipo VALUES (DEFAULT, 'MADRID', 200000, '1981', 'Madrid', 'Wizink Center', 1);
 COMMIT;
 
+INSERT INTO equipo VALUES (DEFAULT, 'BULLS', 200000, '1666', 'Chicago', 'United Center', 1);
+COMMIT;
+
+INSERT INTO equipo VALUES (DEFAULT, 'UNICAJA', 200000, '1977', 'Malaga', 'Martin Carpena', 1);
+COMMIT;
+
+INSERT INTO equipo VALUES (DEFAULT, 'CELTICS', 200000, '1946', 'Boston', 'TD Garden', 1);
+COMMIT;
+
+INSERT INTO equipo VALUES (DEFAULT, 'BARCELONA', 200000, '1926', 'Barcelona', 'Palau Blaugrana', 1);
+COMMIT;
+
+/*
+PARA LA PRESENTACION
+INSERT INTO equipo VALUES (DEFAULT, 'WARRIORS', 200000, '1946', 'Oakland', 'Oracle Arena', 1);
+COMMIT;
+*/
 

@@ -33,7 +33,8 @@ IS
 		OPEN d_duenios 
 			FOR
 				SELECT * 
-				FROM duenio; 
+          FROM duenio
+            WHERE estado = 0;
   EXCEPTION
     WHEN OTHERS THEN
       RAISE_APPLICATION_ERROR(-20100, 'ERROR INEXPERADO');

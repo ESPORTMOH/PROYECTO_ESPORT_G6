@@ -2,7 +2,7 @@ package Views.Jugadores;
 
 import proyectoesport_moh.Controladora;
 import Exceptions.*;
-import java.time.Instant;
+import java.awt.Color;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -17,6 +17,7 @@ public class VAltaJugadores extends javax.swing.JFrame {
 
     private final String tipoVentana;
     private final Date fechaActual;
+    private static final Integer estado = 0;
 
     /**
      * Creates new form VAltaJugadores
@@ -192,25 +193,37 @@ public class VAltaJugadores extends javax.swing.JFrame {
 
     private void jBaltaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBaltaActionPerformed
         // BOTON ACTION ALTA JUGADOR
+          
+        
         try {
             if (jTdni.getText().isEmpty() | jTnombre.getText().isEmpty() | jTapellido.getText().isEmpty() | jTnickname.getText().isEmpty() | jTsueldo.getText().isEmpty() | jTnacionalidad.getText().isEmpty() | jTposicion.getText().isEmpty()) {
                 throw new CamposVacios();
-            } if (jDatefnacimiento.getDate().after(fechaActual)) {
-                throw new FechaNoValida();
             } else {
-                Controladora.pedirInsertarJugadorBD(jTdni.getText(), jTnombre.getText(), jTapellido.getText(), jTnickname.getText(), jTsueldo.getText(), jDatefnacimiento.getDate(), jTnacionalidad.getText(), jTposicion.getText());
+                if(Controladora.validarNIF(jTdni.getText())){
+                    if(!Controladora.localizarSiexixteDniJugador(jTdni.getText())){
+                        Controladora.pedirInsertarJugadorBD(jTdni.getText(), jTnombre.getText(), jTapellido.getText(), jTnickname.getText(), jTsueldo.getText(), jDatefnacimiento.getDate(), jTnacionalidad.getText(), jTposicion.getText(), estado);
+                        JOptionPane.showMessageDialog(this, "El Jugador ha sido "
+                        + "\ndado de alta correctamente");
+                        //resetearCampos();
+                    }else{
+                        jTdni.setBackground(Color.RED);
+                       JOptionPane.showMessageDialog(this, "Ya existe un Jugador con ese DNI");    
+                    }  
+                }else{
+                    jTdni.setBackground(Color.YELLOW);
+                    JOptionPane.showMessageDialog(this, "¡DNI no válido!");
+                }  
             }
-
         } catch (CamposVacios CV) {
-            JOptionPane.showMessageDialog(this, CV.getMensaje());
+            JOptionPane.showMessageDialog(this, "Excepcion Campos Vacios");
         } catch (FechaNoValida FNV) {
-            JOptionPane.showMessageDialog(this, FNV.getMensaje());
+            JOptionPane.showMessageDialog(this, "Excepcion Fecha");
         }  catch (JugadorCRUDError JUCRUDE) {
-            JOptionPane.showMessageDialog(this, JUCRUDE.getMensaje());
+            JOptionPane.showMessageDialog(this, "Excepcion CRUD");
         } catch (Exception EX) {
-            JOptionPane.showMessageDialog(this, EX.getMessage());
+            JOptionPane.showMessageDialog(this, "Excepcion generica");
+            System.out.println(EX.toString());
         }
-        
     }//GEN-LAST:event_jBaltaActionPerformed
 
     private void jBretrocederActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBretrocederActionPerformed

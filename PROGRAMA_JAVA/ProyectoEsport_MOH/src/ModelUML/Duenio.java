@@ -10,6 +10,7 @@ public class Duenio {
     private String dni;
     private String nombre;
     private String apellido;
+    private Integer estado;
 
     private boolean duenioEncontrado;
 
@@ -17,6 +18,10 @@ public class Duenio {
     private Login login;
 
     public Duenio() {
+    }
+
+    public Duenio(Integer estado) {
+        this.estado = estado;
     }
 
     public Duenio(String dni, String nombre, String apellido) {
@@ -32,16 +37,24 @@ public class Duenio {
         this.apellido = apellido;
     }
 
-    public Duenio(Integer codDuenio, String dni, String nombre, String apellido, Login login) {
+    public Duenio(Integer codDuenio, String dni, String nombre, String apellido, Login login, Integer estado) {
         this.codDuenio = codDuenio;
         this.dni = dni;
         this.nombre = nombre;
         this.apellido = apellido;
         this.login = login;
+        this.estado = estado;
     }
 
     public Duenio(int aInt) {
         this.codDuenio = aInt;
+    }
+
+    public Duenio(String dni, String nombre, String apellido, Integer estado) {
+        this.dni = dni;
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.estado = estado;
     }
 
     public Integer getCodDuenio() {
@@ -90,6 +103,14 @@ public class Duenio {
 
     public void setDuenioEncontrado(boolean duenioEncontrado) {
         this.duenioEncontrado = duenioEncontrado;
+    }
+
+    public Integer getEstado() {
+        return estado;
+    }
+
+    public void setEstado(Integer estado) {
+        this.estado = estado;
     }
 
 }

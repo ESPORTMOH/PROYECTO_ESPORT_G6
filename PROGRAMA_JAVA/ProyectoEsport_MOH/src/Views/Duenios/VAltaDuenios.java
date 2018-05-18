@@ -3,6 +3,7 @@ package Views.Duenios;
 import proyectoesport_moh.Controladora;
 import Exceptions.*;
 import Views.Administradores.*;
+import java.awt.Color;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -15,6 +16,7 @@ public class VAltaDuenios extends javax.swing.JFrame {
 
     private final String tipoVentana;
     private static final String tipoPersonaAlta = "D";
+    private static final Integer estado = 0;
 
     /**
      * Creates new form VAltaDuenio
@@ -131,16 +133,27 @@ public class VAltaDuenios extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    
     private void jBaceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBaceptarActionPerformed
-        // ACTION ALTA DUENIO
+        // BOTON ACTION ALTA DUEÑO
         try {
             if (jTdni.getText().isEmpty() | jTnombre.getText().isEmpty() | jTapellido.getText().isEmpty()) {
                 throw new CamposVacios();
             } else {
-                Controladora.altaDuenioBD(jTdni.getText(), jTnombre.getText(), jTapellido.getText(), tipoPersonaAlta);
-                JOptionPane.showMessageDialog(this, "El Dueño ha sido dado"
-                        + "\nde alta correctamente");
-                resetearCampos();
+                if(Controladora.validarNIF(jTdni.getText())){
+                    if(!Controladora.localizarSiexixteDniDuenios(jTdni.getText())){
+                        Controladora.altaDuenioBD(jTdni.getText(), jTnombre.getText(), jTapellido.getText(), tipoPersonaAlta, estado);
+                        JOptionPane.showMessageDialog(this, "El Dueño ha sido "
+                        + "\ndado de alta correctamente");
+                        resetearCampos();
+                    }else{
+                        jTdni.setBackground(Color.RED);
+                       JOptionPane.showMessageDialog(this, "Ya existe un Dueño con ese DNI");    
+                    }  
+                }else{
+                    jTdni.setBackground(Color.YELLOW);
+                    JOptionPane.showMessageDialog(this, "¡DNI no válido!");
+                }  
             }
         } catch (CamposVacios CV) {
             JOptionPane.showMessageDialog(this, CV.getMensaje());
@@ -216,5 +229,6 @@ public class VAltaDuenios extends javax.swing.JFrame {
         jTdni.setText(null);
         jTnombre.setText(null);
         jTapellido.setText(null);
+        jTdni.setBackground(null);
     }
 }

@@ -979,10 +979,10 @@ public class Controladora {
         administradorUML = new Administrador(dni, nombre, apellido);
         administradorBD.insertarAdministradorBD(administradorUML, tipo);
     }
-    
+
     // LOCALIZA
     public static void localizarAdministradorEnBD(String tipoVentana, String dni) throws Exception {
-        
+
         switch (tipoVentana) {
             case "VBajaAdmins": {
                 administradorBD = new AdministradorBD();
@@ -1001,13 +1001,12 @@ public class Controladora {
                 administradorUML = administradorBD.localizarAdministrador(dni);
                 vEditarAdmins.rellenarCamposVentana(administradorUML.getDni(), administradorUML.getNombre(), administradorUML.getApellido(), administradorUML.getLogin().getUser(), administradorUML.getLogin().getPassword());
                 break;
-            } 
+            }
             default:
                 System.err.println("Error critico en el CRUD de Administradores");
                 throw new AdminCRUDError();
         }
-        
-     
+
     }
 
     // BAJA
@@ -1096,15 +1095,19 @@ public class Controladora {
     /**
      * INICIO SENTENCIAS ALTA / BAJA / CONSULTA / MODIFICACION > DUENIO
      *
-     * @param String dni, String nombre, String apellido, String tipo
-     * @return void
+     * @param dni
+     * @param nombre
+     * @param apellido
+     * @parama pellido
+     * @param tipo
+     * @param estado
      * @throws Exception
      *
      */
     // ALTA
-    public static void altaDuenioBD(String dni, String nombre, String apellido, String tipo) throws Exception {
+    public static void altaDuenioBD(String dni, String nombre, String apellido, String tipo, Integer estado) throws Exception {
         duenioBD = new DuenioBD();
-        duenioUML = new Duenio(dni, nombre, apellido);
+        duenioUML = new Duenio(dni, nombre, apellido, estado);
         duenioBD.insertarDuenioBD(duenioUML, tipo);
     }
 
@@ -1120,7 +1123,7 @@ public class Controladora {
             case "VConsultarDuenios": {
                 duenioBD = new DuenioBD();
                 duenioUML = duenioBD.localizarDuenio(dni);
-                vConsultarDuenios.rellenarCamposVentana(duenioUML.getDni(), duenioUML.getNombre(), duenioUML.getApellido(), duenioUML.getLogin().getUser(), duenioUML.getLogin().getPassword());
+                vConsultarDuenios.rellenarCamposVentana(duenioUML.getDni(), duenioUML.getNombre(), duenioUML.getApellido(), duenioUML.getLogin().getUser(), duenioUML.getLogin().getPassword(), duenioUML.getEstado());
                 break;
             }
             case "VEditarDuenios": {
@@ -1157,30 +1160,54 @@ public class Controladora {
     /**
      * INICIO SENTENCIAS ALTA / BAJA / CONSULTA / MODIFICACION > JUGADOR
      *
-     * @param String dni, String nombre, String apellido, String nickname,
-     * String sueldo, Date fechaNacimiento, String nacionalidad, String posicion
-     * @return void
+     * @param dni
+     * @param nombre
+     * @param apellido
+     * @param sueldo
+     * @param nickname
+     * @param fechaNacimiento
+     * @param nacionalidad
+     * @param posicion
+     * @param estado
      * @throws Exception
      *
      */
     // ALTA
-    public static void pedirInsertarJugadorBD(String dni, String nombre, String apellido, String nickname, String sueldo, Date fechaNacimiento, String nacionalidad, String posicion) throws Exception {
+    public static void pedirInsertarJugadorBD(String dni, String nombre, String apellido, String nickname, String sueldo, Date fechaNacimiento, String nacionalidad, String posicion, Integer estado) throws Exception {
 
         jugadorBD = new JugadorBD();
         //DateFormat formatter = new SimpleDateFormat("dd-mm-yyyy");
         //Date fnacimiento = formatter.parse(fechaNacimiento);
 
-        jugadorUML = new Jugador(dni, nombre, apellido, nickname, Double.parseDouble(sueldo), fechaNacimiento, nacionalidad, posicion);
+        jugadorUML = new Jugador(dni, nombre, apellido, nickname, Double.parseDouble(sueldo), fechaNacimiento, nacionalidad, posicion, estado);
         jugadorBD.insertarJugadorEnBD(jugadorUML);
 
     }
     // LOCALIZA
-
-    public static void localizarJugadorEnBD(String dni) throws Exception {
-        jugadorBD = new JugadorBD();
-        Jugador jugador = jugadorBD.localizaJugador(dni);
-
-        vBajaJugadores.rellenarCamposVentana(jugador.getDni(), jugador.getNombre(), jugador.getApellido(), jugador.getNickname(), jugador.getSueldo(), jugador.getFechaNacimiento(), jugador.getNacionalidad(), jugador.getPosicion());
+    public static void localizarJugadorEnBD(String tipoVentana, String dni) throws Exception {
+        switch (tipoVentana) {
+            case "VBajaJugadores": {
+                jugadorBD = new JugadorBD();
+                jugadorUML = jugadorBD.localizarJugador(dni);
+                vBajaDuenios.rellenarCamposVentana(duenioUML.getDni(), duenioUML.getNombre(), duenioUML.getApellido(), duenioUML.getLogin().getCodLogin());
+                break;
+            }
+            case "VConsultarJugadores": {
+                jugadorBD = new JugadorBD();
+                jugadorUML = jugadorBD.localizarJugador(dni);
+                vConsultarDuenios.rellenarCamposVentana(duenioUML.getDni(), duenioUML.getNombre(), duenioUML.getApellido(), duenioUML.getLogin().getUser(), duenioUML.getLogin().getPassword(), duenioUML.getEstado());
+                break;
+            }
+            case "VEditarJugadores": {
+                jugadorBD = new JugadorBD();
+                jugadorUML = jugadorBD.localizarJugador(dni);
+                vEditarDuenios.rellenarCamposVentana(duenioUML.getDni(), duenioUML.getNombre(), duenioUML.getApellido(), duenioUML.getLogin().getUser(), duenioUML.getLogin().getPassword());
+                break;
+            }
+            default:
+                System.err.println("Error critico en el CRUD de Jugadores");
+                throw new JugadorCRUDError();
+        }
     }
 
     // EDITA
@@ -1283,8 +1310,8 @@ public class Controladora {
     /**
      * INICIO SENTENCIAS ALTA / BAJA / CONSULTA / MODIFICACION > JORNADA
      *
-     * @return all void
-     * @throws Exception, SQLException, ConexionProblemas, TempNoExiste
+
+     * @throws Exception
      */
     // ALTA
     public static void generarJornadas(String numeroTemporada) throws Exception {
@@ -1366,7 +1393,6 @@ public class Controladora {
      * INICIO LOCALIZAR PARA CONFIRMAR SI EXISTE Y BORRAR A POSTERIORI SI SE
      * DESEA
      *
-     * @return all void
      * @throws Exception, SQLException, ConexionProblemas, TempNoExiste
      */
     public static void pedirLocalizarTemporada(String tipoVentana, String numTemporada) throws Exception, TempNoExiste {
@@ -1397,7 +1423,7 @@ public class Controladora {
     /**
      * FIN LOCALIZAR PARA CONFIRMAR SI EXISTE Y BORRAR A POSTERIORI SI SE DESEA
      *
-     * @return all void
+
      * @throws Exception, SQLException, ConexionProblemas, TempNoExiste
      */
     ////////////////////////////////////////////////////////////////////////////////////////////////
@@ -1409,12 +1435,11 @@ public class Controladora {
     /**
      * INICIO VALIDACIONES
      *
-     * @param String dni
+     * VALIDAR DNI
+     *
+     * @param dni String
      * @return boolean
-     * @throws Exception, SQLException, ConexionProblemas, TempNoExiste
      */
-
-    // PARA EL DNI
     public static boolean validarNIF(String dni) {
         boolean correcto = false;
         Pattern pattern = Pattern.compile("(\\d{1,8})([TRWAGMYFPDXBNJZSQVHLCKEtrwagmyfpdxbnjzsqvhlcke])");
@@ -1437,14 +1462,60 @@ public class Controladora {
         return correcto;
     }
 
-    public static boolean localizarSiexixteDni(String dni) throws SQLException, ConexionProblemas {
+    /**
+     * LOCALIZAR EN LA BD PARA EL DNI ADMIN
+     *
+     * @param dni String
+     * @return boolean
+     * @throws SQLException
+     * @throws ConexionProblemas
+     */
+    public static boolean localizarSiexixteDniAdmin(String dni) throws SQLException, ConexionProblemas {
         administradorBD = new AdministradorBD();
-        return administradorBD.localizarSiexixteDni(dni);
+        return administradorBD.localizarSiexixteDniAdmin(dni);
+    }
+
+    /**
+     * LOCALIZAR EN LA BD PARA EL DNI DUENIOS
+     *
+     * @param dni String
+     * @return boolean
+     * @throws SQLException
+     * @throws ConexionProblemas
+     */
+    public static boolean localizarSiexixteDniDuenios(String dni) throws SQLException, ConexionProblemas {
+        duenioBD = new DuenioBD();
+        return duenioBD.localizarSiexixteDniDuenio(dni);
+    }
+
+    /**
+     * LOCALIZAR EN LA BD PARA EL DNI USUARIOS
+     *
+     * @param dni String
+     * @return boolean
+     * @throws SQLException
+     * @throws ConexionProblemas
+     */
+    public static boolean localizarSiexixteDniUsuarios(String dni) throws SQLException, ConexionProblemas {
+        usuarioBD = new UsuarioBD();
+        return usuarioBD.localizarSiexixteDniUsuario(dni);
     }
     
-        /**
-     * FIN VALIDACIONES
+       /**
+     * LOCALIZAR EN LA BD PARA EL DNI JUGADOR
      *
+     * @param dni String
+     * @return boolean
+     * @throws SQLException
+     * @throws ConexionProblemas
      */
+    public static boolean localizarSiexixteDniJugador(String dni) throws SQLException, ConexionProblemas {
+        jugadorBD = new JugadorBD();
+        return jugadorBD.localizarSiexixteDniJugador(dni);
+    }
 
+    /**
+     * FIN VALIDACIONES
+     * 31232696F
+     */
 }

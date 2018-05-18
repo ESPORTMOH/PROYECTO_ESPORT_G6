@@ -16,6 +16,7 @@ public class Jugador {
     private Date fechaNacimiento;
     private String nacionalidad;
     private String posicion;
+    private String estado;
 
     // ATRIBUTO DE LA RELACION CON EQUIPO
     private Equipo equipo;
@@ -58,6 +59,22 @@ public class Jugador {
         this.nacionalidad = nacionalidad;
         this.posicion = posicion;
     }
+
+    public Jugador(String estado) {
+        this.estado = estado;
+    }
+
+    public Jugador(String dni, String nombre, String apellido, String nickname, Double sueldo, Date fechaNacimiento, String nacionalidad, String posicion, Integer estado) {
+        this.dni = dni;
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.nickname = nickname;
+        this.sueldo = sueldo;
+        this.fechaNacimiento = fechaNacimiento;
+        this.nacionalidad = nacionalidad;
+        this.posicion = posicion;
+    }
+    
 
     public Integer getCodJugador() {
         return codJugador;
@@ -137,6 +154,14 @@ public class Jugador {
 
     public void setEquipo(Equipo equipo) {
         this.equipo = equipo;
+    }
+
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
     }
     
     
