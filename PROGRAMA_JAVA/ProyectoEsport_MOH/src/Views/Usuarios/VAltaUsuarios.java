@@ -8,6 +8,7 @@ package Views.Usuarios;
 import proyectoesport_moh.Controladora;
 import Exceptions.*;
 import Views.Administradores.*;
+import java.awt.Color;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -136,15 +137,25 @@ public class VAltaUsuarios extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jBaceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBaceptarActionPerformed
-        // ACTION ALTA USUARIO
+        // BOTON ACTION ALTA USUARIO
         try {
             if (jTdni.getText().isEmpty() | jTnombre.getText().isEmpty() | jTapellido.getText().isEmpty()) {
                 throw new CamposVacios();
             } else {
-                Controladora.altaUsuarioBD(jTdni.getText(), jTnombre.getText(), jTapellido.getText(), tipoPersonaAlta);
-                JOptionPane.showMessageDialog(this, "El Usuario ha sido dado"
-                        + "\nde alta correctamente");
-                resetearCampos();
+                if (Controladora.validarNIF(jTdni.getText())) {
+                    if (!Controladora.localizarSiexixteDniUsuarios(jTdni.getText())) {
+                        Controladora.altaUsuarioBD(jTdni.getText(), jTnombre.getText(), jTapellido.getText(), tipoPersonaAlta);
+                        JOptionPane.showMessageDialog(this, "El Usuario ha sido "
+                                + "\ndado de alta correctamente");
+                        resetearCampos();
+                    } else {
+                        jTdni.setBackground(Color.RED);
+                        JOptionPane.showMessageDialog(this, "Ya existe un Usuario con ese DNI");
+                    }
+                } else {
+                    jTdni.setBackground(Color.YELLOW);
+                    JOptionPane.showMessageDialog(this, "¡DNI no válido!");
+                }
             }
         } catch (CamposVacios CV) {
             JOptionPane.showMessageDialog(this, CV.getMensaje());
@@ -214,7 +225,7 @@ public class VAltaUsuarios extends javax.swing.JFrame {
     private javax.swing.JTextField jTdni;
     private javax.swing.JTextField jTnombre;
     // End of variables declaration//GEN-END:variables
-    
+
     // FUNCIONES PROPIAS DE LA VISTA
     public void resetearCampos() {
         jTdni.setText(null);

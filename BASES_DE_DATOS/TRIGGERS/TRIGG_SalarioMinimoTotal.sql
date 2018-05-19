@@ -9,7 +9,9 @@ CREATE OR REPLACE TRIGGER TRIGG_salarioMinimoTotal
       BEGIN
         SELECT SUM(sueldo)
         INTO v_sueldosTotales
-          FROM jugador;
+          FROM jugador j, equipo e
+          WHERE j.CODEQUIPO = e.CODEQUIPO
+          AND e.CODEQUIPO <> 1;
             v_nuevoSueldo := :new.sueldo+v_sueldosTotales;
               IF(v_nuevoSueldo>v_presupuestoMaximoPorEquipo)THEN
                 RAISE v_error;

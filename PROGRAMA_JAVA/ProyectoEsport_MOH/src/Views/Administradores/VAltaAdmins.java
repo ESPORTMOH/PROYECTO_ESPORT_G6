@@ -145,22 +145,21 @@ public class VAltaAdmins extends javax.swing.JFrame {
             if (jTdni.getText().isEmpty() | jTnombre.getText().isEmpty() | jTapellido.getText().isEmpty()) {
                 throw new CamposVacios();
             } else {
-                if(Controladora.validarNIF(jTdni.getText())){
-                    if(Controladora.localizarSiexixteDni(jTdni.getText())){
+                if (Controladora.validarNIF(jTdni.getText())) {
+                    if (!Controladora.localizarSiexixteDniAdmin(jTdni.getText())) {
                         Controladora.altaAdministradorBD(jTdni.getText(), jTnombre.getText(), jTapellido.getText(), tipoPersonaAlta);
                         JOptionPane.showMessageDialog(this, "El Administrador ha sido "
-                        + "\ndado de alta correctamente");
+                                + "\ndado de alta correctamente");
                         resetearCampos();
-                    }else{
-                       JOptionPane.showMessageDialog(this, "Ya existe un usuario con ese dni");  
-                    }  
-                }else{
-                    jTdni.setBackground(Color.red);
-                    JOptionPane.showMessageDialog(this, "Dni no valido");
+                    } else {
+                        jTdni.setBackground(Color.RED);
+                        JOptionPane.showMessageDialog(this, "Ya existe un Administrador con ese DNI");
+                    }
+                } else {
+                    jTdni.setBackground(Color.YELLOW);
+                    JOptionPane.showMessageDialog(this, "¡DNI no válido!");
                 }
-               
             }
-
         } catch (CamposVacios CV) {
             JOptionPane.showMessageDialog(this, CV.getMensaje());
         } catch (AdminCRUDError ACRUDE) {

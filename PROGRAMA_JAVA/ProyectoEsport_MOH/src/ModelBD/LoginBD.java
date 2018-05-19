@@ -54,8 +54,9 @@ public class LoginBD extends GenericoBD {
 
         // CREO OBJETO DE TIPOLOG QUE ME PERMITIRA ALMACENAR EL TIPO DE LOGIN QUE CONSULTO EN LA BD
         Login tipolog = new Login();
+                
 
-        String consultaSQL = "SELECT usuario, passwd, tipo FROM login WHERE usuario = ? and passwd = ?";
+        String consultaSQL = "SELECT codLogin, usuario, passwd, tipo FROM login WHERE usuario = ? and passwd = ?";
 
         PreparedStatement pS = con.prepareStatement(consultaSQL);
 
@@ -67,7 +68,7 @@ public class LoginBD extends GenericoBD {
                 throw new LogAccesoNoExiste();
 
             } else {
-
+                tipolog.setCodLogin(datosRS.getInt("codLogin"));
                 tipolog.setUser(datosRS.getString("usuario"));
                 tipolog.setPassword(datosRS.getString("passwd"));
                 tipolog.setTipo(datosRS.getString("tipo"));

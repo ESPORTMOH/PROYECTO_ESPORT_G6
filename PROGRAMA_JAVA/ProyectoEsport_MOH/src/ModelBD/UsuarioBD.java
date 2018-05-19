@@ -11,9 +11,31 @@ import java.sql.SQLException;
  *
  * @author MIGUEL
  */
-public class UsuarioBD extends GenericoBD{
+public class UsuarioBD extends GenericoBD {
 
     private Connection con;
+
+    // COMPROBACION EXISTE O NO PARA DAR DE ALTA O NO
+    public boolean localizarSiexixteDniUsuario(String dni) throws SQLException, ConexionProblemas {
+        Boolean localizado = false;
+        int records;
+
+        GenericoBD genericoBD = new GenericoBD();
+        con = genericoBD.abrirConexion(con);
+
+        PreparedStatement pS = con.prepareStatement("SELECT COUNT(1) FROM usuario WHERE dni = ?");
+        pS.setString(1, dni);
+
+        ResultSet datosRS = pS.executeQuery();
+        if (datosRS.next()) {
+            records = datosRS.getInt(1);
+            if (records > 0) {
+                localizado = true;
+            }
+        }
+        cerrarConexion(con);
+        return localizado;
+    }
 
     // INSERTAR USUARIO
     public void insertarUsuarioBD(Usuario usuario, String tipo) throws SQLException, ClassNotFoundException, Exception {
@@ -66,7 +88,7 @@ public class UsuarioBD extends GenericoBD{
 
         return usuario;
     }
-    
+
     // EDITAR LOGIN
     public void ejecutarModificacionLog(String passwd, Integer codLoginADM) throws SQLException, ConexionProblemas {
 
@@ -84,7 +106,7 @@ public class UsuarioBD extends GenericoBD{
 
         cerrarConexion(con);
     }
-    
+
     // ELIMINAR USUARIO
     public void eliminarUsuarioDelaBD(String dni) throws SQLException, ConexionProblemas {
 

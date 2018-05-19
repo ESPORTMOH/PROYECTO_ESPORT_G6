@@ -45,7 +45,7 @@ public class VPanelCrudJornadas extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 24)); // NOI18N
-        jLabel1.setText("GESTION DEL CALENDARIO");
+        jLabel1.setText("GESTION DE TEMPORADAS");
 
         jBalta.setText("DAR DE ALTA");
         jBalta.addActionListener(new java.awt.event.ActionListener() {
@@ -94,12 +94,12 @@ public class VPanelCrudJornadas extends javax.swing.JFrame {
                     .addComponent(jBbaja, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jBconsulta, javax.swing.GroupLayout.DEFAULT_SIZE, 326, Short.MAX_VALUE)
                     .addComponent(jBalta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(12, 12, 12))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(118, 118, 118)
-                        .addComponent(jLabel2)))
+                        .addComponent(jLabel2))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(11, 11, 11)
+                        .addComponent(jLabel1)))
                 .addContainerGap(35, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(

@@ -9,6 +9,7 @@ import proyectoesport_moh.Controladora;
 import Exceptions.*;
 import ModelUML.Duenio;
 import Views.Equipos.*;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -194,25 +195,6 @@ public class VAltaEquipos extends javax.swing.JFrame {
 
     private void jBaltaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBaltaActionPerformed
         // BOTON ACTION ALTA EQUIPO
-        /*
-        try {
-            if (jTnombre.getText().isEmpty() | jTpresupuesto.getText().isEmpty() | jTanioFundacion.getText().isEmpty() | jTciudad.getText().isEmpty() | jTestadio.getText().isEmpty()) {
-                throw new CamposVacios();
-            } else {
-                Controladora.altaEquipoBD(jTnombre.getText(), jTpresupuesto.getText(), jTanioFundacion.getText(), jTciudad.getText(), jTestadio.getText(), jComboBduenios.getSelectedItem().toString());
-                JOptionPane.showMessageDialog(this, "El Equipo ha sido "
-                        + "\ndado de alta correctamente");
-                resetearCampos();
-            }
-        } catch (CamposVacios CV) {
-            JOptionPane.showMessageDialog(this, CV.getMensaje());
-        } catch (DuenioNoExiste DNE) {
-            JOptionPane.showMessageDialog(this, DNE.getMensaje());
-        } catch (Exception EX) {
-            JOptionPane.showMessageDialog(this, EX.getMessage());
-        }
-         */
-
         try {
             if (jTnombre.getText().isEmpty() | jTpresupuesto.getText().isEmpty() | jTanioFundacion.getText().isEmpty() | jTciudad.getText().isEmpty() | jTestadio.getText().isEmpty()) {
                 throw new CamposVacios();
@@ -299,16 +281,20 @@ public class VAltaEquipos extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     // FUNCIONES PROPIAS DE LA VISTA
-    public void resetearCampos() {
+    public void resetearCampos() throws SQLException, ConexionProblemas {
         jTnombre.setText(null);
         jTpresupuesto.setText(null);
         jTanioFundacion.setText(null);
         jTciudad.setText(null);
         jTestadio.setText(null);
+        jComboBduenios.removeAllItems();
+        ArrayList<Duenio> listaDuenios = Controladora.consultarDueniosParaCombo();
+        rellenarComboListaDuenios(listaDuenios);
+        
     }
 
     private void rellenarComboListaDuenios(ArrayList<Duenio> listaDuenios) {
-
+        
         for (int i = 0; i < listaDuenios.size(); i++) {
 
             jComboBduenios.addItem(listaDuenios.get(i).getDni() + " " + listaDuenios.get(i).getNombre());

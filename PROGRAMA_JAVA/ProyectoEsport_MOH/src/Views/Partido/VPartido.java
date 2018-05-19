@@ -24,15 +24,13 @@ public class VPartido extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         this.setResizable(false);
-        configPredeterminadaVentana();
     }
 
     public VPartido(ArrayList<Equipo> listaEquipos) {
-        this.tipoVentana = "VBajaJugadores";
+        this.tipoVentana = "VPartidos";
         initComponents();
         this.setLocationRelativeTo(null);
         this.setResizable(false);
-        configPredeterminadaVentana();
         rellenarCombo(listaEquipos);
     }
 
@@ -271,8 +269,20 @@ public class VPartido extends javax.swing.JFrame {
 
     private void jBregistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBregistrarActionPerformed
         // REGISTRAR RESULTADO DEL PARTIDO
-
-        //Controladora.registrarDatosDelPartido(jTjornada.getText(), jThinicio.getText(),jCelocal.getName(), jCevisitante.getName(), jTplocal.getText(), jTpvisitante.getText());
+        try {
+            Controladora.registrarDatosDelPartido(
+                    jTtemporada.getText(),
+                    jTjornada.getText(),
+                    jDateFechaPartido.getDate(),
+                    jThinicio.getText(),
+                    jCelocal.getSelectedItem().toString(),
+                    jTplocal.getText(),
+                    jComboVisitante.getSelectedItem().toString(),
+                    jTpvisitante.getText()
+            );
+        } catch (Exception ex) {
+            Logger.getLogger(VPartido.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jBregistrarActionPerformed
 
     private void jBretrocederActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBretrocederActionPerformed
@@ -353,9 +363,7 @@ public class VPartido extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     // FUNCIONES PROPIAS DE LA VISTA
-    public void configPredeterminadaVentana() {
 
-    }
 
     private void resetearCamposParaConsultarDeNuevo() {
         jTjornada.setText(null);

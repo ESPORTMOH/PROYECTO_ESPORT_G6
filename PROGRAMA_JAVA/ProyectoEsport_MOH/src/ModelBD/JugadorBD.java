@@ -8,7 +8,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
 import oracle.jdbc.OracleTypes;
 
@@ -19,13 +18,36 @@ import oracle.jdbc.OracleTypes;
 public class JugadorBD extends GenericoBD {
 
     private Connection con;
+    
+    
+   // COMPROBACION EXISTE O NO PARA DAR DE ALTA O NO
+    public boolean localizarSiexixteDniJugador(String dni) throws SQLException, ConexionProblemas {
+        Boolean localizado = false;
+        int records;
+
+        GenericoBD genericoBD = new GenericoBD();
+        con = genericoBD.abrirConexion(con);
+
+        PreparedStatement pS = con.prepareStatement("SELECT COUNT(1) FROM jugador WHERE dni = ?");
+        pS.setString(1, dni);
+
+        ResultSet datosRS = pS.executeQuery();
+        if (datosRS.next()) {
+            records = datosRS.getInt(1);
+            if (records > 0) {
+                localizado = true;
+            }
+        }
+        cerrarConexion(con);
+        return localizado;
+    }
 
     // INSERTAR JUGADOR
     public void insertarJugadorEnBD(Jugador jugador) throws SQLException, ConexionProblemas {
         GenericoBD genericoBD = new GenericoBD();
         con = genericoBD.abrirConexion(con);
 
-        PreparedStatement pS = con.prepareStatement("INSERT INTO jugador (dni, nombre, apellido, nickname, sueldo, fechanacimiento, nacionalidad, posicion, codequipo) VALUES (?,?,?,?,?,?,?,?,?)");
+        PreparedStatement pS = con.prepareStatement("INSERT INTO jugador (dni, nombre, apellido, nickname, sueldo, fechanacimiento, nacionalidad, posicion, estado, codequipo) VALUES (?,?,?,?,?,?,?,?,0,1)");
         pS.setString(1, jugador.getDni().toUpperCase());
         pS.setString(2, jugador.getNombre());
         pS.setString(3, jugador.getApellido());
@@ -34,21 +56,21 @@ public class JugadorBD extends GenericoBD {
         pS.setDate(6, new java.sql.Date(jugador.getFechaNacimiento().getTime()));
         pS.setString(7, jugador.getNacionalidad());
         pS.setString(8, jugador.getPosicion());
-
-        pS.setInt(9, (jugador.getEquipo() != null ? jugador.getEquipo().getCodEquipo() : 1));
+        System.out.println(pS.getParameterMetaData().toString());
         pS.executeUpdate();
 
         cerrarConexion(con);
     }
 
-    public Jugador localizaJugador(String dni) throws SQLException, Exception {
+    // LOCALIZAR JUGADOR
+    public Jugador localizarJugador(String dni) throws SQLException, Exception {
 
         GenericoBD genericoBD = new GenericoBD();
         con = genericoBD.abrirConexion(con);
 
         Jugador jugador = new Jugador();
 
-        String consultaSQL = "SELECT codJugador, dni, nombre, apellido, nickname, sueldo, fechaNacimiento, nacionalidad, posicion, codEquipo FROM jugador WHERE dni = ?";
+        String consultaSQL = "SELECT codJugador, dni, nombre, apellido, nickname, sueldo, fechaNacimiento, nacionalidad, posicion, estado, codEquipo FROM jugador WHERE dni = ?";
 
         PreparedStatement pS = con.prepareStatement(consultaSQL);
 
@@ -64,22 +86,20 @@ public class JugadorBD extends GenericoBD {
             jugador.setNombre(datosRS.getString("nombre"));
             jugador.setApellido(datosRS.getString("apellido"));
             jugador.setNickname(datosRS.getString("nickname"));
-
             jugador.setSueldo(datosRS.getDouble("sueldo"));
-
-            jugador.setFechaNacimiento((datosRS.getDate("fechaNacimiento")));
-
+            jugador.setFechaNacimiento(datosRS.getDate("fechaNacimiento"));
             jugador.setNacionalidad(datosRS.getString("nacionalidad"));
             jugador.setPosicion(datosRS.getString("posicion"));
+            jugador.setEquipo(new Equipo(datosRS.getInt("codEquipo")));
 
-            //jugador.setEquipo(new Equipo(datosRS.getInt("codEquipo")));
         }
 
         cerrarConexion(con);
+
         return jugador;
     }
 
-    // LOCALIZAR TODOS LOS DUENIOS PARA RELLENAR EL COMBO EN EQUIPO / ALTA
+    // LOCALIZAR TODOS LOS JUGADORES PARA RELLENAR EL COMBO EN EQUIPO / ALTA
     public ArrayList traerTodosLosJuagdoresBD() throws SQLException, ConexionProblemas {
 
         GenericoBD genericoBD = new GenericoBD();
@@ -150,5 +170,20 @@ public class JugadorBD extends GenericoBD {
 
         cerrarConexion(con);     
     }
+
+    public void actualizarDatosJugador(Jugador jugador, Equipo equipo) throws SQLException, ConexionProblemas {
+        GenericoBD genericoBD = new GenericoBD();
+        con = genericoBD.abrirConexion(con);
+
+        PreparedStatement pS = con.prepareStatement("UPDATE jugador SET estado = 1 , codEquipo = ? WHERE codJugador = ?");
+        pS.setInt(1, equipo.getCodEquipo());
+        pS.setInt(2, jugador.getCodJugador());
+        
+        pS.executeUpdate();
+
+        cerrarConexion(con);     
+        
+    }
+
 
 }

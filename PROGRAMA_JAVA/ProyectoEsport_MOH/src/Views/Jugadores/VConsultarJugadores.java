@@ -2,6 +2,7 @@ package Views.Jugadores;
 
 import proyectoesport_moh.Controladora;
 import Exceptions.*;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -37,20 +38,24 @@ public class VConsultarJugadores extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jBaceptar = new javax.swing.JButton();
+        jBconsultar = new javax.swing.JButton();
         jTdni = new javax.swing.JTextField();
         jTnombre = new javax.swing.JTextField();
         jTapellido = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
+        jTnickname = new javax.swing.JTextField();
+        jTsueldo = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
-        jTextField5 = new javax.swing.JTextField();
+        jTnacionalidad = new javax.swing.JTextField();
+        jTposicion = new javax.swing.JTextField();
         jBretroceder = new javax.swing.JButton();
+        jLSinEquipo = new javax.swing.JLabel();
+        jDatefnacimiento = new com.toedter.calendar.JDateChooser();
+        jLConEquipo = new javax.swing.JLabel();
+        jBreset = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
 
@@ -63,13 +68,21 @@ public class VConsultarJugadores extends javax.swing.JFrame {
 
         jLabel4.setText("Apellido");
 
-        jBaceptar.setText("ACEPTAR");
+        jBconsultar.setBackground(new java.awt.Color(0, 153, 51));
+        jBconsultar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jBconsultar.setForeground(new java.awt.Color(255, 255, 255));
+        jBconsultar.setText("ACEPTAR");
+        jBconsultar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBconsultarActionPerformed(evt);
+            }
+        });
 
         jLabel5.setText("Nikname");
 
         jLabel6.setText("Sueldo");
 
-        jLabel7.setText("Fecha Nacimiento");
+        jLabel7.setText("Nacimiento");
 
         jLabel8.setText("Nacionalidad");
 
@@ -80,6 +93,20 @@ public class VConsultarJugadores extends javax.swing.JFrame {
         jBretroceder.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBretrocederActionPerformed(evt);
+            }
+        });
+
+        jLSinEquipo.setText("ESTE JUGADOR NO HA SIDO FICHADO POR UN EQUIPO");
+
+        jLConEquipo.setText("ESTE JUGADOR SI ESTA FICHADO POR UN EQUIPO");
+
+        jBreset.setBackground(new java.awt.Color(0, 0, 153));
+        jBreset.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jBreset.setForeground(new java.awt.Color(255, 255, 255));
+        jBreset.setText("RESET");
+        jBreset.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBresetActionPerformed(evt);
             }
         });
 
@@ -100,33 +127,49 @@ public class VConsultarJugadores extends javax.swing.JFrame {
                         .addGap(40, 40, 40)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addContainerGap(66, Short.MAX_VALUE))
+                                .addComponent(jTsueldo, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap(60, Short.MAX_VALUE))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jTnombre, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jTdni, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jTapellido, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(0, 0, Short.MAX_VALUE))))
+                                    .addComponent(jTnickname, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel7)
+                                .addGap(28, 28, 28)
+                                .addComponent(jDatefnacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jLabel8)
+                                        .addComponent(jLabel9))
+                                    .addGap(18, 18, 18)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(jTnacionalidad, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jTposicion, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(jLConEquipo)
+                                    .addGap(22, 22, 22))))
+                        .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jLabel1)
-                        .addGap(66, 66, 66))))
+                        .addGap(60, 60, 60))))
             .addGroup(layout.createSequentialGroup()
-                .addGap(46, 46, 46)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel7)
-                    .addComponent(jLabel8)
-                    .addComponent(jLabel9))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jTextField5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 193, Short.MAX_VALUE)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.Alignment.LEADING))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jBretroceder)
-                .addGap(115, 115, 115)
-                .addComponent(jBaceptar)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jBretroceder)
+                        .addGap(39, 39, 39)
+                        .addComponent(jBconsultar)
+                        .addGap(54, 54, 54)
+                        .addComponent(jBreset))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(54, 54, 54)
+                        .addComponent(jLSinEquipo)))
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -148,27 +191,34 @@ public class VConsultarJugadores extends javax.swing.JFrame {
                     .addComponent(jLabel4))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTnickname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTsueldo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6))
                 .addGap(18, 18, 18)
-                .addComponent(jLabel7)
-                .addGap(14, 14, 14)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel7)
+                    .addComponent(jDatefnacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(11, 11, 11)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel9))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 75, Short.MAX_VALUE)
+                    .addComponent(jTnacionalidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTposicion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel9))
+                .addGap(23, 23, 23)
+                .addComponent(jLSinEquipo)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLConEquipo)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jBretroceder, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jBaceptar, javax.swing.GroupLayout.Alignment.TRAILING))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jBconsultar)
+                        .addComponent(jBreset)))
                 .addContainerGap())
         );
 
@@ -186,6 +236,30 @@ public class VConsultarJugadores extends javax.swing.JFrame {
             Logger.getLogger(VConsultarJugadores.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jBretrocederActionPerformed
+
+    private void jBresetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBresetActionPerformed
+        // ACTION BOTON RESET
+        resetearCamposParaConsultarDeNuevo();
+    }//GEN-LAST:event_jBresetActionPerformed
+
+    private void jBconsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBconsultarActionPerformed
+        // ACTION PARA CONSULTAR EL JUGADOR EN LA BD
+        try {
+            if (jTdni.getText().isEmpty()) {
+                throw new CampoDniVacio();
+            } else {
+                Controladora.localizarJugadorEnBD(tipoVentana, jTdni.getText());
+            }
+        } catch (CampoDniVacio CDV) {
+            JOptionPane.showMessageDialog(this, CDV.getMensaje());
+        } catch (JugadorNoExiste JNE) {
+            JOptionPane.showMessageDialog(this, JNE.getMensaje());
+        } catch (JugadorCRUDError JCRUDE) {
+            JOptionPane.showMessageDialog(this, JCRUDE.getMensaje());
+        } catch (Exception E) {
+            JOptionPane.showMessageDialog(this, E.getMessage());
+        }
+    }//GEN-LAST:event_jBconsultarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -211,7 +285,7 @@ public class VConsultarJugadores extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(VConsultarJugadores.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(VConsultarJugadores.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } 
+        }
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -222,8 +296,12 @@ public class VConsultarJugadores extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jBaceptar;
+    private javax.swing.JButton jBconsultar;
+    private javax.swing.JButton jBreset;
     private javax.swing.JButton jBretroceder;
+    private com.toedter.calendar.JDateChooser jDatefnacimiento;
+    private javax.swing.JLabel jLConEquipo;
+    private javax.swing.JLabel jLSinEquipo;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -235,10 +313,54 @@ public class VConsultarJugadores extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JTextField jTapellido;
     private javax.swing.JTextField jTdni;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
+    private javax.swing.JTextField jTnacionalidad;
+    private javax.swing.JTextField jTnickname;
     private javax.swing.JTextField jTnombre;
+    private javax.swing.JTextField jTposicion;
+    private javax.swing.JTextField jTsueldo;
     // End of variables declaration//GEN-END:variables
+
+    // FUNCIONES PROPIAS DE LA VISTA
+    public void rellenarCamposVentana(String dni, String nombre, String apellido, String nickname, Double sueldo, Date fechaNacimiento, String nacionalidad, String posicion) {
+        jTnombre.setText(dni);
+        jTnombre.setText(nombre);
+        jTapellido.setText(apellido);
+        jTnickname.setText(nickname);
+        jTsueldo.setText(sueldo.toString());
+        jDatefnacimiento.setDate(fechaNacimiento);
+        jTnacionalidad.setText(nacionalidad);
+        jTposicion.setText(posicion);
+        jTnombre.setEnabled(true);
+        jTapellido.setEnabled(true);
+        jTnickname.setEnabled(true);
+        jTsueldo.setEnabled(true);
+        jDatefnacimiento.setEnabled(true);
+        jTnacionalidad.setEnabled(true);
+        jTposicion.setEnabled(true);
+    }
+
+    public void configPredeterminadaVentana() {
+        jTnombre.setEnabled(false);
+        jTapellido.setEnabled(false);
+        jTnickname.setEnabled(false);
+        jTsueldo.setEnabled(false);
+        jDatefnacimiento.setEnabled(false);
+        jTnacionalidad.setEnabled(false);
+        jTposicion.setEnabled(false);
+        jLSinEquipo.setVisible(false);
+        jLConEquipo.setVisible(false);
+    }
+
+    public void resetearCamposParaConsultarDeNuevo() {
+        jTnombre.setText(null);
+        jTnombre.setText(null);
+        jTnombre.setText(null);
+        jTapellido.setText(null);
+        jTnickname.setText(null);
+        jTsueldo.setText(null);
+        jDatefnacimiento.setDate(null);
+        jTnacionalidad.setText(null);
+        jTposicion.setText(null);
+        configPredeterminadaVentana();
+    }
 }

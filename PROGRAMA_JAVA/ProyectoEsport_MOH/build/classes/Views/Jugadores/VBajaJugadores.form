@@ -66,21 +66,21 @@
                                           <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
                                           <Component id="jLabel9" min="-2" max="-2" attributes="0"/>
                                       </Group>
-                                      <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                          <Component id="jTnacionalidad" pref="212" max="32767" attributes="0"/>
-                                          <Component id="jTposicion" max="32767" attributes="0"/>
+                                      <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="jTnacionalidad" min="-2" pref="212" max="-2" attributes="0"/>
+                                          <Component id="jTposicion" min="-2" pref="212" max="-2" attributes="0"/>
                                       </Group>
+                                      <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
                                       <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
                                       <Component id="jBconsultar" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace pref="37" max="32767" attributes="0"/>
+                                      <EmptySpace max="32767" attributes="0"/>
                                       <Component id="jBbaja" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
-                              <EmptySpace max="32767" attributes="0"/>
+                              <EmptySpace pref="45" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>

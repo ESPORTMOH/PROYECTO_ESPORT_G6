@@ -7,9 +7,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import oracle.jdbc.OracleTypes;
-
 
 /**
  *
@@ -18,6 +18,28 @@ import oracle.jdbc.OracleTypes;
 public class DuenioBD extends GenericoBD {
 
     private Connection con;
+
+    // COMPROBACION EXISTE O NO PARA DAR DE ALTA O NO
+    public boolean localizarSiexixteDniDuenio(String dni) throws SQLException, ConexionProblemas {
+        Boolean localizado = false;
+        int records;
+
+        GenericoBD genericoBD = new GenericoBD();
+        con = genericoBD.abrirConexion(con);
+
+        PreparedStatement pS = con.prepareStatement("SELECT COUNT(1) FROM duenio WHERE dni = ?");
+        pS.setString(1, dni);
+
+        ResultSet datosRS = pS.executeQuery();
+        if (datosRS.next()) {
+            records = datosRS.getInt(1);
+            if (records > 0) {
+                localizado = true;
+            }
+        }
+        cerrarConexion(con);
+        return localizado;
+    }
 
     // INSERTAR DUENIO
     public void insertarDuenioBD(Duenio duenio, String tipo) throws SQLException, ClassNotFoundException, Exception {
@@ -28,11 +50,12 @@ public class DuenioBD extends GenericoBD {
         LoginBD loginBD = new LoginBD();
         Integer codLogin = loginBD.generarLogin(duenio.getDni(), duenio.getNombre(), duenio.getApellido(), tipo);
 
-        PreparedStatement pS = con.prepareStatement("INSERT INTO duenio d (d.dni, d.nombre, d.apellido, d.codLogin) VALUES (?,?,?,?)");
+        PreparedStatement pS = con.prepareStatement("INSERT INTO duenio d (d.dni, d.nombre, d.apellido, d.estado, d.codLogin) VALUES (?,?,?,?,?)");
         pS.setString(1, duenio.getDni().toUpperCase());
         pS.setString(2, duenio.getNombre());
         pS.setString(3, duenio.getApellido());
-        pS.setInt(4, codLogin);
+        pS.setInt(4, duenio.getEstado());
+        pS.setInt(5, codLogin);
         pS.executeUpdate();
 
         cerrarConexion(con);
@@ -46,7 +69,7 @@ public class DuenioBD extends GenericoBD {
 
         Duenio duenio = new Duenio();
 
-        String consultaSQL = "SELECT d.codDuenio, d.dni, d.nombre, d.apellido, d.codLogin, l.codLogin, l.usuario, l.passwd FROM duenio d, login l  WHERE (d.codLogin = l.codLogin) AND d.dni = ?";
+        String consultaSQL = "SELECT d.codDuenio, d.dni, d.nombre, d.apellido, d.estado, d.codLogin, l.codLogin, l.usuario, l.passwd FROM duenio d, login l  WHERE (d.codLogin = l.codLogin) AND d.dni = ?";
 
         PreparedStatement pS = con.prepareStatement(consultaSQL);
 
@@ -61,6 +84,7 @@ public class DuenioBD extends GenericoBD {
             duenio.setDni(datosRS.getString("dni"));
             duenio.setNombre(datosRS.getString("nombre"));
             duenio.setApellido(datosRS.getString("apellido"));
+            duenio.setEstado(datosRS.getInt("estado"));
             duenio.setLogin(new Login(datosRS.getInt("codLogin")));
             duenio.getLogin().setUser(datosRS.getString("usuario"));
             duenio.getLogin().setPassword(datosRS.getString("passwd"));
@@ -73,21 +97,21 @@ public class DuenioBD extends GenericoBD {
 
     // LOCALIZAR TODOS LOS DUENIOS PARA RELLENAR EL COMBO EN EQUIPO / ALTA
     public ArrayList traerTodosLosDueniosBD() throws SQLException, ConexionProblemas {
-        
+
         GenericoBD genericoBD = new GenericoBD();
         con = genericoBD.abrirConexion(con);
- 
+
         ArrayList<Duenio> listaDuenios = new ArrayList();
-           
+
         try {
-           
+
             CallableStatement cS = con.prepareCall("{call ESPORT_MOH_2.PROCE_rellenarcomboDuenios(?)}");
-            
+
             // CADENA DEVUELTA POR EL CURSOR
-            cS.registerOutParameter(1, OracleTypes.CURSOR); 
+            cS.registerOutParameter(1, OracleTypes.CURSOR);
 
             // EJECUTO EL PROCEDIMIENTO
-            cS.execute(); 
+            cS.execute();
             ResultSet rS = (ResultSet) cS.getObject(1);
 
             if (rS.next()) {
@@ -123,6 +147,57 @@ public class DuenioBD extends GenericoBD {
 
         cerrarConexion(con);
 
+    }
+
+    public void actualizarEstadoDuenio(Duenio duenio) throws SQLException, ConexionProblemas {
+        GenericoBD genericoBD = new GenericoBD();
+        con = genericoBD.abrirConexion(con);
+        
+        PreparedStatement pS = con.prepareStatement("UPDATE duenio SET estado = 1 WHERE codDuenio = ?");
+        pS.setString(1, duenio.getCodDuenio().toString());
+
+        pS.executeUpdate();
+
+        cerrarConexion(con);
+        
+    }
+
+    public void cambiarEstadoDuenio(Duenio duenio) throws SQLException, ConexionProblemas {
+        GenericoBD genericoBD = new GenericoBD();
+        con = genericoBD.abrirConexion(con);
+        
+        PreparedStatement pS = con.prepareStatement("UPDATE duenio SET estado = 0 WHERE codDuenio = ?");
+        pS.setString(1, duenio.getCodDuenio().toString());
+
+        pS.executeUpdate();
+
+        cerrarConexion(con);
+    }
+
+    public Duenio recopilarDatosDuenio(Duenio duenio) throws SQLException, ConexionProblemas {
+        Duenio du = new Duenio();
+        
+        GenericoBD genericoBD = new GenericoBD();
+        con = genericoBD.abrirConexion(con);
+        
+        PreparedStatement pS = con.prepareStatement("SELECT * FROM duenio WHERE codDuenio = ?");
+        pS.setString(1, duenio.getCodDuenio().toString());
+
+        ResultSet rs =   pS.executeQuery();
+        while (rs.next()) {
+            du.setCodDuenio(rs.getInt("codDuenio"));
+            du.setDni(rs.getString("dni")); 
+            du.setNombre(rs.getString("nombre"));
+            du.setApellido(rs.getString("apellido"));
+            du.setEstado(rs.getInt("estado"));
+            du.setCodDuenio(rs.getInt("codLogin"));
+    
+        }
+        cerrarConexion(con);
+        
+        return du;
+        
+        
     }
 
 }

@@ -45,8 +45,8 @@ public class VPanelAdministracion extends javax.swing.JFrame {
         jMCRUDequipos = new javax.swing.JMenuItem();
         jMpartidos = new javax.swing.JMenu();
         jMcalendario = new javax.swing.JMenuItem();
-        jMresultados = new javax.swing.JMenuItem();
         jMclasificacion = new javax.swing.JMenuItem();
+        jMresultados = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setSize(new java.awt.Dimension(436, 388));
@@ -117,13 +117,21 @@ public class VPanelAdministracion extends javax.swing.JFrame {
 
         jMpartidos.setText("Gestionar");
 
-        jMcalendario.setText("Jornada");
+        jMcalendario.setText("Temporadas");
         jMcalendario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMcalendarioActionPerformed(evt);
             }
         });
         jMpartidos.add(jMcalendario);
+
+        jMclasificacion.setText("Clasificaciones");
+        jMclasificacion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMclasificacionActionPerformed(evt);
+            }
+        });
+        jMpartidos.add(jMclasificacion);
 
         jMresultados.setText("Partidos");
         jMresultados.addActionListener(new java.awt.event.ActionListener() {
@@ -132,14 +140,6 @@ public class VPanelAdministracion extends javax.swing.JFrame {
             }
         });
         jMpartidos.add(jMresultados);
-
-        jMclasificacion.setText("Clasificación");
-        jMclasificacion.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMclasificacionActionPerformed(evt);
-            }
-        });
-        jMpartidos.add(jMclasificacion);
 
         jMenuBar1.add(jMpartidos);
 

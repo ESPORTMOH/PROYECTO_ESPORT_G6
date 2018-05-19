@@ -14,6 +14,28 @@ public class AdministradorBD extends GenericoBD {
 
     private Connection con;
 
+    // COMPROBACION EXISTE O NO PARA DAR DE ALTA O NO
+    public boolean localizarSiexixteDniAdmin(String dni) throws SQLException, ConexionProblemas {
+        Boolean localizado = false;
+        int records;
+
+        GenericoBD genericoBD = new GenericoBD();
+        con = genericoBD.abrirConexion(con);
+
+        PreparedStatement pS = con.prepareStatement("SELECT COUNT(1) FROM administrador WHERE dni = ?");
+        pS.setString(1, dni);
+
+        ResultSet datosRS = pS.executeQuery();
+        if (datosRS.next()) {
+            records = datosRS.getInt(1);
+            if (records > 0) {
+                localizado = true;
+            }
+        }
+        cerrarConexion(con);
+        return localizado;
+    }
+
     // INSERTAR ADMINISTRADOR
     public void insertarAdministradorBD(Administrador administrador, String tipo) throws SQLException, ClassNotFoundException, Exception {
 
@@ -78,27 +100,6 @@ public class AdministradorBD extends GenericoBD {
         pS.executeUpdate();
 
         cerrarConexion(con);
-    }
-
-    public boolean localizarSiexixteDni(String dni) throws SQLException, ConexionProblemas {
-        Boolean localizado = false;
-        int records;
-       
-        GenericoBD genericoBD = new GenericoBD();
-        con = genericoBD.abrirConexion(con);
-        
-        PreparedStatement pS = con.prepareStatement("SELECT COUNT(1) FROM administrador WHERE dni = ?");
-        pS.setString(1, dni);
-        
-        ResultSet datosRS = pS.executeQuery();
-        if (datosRS.next()) {
-            records = datosRS.getInt(1);
-            if(records > 0 ){
-               localizado = true; 
-            }   
-        } 
-        cerrarConexion(con);
-        return localizado;
     }
 
 }

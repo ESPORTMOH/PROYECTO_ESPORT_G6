@@ -9,14 +9,22 @@ public class Administrador {
     private String dni;
     private String nombre;
     private String apellido;
-    
+
     // ATRIBUTO DE LA RELACION CON LOGIN
     private Login login;
 
     public Administrador() {
     }
-    
-     public Administrador(String dni, String nombre, String apellido) {
+
+    public Administrador(Integer codAdministrador, String dni, String nombre, String apellido, Integer estado, Login login) {
+        this.codAdministrador = codAdministrador;
+        this.dni = dni;
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.login = login;
+    }
+
+    public Administrador(String dni, String nombre, String apellido) {
         this.dni = dni;
         this.nombre = nombre;
         this.apellido = apellido;
@@ -76,7 +84,7 @@ public class Administrador {
     public void setLogin(Login login) {
         this.login = login;
     }
-    
-    
+
+
 
 }

@@ -130,9 +130,35 @@ public class EquipoBD extends GenericoBD {
             listaEquipos.add(eq);
         }
 
-        con.close();
+        cerrarConexion(con);
 
         return listaEquipos;
+    }
+
+    public Equipo recogerDatosEquipo(Duenio utilizarDuenioEnSesion) throws SQLException, ConexionProblemas {
+       
+        Equipo eq = new Equipo();
+        
+        GenericoBD genericoBD = new GenericoBD();
+        con = genericoBD.abrirConexion(con);
+
+        PreparedStatement pS = con.prepareStatement("SELECT * FROM equipo WHERE codDuenio = ?");
+        pS.setInt(1, utilizarDuenioEnSesion.getCodDuenio());
+
+        ResultSet rs =   pS.executeQuery();
+        while (rs.next()) {
+            eq = new Equipo();
+            eq.setCodEquipo(rs.getInt("codequipo"));
+            eq.setNombre(rs.getString("nombre"));
+            eq.setPresupuesto(rs.getDouble("presupuesto"));
+            //eq.setAnioFundacion(rs.getDate("ANIOFUNDACION"));
+            eq.setCiudad(rs.getString("ciudad"));
+            eq.setNombreEstadio(rs.getString("nombreestadio"));
+            eq.setDuenio(new Duenio(rs.getInt("codduenio")));    
+        }
+        cerrarConexion(con);
+        
+        return eq;
     }
     
     

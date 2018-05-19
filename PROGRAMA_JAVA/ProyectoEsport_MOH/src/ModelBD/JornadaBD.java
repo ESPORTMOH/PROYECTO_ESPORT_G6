@@ -1,6 +1,8 @@
 package ModelBD;
 
 import Exceptions.*;
+import ModelUML.Equipo;
+import ModelUML.Jornada;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -83,6 +85,29 @@ public class JornadaBD extends GenericoBD{
         cerrarConexion(con);
 
         return respuesta;
+    }
+    
+    public Jornada localizarCodJornada(String temporada, String numeroJornada, Equipo equipoLocal, Equipo equipoVisitantendex) throws SQLException, ConexionProblemas {
+        Jornada jornada = new Jornada();
+
+        GenericoBD genericoBD = new GenericoBD();
+        con = genericoBD.abrirConexion(con);
+
+        PreparedStatement pS = con.prepareStatement("SELECT CODJORNADA FROM jornada WHERE CODEQUIPOLOCAL = ? AND  CODEQUIPOVISITANTE = ? AND NUMEROJORNADA = ? AND NUMEROTEMPORADA = ?");
+        pS.setInt(1, equipoLocal.getCodEquipo());
+        pS.setInt(2, equipoVisitantendex.getCodEquipo());
+        pS.setString(3, numeroJornada.toUpperCase());
+        pS.setString(4, temporada.toUpperCase());
+
+        ResultSet datosRS = pS.executeQuery();
+        if (!datosRS.next()) {
+            System.out.println("Jornada no localizada");
+        } else {
+            jornada.setCodJornada(datosRS.getInt("codjornada"));
+        }
+
+        cerrarConexion(con);
+        return jornada;
     }
     
 
