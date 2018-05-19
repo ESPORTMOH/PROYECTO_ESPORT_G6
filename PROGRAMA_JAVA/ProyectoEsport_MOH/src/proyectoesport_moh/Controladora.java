@@ -13,6 +13,7 @@ import Views.Usuarios.*;
 import Views.Jornada.*;
 import Views.Partido.VPartido;
 import java.sql.*;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.regex.Matcher;
@@ -64,6 +65,7 @@ public class Controladora {
     private static VConsultaDuenios vConsultarDuenios;
     private static VUltimaJornada vultimaJornada;
     private static VUltimaClasificacion vultimaClasificacion;
+    private static Duenio duenioLogeado;
 
     // VISTAS JUGADORES
     private static VPanelCrudJugadores vpanelCrudJugadores;
@@ -411,6 +413,7 @@ public class Controladora {
      * FIN ABRIR PANELES ALTA / BAJA / CONSULTA / MODIFICACION > DUENIOS
      *
      */
+    
     /**
      * INICIO ABRIR PANELES ALTA / BAJA / CONSULTA / MODIFICACION > JUGADORES
      *
@@ -925,7 +928,7 @@ public class Controladora {
 
         System.out.println("Acceso Login como Tipo: " + usuarioLogeado.getTipo());
 
-        cargarPanelTipo(usuarioLogeado.getTipo());
+        cargarPanelTipo(usuarioLogeado.getTipo(),usuarioLogeado.getCodLogin());
     }
 
     /**
@@ -940,7 +943,7 @@ public class Controladora {
      * @throws Exception
      *
      */
-    public static void cargarPanelTipo(String tipo) throws Exception {
+    public static void cargarPanelTipo(String tipo, Integer codLogin) throws Exception {
 
         switch (tipo.toUpperCase()) {
             case "A":
@@ -949,6 +952,7 @@ public class Controladora {
                 abrirPanelAdministracion(vpanelAdministracion);
                 break;
             case "D":
+                guardarDuenioEnSesion(buscarDatosDeDuenio(codLogin));
                 vpanelDuenios = new VPanelDuenios();
                 vLo.dispose();
                 abrirPanelDuenios(vpanelDuenios);
@@ -1248,6 +1252,7 @@ public class Controladora {
         Duenio duenio = duenioBD.localizarDuenio(dniDue[0]);
         equipoUML = new Equipo(nombre, Double.parseDouble(presupuesto), anioFundacion, ciudad, nombreEstadio, duenio);
         equipoBD.insertarEquipoBD(equipoUML);
+        duenioBD.actualizarEstadoDuenio(duenio);
     }
 
     // LOCALIZA
@@ -1284,8 +1289,13 @@ public class Controladora {
     }
 
     // BAJA
-    public static void eliminarEquipoDelaBD(String nombre) throws SQLException, ConexionProblemas {
-        equipoBD = new EquipoBD();
+    public static void eliminarEquipoDelaBD(String nombre) throws SQLException, ConexionProblemas, Exception {
+        equipoBD = new EquipoBD(); 
+        duenioBD = new DuenioBD();
+        Equipo equipo = equipoBD.localizarEquipo(nombre);
+        Duenio duenio = new Duenio();
+        duenio.setCodDuenio(equipo.getDuenio().getCodDuenio());
+        duenioBD.cambiarEstadoDuenio(duenio);
         equipoBD.eliminarDeLaBDEquipo(nombre);
     }
 
@@ -1306,6 +1316,34 @@ public class Controladora {
      */
     ////////////////////////////////////////////////////////////////////////////////////////////////
     // SENTENCIAS ALTA / BAJA / CONSULTA / MODIFICACION > PARTIDO
+    
+    public static void registrarDatosDelPartido(String temporada, String jornada, Date fechaPartido, String horaPratido, String equipoLocal , String puntosLocal, String equipoVisitantendex, String puntosVisitante) throws Exception {
+        equipoBD = new EquipoBD();
+        jornadaBD = new JornadaBD();
+        partidoBD = new PartidoBD();
+        clasificacionBD = new ClasificacionBD();
+        
+        Equipo local = equipoBD.localizarEquipo(equipoLocal);
+        Equipo visitante = equipoBD.localizarEquipo(equipoVisitantendex);
+        
+        SimpleDateFormat sdf = new SimpleDateFormat("HH:MM:SS");
+        Date horaInicio = sdf.parse(horaPratido);
+        
+        Partido partido = new Partido(
+                fechaPartido,
+                horaInicio,
+                Integer.parseInt(puntosLocal),
+                Integer.parseInt(puntosVisitante),
+                local,
+                visitante,
+                jornadaBD.localizarCodJornada(temporada,jornada,local,visitante));
+         
+        partidoBD.insertarResultados(partido);
+        clasificacionBD.insertarResultados(partido,temporada);
+         
+    }
+    
+    
     ////////////////////////////////////////////////////////////////////////////////////////////////
     /**
      * INICIO SENTENCIAS ALTA / BAJA / CONSULTA / MODIFICACION > JORNADA
@@ -1514,8 +1552,45 @@ public class Controladora {
         return jugadorBD.localizarSiexixteDniJugador(dni);
     }
 
+    public static ArrayList<Duenio> consultarDueniosParaCombo() throws SQLException, ConexionProblemas {
+         DuenioBD duenioBD = new DuenioBD();  
+         return duenioBD.traerTodosLosDueniosBD();
+    }
+    
+    //GUARDAR EL DUENIO EN UNA VARIABLE
+    public static void guardarDuenioEnSesion(Duenio duenio) {
+        duenioLogeado = duenio;
+    }
+    
+    public static Duenio utilizarDuenioEnSesion() {
+       return duenioLogeado;
+    }
+    
+    
+
+    //NOS DEVOLVERA EL DUENO LOGEADO
+    public static Duenio buscarDatosDeDuenio(Integer codLogin) throws SQLException, ConexionProblemas {
+               duenioBD = new DuenioBD();
+               Duenio duenio = new Duenio();
+               duenio.setCodDuenio(codLogin);
+        return duenioBD.recopilarDatosDuenio(duenio);
+    }
+    
+    //REALIZAR FICHAJE -- Nos traemos la seleccion del combo y extraemos el dni para la busqueda
+    public static void realizarFichaje(String nombre) throws Exception {
+        jugadorBD = new JugadorBD();
+        equipoBD = new EquipoBD();
+        String [] partes = nombre.split(" ");
+        Jugador jugador = jugadorBD.localizarJugador(partes[0]);
+        Equipo equipo = equipoBD.recogerDatosEquipo(utilizarDuenioEnSesion());
+        jugadorBD.actualizarDatosJugador(jugador,equipo);
+        
+    }
+    
+    
+
     /**
      * FIN VALIDACIONES
-     * 31232696F
+     * 
      */
 }

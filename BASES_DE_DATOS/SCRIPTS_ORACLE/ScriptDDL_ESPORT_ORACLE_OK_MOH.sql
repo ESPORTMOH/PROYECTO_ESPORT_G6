@@ -465,6 +465,126 @@ COMMIT;
 INSERT INTO jugador VALUES (DEFAULT, '27121811G', 'Illmane', 'Diop', 'Diop', 25500, TO_DATE('04/04/1995', 'dd/mm/YYYY'), 'Spain', 'F', 0, 1);
 COMMIT;
 
+INSERT INTO jugador VALUES (DEFAULT, '94651930F', 'Corey', 'Fisher', 'Fisher', 30000, TO_DATE('08/04/1988', 'dd/mm/YYYY'), 'Georgia', 'B', 0, 1);
+COMMIT;
+
+INSERT INTO jugador VALUES (DEFAULT, '29968261C', 'Thomas', 'Schreiner ', 'Schreiner' , 45000, TO_DATE('03/02/1987', 'dd/mm/YYYY'), 'Austria', 'B', 0, 1);
+COMMIT;
+
+INSERT INTO jugador VALUES (DEFAULT, '85495253K', 'Alejandro', 'Barrera', 'Barrera', 15000, TO_DATE('01/04/1992', 'dd/mm/YYYY'), 'Spain', 'E', 0, 1);
+COMMIT;
+
+INSERT INTO jugador VALUES (DEFAULT, '51684154A', 'Javi', 'Vega', 'Vega', 14000, TO_DATE('05/01/1988', 'dd/mm/YYYY'), 'Spain', 'F', 0, 1);
+COMMIT;
+
+INSERT INTO jugador VALUES (DEFAULT, '05017893Y', 'Juan Sebastian', 'Saez', 'Saez', 25000, TO_DATE('15/07/1994', 'dd/mm/YYYY'), 'Spain', 'F', 0, 1);
+COMMIT;
+
+INSERT INTO jugador VALUES (DEFAULT, '34079395L', 'Jonh Logan', 'Lekins III', 'Lekins', 60000, TO_DATE('06/05/1991', 'dd/mm/YYYY'), 'E', 'USA', 0, 1);
+COMMIT;
+
+INSERT INTO jugador VALUES (DEFAULT, '92495248N', 'Eduardo', 'Martínez', 'Edu Martinez', 25000, TO_DATE('05/05/1990', 'dd/mm/YYYY'), 'A', 'Spain', 0, 1);
+COMMIT;
+
+INSERT INTO jugador VALUES (DEFAULT, '80866384V', 'Deon', 'Thompson', 'Thompson', 95000, TO_DATE('16/09/1988', 'dd/mm/YYYY'), 'F', 'USA', 0, 1);
+COMMIT;
+
+INSERT INTO jugador VALUES (DEFAULT, '97828482Y', 'Goran', 'Huskic', 'Huskic', 3000, TO_DATE('26/03/1992', 'dd/mm/YYYY'), 'P', 'Serbia', 0, 1);
+COMMIT;
+
+INSERT INTO jugador VALUES (DEFAULT, '18354357N', 'Aléjandro', 'López', 'Alejandro López', 50000, TO_DATE('05/08/1991', 'dd/mm/YYYY'), 'E', 'Spain', 0, 1);
+COMMIT;
+
+INSERT INTO jugador VALUES (DEFAULT, '14141807G', 'Fabien', 'Causeur', 'Causeur', 75000, TO_DATE('16/06/1987', 'dd/mm/YYYY'), 'Francia', 'E', 0, 1);
+COMMIT;
+
+INSERT INTO jugador VALUES (DEFAULT, '59453059Z', 'Gustavo', 'Ayón', 'Ayón', 95000, TO_DATE('01/04/1984', 'dd/mm/YYYY'), 'México', 'P', 0, 1);
+COMMIT;
+
+INSERT INTO jugador VALUES (DEFAULT, '64854525E', 'Walter', 'Tavares', 'Tavares', 83000, TO_DATE('22/03/1992', 'dd/mm/YYYY'), 'Cabo Verde', 'P', 0, 1);
+COMMIT;
+
+INSERT INTO jugador VALUES (DEFAULT, '72893528L', 'Anthony', 'Arwin', 'Randolf', 54000, TO_DATE('15/07/1989', 'dd/mm/YYYY'), 'Eslovenia', 'F', 0, 1);
+COMMIT;
+
+INSERT INTO jugador VALUES (DEFAULT, '06330343F', 'Rudy', 'Fernández', 'Rudy Fernández', 145000, TO_DATE('04/04/1985', 'dd/mm/YYYY'), 'Spain', 'A', 0, 1);
+COMMIT;
+
+INSERT INTO jugador VALUES (DEFAULT, '10772493Y', 'Luka', 'Doncic', 'Doncic', 68000, TO_DATE('28/02/1999', 'dd/mm/YYYY'), 'Eslovenia', 'B', 0, 1);
+COMMIT;
+
+INSERT INTO jugador VALUES (DEFAULT, '37477230H', 'Felipe', 'Reyes', 'Reyes', 150000, TO_DATE('16/03/1980', 'dd/mm/YYYY'), 'Spain', 'F', 0, 1);
+COMMIT;
+
+INSERT INTO jugador VALUES (DEFAULT, '86550551X', 'Facu', 'Campazzo', 'Campazzo', 85000, TO_DATE('23/03/1991', 'dd/mm/YYYY'), 'Spain', 'B', 0, 1);
+COMMIT;
+
+INSERT INTO jugador VALUES (DEFAULT, '40461975F', 'Jaycee', 'Carroll', 'Carroll', 73000, TO_DATE('16/04/1983', 'dd/mm/YYYY'), 'Azerbayan', 'E', 0, 1);
+COMMIT;
+
+INSERT INTO jugador VALUES (DEFAULT, '13877448F', 'Sergio', 'Llull', 'Llull', 102000, TO_DATE('15/11/1987', 'dd/mm/YYYY'), 'Spain', 'B', 0, 1);
+COMMIT;
+
+INSERT INTO jugador VALUES (DEFAULT, '80592105J', 'Howard Samuel', 'Thompkins III', 'Thompkins III', 25000, TO_DATE('29/05/1990', 'dd/mm/YYYY'), 'USA', 'F', 0, 1);
+COMMIT;
+
+INSERT INTO jugador VALUES (DEFAULT, '42593461Z', 'Jeffery', 'Taylor', 'Taylor', 95000, TO_DATE('23/03/1989', 'dd/mm/YYYY'), 'Suecia', 'A', 0, 1);
+COMMIT;
+
+INSERT INTO jugador VALUES (DEFAULT, '95707877R', 'Viny', 'Okouo', 'Okouo', 32000, TO_DATE('10/04/1987', 'dd/mm/YYYY'), 'Congo', 'P', 0, 1);
+COMMIT;
+
+INSERT INTO jugador VALUES (DEFAULT, '71985998T', 'Ray', 'McCallum', 'McCallum', 24000, TO_DATE('12/06/1991', 'dd/mm/YYYY'), 'USA', 'B', 0, 1);
+COMMIT;
+
+INSERT INTO jugador VALUES (DEFAULT, '77111030B', 'Alberto', 'Díaz', 'Alberto Díaz', 24000, TO_DATE('23/04/1994', 'dd/mm/YYYY'), 'Spain', 'B', 0, 1);
+COMMIT;
+
+INSERT INTO jugador VALUES (DEFAULT, '73675890J', 'Sasu', 'Salin', 'Salin', 35000, TO_DATE('11/06/1991', 'dd/mm/YYYY'), 'Finlandia', 'E', 0, 1);
+COMMIT;
+
+INSERT INTO jugador VALUES (DEFAULT, '48778797Y', 'Daniel', 'Diez', 'Diez', 18000, TO_DATE('07/04/1993', 'dd/mm/YYYY'), 'Spain', 'A', 0, 1);
+COMMIT;
+
+INSERT INTO jugador VALUES (DEFAULT, '08661371P', 'Dragan', 'Milosavljevic', 'Milosavljevic', 95000, TO_DATE('11/05/1989', 'dd/mm/YYYY'), 'Serbia', 'E', 0, 1);
+COMMIT;
+
+INSERT INTO jugador VALUES (DEFAULT, '78642594M', 'Nemanja', 'Nedovic', 'Nedovic', 154000, TO_DATE('16/06/1991', 'dd/mm/YYYY'), 'Serbia', 'E', 0, 1);
+COMMIT;
+
+INSERT INTO jugador VALUES (DEFAULT, '95208705K', 'Giorgi', 'Shermadini', 'Shermadini', 140000, TO_DATE('02/04/1989', 'dd/mm/YYYY'), 'Georgia', 'P', 0, 1);
+COMMIT;
+
+INSERT INTO jugador VALUES (DEFAULT, '75613932Y', 'Adam', 'Waczynski', 'Adam Waczynski ', 95000, TO_DATE('15/10/1989', 'dd/mm/YYYY'), 'Polonia', 'A', 0, 1);
+COMMIT;
+
+INSERT INTO jugador VALUES (DEFAULT, '88520481J', 'Jeff', 'Brooks', 'Brooks', 35000, TO_DATE('12/06/1989', 'dd/mm/YYYY'), 'Italia', 'F', 0, 1);
+COMMIT;
+
+INSERT INTO jugador VALUES (DEFAULT, '46951072E', 'James', 'Augustine', 'Augustine', 65000, TO_DATE('27/02/1984', 'dd/mm/YYYY'), 'USA', 'F', 0, 1);
+COMMIT;
+
+INSERT INTO jugador VALUES (DEFAULT, '13905325P', 'Carlos', 'Suárez', 'Suárez', 95000, TO_DATE('23/05/1985', 'dd/mm/YYYY'), 'Spain', 'F', 0, 1);
+COMMIT;
+
+INSERT INTO jugador VALUES (DEFAULT, '98801311G', 'Clevin', 'Hannah', 'Hannah', 47000, TO_DATE('15/11/1987', 'dd/mm/YYYY'), 'Senegal', 'B', 0, 1);
+COMMIT;
+
+INSERT INTO jugador VALUES (DEFAULT, '45146613M', 'Ovie', 'Soko', 'Soko', 95000, TO_DATE('07/02/1991', 'dd/mm/YYYY'), 'Reino Unido', 'A', 0, 1);
+COMMIT;
+
+INSERT INTO jugador VALUES (DEFAULT, '86694582S', 'Alex', 'Urtasun', 'Urtasun', 120000, TO_DATE('30/04/1984', 'dd/mm/YYYY'), 'Spain', 'E', 0, 1);
+COMMIT;
+
+INSERT INTO jugador VALUES (DEFAULT, '96204145K', 'José Ángel', 'Anteló', 'Anteló', 145000, TO_DATE('07/05/1987', 'dd/mm/YYYY'), 'Spain', 'F', 0, 1);
+COMMIT;
+
+INSERT INTO jugador VALUES (DEFAULT, '06525161S', 'Vitor', 'Benite', 'Benite', 54000, TO_DATE('20/02/1990', 'dd/mm/YYYY'), 'Brasil', 'E', 0, 1);
+COMMIT;
+
+INSERT INTO jugador VALUES (DEFAULT, '84015569L', 'Augusto', 'Lima', 'Lima', 140000, TO_DATE('17/09/1991', 'dd/mm/YYYY'), 'Spain', 'P', 0, 1);
+COMMIT;
+
 -- --------------------------------------------------------
 
 --

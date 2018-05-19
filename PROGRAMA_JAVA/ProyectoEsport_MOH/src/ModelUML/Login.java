@@ -13,6 +13,13 @@ public class Login {
     public Login() {
     }
 
+    public Login(Integer codLogin, String user, String password, String tipo) {
+        this.codLogin = codLogin;
+        this.user = user;
+        this.password = password;
+        this.tipo = tipo;
+    }
+ 
     public Login(String user, String password) {
         this.user = user;
         this.password = password;
@@ -54,6 +61,10 @@ public class Login {
 
     public void setTipo(String tipo) {
         this.tipo = tipo;
+    }
+
+    public void setCodLogin(Integer codLogin) {
+        this.codLogin = codLogin;
     }
 
     

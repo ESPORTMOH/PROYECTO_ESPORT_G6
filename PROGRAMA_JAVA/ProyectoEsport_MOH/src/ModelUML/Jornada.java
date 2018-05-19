@@ -8,10 +8,11 @@ import java.util.Date;
  */
 public class Jornada {
 
-    private Date fechaInicio;
-    private Date fechaFin;
+    private Integer codJornada;
     private String numeroJornada;
     private String numeroTemporada;
+    private Equipo equipoLocal;
+    private Equipo equipoVisitante;
 
     // ATRIBUTO DE LA RELACION CON PARTIDO
     private ArrayList<Jugador> listaPartidos = new ArrayList<>();
@@ -19,35 +20,19 @@ public class Jornada {
     public Jornada() {
     }
 
-    public Jornada(Date fechaInicio, Date fechaFin, String numeroJornada, String numeroTemporada) {
-        this.fechaInicio = fechaInicio;
-        this.fechaFin = fechaFin;
+    public Jornada(String numeroJornada, String numeroTemporada, Equipo equipoLocal, Equipo equipoVisitante) {
         this.numeroJornada = numeroJornada;
         this.numeroTemporada = numeroTemporada;
+        this.equipoLocal = equipoLocal;
+        this.equipoVisitante = equipoVisitante;
     }
 
-    public Jornada(Date fechaInicio, Date fechaFin, String numeroJornada, String numeroTemporada, ArrayList listaPartidos) {
-        this.fechaInicio = fechaInicio;
-        this.fechaFin = fechaFin;
-        this.numeroJornada = numeroJornada;
-        this.numeroTemporada = numeroTemporada;
-        this.listaPartidos = listaPartidos;
+    public Integer getCodJornada() {
+        return codJornada;
     }
 
-    public Date getFechaInicio() {
-        return fechaInicio;
-    }
-
-    public void setFechaInicio(Date fechaInicio) {
-        this.fechaInicio = fechaInicio;
-    }
-
-    public Date getFechaFin() {
-        return fechaFin;
-    }
-
-    public void setFechaFin(Date fechaFin) {
-        this.fechaFin = fechaFin;
+    public void setCodJornada(Integer codJornada) {
+        this.codJornada = codJornada;
     }
 
     public String getNumeroJornada() {
@@ -64,6 +49,22 @@ public class Jornada {
 
     public void setNumeroTemporada(String numeroTemporada) {
         this.numeroTemporada = numeroTemporada;
+    }
+
+    public Equipo getEquipoLocal() {
+        return equipoLocal;
+    }
+
+    public void setEquipoLocal(Equipo equipoLocal) {
+        this.equipoLocal = equipoLocal;
+    }
+
+    public Equipo getEquipoVisitante() {
+        return equipoVisitante;
+    }
+
+    public void setEquipoVisitante(Equipo equipoVisitante) {
+        this.equipoVisitante = equipoVisitante;
     }
 
     public ArrayList<Jugador> getListaPartidos() {

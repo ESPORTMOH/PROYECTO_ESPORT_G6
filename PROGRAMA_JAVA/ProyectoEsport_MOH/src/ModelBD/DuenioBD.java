@@ -7,6 +7,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import oracle.jdbc.OracleTypes;
 
@@ -146,6 +147,57 @@ public class DuenioBD extends GenericoBD {
 
         cerrarConexion(con);
 
+    }
+
+    public void actualizarEstadoDuenio(Duenio duenio) throws SQLException, ConexionProblemas {
+        GenericoBD genericoBD = new GenericoBD();
+        con = genericoBD.abrirConexion(con);
+        
+        PreparedStatement pS = con.prepareStatement("UPDATE duenio SET estado = 1 WHERE codDuenio = ?");
+        pS.setString(1, duenio.getCodDuenio().toString());
+
+        pS.executeUpdate();
+
+        cerrarConexion(con);
+        
+    }
+
+    public void cambiarEstadoDuenio(Duenio duenio) throws SQLException, ConexionProblemas {
+        GenericoBD genericoBD = new GenericoBD();
+        con = genericoBD.abrirConexion(con);
+        
+        PreparedStatement pS = con.prepareStatement("UPDATE duenio SET estado = 0 WHERE codDuenio = ?");
+        pS.setString(1, duenio.getCodDuenio().toString());
+
+        pS.executeUpdate();
+
+        cerrarConexion(con);
+    }
+
+    public Duenio recopilarDatosDuenio(Duenio duenio) throws SQLException, ConexionProblemas {
+        Duenio du = new Duenio();
+        
+        GenericoBD genericoBD = new GenericoBD();
+        con = genericoBD.abrirConexion(con);
+        
+        PreparedStatement pS = con.prepareStatement("SELECT * FROM duenio WHERE codDuenio = ?");
+        pS.setString(1, duenio.getCodDuenio().toString());
+
+        ResultSet rs =   pS.executeQuery();
+        while (rs.next()) {
+            du.setCodDuenio(rs.getInt("codDuenio"));
+            du.setDni(rs.getString("dni")); 
+            du.setNombre(rs.getString("nombre"));
+            du.setApellido(rs.getString("apellido"));
+            du.setEstado(rs.getInt("estado"));
+            du.setCodDuenio(rs.getInt("codLogin"));
+    
+        }
+        cerrarConexion(con);
+        
+        return du;
+        
+        
     }
 
 }

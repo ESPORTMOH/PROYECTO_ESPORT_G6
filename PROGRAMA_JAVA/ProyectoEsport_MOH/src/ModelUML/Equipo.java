@@ -23,6 +23,10 @@ public class Equipo {
     public Equipo() {
     }
 
+    public Equipo(Integer codEquipo) {
+        this.codEquipo = codEquipo;
+    }
+
     public Equipo(Integer codEquipo, String nombre, Double presupuesto, String anioFundacion, String ciudad, String nombreEstadio) {
         this.codEquipo = codEquipo;
         this.nombre = nombre;

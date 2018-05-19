@@ -9,6 +9,7 @@ import java.util.Date;
 public class Partido {
 
     private Integer codPartido;
+    private Date fechaPartido;
     private Date horaInicio;
     private Integer puntosLocal;
     private Integer puntosVisitante;
@@ -21,6 +22,16 @@ public class Partido {
     private Jornada codJornada;
 
     public Partido() {
+    }
+
+    public Partido(Date fechaPartido, Date horaInicio, Integer puntosLocal, Integer puntosVisitante, Equipo codLocal, Equipo codVisitante, Jornada codJornada) {
+        this.fechaPartido = fechaPartido;
+        this.horaInicio = horaInicio;
+        this.puntosLocal = puntosLocal;
+        this.puntosVisitante = puntosVisitante;
+        this.codLocal = codLocal;
+        this.codVisitante = codVisitante;
+        this.codJornada = codJornada;
     }
 
     public Partido(Integer codPartido, Date horaInicio, Integer puntosLocal, Integer puntosVisitante) {
@@ -112,10 +123,13 @@ public class Partido {
     public void setCodJornada(Jornada codJornada) {
         this.codJornada = codJornada;
     }
-    
-    
 
-    
-    
+    public Date getFechaPartido() {
+        return fechaPartido;
+    }
+
+    public void setFechaPartido(Date fechaPartido) {
+        this.fechaPartido = fechaPartido;
+    }
 
 }

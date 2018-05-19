@@ -8,7 +8,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
 import oracle.jdbc.OracleTypes;
 
@@ -48,7 +47,7 @@ public class JugadorBD extends GenericoBD {
         GenericoBD genericoBD = new GenericoBD();
         con = genericoBD.abrirConexion(con);
 
-        PreparedStatement pS = con.prepareStatement("INSERT INTO jugador (dni, nombre, apellido, nickname, sueldo, fechanacimiento, nacionalidad, posicion, estado, codequipo) VALUES (?,?,?,?,?,?,?,?,?,?)");
+        PreparedStatement pS = con.prepareStatement("INSERT INTO jugador (dni, nombre, apellido, nickname, sueldo, fechanacimiento, nacionalidad, posicion, estado, codequipo) VALUES (?,?,?,?,?,?,?,?,0,1)");
         pS.setString(1, jugador.getDni().toUpperCase());
         pS.setString(2, jugador.getNombre());
         pS.setString(3, jugador.getApellido());
@@ -57,8 +56,6 @@ public class JugadorBD extends GenericoBD {
         pS.setDate(6, new java.sql.Date(jugador.getFechaNacimiento().getTime()));
         pS.setString(7, jugador.getNacionalidad());
         pS.setString(8, jugador.getPosicion());
-        pS.setInt(9, 0);
-        pS.setInt(10, 1);
         System.out.println(pS.getParameterMetaData().toString());
         pS.executeUpdate();
 
@@ -93,12 +90,8 @@ public class JugadorBD extends GenericoBD {
             jugador.setFechaNacimiento(datosRS.getDate("fechaNacimiento"));
             jugador.setNacionalidad(datosRS.getString("nacionalidad"));
             jugador.setPosicion(datosRS.getString("posicion"));
-            
             jugador.setEquipo(new Equipo(datosRS.getInt("codEquipo")));
-            
-            jugador.setLogin(new Login(datosRS.getInt("codLogin")));
-            jugador.getLogin().setUser(datosRS.getString("usuario"));
-            jugador.getLogin().setPassword(datosRS.getString("passwd"));
+
         }
 
         cerrarConexion(con);
@@ -176,6 +169,20 @@ public class JugadorBD extends GenericoBD {
         pS.executeUpdate();
 
         cerrarConexion(con);     
+    }
+
+    public void actualizarDatosJugador(Jugador jugador, Equipo equipo) throws SQLException, ConexionProblemas {
+        GenericoBD genericoBD = new GenericoBD();
+        con = genericoBD.abrirConexion(con);
+
+        PreparedStatement pS = con.prepareStatement("UPDATE jugador SET estado = 1 , codEquipo = ? WHERE codJugador = ?");
+        pS.setInt(1, equipo.getCodEquipo());
+        pS.setInt(2, jugador.getCodJugador());
+        
+        pS.executeUpdate();
+
+        cerrarConexion(con);     
+        
     }
 
 

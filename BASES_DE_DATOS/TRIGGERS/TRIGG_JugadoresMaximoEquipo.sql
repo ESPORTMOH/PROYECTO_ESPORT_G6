@@ -3,11 +3,14 @@ CREATE OR REPLACE TRIGGER TRIGG_jugadoresMaximoEquipo
     FOR EACH ROW
       DECLARE
         v_cantidadJugadores NUMBER;
+        v_codEquipo NUMBER;
         demasiadosJugadores EXCEPTION;
       BEGIN
+      v_codEquipo := :NEW.codEquipo;
         SELECT COUNT(*)
           INTO v_cantidadJugadores
-            FROM jugador;  
+            FROM jugador
+              WHERE codEquipo = v_codEquipo;  
               IF(v_cantidadJugadores>5)THEN
                 RAISE demasiadosJugadores;
               END IF;  

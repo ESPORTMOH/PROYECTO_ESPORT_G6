@@ -73,10 +73,18 @@
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="jMcalendario">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Jornada"/>
+                <Property name="text" type="java.lang.String" value="Temporadas"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMcalendarioActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="jMclasificacion">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Clasificaciones"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMclasificacionActionPerformed"/>
               </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMresultados">
@@ -85,14 +93,6 @@
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMresultadosActionPerformed"/>
-              </Events>
-            </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="jMclasificacion">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Clasificaci&#xf3;n"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMclasificacionActionPerformed"/>
               </Events>
             </MenuItem>
           </SubComponents>

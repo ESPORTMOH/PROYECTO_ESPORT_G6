@@ -319,6 +319,8 @@ public class VConsultaEquipos extends javax.swing.JFrame {
         jTestadio.setText(nombreEstadio);
         jTdniDuenio.setEnabled(true);
         jTdniDuenio.setText(dni);
+        jTnombreDuenio.setEnabled(true);
+        jTnombreDuenio.setText(nombreDuenio);
     }
 
     public void configPredeterminadaVentana() {
@@ -339,6 +341,9 @@ public class VConsultaEquipos extends javax.swing.JFrame {
         jTnombre.setEnabled(true);
         jTdniDuenio.setText(null);
         jTdniDuenio.setEnabled(true);
+        jTnombreDuenio.setText(null);
+  
+        
         configPredeterminadaVentana();
     }
 }
