@@ -8,14 +8,14 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author MIGUEL
+ * @author MIGUEL OLMO HERNANDO
  */
 public class VConsultarAdmins extends javax.swing.JFrame {
 
     private final String tipoVentana;
 
     /**
-     * Creates new form VAltaAdmin
+     * Creates new form VConsultarAdmin
      */
     public VConsultarAdmins() {
         this.tipoVentana = "VConsultarAdmins";
@@ -281,7 +281,17 @@ public class VConsultarAdmins extends javax.swing.JFrame {
     private javax.swing.JTextField jTusuario;
     // End of variables declaration//GEN-END:variables
 
-    // FUNCIONES PROPIAS DE LA VISTA
+    /**
+     * FUNCIONES PROPIAS DE LA VISTA
+     *
+     * RELLENAR CAMPOS
+     *
+     * @param dni
+     * @param nombre
+     * @param apellido
+     * @param usuario
+     * @param passwd
+     */
     public void rellenarCamposVentana(String dni, String nombre, String apellido, String usuario, String passwd) {
         jTdni.setEnabled(true);
         jTdni.setText(dni);
@@ -295,6 +305,7 @@ public class VConsultarAdmins extends javax.swing.JFrame {
         jTpasswd.setText(passwd);
     }
 
+    // PREDETERMINAR
     public void configPredeterminadaVentana() {
         jTnombre.setEnabled(false);
         jTapellido.setEnabled(false);
@@ -302,6 +313,7 @@ public class VConsultarAdmins extends javax.swing.JFrame {
         jTpasswd.setEnabled(false);
     }
 
+    // RESETEAR
     public void resetearCamposParaConsultarDeNuevo() {
         jTdni.setEnabled(true);
         jTdni.setText(null);

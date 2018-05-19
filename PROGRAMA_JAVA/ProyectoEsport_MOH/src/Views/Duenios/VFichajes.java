@@ -18,13 +18,13 @@ import proyectoesport_moh.Controladora;
 
 /**
  *
- * @author MIGUEL
+ * @author MIGUEL OLMO HERNANDO
  */
 public class VFichajes extends javax.swing.JFrame {
 
     private final String tipoVentana;
     private final int nJugadores = 6;
-    private final int presupuestoMaximo = 200000;
+
 
     /**
      * Creates new form VFichajes

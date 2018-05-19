@@ -8,13 +8,20 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 /**
- * @author MIGUEL
+ * @author MIGUEL OLMO HERNANDO
  */
 public class AdministradorBD extends GenericoBD {
 
     private Connection con;
 
-    // COMPROBACION EXISTE O NO PARA DAR DE ALTA O NO
+    /**
+     * COMPROBACION EXISTE O NO PARA DAR DE ALTA O NO
+     *
+     * @param dni
+     * @return localizado
+     * @throws SQLException
+     * @throws ConexionProblemas
+     */
     public boolean localizarSiexixteDniAdmin(String dni) throws SQLException, ConexionProblemas {
         Boolean localizado = false;
         int records;
@@ -36,7 +43,15 @@ public class AdministradorBD extends GenericoBD {
         return localizado;
     }
 
-    // INSERTAR ADMINISTRADOR
+    /**
+     * INSERTAR ADMINISTRADOR
+     *
+     * @param administrador
+     * @param tipo
+     * @throws SQLException
+     * @throws ClassNotFoundException
+     * @throws Exception
+     */
     public void insertarAdministradorBD(Administrador administrador, String tipo) throws SQLException, ClassNotFoundException, Exception {
 
         GenericoBD genericoBD = new GenericoBD();
@@ -55,7 +70,13 @@ public class AdministradorBD extends GenericoBD {
         cerrarConexion(con);
     }
 
-    // LOCALIZAR ADMINISTRADOR
+    /**
+     * LOCALIZAR ADMINISTRADOR
+     *
+     * @param dni
+     * @return administrador
+     * @throws Exception
+     */
     public Administrador localizarAdministrador(String dni) throws Exception {
 
         GenericoBD genericoBD = new GenericoBD();
@@ -88,7 +109,13 @@ public class AdministradorBD extends GenericoBD {
         return administrador;
     }
 
-    // ELIMINAR ADMINISTRADOR
+    /**
+     * ELIMINAR ADMINISTRADOR
+     *
+     * @param dni
+     * @throws SQLException
+     * @throws ConexionProblemas
+     */
     public void eliminarDeLaBDAdmin(String dni) throws SQLException, ConexionProblemas {
 
         GenericoBD genericoBD = new GenericoBD();

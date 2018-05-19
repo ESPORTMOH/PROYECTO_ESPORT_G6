@@ -12,14 +12,14 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author MIGUEL
+ * @author MIGUEL OLMO HERNANDO
  */
 public class VConsultaClasificacion extends javax.swing.JFrame {
 
     private final String tipoVentana;
 
     /**
-     * Creates new form VAltaClasificacion
+     * Creates new form VConsultaClasificacion
      */
     public VConsultaClasificacion() {
         initComponents();

@@ -8,14 +8,14 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author MIGUEL
+ * @author MIGUEL OLMO HERNANDO
  */
 public class VEditarAdmins extends javax.swing.JFrame {
 
     private final String tipoVentana;
 
     /**
-     * Creates new form VAltaAdmin
+     * Creates new form VEditarAdmin
      */
     public VEditarAdmins() {
         this.tipoVentana = "VEditarAdmins";
@@ -319,7 +319,17 @@ public class VEditarAdmins extends javax.swing.JFrame {
     private javax.swing.JTextField jTusuario;
     // End of variables declaration//GEN-END:variables
 
-    // FUNCIONES PROPIAS DE LA VISTA
+    /**
+     * FUNCIONES PROPIAS DE LA VISTA
+     *
+     * RELLENAR CAMPOS
+     *
+     * @param dni
+     * @param nombre
+     * @param apellido
+     * @param usuario
+     * @param passwd
+     */
     public void rellenarCamposVentana(String dni, String nombre, String apellido, String usuario, String passwd) {
         jTdni.setText(dni);
         jTdni.setEnabled(false);
@@ -331,6 +341,7 @@ public class VEditarAdmins extends javax.swing.JFrame {
         jBeditar.setEnabled(true);
     }
 
+    // PREDETERMINAR
     public void configPredeterminadaVentana() {
         jTnombre.setEnabled(false);
         jTapellido.setEnabled(false);
@@ -339,6 +350,7 @@ public class VEditarAdmins extends javax.swing.JFrame {
         jBeditar.setEnabled(false);
     }
 
+    // RESETEAR
     public void resetearCamposParaConsultarDeNuevo() {
         jTdni.setEnabled(true);
         jTdni.setText(null);

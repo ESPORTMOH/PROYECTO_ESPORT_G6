@@ -1,7 +1,7 @@
 package Exceptions;
 
 /**
- * @author 1gdaw12
+ * @author MIGUEL OLMO HERNANDO
  */
 
 public class CampoTempVacio extends Exception{
@@ -11,16 +11,28 @@ public class CampoTempVacio extends Exception{
 
     }
 
+    /**
+     * 
+     * @param mensaje 
+     */
     public CampoTempVacio(String mensaje) {
         ErroresDesconocidos.mensaje = mensaje;
     }
 
+    /**
+     * 
+     * @return mensaje
+     */
     public String getMensaje() {
         mensaje = "El campo Nº Temporada es obligatorio"
                 + "\npara generar la jornada.";
         return mensaje;
     }
 
+    /**
+     * 
+     * @param mensaje 
+     */
     public void setMensaje(String mensaje) {
         ErroresDesconocidos.mensaje = mensaje;
     }

@@ -7,14 +7,14 @@ import proyectoesport_moh.Controladora;
 import javax.swing.JOptionPane;
 
 /**
- * @author MIGUEL
+ * @author MIGUEL OLMO HERNANDO
  */
 public class VPanelCrudAdministradores extends javax.swing.JFrame {
 
     private final String tipoVentana;
 
     /**
-     * Creates new form VAdministracion
+     * Creates new form VPanelCrudAdministracion
      */
     public VPanelCrudAdministradores() {
         this.tipoVentana = "VCrudAdmins";

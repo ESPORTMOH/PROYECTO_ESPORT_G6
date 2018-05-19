@@ -14,7 +14,7 @@ import proyectoesport_moh.Controladora;
 
 /**
  *
- * @author MIGUEL
+ * @author MIGUEL OLMO HERNANDO
  */
 public class VJornadas extends javax.swing.JFrame {
 

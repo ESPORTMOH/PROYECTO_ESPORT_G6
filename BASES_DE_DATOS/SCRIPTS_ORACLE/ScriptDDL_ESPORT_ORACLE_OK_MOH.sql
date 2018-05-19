@@ -195,7 +195,7 @@ CREATE TABLE jugador (
   dni VARCHAR2(9) NOT NULL,
   nombre VARCHAR2(20) NOT NULL,
   apellido VARCHAR2(20) NOT NULL,
-  nickname VARCHAR2(10) NOT NULL,
+  nickname VARCHAR2(20) NOT NULL,
   sueldo NUMBER(10) NOT NULL,
   fechaNacimiento DATE NOT NULL,
   nacionalidad VARCHAR2(20) NOT NULL,

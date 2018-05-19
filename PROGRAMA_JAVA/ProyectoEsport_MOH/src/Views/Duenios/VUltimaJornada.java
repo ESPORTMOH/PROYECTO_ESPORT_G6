@@ -13,7 +13,7 @@ import proyectoesport_moh.Controladora;
 
 /**
  *
- * @author MIGUEL
+ * @author MIGUEL OLMO HERNANDO
  */
 public class VUltimaJornada extends javax.swing.JFrame {
 

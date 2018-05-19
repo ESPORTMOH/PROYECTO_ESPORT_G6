@@ -16,7 +16,7 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author MIGUEL
+ * @author MIGUEL OLMO HERNANDO
  */
 public class VBajaAdmins extends javax.swing.JFrame {
 
@@ -25,7 +25,7 @@ public class VBajaAdmins extends javax.swing.JFrame {
     private static Integer almacenarCodLogin;
 
     /**
-     * Creates new form VAltaAdmin
+     * Creates new form VBajaAdmin
      */
     public VBajaAdmins() {
         this.tipoVentana = "VBajaAdmins";
@@ -281,7 +281,17 @@ public class VBajaAdmins extends javax.swing.JFrame {
     private javax.swing.JTextField jTnombre;
     // End of variables declaration//GEN-END:variables
 
-    // FUNCIONES PROPIAS DE LA VISTA
+    
+    /**
+     * FUNCIONES PROPIAS DE LA VISTA
+     * 
+     * RELLENAR CAMPOS
+     * 
+     * @param dni
+     * @param nombre
+     * @param apellido
+     * @param login 
+     */
     public void rellenarCamposVentana(String dni, String nombre, String apellido, Integer login) {
         jTdni.setText(dni);
         jTnombre.setText(nombre);

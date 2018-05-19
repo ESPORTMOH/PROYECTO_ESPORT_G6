@@ -22,14 +22,14 @@ import proyectoesport_moh.Controladora;
 
 /**
  *
- * @author pcwin
+ * @author MIGUEL OLMO HERNANDO
  */
 public class VAltaClasificacion extends javax.swing.JFrame {
 
     private final String tipoVentana;
 
     /**
-     * Creates new form VGeneradorClasificacion
+     * Creates new form VAltaClasificacion
      */
     public VAltaClasificacion() {
         initComponents();
@@ -197,13 +197,13 @@ public class VAltaClasificacion extends javax.swing.JFrame {
 
     // FUNCIONES PROPIAS DE LA VISTA
     private void configPredeterminadaVentana() {
-        jProgressBarT.setVisible(false);
-        jLaviso.setVisible(false);
+       // jProgressBarT.setVisible(false);
+       // jLaviso.setVisible(false);
     }
     
     private void cargarAvisoBarra(){
-        jProgressBarT.setVisible(true);
-        jLaviso.setVisible(true);
+       // jProgressBarT.setVisible(true);
+       // jLaviso.setVisible(true);
     }
 
 }

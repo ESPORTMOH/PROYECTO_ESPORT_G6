@@ -9,8 +9,8 @@ import proyectoesport_moh.Controladora;
 import javax.swing.JOptionPane;
 
 /**
- * @author MIGUEL
- */
+ * @author MIGUEL OLMO HERNANDO
+ */ 
 public class VPanelClasificacion extends javax.swing.JFrame {
 
     private final String tipoVentana;

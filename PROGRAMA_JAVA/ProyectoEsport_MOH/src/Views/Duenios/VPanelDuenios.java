@@ -7,14 +7,14 @@ import javax.swing.JOptionPane;
 import proyectoesport_moh.Controladora;
 
 /**
- * @author MIGUEL
+ * @author MIGUEL OLMO HERNANDO
  */
 public class VPanelDuenios extends javax.swing.JFrame {
 
     private final String tipoVentana;
 
     /**
-     * Creates new form VAdministracion
+     * Creates new form VPanelDuenios
      */
     public VPanelDuenios() {
         this.tipoVentana = "vPanelDuenios";

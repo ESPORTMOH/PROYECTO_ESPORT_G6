@@ -21,14 +21,14 @@ import proyectoesport_moh.Controladora;
 
 /**
  *
- * @author pcwin
+ * @author MIGUEL OLMO HERNANDO
  */
 public class VAltaJornadas extends javax.swing.JFrame {
 
     private final String tipoVentana;
 
     /**
-     * Creates new form VGeneradorJornadas
+     * Creates new form VAltaJornadas
      */
     public VAltaJornadas() {
         initComponents();

@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package ModelBD;
 
 import Exceptions.ConexionProblemas;
@@ -13,12 +8,18 @@ import java.sql.SQLException;
 
 /**
  *
- * @author MIGUEL
+ * @author MIGUEL OLMO HERNANDO
  */
 public class PartidoBD extends GenericoBD{
     
     private Connection con;
-    
+    /**
+     * INSERTAR RESULTADOS
+     * 
+     * @param partido
+     * @throws SQLException
+     * @throws ConexionProblemas 
+     */
     public void insertarResultados(Partido partido) throws SQLException, ConexionProblemas {
         GenericoBD genericoBD = new GenericoBD();
         con = genericoBD.abrirConexion(con);
@@ -33,7 +34,6 @@ public class PartidoBD extends GenericoBD{
         pS.setInt(7, partido.getCodJornada().getCodJornada());
         
          pS.executeUpdate();
-        
         
     }
     

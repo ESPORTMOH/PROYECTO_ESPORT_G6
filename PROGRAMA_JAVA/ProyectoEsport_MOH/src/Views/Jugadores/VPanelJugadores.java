@@ -5,12 +5,12 @@ import proyectoesport_moh.Controladora;
 import Exceptions.*;
 
 /**
- * @author MIGUEL
+ * @author MIGUEL OLMO HERNANDO
  */
 public class VPanelJugadores extends javax.swing.JFrame {
 
     /**
-     * Creates new form VAdministracion
+     * Creates new form VPanelJugadores
      */
     public VPanelJugadores() {
         initComponents();

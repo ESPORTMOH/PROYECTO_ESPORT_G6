@@ -14,7 +14,7 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author MIGUEL
+ * @author MIGUEL OLMO HERNANDO
  */
 public class VAltaAdmins extends javax.swing.JFrame {
 
@@ -230,6 +230,8 @@ public class VAltaAdmins extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     // FUNCIONES PROPIAS DE LA VISTA
+    
+    // RESETEAR
     public void resetearCampos() {
         jTdni.setText(null);
         jTnombre.setText(null);

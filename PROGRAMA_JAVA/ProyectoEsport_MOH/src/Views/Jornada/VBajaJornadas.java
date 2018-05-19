@@ -5,7 +5,6 @@
  */
 package Views.Jornada;
 
-import Views.Administradores.*;
 import proyectoesport_moh.Controladora;
 import Exceptions.*;
 import java.sql.SQLException;
@@ -17,7 +16,7 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author MIGUEL
+ * @author MIGUEL OLMO HERNANDO
  */
 public class VBajaJornadas extends javax.swing.JFrame {
 
@@ -172,13 +171,14 @@ public class VBajaJornadas extends javax.swing.JFrame {
             if (jTnumTemporada.getText().isEmpty()) {
                 throw new CampoNumTemporadaVacio();
             } else {
-                Controladora.localizarTemporadaEnJornadaBD(tipoVentana, jTnumTemporada.getText());
+                //Controladora.localizarTemporadaEnJornadaBD(tipoVentana, jTnumTemporada.getText());
             }
         } catch (CampoNumTemporadaVacio CNTV) {
             JOptionPane.showMessageDialog(this, CNTV.getMensaje());
-        } catch (TemporadaNoExiste TNE) {
-            JOptionPane.showMessageDialog(this, TNE.getMensaje());
-        } catch (Exception E) {
+        } //catch (TemporadaNoExiste TNE) {
+           // JOptionPane.showMessageDialog(this, TNE.getMensaje());
+        //} 
+        catch (Exception E) {
             JOptionPane.showMessageDialog(this, E.getMessage());
         }
     }//GEN-LAST:event_jBconsultarActionPerformed

@@ -9,7 +9,7 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author MIGUEL
+ * @author MIGUEL OLMO HERNANDO
  */
 public class VEditarJugadores extends javax.swing.JFrame {
 
@@ -252,12 +252,12 @@ public class VEditarJugadores extends javax.swing.JFrame {
             if (jTdni.getText().isEmpty()) {
                 throw new CampoDniVacio();
             } else {
-                Controladora.localizarJugadorEnBD(jTdni.getText());
+                //Controladora.localizarJugadorEnBD(jTdni.getText());
             }
         } catch (CampoDniVacio CDV) {
             JOptionPane.showMessageDialog(this, CDV.getMensaje());
-        } catch (JugadorNoExiste JNE) {
-            JOptionPane.showMessageDialog(this, JNE.getMensaje());
+        //} catch (JugadorNoExiste JNE) {
+         //   JOptionPane.showMessageDialog(this, JNE.getMensaje());
         } catch (Exception E) {
             JOptionPane.showMessageDialog(this, E.getMessage());
         }

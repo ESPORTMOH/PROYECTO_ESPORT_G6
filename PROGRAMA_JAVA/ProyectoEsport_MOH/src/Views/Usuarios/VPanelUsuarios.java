@@ -9,14 +9,14 @@ import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
- * @author MIGUEL
+ * @author MIGUEL OLMO HERNANDO
  */
 public class VPanelUsuarios extends javax.swing.JFrame {
 
     private final String tipoVentana;
 
     /**
-     * Creates new form VPanerlUsuarios
+     * Creates new form VPanelUsuarios
      */
     public VPanelUsuarios() {
         this.tipoVentana = "vPanelUsuarios";

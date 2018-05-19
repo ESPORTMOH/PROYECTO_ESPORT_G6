@@ -10,7 +10,7 @@ import proyectoesport_moh.Controladora;
 
 /**
  *
- * @author pcwin
+ * @author MIGUEL OLMO HERNANDO
  */
 public class VPartido extends javax.swing.JFrame {
 
@@ -24,6 +24,7 @@ public class VPartido extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         this.setResizable(false);
+        configPredeterminadaVentana();
     }
 
     public VPartido(ArrayList<Equipo> listaEquipos) {
@@ -31,6 +32,7 @@ public class VPartido extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         this.setResizable(false);
+        configPredeterminadaVentana();
         rellenarCombo(listaEquipos);
     }
 
@@ -268,8 +270,18 @@ public class VPartido extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jBregistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBregistrarActionPerformed
-        // REGISTRAR RESULTADO DEL PARTIDO
         try {
+            // REGISTRAR RESULTADO DEL PARTIDO
+            /* jTtemporada.getText(),
+            jTjornada.getText(),
+            jDateFechaPartido.getDate(),
+            jThinicio.getText(),
+            jCelocal.getSelectedItem(),
+            jTplocal.getText(),
+            jComboVisitante.getSelectedIndex(),
+            jTpvisitante.getText()*/
+            
+            
             Controladora.registrarDatosDelPartido(
                     jTtemporada.getText(),
                     jTjornada.getText(),
@@ -363,7 +375,9 @@ public class VPartido extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     // FUNCIONES PROPIAS DE LA VISTA
+    public void configPredeterminadaVentana() {
 
+    }
 
     private void resetearCamposParaConsultarDeNuevo() {
         jTjornada.setText(null);

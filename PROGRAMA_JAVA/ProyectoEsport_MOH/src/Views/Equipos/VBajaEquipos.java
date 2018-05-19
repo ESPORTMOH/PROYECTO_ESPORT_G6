@@ -15,14 +15,14 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author MIGUEL
+ * @author MIGUEL OLMO HERNANDO
  */
 public class VBajaEquipos extends javax.swing.JFrame {
 
     private final String tipoVentana;
 
     /**
-     * Creates new form VAltaAdmin
+     * Creates new form VBajaEquipos
      */
     public VBajaEquipos() {
         initComponents();
@@ -195,14 +195,14 @@ public class VBajaEquipos extends javax.swing.JFrame {
                 + "\na este Equipo?");
 
         if (preguntaSalida == JOptionPane.YES_OPTION) {
-            try {
-                Controladora.eliminarEquipoDelaBD(jTnombre.getText());
+            //try {
+                //Controladora.eliminarEquipoDelaBD(jTnombre.getText());
                 JOptionPane.showMessageDialog(this, "El Equipo ha sido "
                         + "\ndado de baja correctamente");
                 resetearCamposParaConsultarDeNuevo();
-            } catch (SQLException | ConexionProblemas EX) {
-                Logger.getLogger(VBajaEquipos.class.getName()).log(Level.SEVERE, null, EX);
-            }
+            //} catch (SQLException | ConexionProblemas EX) {
+             //   Logger.getLogger(VBajaEquipos.class.getName()).log(Level.SEVERE, null, EX);
+           //}
         }
 
     }//GEN-LAST:event_jBbajaActionPerformed

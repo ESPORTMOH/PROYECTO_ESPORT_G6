@@ -14,7 +14,7 @@ import proyectoesport_moh.Controladora;
 
 /**
  *
- * @author MIGUEL
+ * @author MIGUEL OLMO HERNANDO
  */
 public class VClasificaciones extends javax.swing.JFrame {
 

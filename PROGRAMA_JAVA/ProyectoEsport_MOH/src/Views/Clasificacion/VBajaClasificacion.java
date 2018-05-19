@@ -16,7 +16,7 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author MIGUEL
+ * @author MIGUEL OLMO HERNANDO
  */
 public class VBajaClasificacion extends javax.swing.JFrame {
 
@@ -175,8 +175,8 @@ public class VBajaClasificacion extends javax.swing.JFrame {
             }
         } catch (CampoNumTemporadaVacio CNTV) {
             JOptionPane.showMessageDialog(this, CNTV.getMensaje());
-        } catch (ClasificacionNoExiste CNE) {
-            JOptionPane.showMessageDialog(this, CNE.getMensaje());
+        //} catch (ClasificacionNoExiste CNE) {
+           // JOptionPane.showMessageDialog(this, CNE.getMensaje());
         } catch (Exception E) {
             JOptionPane.showMessageDialog(this, E.getMessage());
         }

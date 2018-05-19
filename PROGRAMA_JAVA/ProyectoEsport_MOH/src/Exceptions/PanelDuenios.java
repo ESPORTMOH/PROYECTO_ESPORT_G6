@@ -1,7 +1,7 @@
 package Exceptions;
 
 /**
- * @author 1gdaw12
+ * @author MIGUEL OLMO HERNANDO
  */
 
 public class PanelDuenios extends Exception{
@@ -11,16 +11,28 @@ public class PanelDuenios extends Exception{
 
     }
 
+    /**
+     * 
+     * @param mensaje 
+     */
     public PanelDuenios(String mensaje) {
         ErroresDesconocidos.mensaje = mensaje;
     }
 
+    /**
+     * 
+     * @return mensaje
+     */
     public String getMensaje() {
         mensaje = "Se ha producido un error en uno"
                 + "\nde los Paneles de Duenios";
         return mensaje;
     }
 
+    /**
+     * 
+     * @param mensaje 
+     */
     public void setMensaje(String mensaje) {
         ErroresDesconocidos.mensaje = mensaje;
     }

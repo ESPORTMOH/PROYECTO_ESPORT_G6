@@ -10,13 +10,22 @@ import java.sql.SQLException;
 
 /**
  *
- * @author MIGUEL
+ * @author MIGUEL OLMO HERNANDO
  */
-public class JornadaBD extends GenericoBD{
+public class JornadaBD extends GenericoBD {
 
     private Connection con;
 
-    // INSERTAR JORNADA
+    /**
+     * INSERTAR JORNADA
+     *
+     * @param jornadas
+     * @param jornadas2
+     * @param numeroTemporada
+     * @param numeroEquipos
+     * @throws SQLException
+     * @throws ConexionProblemas
+     */
     public void insertJornadas(String[][] jornadas, String[][] jornadas2, String numeroTemporada, int numeroEquipos) throws SQLException, ConexionProblemas {
 
         int jorn = 1;
@@ -35,7 +44,7 @@ public class JornadaBD extends GenericoBD{
                 pS.executeUpdate();
 
                 cerrarConexion(con);
-        
+
             }
             jorn++;
         }
@@ -61,7 +70,15 @@ public class JornadaBD extends GenericoBD{
         }
     }
 
-    // LOCALIZAR JORNADA
+    /**
+     * LOCALIZAR JORNADA
+     *
+     * @param numTemporada
+     * @return respuesta
+     * @throws SQLException
+     * @throws ConexionProblemas
+     * @throws TemporadaNoExiste
+     */
     public Boolean localizarTemporadaEnJornadaBD(String numTemporada) throws SQLException, ConexionProblemas, TemporadaNoExiste {
         Boolean respuesta = false;
         GenericoBD genericoBD = new GenericoBD();
@@ -75,18 +92,29 @@ public class JornadaBD extends GenericoBD{
         if (datosRS.next()) {
 
             int numberOfRows = datosRS.getInt(1);
-                if (numberOfRows != 0) {
-                    respuesta = true;
-                    System.out.println("existe temporada: " + numberOfRows);
-                }else{
-                    throw new TemporadaNoExiste();
-                }
-            }  
+            if (numberOfRows != 0) {
+                respuesta = true;
+                System.out.println("existe temporada: " + numberOfRows);
+            } else {
+                throw new TemporadaNoExiste();
+            }
+        }
         cerrarConexion(con);
 
         return respuesta;
     }
-    
+
+    /**
+     * LOCALIZAR JORNADA
+     *
+     * @param temporada
+     * @param numeroJornada
+     * @param equipoLocal
+     * @param equipoVisitantendex
+     * @return jornada
+     * @throws SQLException
+     * @throws ConexionProblemas
+     */
     public Jornada localizarCodJornada(String temporada, String numeroJornada, Equipo equipoLocal, Equipo equipoVisitantendex) throws SQLException, ConexionProblemas {
         Jornada jornada = new Jornada();
 
@@ -109,6 +137,5 @@ public class JornadaBD extends GenericoBD{
         cerrarConexion(con);
         return jornada;
     }
-    
 
 }
