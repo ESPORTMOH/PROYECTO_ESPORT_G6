@@ -1,11 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Views.Duenios;
 
 import Exceptions.CierreVError;
+import java.awt.Color;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -15,6 +11,7 @@ import proyectoesport_moh.Controladora;
  *
  * @author MIGUEL OLMO HERNANDO
  */
+
 public class VUltimaClasificacion extends javax.swing.JFrame {
 
     private final String tipoVentana;
@@ -27,6 +24,7 @@ public class VUltimaClasificacion extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         this.setResizable(false);
+        this.getContentPane().setBackground(Color.CYAN);
     }
 
     /**
@@ -123,6 +121,7 @@ public class VUltimaClasificacion extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
             public void run() {
                 new VUltimaClasificacion().setVisible(true);
             }

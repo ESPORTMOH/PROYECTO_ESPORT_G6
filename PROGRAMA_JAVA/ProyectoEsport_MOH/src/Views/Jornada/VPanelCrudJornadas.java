@@ -1,7 +1,7 @@
 package Views.Jornada;
 
-import Views.Administradores.*;
 import Exceptions.CierreVError;
+import java.awt.Color;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import proyectoesport_moh.Controladora;
@@ -22,6 +22,7 @@ public class VPanelCrudJornadas extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         this.setResizable(false);
+        this.getContentPane().setBackground(Color.CYAN);
     }
 
     /**
@@ -35,8 +36,6 @@ public class VPanelCrudJornadas extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         jBalta = new javax.swing.JButton();
-        jBbaja = new javax.swing.JButton();
-        jBconsulta = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
@@ -51,20 +50,6 @@ public class VPanelCrudJornadas extends javax.swing.JFrame {
         jBalta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBaltaActionPerformed(evt);
-            }
-        });
-
-        jBbaja.setText("DAR DE BAJA");
-        jBbaja.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBbajaActionPerformed(evt);
-            }
-        });
-
-        jBconsulta.setText("CONSULTAR");
-        jBconsulta.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBconsultaActionPerformed(evt);
             }
         });
 
@@ -90,10 +75,8 @@ public class VPanelCrudJornadas extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(36, 36, 36)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jBbaja, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jBconsulta, javax.swing.GroupLayout.DEFAULT_SIZE, 326, Short.MAX_VALUE)
-                    .addComponent(jBalta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jBalta, javax.swing.GroupLayout.PREFERRED_SIZE, 326, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(118, 118, 118)
                         .addComponent(jLabel2))
@@ -111,11 +94,7 @@ public class VPanelCrudJornadas extends javax.swing.JFrame {
                 .addComponent(jLabel2)
                 .addGap(18, 18, 18)
                 .addComponent(jBalta)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jBbaja)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jBconsulta)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(13, Short.MAX_VALUE))
         );
 
         pack();
@@ -132,30 +111,6 @@ public class VPanelCrudJornadas extends javax.swing.JFrame {
             Logger.getLogger(VPanelCrudJornadas.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jBaltaActionPerformed
-
-    private void jBbajaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBbajaActionPerformed
-        // ACTION BAJA
-        try {
-            Controladora.VbajaJorandas();
-            Controladora.cierraTipoVentanas(tipoVentana);
-        } catch (CierreVError CVE) {
-            JOptionPane.showMessageDialog(this, CVE.getMessage());
-        } catch (Exception ex) {
-            Logger.getLogger(VPanelCrudJornadas.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }//GEN-LAST:event_jBbajaActionPerformed
-
-    private void jBconsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBconsultaActionPerformed
-        // ACTION CONSULTA
-        try {
-            Controladora.VConsultaJornadas();
-            Controladora.cierraTipoVentanas(tipoVentana);
-        } catch (CierreVError CVE) {
-            JOptionPane.showMessageDialog(this, CVE.getMessage());
-        } catch (Exception ex) {
-            Logger.getLogger(VPanelCrudJornadas.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }//GEN-LAST:event_jBconsultaActionPerformed
 
     private void jMretrocederActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMretrocederActionPerformed
         // ARCHIVO / RETROCEDER:
@@ -195,11 +150,6 @@ public class VPanelCrudJornadas extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(VPanelCrudJornadas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -211,8 +161,6 @@ public class VPanelCrudJornadas extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBalta;
-    private javax.swing.JButton jBbaja;
-    private javax.swing.JButton jBconsulta;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JMenu jMenu1;

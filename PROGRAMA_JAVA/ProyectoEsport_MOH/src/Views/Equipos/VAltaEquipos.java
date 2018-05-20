@@ -1,14 +1,10 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Views.Equipos;
 
 import proyectoesport_moh.Controladora;
 import Exceptions.*;
 import ModelUML.Duenio;
 import Views.Equipos.*;
+import java.awt.Color;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
@@ -31,6 +27,7 @@ public class VAltaEquipos extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         this.setResizable(false);
+        this.getContentPane().setBackground(Color.CYAN);
     }
 
     public VAltaEquipos(ArrayList<Duenio> listaDuenios) {
@@ -38,6 +35,7 @@ public class VAltaEquipos extends javax.swing.JFrame {
         this.tipoVentana = "VAltaEquipos";
         this.setLocationRelativeTo(null);
         this.setResizable(false);
+        this.getContentPane().setBackground(Color.CYAN);
 
         rellenarComboListaDuenios(listaDuenios);
     }
@@ -256,6 +254,7 @@ public class VAltaEquipos extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
             public void run() {
                 new VAltaEquipos().setVisible(true);
             }
@@ -280,7 +279,16 @@ public class VAltaEquipos extends javax.swing.JFrame {
     private javax.swing.JTextField jTpresupuesto;
     // End of variables declaration//GEN-END:variables
 
-    // FUNCIONES PROPIAS DE LA VISTA
+    /**
+     * FUNCIONES PROPIAS DE LA VISTA
+     * 
+     * RESETEAR CAMPOS
+     * REMOVER ITEMS DE COMBO
+     * CONSULTAR DUEÑOS Y RELLENAR UN COMBO 
+     *
+     * @throws SQLException
+     * @throws ConexionProblemas
+     */
     public void resetearCampos() throws SQLException, ConexionProblemas {
         jTnombre.setText(null);
         jTpresupuesto.setText(null);
@@ -290,11 +298,16 @@ public class VAltaEquipos extends javax.swing.JFrame {
         jComboBduenios.removeAllItems();
         ArrayList<Duenio> listaDuenios = Controladora.consultarDueniosParaCombo();
         rellenarComboListaDuenios(listaDuenios);
-        
+
     }
 
+    /**
+     * FOR QUE RECORRE EL ARRAYLIST DE DUEÑOS Y QUE PERMITE RELLENAR EL COMBO
+     * 
+     * @param listaDuenios 
+     */
     private void rellenarComboListaDuenios(ArrayList<Duenio> listaDuenios) {
-        
+
         for (int i = 0; i < listaDuenios.size(); i++) {
 
             jComboBduenios.addItem(listaDuenios.get(i).getDni() + " " + listaDuenios.get(i).getNombre());

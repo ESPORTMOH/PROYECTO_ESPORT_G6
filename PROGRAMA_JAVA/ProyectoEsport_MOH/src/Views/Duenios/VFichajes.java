@@ -1,14 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Views.Duenios;
 
 import Exceptions.CierreVError;
 import Exceptions.ConexionProblemas;
-import ModelUML.Duenio;
 import ModelUML.Jugador;
+import java.awt.Color;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
@@ -23,8 +18,6 @@ import proyectoesport_moh.Controladora;
 public class VFichajes extends javax.swing.JFrame {
 
     private final String tipoVentana;
-    private final int nJugadores = 6;
-
 
     /**
      * Creates new form VFichajes
@@ -34,7 +27,7 @@ public class VFichajes extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         this.setResizable(false);
-        configPredeterminadaVentana();
+        this.getContentPane().setBackground(Color.CYAN);
     }
 
     /**
@@ -51,8 +44,6 @@ public class VFichajes extends javax.swing.JFrame {
         jComboBoxJugadores = new javax.swing.JComboBox<>();
         jLabel2 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
-        jLabel3 = new javax.swing.JLabel();
-        jTcontadorJugadores = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
 
@@ -85,29 +76,29 @@ public class VFichajes extends javax.swing.JFrame {
             }
         });
 
-        jLabel3.setText("Nº Fichajes disponibles");
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel1)
+                .addComponent(jBretroceder)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jBretroceder)
-                        .addGap(43, 43, 43)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(jLabel3)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(jTcontadorJugadores, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addComponent(jComboBoxJugadores, javax.swing.GroupLayout.PREFERRED_SIZE, 291, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(141, Short.MAX_VALUE))
+                            .addComponent(jComboBoxJugadores, javax.swing.GroupLayout.PREFERRED_SIZE, 291, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(jLabel2)
+                                .addGap(53, 53, 53))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(61, 61, 61)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(33, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addGap(49, 49, 49))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -118,10 +109,6 @@ public class VFichajes extends javax.swing.JFrame {
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jComboBoxJugadores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(jTcontadorJugadores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(33, 33, 33)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jBretroceder)
@@ -152,7 +139,7 @@ public class VFichajes extends javax.swing.JFrame {
             Controladora.reiniciarVistaFichaje();
         } catch (Exception ex) {
             Logger.getLogger(VFichajes.class.getName()).log(Level.SEVERE, null, ex);
-            JOptionPane.showMessageDialog(this, ex.getMessage() +" " +ex.getClass() );
+            JOptionPane.showMessageDialog(this, ex.getMessage() + " " + ex.getClass());
         }
 
 
@@ -211,30 +198,22 @@ public class VFichajes extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> jComboBoxJugadores;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JTextField jTcontadorJugadores;
     // End of variables declaration//GEN-END:variables
 
-    // FUNCIONES PROPIAS DE LA VISTA
-    // RELLENAR COMBO 
+    /**
+     * FUNCIONES PROPIAS DE LA VISTA
+     *
+     * RELLENAR COMBO
+     *
+     * @param listaJugador
+     */
     private void rellenarComboListaJugadores(ArrayList<Jugador> listaJugador) {
 
         for (int i = 0; i < listaJugador.size(); i++) {
 
-            jComboBoxJugadores.addItem(listaJugador.get(i).getDni()+" "+listaJugador.get(i).getNombre() + " " + listaJugador.get(i).getApellido() + " - " + listaJugador.get(i).getSueldo() + "€");
+            jComboBoxJugadores.addItem(listaJugador.get(i).getDni() + " " + listaJugador.get(i).getNombre() + " " + listaJugador.get(i).getApellido() + " - " + listaJugador.get(i).getSueldo() + "€");
         }
         jComboBoxJugadores.setSelectedIndex(-1);
     }
 
-    private void configPredeterminadaVentana() {
-        jTcontadorJugadores.setEnabled(false);
-        
-        preestablecerValores();
-    }
-
-    private void preestablecerValores() {
-        jTcontadorJugadores.setText(Integer.toString(nJugadores));
-       
-
-    }
 }

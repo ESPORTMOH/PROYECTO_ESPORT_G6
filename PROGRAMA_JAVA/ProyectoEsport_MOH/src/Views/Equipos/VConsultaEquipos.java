@@ -1,14 +1,10 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Views.Equipos;
 
 import proyectoesport_moh.Controladora;
 import Exceptions.*;
 import Views.Duenios.VPanelCrudDuenios;
 import Views.Equipos.*;
+import java.awt.Color;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -30,6 +26,7 @@ public class VConsultaEquipos extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         this.setResizable(false);
         configPredeterminadaVentana();
+        this.getContentPane().setBackground(Color.CYAN);
 
     }
 
@@ -246,6 +243,7 @@ public class VConsultaEquipos extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jBretrocederActionPerformed
 
+    // ACTION RESETEAR
     private void jBresetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBresetActionPerformed
         resetearCamposParaConsultarDeNuevo();
     }//GEN-LAST:event_jBresetActionPerformed
@@ -278,6 +276,7 @@ public class VConsultaEquipos extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
             public void run() {
                 new VConsultaEquipos().setVisible(true);
             }
@@ -306,7 +305,17 @@ public class VConsultaEquipos extends javax.swing.JFrame {
     private javax.swing.JTextField jTpresupuesto;
     // End of variables declaration//GEN-END:variables
 
-// FUNCIONES PROPIAS DE LA VISTA
+    /**
+     * FUNCIONES PROPIAS DE LA VISTA
+     *
+     * @param nombre
+     * @param presupuesto
+     * @param anioFundacion
+     * @param ciudad
+     * @param nombreEstadio
+     * @param dni
+     * @param nombreDuenio
+     */
     public void rellenarCamposVentana(String nombre, Double presupuesto, String anioFundacion, String ciudad, String nombreEstadio, String dni, String nombreDuenio) {
         jTnombre.setText(nombre);
         jTpresupuesto.setEnabled(true);
@@ -342,8 +351,7 @@ public class VConsultaEquipos extends javax.swing.JFrame {
         jTdniDuenio.setText(null);
         jTdniDuenio.setEnabled(true);
         jTnombreDuenio.setText(null);
-  
-        
+
         configPredeterminadaVentana();
     }
 }

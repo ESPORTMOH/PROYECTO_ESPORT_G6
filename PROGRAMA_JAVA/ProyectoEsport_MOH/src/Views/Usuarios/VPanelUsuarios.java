@@ -1,9 +1,8 @@
 package Views.Usuarios;
 
-import Views.Administradores.*;
 import proyectoesport_moh.Controladora;
 import Exceptions.*;
-import Views.Duenios.VPanelDuenios;
+import java.awt.Color;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -23,6 +22,7 @@ public class VPanelUsuarios extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         this.setResizable(false);
+        this.getContentPane().setBackground(Color.CYAN);
     }
 
     /**
@@ -159,6 +159,7 @@ public class VPanelUsuarios extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
             public void run() {
                 new VPanelUsuarios().setVisible(true);
             }

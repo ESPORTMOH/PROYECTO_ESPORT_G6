@@ -29,6 +29,7 @@ public class VAltaAdmins extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         this.setResizable(false);
+        this.getContentPane().setBackground(Color.CYAN);
     }
 
     /**
@@ -211,6 +212,7 @@ public class VAltaAdmins extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
             public void run() {
                 new VAltaAdmins().setVisible(true);
             }

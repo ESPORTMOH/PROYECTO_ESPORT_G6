@@ -7,6 +7,7 @@ package Views.Administradores;
 
 import proyectoesport_moh.Controladora;
 import Exceptions.*;
+import java.awt.Color;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -34,6 +35,7 @@ public class VBajaAdmins extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         this.setResizable(false);
         configPredeterminadaVentana();
+        this.getContentPane().setBackground(Color.CYAN);
     }
 
     /**
@@ -76,12 +78,6 @@ public class VBajaAdmins extends javax.swing.JFrame {
         jBbaja.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBbajaActionPerformed(evt);
-            }
-        });
-
-        jTdni.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTdniActionPerformed(evt);
             }
         });
 
@@ -215,10 +211,6 @@ public class VBajaAdmins extends javax.swing.JFrame {
         resetearCamposParaConsultarDeNuevo();
     }//GEN-LAST:event_jBresetActionPerformed
 
-    private void jTdniActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTdniActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTdniActionPerformed
-
     private void jBretrocederActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBretrocederActionPerformed
         // ACTION BOTON RETROCEDER      
         try {
@@ -261,6 +253,7 @@ public class VBajaAdmins extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
             public void run() {
                 new VBajaAdmins().setVisible(true);
             }

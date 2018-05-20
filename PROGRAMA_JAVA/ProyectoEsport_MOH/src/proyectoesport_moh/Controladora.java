@@ -13,18 +13,15 @@ import Views.Usuarios.*;
 import Views.Jornada.*;
 import Views.Partido.VPartido;
 import java.sql.*;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import javax.swing.JFrame;
 
-//import javax.swing.JProgressBar;
 /**
  * @author MIGUEL OLMO HERNANDO
  * @proyect_name PROYECTO DAW 2017 - 2018 - GRUPO 6
- * @version Fase4 v10
+ * @version Fase 4 v10
  * @since 2018
  */
 public class Controladora {
@@ -84,8 +81,6 @@ public class Controladora {
     // VISTAS JORNADAS
     private static VPanelCrudJornadas vpanelCrudJornadas;
     private static VAltaJornadas vAltaJornadas;
-    private static VBajaJornadas vBajaJornadas;
-    private static VConsultaJornadas vConsultarJornadas;
 
     // VISTAS FICHAJES
     private static VFichajes vFichajes;
@@ -266,7 +261,7 @@ public class Controladora {
 
     public static void reiniciarVistaFichaje() {
         vFichajes.dispose();
-        abrirFichajes(); 
+        abrirFichajes();
     }
 
     // ABRIR VISTA ULTIMA JORNADA
@@ -450,17 +445,7 @@ public class Controladora {
         vAltaJornadas.setVisible(true);
     }
 
-    // BAJA JORNADAS
-    public static void VbajaJorandas() {
-        vBajaJornadas = new VBajaJornadas();
-        vBajaJornadas.setVisible(true);
-    }
 
-    // CONSULTA JORNADAS
-    public static void VConsultaJornadas() {
-        vConsultarJornadas = new VConsultaJornadas();
-        vConsultarJornadas.setVisible(true);
-    }
 
     /**
      * FIN ABRIR PANELES GESTION / CALENDARIO > JORNADAS
@@ -581,14 +566,6 @@ public class Controladora {
             }
             case "VAltaJornadas": {
                 vAltaJornadas.dispose();
-                break;
-            }
-            case "VBajaJornadas": {
-                vBajaJornadas.dispose();
-                break;
-            }
-            case "VConsultarJornadas": {
-                vConsultarJornadas.dispose();
                 break;
             }
             case "VCrudJugadores": {
@@ -1446,8 +1423,8 @@ public class Controladora {
                 Boolean existe = jornadaBD.localizarTemporadaEnJornadaBD(numTemporada);
 
                 if (existe) {
-                    vBajaJornadas.mensajeRespuesta("Existe temporada introducida");
-                    vBajaJornadas.actibarBotonTrasRespuesta();
+                    //vBajaJornadas.mensajeRespuesta("Existe temporada introducida");
+                    //vBajaJornadas.actibarBotonTrasRespuesta();
                 }
                 break;
             }

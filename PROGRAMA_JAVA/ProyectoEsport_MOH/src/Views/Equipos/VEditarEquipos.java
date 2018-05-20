@@ -1,12 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Views.Equipos;
 
 import proyectoesport_moh.Controladora;
 import Exceptions.*;
+import java.awt.Color;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -28,6 +24,7 @@ public class VEditarEquipos extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         this.setResizable(false);
         configPredeterminadaVentana();
+        this.getContentPane().setBackground(Color.CYAN);
     }
 
     /**
@@ -188,12 +185,12 @@ public class VEditarEquipos extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jBeditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBeditarActionPerformed
-    // ACTION BOTON EDITAR
+        // ACTION BOTON EDITAR
         try {
             if (jTciudad.getText().isEmpty() | jTestadio.getText().isEmpty()) {
                 throw new DuenioPassVacia();
             } else {
-                Controladora.pedirActualizarEquipo(jTnombre.getText(),jTciudad.getText(), jTestadio.getText());
+                Controladora.pedirActualizarEquipo(jTnombre.getText(), jTciudad.getText(), jTestadio.getText());
                 JOptionPane.showMessageDialog(this, "El Equipo ha sido "
                         + "\neditado correctamente");
                 resetearCamposParaConsultarDeNuevo();
@@ -279,6 +276,7 @@ public class VEditarEquipos extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
             public void run() {
                 new VEditarEquipos().setVisible(true);
             }
@@ -303,7 +301,15 @@ public class VEditarEquipos extends javax.swing.JFrame {
     private javax.swing.JTextField jTpresupuesto;
     // End of variables declaration//GEN-END:variables
 
-// FUNCIONES PROPIAS DE LA VISTA
+    /**
+     * FUNCIONES PROPIAS DE LA VISTA
+     *
+     * @param nombre
+     * @param presupuesto
+     * @param anioFundacion
+     * @param ciudad
+     * @param nombreEstadio
+     */
     public void rellenarCamposVentana(String nombre, Double presupuesto, String anioFundacion, String ciudad, String nombreEstadio) {
         jTnombre.setEnabled(false);
         jTnombre.setText(nombre);

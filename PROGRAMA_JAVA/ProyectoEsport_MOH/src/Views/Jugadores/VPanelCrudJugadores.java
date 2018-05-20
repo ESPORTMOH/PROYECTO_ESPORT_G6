@@ -3,6 +3,7 @@ package Views.Jugadores;
 import proyectoesport_moh.Controladora;
 import Exceptions.*;
 import Views.Equipos.VPanelCrudEquipos;
+import java.awt.Color;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -22,6 +23,7 @@ public class VPanelCrudJugadores extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         this.setResizable(false);
+        this.getContentPane().setBackground(Color.CYAN);
     }
 
     /**

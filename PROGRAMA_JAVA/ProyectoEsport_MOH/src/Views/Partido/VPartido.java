@@ -2,6 +2,7 @@ package Views.Partido;
 
 import Exceptions.CierreVError;
 import ModelUML.Equipo;
+import java.awt.Color;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -24,18 +25,28 @@ public class VPartido extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         this.setResizable(false);
-        configPredeterminadaVentana();
+        this.getContentPane().setBackground(Color.CYAN);
     }
 
+    /**
+     * SOBRECARGO EL CONSTRUCTOR
+     *
+     * @param listaEquipos
+     */
     public VPartido(ArrayList<Equipo> listaEquipos) {
         this.tipoVentana = "VPartidos";
         initComponents();
         this.setLocationRelativeTo(null);
         this.setResizable(false);
-        configPredeterminadaVentana();
         rellenarCombo(listaEquipos);
+        this.getContentPane().setBackground(Color.CYAN);
     }
 
+    /**
+     * RELLENO EL COMBO AL CARGAR LA VISTA
+     *
+     * @param listaEquipos
+     */
     public void rellenarCombo(ArrayList<Equipo> listaEquipos) {
         for (int i = 0; i < listaEquipos.size(); i++) {
             jCelocal.addItem(listaEquipos.get(i).getNombre());
@@ -260,16 +271,21 @@ public class VPartido extends javax.swing.JFrame {
     private void jBregistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBregistrarActionPerformed
         try {
             // REGISTRAR RESULTADO DEL PARTID     
-            
-            Controladora.registrarDatosDelPartido(
-                    jTtemporada.getText(),
-                    jTjornada.getText(),
-                    jDateFechaPartido.getDate(),
-                    jCelocal.getSelectedItem().toString(),
-                    jTplocal.getText(),
-                    jComboVisitante.getSelectedItem().toString(),
-                    jTpvisitante.getText()
-            );
+
+            if (jTtemporada.getText().isEmpty() | jTjornada.getText().isEmpty() | jTplocal.getText().isEmpty() | jTpvisitante.getText().isEmpty()) {
+                JOptionPane.showMessageDialog(this, "Todos los campos son obligatorios");
+            } else {
+                Controladora.registrarDatosDelPartido(
+                        jTtemporada.getText(),
+                        jTjornada.getText(),
+                        jDateFechaPartido.getDate(),
+                        jCelocal.getSelectedItem().toString(),
+                        jTplocal.getText(),
+                        jComboVisitante.getSelectedItem().toString(),
+                        jTpvisitante.getText()
+                );
+            }
+
         } catch (Exception ex) {
             Logger.getLogger(VPartido.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -321,6 +337,7 @@ public class VPartido extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
             public void run() {
                 new VPartido().setVisible(true);
             }
@@ -351,15 +368,11 @@ public class VPartido extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     // FUNCIONES PROPIAS DE LA VISTA
-    public void configPredeterminadaVentana() {
-
-    }
 
     private void resetearCamposParaConsultarDeNuevo() {
         jTjornada.setText(null);
         jTtemporada.setText(null);
         jDateFechaPartido.setDate(null);
         jTpvisitante.setText(null);
-        
     }
 }

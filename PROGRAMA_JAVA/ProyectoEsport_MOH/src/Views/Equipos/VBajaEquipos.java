@@ -1,16 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Views.Equipos;
 
 import proyectoesport_moh.Controladora;
 import Exceptions.*;
 import Views.Equipos.*;
-import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.awt.Color;
 import javax.swing.JOptionPane;
 
 /**
@@ -30,6 +23,7 @@ public class VBajaEquipos extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         this.setResizable(false);
         configPredeterminadaVentana();
+        this.getContentPane().setBackground(Color.CYAN);
 
     }
 
@@ -226,6 +220,7 @@ public class VBajaEquipos extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jBconsultarActionPerformed
 
+    // ACTION RETROCEDER
     private void jBretrocederActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBretrocederActionPerformed
         try {
             Controladora.abreTipoVentanas(tipoVentana);
@@ -270,6 +265,7 @@ public class VBajaEquipos extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
             public void run() {
                 new VBajaEquipos().setVisible(true);
             }
@@ -293,8 +289,16 @@ public class VBajaEquipos extends javax.swing.JFrame {
     private javax.swing.JTextField jTnombre;
     private javax.swing.JTextField jTpresupuesto;
     // End of variables declaration//GEN-END:variables
-
-    // FUNCIONES PROPIAS DE LA VISTA
+   
+    /**
+     * FUNCIONES PROPIAS DE LA VISTA
+     * 
+     * @param nombre
+     * @param presupuesto
+     * @param anioFundacion
+     * @param ciudad
+     * @param nombreEstadio 
+     */
     public void rellenarCamposVentana(String nombre, Double presupuesto, String anioFundacion, String ciudad, String nombreEstadio) {
         jTnombre.setText(nombre);
         jTpresupuesto.setText(presupuesto.toString());

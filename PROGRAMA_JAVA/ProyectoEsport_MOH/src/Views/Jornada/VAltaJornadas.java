@@ -1,22 +1,11 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Views.Jornada;
 
 import Exceptions.CampoTempVacio;
 import Exceptions.CierreVError;
-import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.Container;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.BorderFactory;
-import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-import javax.swing.JProgressBar;
-import javax.swing.border.Border;
 import proyectoesport_moh.Controladora;
 
 /**
@@ -35,7 +24,7 @@ public class VAltaJornadas extends javax.swing.JFrame {
         this.tipoVentana = "VAltaJornadas";
         this.setLocationRelativeTo(null);
         this.setResizable(false);
-        configPredeterminadaVentana();
+        this.getContentPane().setBackground(Color.CYAN);
     }
 
     /**
@@ -53,7 +42,6 @@ public class VAltaJornadas extends javax.swing.JFrame {
         jTntemporada = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jBretroceder = new javax.swing.JButton();
-        jLaviso = new javax.swing.JLabel();
 
         jButton1.setText("jButton1");
 
@@ -82,8 +70,6 @@ public class VAltaJornadas extends javax.swing.JFrame {
             }
         });
 
-        jLaviso.setText("Generando, espere un momento...");
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -98,12 +84,9 @@ public class VAltaJornadas extends javax.swing.JFrame {
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLaviso)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel2)
-                                .addGap(32, 32, 32)
-                                .addComponent(jTntemporada, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jLabel2)
+                        .addGap(32, 32, 32)
+                        .addComponent(jTntemporada, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(66, 66, 66))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(35, Short.MAX_VALUE)
@@ -115,13 +98,11 @@ public class VAltaJornadas extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(36, 36, 36)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTntemporada, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2))
-                .addGap(24, 24, 24)
-                .addComponent(jLaviso)
-                .addGap(36, 36, 36)
+                .addGap(22, 22, 22)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jBgenerarTemporada)
                     .addComponent(jBretroceder))
@@ -137,7 +118,6 @@ public class VAltaJornadas extends javax.swing.JFrame {
             if (jTntemporada.getText().isEmpty()) {
                 throw new CampoTempVacio();
             } else {
-                cargarAvisoBarra();
                 Controladora.generarJornadas(jTntemporada.getText());
 
             }
@@ -187,6 +167,7 @@ public class VAltaJornadas extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
             public void run() {
                 new VAltaJornadas().setVisible(true);
             }
@@ -199,17 +180,9 @@ public class VAltaJornadas extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLaviso;
     private javax.swing.JTextField jTntemporada;
     // End of variables declaration//GEN-END:variables
 
-    // FUNCIONES PROPIAS DE LA VISTA
-    private void configPredeterminadaVentana() {
-        jLaviso.setVisible(false);
-    }
-    
-    private void cargarAvisoBarra(){
-        jLaviso.setVisible(true);
-    }
+
 
 }

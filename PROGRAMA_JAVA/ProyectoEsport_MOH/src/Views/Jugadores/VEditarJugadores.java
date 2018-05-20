@@ -2,6 +2,7 @@ package Views.Jugadores;
 
 import proyectoesport_moh.Controladora;
 import Exceptions.*;
+import java.awt.Color;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -24,6 +25,7 @@ public class VEditarJugadores extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         this.setResizable(false);
         configPredeterminadaVentana();
+        this.getContentPane().setBackground(Color.CYAN);
     }
 
     /**
@@ -339,7 +341,18 @@ public class VEditarJugadores extends javax.swing.JFrame {
     private javax.swing.JTextField jTsueldo;
     // End of variables declaration//GEN-END:variables
 
-    // FUNCIONES PROPIAS DE LA VISTA
+    /**
+     * FUNCIONES PROPIAS DE LA VISTA
+     * 
+     * @param dni
+     * @param nombre
+     * @param apellido
+     * @param nickname
+     * @param sueldo
+     * @param fechaNacimiento
+     * @param nacionalidad
+     * @param posicion 
+     */
     public void rellenarCamposVentana(String dni, String nombre, String apellido, String nickname, Double sueldo, Date fechaNacimiento, String nacionalidad, String posicion) {
         jTdni.setText(dni);
         jTnombre.setText(nombre);
