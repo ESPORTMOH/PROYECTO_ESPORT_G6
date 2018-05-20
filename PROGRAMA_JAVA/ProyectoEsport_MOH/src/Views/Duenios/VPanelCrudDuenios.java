@@ -2,6 +2,7 @@ package Views.Duenios;
 
 import Exceptions.CierreVError;
 import Views.Administradores.VPanelCrudAdministradores;
+import java.awt.Color;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import proyectoesport_moh.Controladora;
@@ -9,7 +10,7 @@ import proyectoesport_moh.Controladora;
 import javax.swing.JOptionPane;
 
 /**
- * @author MIGUEL
+ * @author MIGUEL OLMO HERNANDO
  */
 public class VPanelCrudDuenios extends javax.swing.JFrame {
 
@@ -23,6 +24,7 @@ public class VPanelCrudDuenios extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         this.setResizable(false);
+        this.getContentPane().setBackground(Color.CYAN);
     }
 
     /**
@@ -226,6 +228,7 @@ public class VPanelCrudDuenios extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
             public void run() {
                 new VPanelCrudDuenios().setVisible(true);
             }

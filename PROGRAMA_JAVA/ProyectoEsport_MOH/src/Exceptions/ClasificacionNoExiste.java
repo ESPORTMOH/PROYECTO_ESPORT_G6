@@ -1,7 +1,7 @@
 package Exceptions;
 
 /**
- * @author 1gdaw12
+ * @author MIGUEL OLMO HERNANDO
  */
 
 public class ClasificacionNoExiste extends Exception{
@@ -11,16 +11,28 @@ public class ClasificacionNoExiste extends Exception{
 
     }
 
+    /**
+     * 
+     * @param mensaje 
+     */
     public ClasificacionNoExiste(String mensaje) {
         ErroresDesconocidos.mensaje = mensaje;
     }
 
+    /**
+     * 
+     * @return mensaje
+     */
     public String getMensaje() {
         mensaje = "La Clasificacion introducida no"
               + "\nexiste en la Base de Datos";
         return mensaje;
     }
 
+    /**
+     * 
+     * @param mensaje 
+     */
     public void setMensaje(String mensaje) {
         ErroresDesconocidos.mensaje = mensaje;
     }

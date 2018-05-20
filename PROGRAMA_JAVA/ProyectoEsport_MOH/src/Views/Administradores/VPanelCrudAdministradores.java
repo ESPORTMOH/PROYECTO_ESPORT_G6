@@ -1,26 +1,28 @@
 package Views.Administradores;
 
 import Exceptions.CierreVError;
+import java.awt.Color;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import proyectoesport_moh.Controladora;
 import javax.swing.JOptionPane;
 
 /**
- * @author MIGUEL
+ * @author MIGUEL OLMO HERNANDO
  */
 public class VPanelCrudAdministradores extends javax.swing.JFrame {
 
     private final String tipoVentana;
 
     /**
-     * Creates new form VAdministracion
+     * Creates new form VPanelCrudAdministracion
      */
     public VPanelCrudAdministradores() {
         this.tipoVentana = "VCrudAdmins";
         initComponents();
         this.setLocationRelativeTo(null);
         this.setResizable(false);
+        this.getContentPane().setBackground(Color.CYAN);
     }
 
     /**
@@ -221,6 +223,7 @@ public class VPanelCrudAdministradores extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
             public void run() {
                 new VPanelCrudAdministradores().setVisible(true);
             }

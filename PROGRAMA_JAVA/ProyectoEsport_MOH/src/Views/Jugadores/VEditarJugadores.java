@@ -2,6 +2,7 @@ package Views.Jugadores;
 
 import proyectoesport_moh.Controladora;
 import Exceptions.*;
+import java.awt.Color;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -9,7 +10,7 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author MIGUEL
+ * @author MIGUEL OLMO HERNANDO
  */
 public class VEditarJugadores extends javax.swing.JFrame {
 
@@ -24,6 +25,7 @@ public class VEditarJugadores extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         this.setResizable(false);
         configPredeterminadaVentana();
+        this.getContentPane().setBackground(Color.CYAN);
     }
 
     /**
@@ -252,12 +254,12 @@ public class VEditarJugadores extends javax.swing.JFrame {
             if (jTdni.getText().isEmpty()) {
                 throw new CampoDniVacio();
             } else {
-                Controladora.localizarJugadorEnBD(jTdni.getText());
+                Controladora.localizarJugadorEnBD(tipoVentana,jTdni.getText());
             }
         } catch (CampoDniVacio CDV) {
             JOptionPane.showMessageDialog(this, CDV.getMensaje());
         } catch (JugadorNoExiste JNE) {
-            JOptionPane.showMessageDialog(this, JNE.getMensaje());
+          JOptionPane.showMessageDialog(this, JNE.getMensaje());
         } catch (Exception E) {
             JOptionPane.showMessageDialog(this, E.getMessage());
         }
@@ -270,7 +272,7 @@ public class VEditarJugadores extends javax.swing.JFrame {
                 throw new JugadorNaciPosiVacia();
             } else {
                 Controladora.pedirEditarJugador(jTdni.getText(),jTnacionalidad.getText(), jTposicion.getText());
-                JOptionPane.showMessageDialog(this, "El Equipo ha sido "
+                JOptionPane.showMessageDialog(this, "El Jugador ha sido "
                         + "\neditado correctamente");
                 resetearCamposParaConsultarDeNuevo();
             }
@@ -339,9 +341,20 @@ public class VEditarJugadores extends javax.swing.JFrame {
     private javax.swing.JTextField jTsueldo;
     // End of variables declaration//GEN-END:variables
 
-    // FUNCIONES PROPIAS DE LA VISTA
+    /**
+     * FUNCIONES PROPIAS DE LA VISTA
+     * 
+     * @param dni
+     * @param nombre
+     * @param apellido
+     * @param nickname
+     * @param sueldo
+     * @param fechaNacimiento
+     * @param nacionalidad
+     * @param posicion 
+     */
     public void rellenarCamposVentana(String dni, String nombre, String apellido, String nickname, Double sueldo, Date fechaNacimiento, String nacionalidad, String posicion) {
-        jTnombre.setText(dni);
+        jTdni.setText(dni);
         jTnombre.setText(nombre);
         jTapellido.setText(apellido);
         jTnickname.setText(nickname);
@@ -366,7 +379,7 @@ public class VEditarJugadores extends javax.swing.JFrame {
     }
 
     public void resetearCamposParaConsultarDeNuevo() {
-        jTnombre.setText(null);
+        jTdni.setText(null);
         jTnombre.setText(null);
         jTnombre.setText(null);
         jTapellido.setText(null);

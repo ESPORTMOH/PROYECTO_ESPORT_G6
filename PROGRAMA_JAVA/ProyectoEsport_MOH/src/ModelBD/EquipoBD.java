@@ -12,13 +12,20 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 /**
- * @author MIGUEL
+ * @author MIGUEL OLMO HERNANDO
  */
 public class EquipoBD extends GenericoBD {
 
     private Connection con;
 
-    // INSERTAR EQUIPO
+    /**
+     * INSERTAR EQUIPO
+     *
+     * @param equipo
+     * @throws SQLException
+     * @throws ClassNotFoundException
+     * @throws Exception
+     */
     public void insertarEquipoBD(Equipo equipo) throws SQLException, ClassNotFoundException, Exception {
 
         GenericoBD genericoBD = new GenericoBD();
@@ -31,13 +38,20 @@ public class EquipoBD extends GenericoBD {
         pS.setString(4, equipo.getCiudad());
         pS.setString(5, equipo.getNombreEstadio());
         pS.setInt(6, equipo.getDuenio().getCodDuenio());
-         
+
         pS.executeUpdate();
 
         cerrarConexion(con);
     }
 
-    // LOCALIZAR EQUIPO
+    /**
+     * LOCALIZAR EQUIPO
+     *
+     * @param nombre
+     * @return equipo
+     * @throws SQLException
+     * @throws Exception
+     */
     public Equipo localizarEquipo(String nombre) throws SQLException, Exception {
 
         GenericoBD genericoBD = new GenericoBD();
@@ -51,26 +65,34 @@ public class EquipoBD extends GenericoBD {
 
         pS.setString(1, nombre.toUpperCase());
 
-            ResultSet datosRS = pS.executeQuery();
-            if (!datosRS.next()) {
-                throw new EquipoNoExiste();
-            } else {
-                equipo.setCodEquipo(datosRS.getInt("codEquipo"));
-                equipo.setNombre(datosRS.getString("nombre"));
-                equipo.setPresupuesto(datosRS.getDouble("presupuesto"));
-                equipo.setAnioFundacion(datosRS.getString("anioFundacion"));
-                equipo.setCiudad(datosRS.getString("ciudad"));
-                equipo.setNombreEstadio(datosRS.getString("nombreEstadio"));
-                equipo.setDuenio(new Duenio(datosRS.getInt("codDuenio")));
-                equipo.getDuenio().setDni(datosRS.getString("dni"));
-                equipo.getDuenio().setNombre(datosRS.getString("nombre"));
-            }
-        
+        ResultSet datosRS = pS.executeQuery();
+        if (!datosRS.next()) {
+            throw new EquipoNoExiste();
+        } else {
+            equipo.setCodEquipo(datosRS.getInt("codEquipo"));
+            equipo.setNombre(datosRS.getString("nombre"));
+            equipo.setPresupuesto(datosRS.getDouble("presupuesto"));
+            equipo.setAnioFundacion(datosRS.getString("anioFundacion"));
+            equipo.setCiudad(datosRS.getString("ciudad"));
+            equipo.setNombreEstadio(datosRS.getString("nombreEstadio"));
+            equipo.setDuenio(new Duenio(datosRS.getInt("codDuenio")));
+            equipo.getDuenio().setDni(datosRS.getString("dni"));
+            equipo.getDuenio().setNombre(datosRS.getString("nombre"));
+        }
+
         cerrarConexion(con);
         return equipo;
     }
-    
-    // EDITAR EQUIPO
+
+    /**
+     * EDITAR EQUIPO
+     *
+     * @param nombre
+     * @param ciudad
+     * @param estadio
+     * @throws SQLException
+     * @throws ConexionProblemas
+     */
     public void ejecutarModificacionBDEquipo(String nombre, String ciudad, String estadio) throws SQLException, ConexionProblemas {
 
         GenericoBD genericoBD = new GenericoBD();
@@ -91,7 +113,13 @@ public class EquipoBD extends GenericoBD {
 
     }
 
-    // ELIMINAR EQUIPO
+    /**
+     * ELIMINAR EQUIPO
+     *
+     * @param nombre
+     * @throws SQLException
+     * @throws ConexionProblemas
+     */
     public void eliminarDeLaBDEquipo(String nombre) throws SQLException, ConexionProblemas {
 
         GenericoBD genericoBD = new GenericoBD();
@@ -106,16 +134,23 @@ public class EquipoBD extends GenericoBD {
 
     }
 
+    /**
+     * TRAER TODOS LOS EQUIPOS
+     *
+     * @return listaEquipos
+     * @throws SQLException
+     * @throws Exception
+     */
     public ArrayList<Equipo> getAllEquipos() throws SQLException, Exception {
 
         GenericoBD genericoBD = new GenericoBD();
         con = genericoBD.abrirConexion(con);
 
-        ArrayList <Equipo> listaEquipos = new ArrayList();
-        String consultaSQL = "SELECT codequipo, nombre, presupuesto, aniofundacion, ciudad, nombreestadio, codduenio FROM equipo WHERE codequipo <> 41 ";
-        
-        Statement stmt=con.createStatement();
-        
+        ArrayList<Equipo> listaEquipos = new ArrayList();
+        String consultaSQL = "SELECT codequipo, nombre, presupuesto, aniofundacion, ciudad, nombreestadio, codduenio FROM equipo WHERE codequipo <> 1 ";
+
+        Statement stmt = con.createStatement();
+
         ResultSet rs = stmt.executeQuery(consultaSQL);
         while (rs.next()) {
             Equipo eq = new Equipo();
@@ -126,7 +161,7 @@ public class EquipoBD extends GenericoBD {
             eq.setCiudad(rs.getString("ciudad"));
             eq.setNombreEstadio(rs.getString("nombreestadio"));
             eq.setDuenio(new Duenio(rs.getInt("codduenio")));
-  
+
             listaEquipos.add(eq);
         }
 
@@ -135,32 +170,34 @@ public class EquipoBD extends GenericoBD {
         return listaEquipos;
     }
 
+    /**
+     * RECOGER DATOS DE EQUIPO
+     *
+     * @param utilizarDuenioEnSesion
+     * @return eq
+     * @throws SQLException
+     * @throws ConexionProblemas
+     */
     public Equipo recogerDatosEquipo(Duenio utilizarDuenioEnSesion) throws SQLException, ConexionProblemas {
-       
-        Equipo eq = new Equipo();
-        
+
+        Equipo equ = new Equipo();
+
         GenericoBD genericoBD = new GenericoBD();
         con = genericoBD.abrirConexion(con);
 
-        PreparedStatement pS = con.prepareStatement("SELECT * FROM equipo WHERE codDuenio = ?");
-        pS.setInt(1, utilizarDuenioEnSesion.getCodDuenio());
-
-        ResultSet rs =   pS.executeQuery();
+        System.out.println("Codigo del Duenio en sesion: "+utilizarDuenioEnSesion.getCodDuenio()
+                           + " Y el codigo de Login Duenio: " + utilizarDuenioEnSesion.getLogin().getCodLogin());
+        
+        PreparedStatement pS = con.prepareStatement("SELECT CODEQUIPO FROM equipo WHERE codDuenio = ?");
+        pS.setInt(1, utilizarDuenioEnSesion.getCodDuenio());    
+        ResultSet rs = pS.executeQuery();
         while (rs.next()) {
-            eq = new Equipo();
-            eq.setCodEquipo(rs.getInt("codequipo"));
-            eq.setNombre(rs.getString("nombre"));
-            eq.setPresupuesto(rs.getDouble("presupuesto"));
-            //eq.setAnioFundacion(rs.getDate("ANIOFUNDACION"));
-            eq.setCiudad(rs.getString("ciudad"));
-            eq.setNombreEstadio(rs.getString("nombreestadio"));
-            eq.setDuenio(new Duenio(rs.getInt("codduenio")));    
+            equ = new Equipo();
+            equ.setCodEquipo(rs.getInt("CODEQUIPO"));
         }
         cerrarConexion(con);
-        
-        return eq;
+
+        return equ;
     }
-    
-    
-    
+
 }

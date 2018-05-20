@@ -1,7 +1,6 @@
 package Views;
 
-import Exceptions.*;
-import java.awt.HeadlessException;
+import java.awt.Color;
 import javax.swing.JOptionPane;
 import proyectoesport_moh.Controladora;
 
@@ -18,6 +17,7 @@ public class VHome extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         this.setResizable(false);
+        this.getContentPane().setBackground(Color.CYAN);
     }
 
     /**

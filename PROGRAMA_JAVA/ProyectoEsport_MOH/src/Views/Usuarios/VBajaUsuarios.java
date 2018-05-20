@@ -2,6 +2,7 @@ package Views.Usuarios;
 
 import proyectoesport_moh.Controladora;
 import Exceptions.*;
+import java.awt.Color;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -11,7 +12,7 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author MIGUEL
+ * @author MIGUEL OLMO HERNANDO
  */
 public class VBajaUsuarios extends javax.swing.JFrame {
 
@@ -27,6 +28,7 @@ public class VBajaUsuarios extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         this.setResizable(false);
         configPredeterminadaVentana();
+        this.getContentPane().setBackground(Color.CYAN);
     }
 
     /**
@@ -254,6 +256,7 @@ public class VBajaUsuarios extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
             public void run() {
                 new VBajaUsuarios().setVisible(true);
             }
@@ -273,14 +276,22 @@ public class VBajaUsuarios extends javax.swing.JFrame {
     private javax.swing.JTextField jTdni;
     private javax.swing.JTextField jTnombre;
     // End of variables declaration//GEN-END:variables
-
-     // FUNCIONES PROPIAS DE LA VISTA
+    
+    /**
+     * FUNCIONES PROPIAS DE LA VISTA
+     * 
+     * @param dni
+     * @param nombre
+     * @param apellido
+     * @param login 
+     */
     public void rellenarCamposVentana(String dni, String nombre, String apellido, Integer login) {
         jTdni.setText(dni);
         jTnombre.setText(nombre);
         jTapellido.setText(apellido);
         jBbaja.setEnabled(true);
 
+        // GUARDO EL CODIGO LOGIN
         almacenarCodLoginRecibido(login);
     }
 

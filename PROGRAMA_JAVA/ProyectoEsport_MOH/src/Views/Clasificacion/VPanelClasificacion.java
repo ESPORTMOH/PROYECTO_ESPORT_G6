@@ -1,16 +1,15 @@
 package Views.Clasificacion;
 
-import Views.Jornada.*;
-import Views.Administradores.*;
 import Exceptions.CierreVError;
+import java.awt.Color;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import proyectoesport_moh.Controladora;
 import javax.swing.JOptionPane;
 
 /**
- * @author MIGUEL
- */
+ * @author MIGUEL OLMO HERNANDO
+ */ 
 public class VPanelClasificacion extends javax.swing.JFrame {
 
     private final String tipoVentana;
@@ -23,6 +22,7 @@ public class VPanelClasificacion extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         this.setResizable(false);
+        this.getContentPane().setBackground(Color.CYAN);
     }
 
     /**
@@ -36,7 +36,6 @@ public class VPanelClasificacion extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         jBalta = new javax.swing.JButton();
-        jBbaja = new javax.swing.JButton();
         jBconsulta = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
@@ -52,13 +51,6 @@ public class VPanelClasificacion extends javax.swing.JFrame {
         jBalta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBaltaActionPerformed(evt);
-            }
-        });
-
-        jBbaja.setText("DAR DE BAJA");
-        jBbaja.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBbajaActionPerformed(evt);
             }
         });
 
@@ -99,11 +91,10 @@ public class VPanelClasificacion extends javax.swing.JFrame {
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jBalta, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 349, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jBbaja, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 349, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jBconsulta, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 349, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(18, 18, 18))
             .addGroup(layout.createSequentialGroup()
-                .addGap(133, 133, 133)
+                .addGap(143, 143, 143)
                 .addComponent(jLabel3)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -116,8 +107,6 @@ public class VPanelClasificacion extends javax.swing.JFrame {
                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jBalta)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jBbaja)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jBconsulta)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -137,18 +126,6 @@ public class VPanelClasificacion extends javax.swing.JFrame {
             Logger.getLogger(VPanelClasificacion.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jBaltaActionPerformed
-
-    private void jBbajaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBbajaActionPerformed
-        // ACTION BAJA
-        try {
-            Controladora.abrirBajaClasificacion();
-            Controladora.cierraTipoVentanas(tipoVentana);
-        } catch (CierreVError CVE) {
-            JOptionPane.showMessageDialog(this, CVE.getMessage());
-        } catch (Exception ex) {
-            Logger.getLogger(VPanelClasificacion.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }//GEN-LAST:event_jBbajaActionPerformed
 
     private void jBconsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBconsultaActionPerformed
         // ACTION CONSULTA
@@ -205,6 +182,7 @@ public class VPanelClasificacion extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
             public void run() {
                 new VPanelClasificacion().setVisible(true);
             }
@@ -213,7 +191,6 @@ public class VPanelClasificacion extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBalta;
-    private javax.swing.JButton jBbaja;
     private javax.swing.JButton jBconsulta;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;

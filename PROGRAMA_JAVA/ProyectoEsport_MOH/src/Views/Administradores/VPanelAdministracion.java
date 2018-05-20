@@ -1,25 +1,27 @@
 package Views.Administradores;
 
+import java.awt.Color;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import proyectoesport_moh.Controladora;
 
 /**
- * @author MIGUEL
+ * @author MIGUEL OLMO HERNANDO
  */
 public class VPanelAdministracion extends javax.swing.JFrame {
 
     private final String tipoVentana;
 
     /**
-     * Creates new form VAdministracion
+     * Creates new form VPanelAdministracion
      */
     public VPanelAdministracion() {
         this.tipoVentana = "VPanelAdmins";
         initComponents();
         this.setLocationRelativeTo(null);
         this.setResizable(false);
+        this.getContentPane().setBackground(Color.CYAN);
     }
 
     /**
@@ -154,7 +156,9 @@ public class VPanelAdministracion extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel3)
                     .addComponent(jLabel1)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(65, 65, 65)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(47, 47, 47))
         );
         layout.setVerticalGroup(
@@ -162,9 +166,9 @@ public class VPanelAdministracion extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(27, 27, 27)
                 .addComponent(jLabel1)
-                .addGap(35, 35, 35)
+                .addGap(36, 36, 36)
                 .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
                 .addComponent(jLabel3)
                 .addGap(27, 27, 27))
         );
@@ -291,11 +295,11 @@ public class VPanelAdministracion extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(VPanelAdministracion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
-        //</editor-fold>
+
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
             public void run() {
                 new VPanelAdministracion().setVisible(true);
             }

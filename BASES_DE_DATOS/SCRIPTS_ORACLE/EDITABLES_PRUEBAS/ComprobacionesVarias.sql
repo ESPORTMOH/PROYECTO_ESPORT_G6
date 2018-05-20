@@ -14,11 +14,20 @@ select * from equipo;
 select * from partido;
 
 truncate table jugador cascade;
+
+select * from equipo;
 select * from jugador;
+
+
+select * from jugador where nombre = 'Pau' and apellido;
 
 select * from clasificacion;
 
-select * from equipo;
+
+
+
+select * from duenio where codLogin = 25;
+
 
 select * from jornada;
 
@@ -57,3 +66,58 @@ INSERT INTO jugador VALUES (DEFAULT, '32317745Y', 'Prueba1', 'Jugador1', 'PG1', 
 COMMIT;
 
 SELECT d.codDuenio, d.dni, d.nombre, d.apellido, d.codLogin, l.codLogin, l.usuario, l.passwd FROM duenio d, login l  WHERE (d.codLogin = l.codLogin) AND d.dni = '00000000C';
+
+
+select * from jornada WHERE NUMEROTEMPORADA = 'T01';
+
+select * from equipo;
+
+SELECT * FROM PARTIDO;
+desc partido
+desc duenio
+desc jugador
+
+select * from duenio;
+SELECT * FROM LOGIN;
+
+SELECT * FROM JUGADOR WHERE DNI = '66718782Z';
+desc clasificacion
+
+SELECT * FROM duenio WHERE codLogin = 4;
+SELECT * FROM equipo WHERE codDuenio = 4;
+SELECT * FROM equipo , duenio  WHERE equipo.CODDUENIO = duenio.CODDUENIO and equipo.codDuenio = 2;
+
+Select * from equipo, jugador where jugador.CODEQUIPO = equipo.CODEQUIPO and  CODDUENIO = 2;
+
+select count(*) AS NUM_JUGADORES from jugador where CODEQUIPO = 10 ;
+
+SELECT * FROM CLASIFICACION C, EQUIPO E WHERE E.CODEQUIPO = C.CODEQUIPO  ORDER BY PUNTOS DESC ;
+ 
+SELECT puntos 
+      FROM clasificacion
+        WHERE CODEQUIPO = 9
+          AND NUMEROTEMPORADA = 'T01';
+          
+ALTER TABLE partido DROP COLUMN HORAINICIO ;
+
+select * from jornada WHERE NUMEROTEMPORADA = 'T01';
+
+select * from equipo;
+
+SELECT * FROM PARTIDO;
+desc partido
+
+desc clasificacion
+
+SELECT * FROM CLASIFICACION C, EQUIPO E WHERE E.CODEQUIPO = C.CODEQUIPO  ORDER BY PUNTOS DESC ;
+ 
+SELECT puntos 
+      FROM clasificacion
+        WHERE CODEQUIPO = 9
+          AND NUMEROTEMPORADA = 'T01';
+          
+ALTER TABLE partido DROP COLUMN HORAINICIO ;
+
+
+SELECT * FROM clasificacion c, equipo e WHERE e.codequipo = c.codequipo AND c.numerotemporada = 'T01' ORDER BY PUNTOS DESC ;
+SELECT * FROM clasificacion c, equipo e WHERE e.codequipo = c.codequipo AND c.numerotemporada = 'T01' ORDER BY PUNTOS DESC

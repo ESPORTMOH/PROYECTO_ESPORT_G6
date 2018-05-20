@@ -9,13 +9,20 @@ import java.sql.SQLException;
 
 /**
  *
- * @author MIGUEL
+ * @author MIGUEL OLMO HERNANDO
  */
 public class UsuarioBD extends GenericoBD {
 
     private Connection con;
 
-    // COMPROBACION EXISTE O NO PARA DAR DE ALTA O NO
+    /**
+     * COMPROBACION EXISTE O NO PARA DAR DE ALTA O NO
+     * 
+     * @param dni
+     * @return localizado
+     * @throws SQLException
+     * @throws ConexionProblemas 
+     */
     public boolean localizarSiexixteDniUsuario(String dni) throws SQLException, ConexionProblemas {
         Boolean localizado = false;
         int records;
@@ -37,7 +44,15 @@ public class UsuarioBD extends GenericoBD {
         return localizado;
     }
 
-    // INSERTAR USUARIO
+    /**
+     * INSERTAR USUARIO
+     * 
+     * @param usuario
+     * @param tipo
+     * @throws SQLException
+     * @throws ClassNotFoundException
+     * @throws Exception 
+     */
     public void insertarUsuarioBD(Usuario usuario, String tipo) throws SQLException, ClassNotFoundException, Exception {
 
         GenericoBD genericoBD = new GenericoBD();
@@ -56,7 +71,14 @@ public class UsuarioBD extends GenericoBD {
         cerrarConexion(con);
     }
 
-    // LOCALIZAR USUARIO
+    /**
+     * LOCALIZAR USUARIO
+     * 
+     * @param dni
+     * @return usuario
+     * @throws SQLException
+     * @throws Exception 
+     */
     public Usuario localizarUsuario(String dni) throws SQLException, Exception {
 
         GenericoBD genericoBD = new GenericoBD();
@@ -89,7 +111,14 @@ public class UsuarioBD extends GenericoBD {
         return usuario;
     }
 
-    // EDITAR LOGIN
+    /**
+     * EDITAR LOGIN
+     * 
+     * @param passwd
+     * @param codLoginADM
+     * @throws SQLException
+     * @throws ConexionProblemas 
+     */
     public void ejecutarModificacionLog(String passwd, Integer codLoginADM) throws SQLException, ConexionProblemas {
 
         GenericoBD genericoBD = new GenericoBD();
@@ -107,7 +136,13 @@ public class UsuarioBD extends GenericoBD {
         cerrarConexion(con);
     }
 
-    // ELIMINAR USUARIO
+    /**
+     * ELIMINAR USUARIO
+     * 
+     * @param dni
+     * @throws SQLException
+     * @throws ConexionProblemas 
+     */
     public void eliminarUsuarioDelaBD(String dni) throws SQLException, ConexionProblemas {
 
         GenericoBD genericoBD = new GenericoBD();

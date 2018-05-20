@@ -1,7 +1,7 @@
 package Exceptions;
 
 /**
- * @author 1gdaw12
+ * @author MIGUEL OLMO HERNANDO
  */
 
 public class EquipoNoExiste extends Exception{
@@ -11,16 +11,28 @@ public class EquipoNoExiste extends Exception{
 
     }
 
+    /**
+     * 
+     * @param mensaje 
+     */
     public EquipoNoExiste(String mensaje) {
         ErroresDesconocidos.mensaje = mensaje;
     }
 
+    /**
+     * 
+     * @return mensaje
+     */
     public String getMensaje() {
         mensaje = "El Nombre del Equipo introducido"
               + "\nno existe en la Base de Datos";
         return mensaje;
     }
 
+    /**
+     * 
+     * @param mensaje 
+     */
     public void setMensaje(String mensaje) {
         ErroresDesconocidos.mensaje = mensaje;
     }

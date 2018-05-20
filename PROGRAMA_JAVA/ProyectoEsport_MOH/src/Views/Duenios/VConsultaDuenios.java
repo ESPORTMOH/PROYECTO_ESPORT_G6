@@ -1,26 +1,22 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Views.Duenios;
 
 import proyectoesport_moh.Controladora;
 import Exceptions.*;
+import java.awt.Color;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
  *
- * @author MIGUEL
+ * @author MIGUEL OLMO HERNANDO
  */
 public class VConsultaDuenios extends javax.swing.JFrame {
 
     private final String tipoVentana;
 
     /**
-     * Creates new form VAltaAdmin
+     * Creates new form VConsultaDuenios
      */
     public VConsultaDuenios() {
         initComponents();
@@ -28,6 +24,7 @@ public class VConsultaDuenios extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         this.setResizable(false);
         configPredeterminadaVentana();
+        this.getContentPane().setBackground(Color.CYAN);
     }
 
     /**
@@ -280,6 +277,7 @@ public class VConsultaDuenios extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
             public void run() {
                 new VConsultaDuenios().setVisible(true);
             }
@@ -306,7 +304,16 @@ public class VConsultaDuenios extends javax.swing.JFrame {
     private javax.swing.JTextField jTusuario;
     // End of variables declaration//GEN-END:variables
 
-    // FUNCIONES PROPIAS DE LA VISTA
+    /**
+     * FUNCIONES PROPIAS DE LA VISTA
+     * 
+     * @param dni
+     * @param nombre
+     * @param apellido
+     * @param usuario
+     * @param passwd
+     * @param estado 
+     */
     public void rellenarCamposVentana(String dni, String nombre, String apellido, String usuario, String passwd, Integer estado) {
         jTdni.setEnabled(true);
         jTdni.setText(dni);

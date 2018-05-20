@@ -7,6 +7,7 @@ package Views.Administradores;
 
 import proyectoesport_moh.Controladora;
 import Exceptions.*;
+import java.awt.Color;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -16,7 +17,7 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author MIGUEL
+ * @author MIGUEL OLMO HERNANDO
  */
 public class VBajaAdmins extends javax.swing.JFrame {
 
@@ -25,7 +26,7 @@ public class VBajaAdmins extends javax.swing.JFrame {
     private static Integer almacenarCodLogin;
 
     /**
-     * Creates new form VAltaAdmin
+     * Creates new form VBajaAdmin
      */
     public VBajaAdmins() {
         this.tipoVentana = "VBajaAdmins";
@@ -34,6 +35,7 @@ public class VBajaAdmins extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         this.setResizable(false);
         configPredeterminadaVentana();
+        this.getContentPane().setBackground(Color.CYAN);
     }
 
     /**
@@ -76,12 +78,6 @@ public class VBajaAdmins extends javax.swing.JFrame {
         jBbaja.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBbajaActionPerformed(evt);
-            }
-        });
-
-        jTdni.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTdniActionPerformed(evt);
             }
         });
 
@@ -215,10 +211,6 @@ public class VBajaAdmins extends javax.swing.JFrame {
         resetearCamposParaConsultarDeNuevo();
     }//GEN-LAST:event_jBresetActionPerformed
 
-    private void jTdniActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTdniActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTdniActionPerformed
-
     private void jBretrocederActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBretrocederActionPerformed
         // ACTION BOTON RETROCEDER      
         try {
@@ -261,6 +253,7 @@ public class VBajaAdmins extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
             public void run() {
                 new VBajaAdmins().setVisible(true);
             }
@@ -281,7 +274,17 @@ public class VBajaAdmins extends javax.swing.JFrame {
     private javax.swing.JTextField jTnombre;
     // End of variables declaration//GEN-END:variables
 
-    // FUNCIONES PROPIAS DE LA VISTA
+    
+    /**
+     * FUNCIONES PROPIAS DE LA VISTA
+     * 
+     * RELLENAR CAMPOS
+     * 
+     * @param dni
+     * @param nombre
+     * @param apellido
+     * @param login 
+     */
     public void rellenarCamposVentana(String dni, String nombre, String apellido, Integer login) {
         jTdni.setText(dni);
         jTnombre.setText(nombre);

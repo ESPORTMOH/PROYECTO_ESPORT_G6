@@ -1,12 +1,11 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Views.Usuarios;
 
 import Views.Duenios.*;
 import Exceptions.CierreVError;
+import Exceptions.ClasiNoExiste;
+import Exceptions.ConexionProblemas;
+import java.awt.Color;
+import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -14,7 +13,7 @@ import proyectoesport_moh.Controladora;
 
 /**
  *
- * @author MIGUEL
+ * @author MIGUEL OLMO HERNANDO
  */
 public class VJornadas extends javax.swing.JFrame {
 
@@ -28,6 +27,7 @@ public class VJornadas extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         this.setResizable(false);
+        this.getContentPane().setBackground(Color.CYAN);
     }
 
     /**
@@ -41,17 +41,32 @@ public class VJornadas extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         jBretroceder = new javax.swing.JButton();
+        jTemp = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        jBmostrar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 24)); // NOI18N
-        jLabel1.setText("JORNADAS");
+        jLabel1.setText("MOSTRAR RESULTADOS");
 
         jBretroceder.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/retroceder.png"))); // NOI18N
         jBretroceder.setBorder(null);
         jBretroceder.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBretrocederActionPerformed(evt);
+            }
+        });
+
+        jLabel2.setText("Introduce la Temporada");
+
+        jBmostrar.setBackground(new java.awt.Color(0, 153, 51));
+        jBmostrar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jBmostrar.setForeground(new java.awt.Color(255, 255, 255));
+        jBmostrar.setText("MOSTAR CLASIFICACION");
+        jBmostrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBmostrarActionPerformed(evt);
             }
         });
 
@@ -63,19 +78,33 @@ public class VJornadas extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jBretroceder))
+                        .addComponent(jBretroceder)
+                        .addGap(42, 42, 42)
+                        .addComponent(jBmostrar))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(167, 167, 167)
-                        .addComponent(jLabel1)))
-                .addContainerGap(174, Short.MAX_VALUE))
+                        .addGap(50, 50, 50)
+                        .addComponent(jLabel1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(152, 152, 152)
+                        .addComponent(jTemp, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(111, 111, 111)
+                        .addComponent(jLabel2)))
+                .addContainerGap(50, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 223, Short.MAX_VALUE)
-                .addComponent(jBretroceder)
+                .addGap(30, 30, 30)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jTemp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jBretroceder)
+                    .addComponent(jBmostrar))
                 .addContainerGap())
         );
 
@@ -93,6 +122,21 @@ public class VJornadas extends javax.swing.JFrame {
             Logger.getLogger(VPanelDuenios.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jBretrocederActionPerformed
+
+    private void jBmostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBmostrarActionPerformed
+     
+        try {
+            // MOSTRAR TABLA CLASIFICACION
+            Controladora.generarTablaClasificion(jTemp.getText());
+        } catch (SQLException ex) {
+            Logger.getLogger(VJornadas.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ConexionProblemas ex) {
+            Logger.getLogger(VJornadas.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClasiNoExiste ex) {
+            Logger.getLogger(VJornadas.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    
+    }//GEN-LAST:event_jBmostrarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -119,11 +163,10 @@ public class VJornadas extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(VJornadas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
-        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
             public void run() {
                 new VJornadas().setVisible(true);
             }
@@ -131,7 +174,10 @@ public class VJornadas extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jBmostrar;
     private javax.swing.JButton jBretroceder;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JTextField jTemp;
     // End of variables declaration//GEN-END:variables
 }

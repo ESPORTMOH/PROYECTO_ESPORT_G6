@@ -10,7 +10,7 @@ import java.sql.SQLException;
  */
 public class GenericoBD {
 
-/*   
+    /*   
     // CONEXIONES / DESCONEXIONES A LA BD MEDIANTE SRVORACLE / EN CLASE
     public Connection abrirConexion(Connection conexion) throws SQLException, ConexionProblemas {
 
@@ -40,15 +40,19 @@ public class GenericoBD {
     }
 
 }
-*/
-
- 
-////////////////////////////////////////////////////////////////////////////////////////////////
-// DATOS PARA LA CONEXION EN MI CASA CON VAGRANT
-//Class.forName("oracle.jdbc.OracleDriver");
-//String user = "system";
-//String pass = "oracle";
-//String url = "jdbc:oracle:thin:@10.10.10.9:1521:db12102";
+     */
+    /**
+     * DATOS PARA LA CONEXION EN MI CASA CON VAGRANT
+     *
+     * Class.forName("oracle.jdbc.OracleDriver"); String user = "system"; String
+     * pass = "oracle"; String url =
+     * "jdbc:oracle:thin:@10.10.10.9:1521:db12102";
+     *
+     * @param conexion
+     * @return conexion / null
+     * @throws SQLException
+     * @throws ConexionProblemas
+     */
     public Connection abrirConexion(Connection conexion) throws SQLException, ConexionProblemas {
 
         try {
@@ -68,6 +72,13 @@ public class GenericoBD {
 
     }
 
+    /**
+     * CERRAR CONEXION
+     *
+     * @param conexion
+     * @throws SQLException
+     * @throws ConexionProblemas
+     */
     public void cerrarConexion(Connection conexion) throws SQLException, ConexionProblemas {
         try {
             System.out.println("Conexion Cerrada");
@@ -78,7 +89,6 @@ public class GenericoBD {
 
 }
 
- 
 ////////////////////////////////////////////////////////////////////////////////////////////////
 
 /*
@@ -124,5 +134,3 @@ public class GenericoBD {
         }
     }
  */
-////////////////////////////////////////////////////////////////////////////////////////////////
-

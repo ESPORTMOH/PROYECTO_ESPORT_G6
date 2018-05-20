@@ -8,17 +8,25 @@ import java.sql.SQLException;
 import Exceptions.*;
 import java.sql.CallableStatement;
 import java.sql.Connection;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
- * @author MIGUEL
+ * @author MIGUEL OLMO HERNANDO
  */
 public class LoginBD extends GenericoBD {
 
     private Connection con;
 
-    // LLAMADA AL PROCEDIMIENTO PARA GENERAR AUTO USER / PASSWD 
+    /**
+     * LLAMADA AL PROCEDIMIENTO PARA GENERAR AUTO USER / PASSWD 
+     * 
+     * @param dni
+     * @param nombre
+     * @param apellido
+     * @param tipo
+     * @return id
+     * @throws SQLException
+     * @throws Exception 
+     */
     public Integer generarLogin(String dni, String nombre, String apellido, String tipo) throws SQLException, Exception {
 
         GenericoBD genericoBD = new GenericoBD();
@@ -41,7 +49,14 @@ public class LoginBD extends GenericoBD {
         return id;
     }
 
-    //VALIDAR LOGIN
+    /**
+     * VALIDAR LOGIN
+     * 
+     * @param loginUML
+     * @return tipolog
+     * @throws SQLException
+     * @throws Exception 
+     */
     public Login validarLogin(Login loginUML) throws SQLException, Exception {
 
         GenericoBD genericoBD = new GenericoBD();
@@ -82,7 +97,14 @@ public class LoginBD extends GenericoBD {
         return tipolog;
     }
 
-    // EDITAR LOGIN
+    /**
+     * EDITAR LOGIN
+     * 
+     * @param passwd
+     * @param codLoginADM
+     * @throws SQLException
+     * @throws ConexionProblemas 
+     */
     public void ejecutarModificacionLog(String passwd, Integer codLoginADM) throws SQLException, ConexionProblemas {
 
         GenericoBD genericoBD = new GenericoBD();
@@ -99,7 +121,13 @@ public class LoginBD extends GenericoBD {
         cerrarConexion(con);
     }
 
-    // ELIMINAR ADMIN LOGIN
+    /**
+     * ELIMINAR ADMIN LOGIN
+     * 
+     * @param codLogin
+     * @throws SQLException
+     * @throws ConexionProblemas 
+     */
     public void eliminarDeLaBDAdminLog(Integer codLogin) throws SQLException, ConexionProblemas {
 
         GenericoBD genericoBD = new GenericoBD();
@@ -113,7 +141,13 @@ public class LoginBD extends GenericoBD {
         cerrarConexion(con);
     }
     
-    // ELIMINAR DUENIO LOGIN
+    /**
+     * ELIMINAR DUENIO LOGIN
+     * 
+     * @param codLogin
+     * @throws SQLException
+     * @throws ConexionProblemas 
+     */
     public void eliminarDeLaBDDuenioLog(Integer codLogin) throws SQLException, ConexionProblemas {
 
         GenericoBD genericoBD = new GenericoBD();
@@ -127,7 +161,13 @@ public class LoginBD extends GenericoBD {
         cerrarConexion(con);
     }
     
-    // ELIMINAR USUARIO LOGIN
+    /**
+     * ELIMINAR USUARIO LOGIN
+     * 
+     * @param codLogin
+     * @throws SQLException
+     * @throws ConexionProblemas 
+     */
     public void eliminarDeLaBDUsuarioLog(Integer codLogin) throws SQLException, ConexionProblemas {
 
         GenericoBD genericoBD = new GenericoBD();

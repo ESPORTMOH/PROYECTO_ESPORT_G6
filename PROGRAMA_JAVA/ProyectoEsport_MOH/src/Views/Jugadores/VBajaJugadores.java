@@ -2,6 +2,7 @@ package Views.Jugadores;
 
 import proyectoesport_moh.Controladora;
 import Exceptions.*;
+import java.awt.Color;
 import java.sql.SQLException;
 import java.util.Date;
 import java.util.logging.Level;
@@ -10,14 +11,14 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author MIGUEL
+ * @author MIGUEL OLMO HERNANDO
  */
 public class VBajaJugadores extends javax.swing.JFrame {
 
     private final String tipoVentana;
 
     /**
-     * Creates new form VAltaAdmin
+     * Creates new form VBajaJugadores
      */
     public VBajaJugadores() {
         this.tipoVentana = "VBajaJugadores";
@@ -25,6 +26,7 @@ public class VBajaJugadores extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         this.setResizable(false);
         configPredeterminadaVentana();
+        this.getContentPane().setBackground(Color.CYAN);
     }
 
     /**
@@ -236,7 +238,7 @@ public class VBajaJugadores extends javax.swing.JFrame {
             if (jTdni.getText().isEmpty()) {
                 throw new CampoDniVacio();
             } else {
-                Controladora.localizarJugadorEnBD(jTdni.getText());
+                Controladora.localizarJugadorEnBD(tipoVentana,jTdni.getText());
             }
         } catch (CampoDniVacio CDV) {
             JOptionPane.showMessageDialog(this, CDV.getMensaje());
@@ -310,6 +312,7 @@ public class VBajaJugadores extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
             public void run() {
                 new VBajaJugadores().setVisible(true);
             }
@@ -339,10 +342,21 @@ public class VBajaJugadores extends javax.swing.JFrame {
     private javax.swing.JTextField jTposicion;
     private javax.swing.JTextField jTsueldo;
     // End of variables declaration//GEN-END:variables
-
-    // FUNCIONES PROPIAS DE LA VISTA
+    
+    /**
+     * FUNCIONES PROPIAS DE LA VISTA
+     * 
+     * @param dni
+     * @param nombre
+     * @param apellido
+     * @param nickname
+     * @param sueldo
+     * @param fechaNacimiento
+     * @param nacionalidad
+     * @param posicion 
+     */
     public void rellenarCamposVentana(String dni, String nombre, String apellido, String nickname, Double sueldo, Date fechaNacimiento, String nacionalidad, String posicion) {
-        jTnombre.setText(dni);
+        jTdni.setText(dni);
         jTnombre.setText(nombre);
         jTapellido.setText(apellido);
         jTnickname.setText(nickname);
@@ -365,7 +379,7 @@ public class VBajaJugadores extends javax.swing.JFrame {
     }
 
     public void resetearCamposParaConsultarDeNuevo() {
-        jTnombre.setText(null);
+        jTdni.setText(null);
         jTnombre.setText(null);
         jTnombre.setText(null);
         jTapellido.setText(null);

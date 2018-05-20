@@ -2,6 +2,7 @@ package Views.Jugadores;
 
 import proyectoesport_moh.Controladora;
 import Exceptions.*;
+import java.awt.Color;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -9,7 +10,7 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author MIGUEL
+ * @author MIGUEL OLMO HERNANDO
  */
 public class VConsultarJugadores extends javax.swing.JFrame {
 
@@ -23,6 +24,8 @@ public class VConsultarJugadores extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         this.setResizable(false);
+        configPredeterminadaVentana();
+        this.getContentPane().setBackground(Color.CYAN);
     }
 
     /**
@@ -117,27 +120,25 @@ public class VConsultarJugadores extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(46, 46, 46)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(60, 60, 60))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel5)
-                            .addComponent(jLabel6))
-                        .addGap(40, 40, 40)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jTsueldo, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addContainerGap(60, Short.MAX_VALUE))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel2)
+                                    .addComponent(jLabel3)
+                                    .addComponent(jLabel4)
+                                    .addComponent(jLabel5)
+                                    .addComponent(jLabel6))
+                                .addGap(40, 40, 40)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jTsueldo, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jTnombre, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jTdni, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jTapellido, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jTnickname, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jTnickname, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel7)
                                 .addGap(28, 28, 28)
@@ -154,10 +155,7 @@ public class VConsultarJugadores extends javax.swing.JFrame {
                                 .addGroup(layout.createSequentialGroup()
                                     .addComponent(jLConEquipo)
                                     .addGap(22, 22, 22))))
-                        .addContainerGap())
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(60, 60, 60))))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -168,7 +166,7 @@ public class VConsultarJugadores extends javax.swing.JFrame {
                         .addGap(54, 54, 54)
                         .addComponent(jBreset))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(54, 54, 54)
+                        .addGap(32, 32, 32)
                         .addComponent(jLSinEquipo)))
                 .addGap(0, 0, Short.MAX_VALUE))
         );
@@ -213,7 +211,7 @@ public class VConsultarJugadores extends javax.swing.JFrame {
                 .addComponent(jLSinEquipo)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLConEquipo)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(18, 18, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jBretroceder, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -319,10 +317,23 @@ public class VConsultarJugadores extends javax.swing.JFrame {
     private javax.swing.JTextField jTposicion;
     private javax.swing.JTextField jTsueldo;
     // End of variables declaration//GEN-END:variables
-
-    // FUNCIONES PROPIAS DE LA VISTA
-    public void rellenarCamposVentana(String dni, String nombre, String apellido, String nickname, Double sueldo, Date fechaNacimiento, String nacionalidad, String posicion) {
-        jTnombre.setText(dni);
+   
+    /**
+     * FUNCIONES PROPIAS DE LA VISTA
+     * 
+     * @param dni
+     * @param nombre
+     * @param apellido
+     * @param nickname
+     * @param sueldo
+     * @param fechaNacimiento
+     * @param nacionalidad
+     * @param posicion
+     * @param estado 
+     */
+    
+    public void rellenarCamposVentana(String dni, String nombre, String apellido, String nickname, Double sueldo, Date fechaNacimiento, String nacionalidad, String posicion, Integer estado) {
+        jTdni.setText(dni);
         jTnombre.setText(nombre);
         jTapellido.setText(apellido);
         jTnickname.setText(nickname);
@@ -337,6 +348,11 @@ public class VConsultarJugadores extends javax.swing.JFrame {
         jDatefnacimiento.setEnabled(true);
         jTnacionalidad.setEnabled(true);
         jTposicion.setEnabled(true);
+        if (estado == 0) {
+            jLSinEquipo.setVisible(true); 
+        } else{
+            jLConEquipo.setVisible(true);
+        }
     }
 
     public void configPredeterminadaVentana() {
@@ -349,10 +365,11 @@ public class VConsultarJugadores extends javax.swing.JFrame {
         jTposicion.setEnabled(false);
         jLSinEquipo.setVisible(false);
         jLConEquipo.setVisible(false);
+        
     }
 
     public void resetearCamposParaConsultarDeNuevo() {
-        jTnombre.setText(null);
+        jTdni.setText(null);
         jTnombre.setText(null);
         jTnombre.setText(null);
         jTapellido.setText(null);

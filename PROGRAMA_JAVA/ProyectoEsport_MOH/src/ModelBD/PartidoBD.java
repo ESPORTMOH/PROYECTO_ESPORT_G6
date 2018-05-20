@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package ModelBD;
 
 import Exceptions.ConexionProblemas;
@@ -13,27 +8,31 @@ import java.sql.SQLException;
 
 /**
  *
- * @author MIGUEL
+ * @author MIGUEL OLMO HERNANDO
  */
 public class PartidoBD extends GenericoBD{
     
     private Connection con;
-    
+    /**
+     * INSERTAR RESULTADOS
+     * 
+     * @param partido
+     * @throws SQLException
+     * @throws ConexionProblemas 
+     */
     public void insertarResultados(Partido partido) throws SQLException, ConexionProblemas {
         GenericoBD genericoBD = new GenericoBD();
         con = genericoBD.abrirConexion(con);
         
-        PreparedStatement pS = con.prepareStatement("INSERT INTO partido (FECHAPARTIDO, HORAINICIO, PUNTOSLOCAL, PUNTOSVISITANTE, CODLOCAL, CODVISITANTE, CODJORNADA) VALUES (?,?,?,?,?,?,?)");
+        PreparedStatement pS = con.prepareStatement("INSERT INTO partido (FECHAPARTIDO, PUNTOSLOCAL, PUNTOSVISITANTE, CODLOCAL, CODVISITANTE, CODJORNADA) VALUES (?,?,?,?,?,?)");
         pS.setDate(1, new java.sql.Date(partido.getFechaPartido().getTime()));
-        pS.setDate(2, new java.sql.Date(partido.getHoraInicio().getTime()));
-        pS.setInt(3, partido.getPuntosLocal());
-        pS.setInt(4, partido.getPuntosVisitante());
-        pS.setInt(5, partido.getCodLocal().getCodEquipo());
-        pS.setInt(6, partido.getCodVisitante().getCodEquipo());
-        pS.setInt(7, partido.getCodJornada().getCodJornada());
+        pS.setInt(2, partido.getPuntosLocal());
+        pS.setInt(3, partido.getPuntosVisitante());
+        pS.setInt(4, partido.getCodLocal().getCodEquipo());
+        pS.setInt(5, partido.getCodVisitante().getCodEquipo());
+        pS.setInt(6, partido.getCodJornada().getCodJornada());
         
          pS.executeUpdate();
-        
         
     }
     

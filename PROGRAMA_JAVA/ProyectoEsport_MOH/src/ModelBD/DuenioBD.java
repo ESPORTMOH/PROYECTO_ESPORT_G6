@@ -180,8 +180,8 @@ public class DuenioBD extends GenericoBD {
         GenericoBD genericoBD = new GenericoBD();
         con = genericoBD.abrirConexion(con);
         
-        PreparedStatement pS = con.prepareStatement("SELECT * FROM duenio WHERE codDuenio = ?");
-        pS.setString(1, duenio.getCodDuenio().toString());
+        PreparedStatement pS = con.prepareStatement("SELECT * FROM duenio WHERE codLogin = ?");
+        pS.setInt(1, duenio.getLogin().getCodLogin());
 
         ResultSet rs =   pS.executeQuery();
         while (rs.next()) {
@@ -190,7 +190,7 @@ public class DuenioBD extends GenericoBD {
             du.setNombre(rs.getString("nombre"));
             du.setApellido(rs.getString("apellido"));
             du.setEstado(rs.getInt("estado"));
-            du.setCodDuenio(rs.getInt("codLogin"));
+            du.setLogin(new Login(rs.getInt("codLogin")));
     
         }
         cerrarConexion(con);

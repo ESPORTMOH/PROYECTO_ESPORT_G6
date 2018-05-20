@@ -1,7 +1,7 @@
 package Exceptions;
 
 /**
- * @author 1gdaw12
+ * @author MIGUEL OLMO HERNANDO
  */
 
 public class DuenioNoExiste extends Exception{
@@ -11,16 +11,28 @@ public class DuenioNoExiste extends Exception{
 
     }
 
+    /**
+     * 
+     * @param mensaje 
+     */
     public DuenioNoExiste(String mensaje) {
         ErroresDesconocidos.mensaje = mensaje;
     }
 
+    /**
+     * 
+     * @return mensaje
+     */
     public String getMensaje() {
         mensaje = "El Dueño con el DNI introducido"
                 + "\nno existe en la Base de Datos";
         return mensaje;
     }
 
+    /**
+     * 
+     * @param mensaje 
+     */
     public void setMensaje(String mensaje) {
         ErroresDesconocidos.mensaje = mensaje;
     }

@@ -1,26 +1,28 @@
 package Views.Duenios;
 
 import Exceptions.CierreVError;
+import java.awt.Color;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import proyectoesport_moh.Controladora;
 
 /**
- * @author MIGUEL
+ * @author MIGUEL OLMO HERNANDO
  */
 public class VPanelDuenios extends javax.swing.JFrame {
 
     private final String tipoVentana;
 
     /**
-     * Creates new form VAdministracion
+     * Creates new form VPanelDuenios
      */
     public VPanelDuenios() {
         this.tipoVentana = "vPanelDuenios";
         initComponents();
         this.setLocationRelativeTo(null);
         this.setResizable(false);
+        this.getContentPane().setBackground(Color.CYAN);
     }
 
     /**
@@ -40,11 +42,8 @@ public class VPanelDuenios extends javax.swing.JFrame {
         jMcerrarSesion = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
         jMfichar = new javax.swing.JMenuItem();
-        jMenu4 = new javax.swing.JMenu();
-        jMultimaJornada = new javax.swing.JMenuItem();
-        jMultimaClasi = new javax.swing.JMenuItem();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 24)); // NOI18N
         jLabel1.setText("PANEL DE DUEÑOS");
@@ -78,26 +77,6 @@ public class VPanelDuenios extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu3);
 
-        jMenu4.setText("Visualizar");
-
-        jMultimaJornada.setText("Resultados Última Jornada");
-        jMultimaJornada.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMultimaJornadaActionPerformed(evt);
-            }
-        });
-        jMenu4.add(jMultimaJornada);
-
-        jMultimaClasi.setText("Resultados Última Clasificación");
-        jMultimaClasi.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMultimaClasiActionPerformed(evt);
-            }
-        });
-        jMenu4.add(jMultimaClasi);
-
-        jMenuBar1.add(jMenu4);
-
         setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -107,25 +86,25 @@ public class VPanelDuenios extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(90, 90, 90)
-                        .addComponent(jLabel1))
+                        .addGap(17, 17, 17)
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(39, 39, 39)
+                        .addGap(81, 81, 81)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel1)
                             .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(37, Short.MAX_VALUE))
+                .addGap(22, 22, 22))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(27, 27, 27)
                 .addComponent(jLabel1)
-                .addGap(36, 36, 36)
+                .addGap(33, 33, 33)
                 .addComponent(jLabel2)
-                .addGap(36, 36, 36)
+                .addGap(18, 18, 18)
                 .addComponent(jLabel3)
-                .addContainerGap(27, Short.MAX_VALUE))
+                .addContainerGap(21, Short.MAX_VALUE))
         );
 
         pack();
@@ -151,30 +130,6 @@ public class VPanelDuenios extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, EX.getMessage());
         }
     }//GEN-LAST:event_jMcerrarSesionActionPerformed
-
-    private void jMultimaJornadaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMultimaJornadaActionPerformed
-        // ARCHIVO / VISUALIZAR / ULTIMA JORNADA
-        try {
-            Controladora.abrirUltimaJornada();
-            Controladora.cierraTipoVentanas(tipoVentana);
-        } catch (CierreVError CVE) {
-            JOptionPane.showMessageDialog(this, CVE.getMessage());
-        } catch (Exception ex) {
-            Logger.getLogger(VPanelDuenios.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }//GEN-LAST:event_jMultimaJornadaActionPerformed
-
-    private void jMultimaClasiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMultimaClasiActionPerformed
-        // ARCHIVO / VISUALIZAR / ULTIMA CLASIFICACION
-        try {
-            Controladora.abrirUltimaClasi();
-            Controladora.cierraTipoVentanas(tipoVentana);
-        } catch (CierreVError CVE) {
-            JOptionPane.showMessageDialog(this, CVE.getMessage());
-        } catch (Exception ex) {
-            Logger.getLogger(VPanelDuenios.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }//GEN-LAST:event_jMultimaClasiActionPerformed
 
     /**
      * @param args the command line arguments
@@ -217,10 +172,7 @@ public class VPanelDuenios extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMcerrarSesion;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu3;
-    private javax.swing.JMenu jMenu4;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMfichar;
-    private javax.swing.JMenuItem jMultimaClasi;
-    private javax.swing.JMenuItem jMultimaJornada;
     // End of variables declaration//GEN-END:variables
 }

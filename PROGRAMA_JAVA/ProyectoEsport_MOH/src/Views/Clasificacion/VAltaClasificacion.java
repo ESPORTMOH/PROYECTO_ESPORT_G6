@@ -1,35 +1,22 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Views.Clasificacion;
 
-import Views.Jornada.*;
-import Exceptions.CampoTempVacio;
 import Exceptions.CierreVError;
-import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.Container;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.BorderFactory;
-import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-import javax.swing.JProgressBar;
-import javax.swing.border.Border;
 import proyectoesport_moh.Controladora;
 
 /**
  *
- * @author pcwin
+ * @author MIGUEL OLMO HERNANDO
  */
 public class VAltaClasificacion extends javax.swing.JFrame {
 
     private final String tipoVentana;
 
     /**
-     * Creates new form VGeneradorClasificacion
+     * Creates new form VAltaClasificacion
      */
     public VAltaClasificacion() {
         initComponents();
@@ -37,6 +24,7 @@ public class VAltaClasificacion extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         this.setResizable(false);
         configPredeterminadaVentana();
+        this.getContentPane().setBackground(Color.CYAN);
     }
 
     /**
@@ -54,6 +42,7 @@ public class VAltaClasificacion extends javax.swing.JFrame {
         jTntemporada = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jBretroceder = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
 
         jButton1.setText("jButton1");
 
@@ -72,7 +61,7 @@ public class VAltaClasificacion extends javax.swing.JFrame {
             }
         });
 
-        jLabel2.setText("Nº Temporada");
+        jLabel2.setText("Introduce el nombre de la");
 
         jBretroceder.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/retroceder.png"))); // NOI18N
         jBretroceder.setBorder(null);
@@ -82,38 +71,47 @@ public class VAltaClasificacion extends javax.swing.JFrame {
             }
         });
 
+        jLabel3.setText("Temporada para generar");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jBretroceder)
-                .addGap(81, 81, 81)
-                .addComponent(jBgenerarTemporada)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(26, 26, 26)
+                .addComponent(jLabel1)
+                .addGap(0, 23, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(26, 26, 26)
-                        .addComponent(jLabel1))
+                        .addContainerGap()
+                        .addComponent(jBretroceder)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(81, 81, 81)
+                                .addComponent(jTntemporada, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(73, 73, 73)
+                                .addComponent(jBgenerarTemporada))))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(65, 65, 65)
-                        .addComponent(jLabel2)
-                        .addGap(47, 47, 47)
-                        .addComponent(jTntemporada, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(0, 38, Short.MAX_VALUE))
+                        .addGap(88, 88, 88)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel2))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addGap(41, 41, 41)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(jTntemporada, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(47, 47, 47)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jTntemporada, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(27, 27, 27)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jBgenerarTemporada)
                     .addComponent(jBretroceder))
@@ -124,19 +122,16 @@ public class VAltaClasificacion extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jBgenerarTemporadaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBgenerarTemporadaActionPerformed
+        // CREAR CLASIFICACION
         try {
-            // GENERAR TEMPORADA
             if (jTntemporada.getText().isEmpty()) {
-                throw new CampoTempVacio();
+                JOptionPane.showMessageDialog(this, "El campo es obligatorio");
             } else {
-                //JProgressBar jProg = Controladora.generaBarraProgreso(jProgressBarT);
-                Controladora.generarJornadas(jTntemporada.getText());
-
+                Controladora.crearClasificcion(jTntemporada.getText());
             }
-        } catch (CampoTempVacio CTV) {
-            JOptionPane.showMessageDialog(this, CTV.getMensaje());
-        } catch (Exception ex) {
-            Logger.getLogger(VAltaClasificacion.class.getName()).log(Level.SEVERE, null, ex);
+
+        } catch (Exception Ex) {
+            JOptionPane.showMessageDialog(this, Ex);
         }
     }//GEN-LAST:event_jBgenerarTemporadaActionPerformed
 
@@ -180,6 +175,7 @@ public class VAltaClasificacion extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
             public void run() {
                 new VAltaClasificacion().setVisible(true);
             }
@@ -192,18 +188,14 @@ public class VAltaClasificacion extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JTextField jTntemporada;
     // End of variables declaration//GEN-END:variables
 
     // FUNCIONES PROPIAS DE LA VISTA
     private void configPredeterminadaVentana() {
-        jProgressBarT.setVisible(false);
-        jLaviso.setVisible(false);
-    }
-    
-    private void cargarAvisoBarra(){
-        jProgressBarT.setVisible(true);
-        jLaviso.setVisible(true);
+        // jProgressBarT.setVisible(false);
+        // jLaviso.setVisible(false);
     }
 
 }

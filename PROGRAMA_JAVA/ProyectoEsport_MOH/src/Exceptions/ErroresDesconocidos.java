@@ -1,7 +1,7 @@
 package Exceptions;
 
 /**
- * @author MIGUEL
+ * @author MIGUEL OLMO HERNANDO
  */
 
 public class ErroresDesconocidos extends Exception {
@@ -12,16 +12,28 @@ public class ErroresDesconocidos extends Exception {
 
     }
 
+    /**
+     * 
+     * @param mensaje 
+     */
     public ErroresDesconocidos(String mensaje) {
         ErroresDesconocidos.mensaje = mensaje;
     }
 
+    /**
+     * 
+     * @return mensaje
+     */
     public String getMensaje() {
         mensaje = "Error Desconocido, pongase en"
                 + "\ncontacto con el SUPER ADMIN";
         return mensaje;
     }
 
+    /**
+     * 
+     * @param mensaje 
+     */
     public void setMensaje(String mensaje) {
         ErroresDesconocidos.mensaje = mensaje;
     }

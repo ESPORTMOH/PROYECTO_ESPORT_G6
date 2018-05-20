@@ -11,7 +11,7 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author MIGUEL
+ * @author MIGUEL OLMO HERNANDO
  */
 public class VAltaJugadores extends javax.swing.JFrame {
 
@@ -27,6 +27,7 @@ public class VAltaJugadores extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         this.setResizable(false);
+        this.getContentPane().setBackground(Color.CYAN);
         
         fechaActual = extraerLaFechaActualDelSistema();
     }
@@ -193,8 +194,6 @@ public class VAltaJugadores extends javax.swing.JFrame {
 
     private void jBaltaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBaltaActionPerformed
         // BOTON ACTION ALTA JUGADOR
-          
-        
         try {
             if (jTdni.getText().isEmpty() | jTnombre.getText().isEmpty() | jTapellido.getText().isEmpty() | jTnickname.getText().isEmpty() | jTsueldo.getText().isEmpty() | jTnacionalidad.getText().isEmpty() | jTposicion.getText().isEmpty()) {
                 throw new CamposVacios();
@@ -204,7 +203,7 @@ public class VAltaJugadores extends javax.swing.JFrame {
                         Controladora.pedirInsertarJugadorBD(jTdni.getText(), jTnombre.getText(), jTapellido.getText(), jTnickname.getText(), jTsueldo.getText(), jDatefnacimiento.getDate(), jTnacionalidad.getText(), jTposicion.getText(), estado);
                         JOptionPane.showMessageDialog(this, "El Jugador ha sido "
                         + "\ndado de alta correctamente");
-                        //resetearCampos();
+                        resetearCampos();
                     }else{
                         jTdni.setBackground(Color.RED);
                        JOptionPane.showMessageDialog(this, "Ya existe un Jugador con ese DNI");    
@@ -268,6 +267,7 @@ public class VAltaJugadores extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
             public void run() {
                 new VAltaJugadores().setVisible(true);
             }
@@ -296,10 +296,29 @@ public class VAltaJugadores extends javax.swing.JFrame {
     private javax.swing.JTextField jTsueldo;
     // End of variables declaration//GEN-END:variables
 
+    /**
+     * FUNCIONES PROPIAS DE LA VISTA
+     * 
+     * EXTRAER LA FECHA ACTUAL DEL SISTEMA
+     * 
+     * @return fechaACTUAL
+     */
     private Date extraerLaFechaActualDelSistema() {
         java.util.Date fechaActual = new Date();
         
         return fechaActual;
+    }
+
+    private void resetearCampos() {
+        jTdni.setText(null);
+        jTnombre.setText(null);
+        jTapellido.setText(null);
+        jTnickname.setText(null);
+        jTsueldo.setText(null);
+        jDatefnacimiento.setDate(null);
+        jTnacionalidad.setText(null);
+        jTposicion.setText(null);
+ 
     }
 
 

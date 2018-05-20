@@ -14,7 +14,7 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author MIGUEL
+ * @author MIGUEL OLMO HERNANDO
  */
 public class VAltaAdmins extends javax.swing.JFrame {
 
@@ -29,6 +29,7 @@ public class VAltaAdmins extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         this.setResizable(false);
+        this.getContentPane().setBackground(Color.CYAN);
     }
 
     /**
@@ -211,6 +212,7 @@ public class VAltaAdmins extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
             public void run() {
                 new VAltaAdmins().setVisible(true);
             }
@@ -230,6 +232,8 @@ public class VAltaAdmins extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     // FUNCIONES PROPIAS DE LA VISTA
+    
+    // RESETEAR
     public void resetearCampos() {
         jTdni.setText(null);
         jTnombre.setText(null);

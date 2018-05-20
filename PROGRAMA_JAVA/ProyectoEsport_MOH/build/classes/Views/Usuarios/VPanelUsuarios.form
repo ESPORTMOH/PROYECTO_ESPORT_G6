@@ -26,18 +26,10 @@
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="jMjornadas">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Resultados Jornadas"/>
+                <Property name="text" type="java.lang.String" value="Resultados"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMjornadasActionPerformed"/>
-              </Events>
-            </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="jMclasificaciones">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Resultados Clasificaciones"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMclasificacionesActionPerformed"/>
               </Events>
             </MenuItem>
           </SubComponents>

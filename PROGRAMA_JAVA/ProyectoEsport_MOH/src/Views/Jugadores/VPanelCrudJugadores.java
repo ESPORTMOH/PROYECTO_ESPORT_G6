@@ -3,25 +3,27 @@ package Views.Jugadores;
 import proyectoesport_moh.Controladora;
 import Exceptions.*;
 import Views.Equipos.VPanelCrudEquipos;
+import java.awt.Color;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
- * @author MIGUEL
+ * @author MIGUEL OLMO HERNANDO
  */
 public class VPanelCrudJugadores extends javax.swing.JFrame {
 
     private final String tipoVentana;
     
     /**
-     * Creates new form VAdministracion
+     * Creates new form VPanerlCrudJugadores
      */
     public VPanelCrudJugadores() {
         this.tipoVentana = "VCrudJugadores";
         initComponents();
         this.setLocationRelativeTo(null);
         this.setResizable(false);
+        this.getContentPane().setBackground(Color.CYAN);
     }
 
     /**

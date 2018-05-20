@@ -1,7 +1,7 @@
 package Exceptions;
 
 /**
- * @author 1gdaw12
+ * @author MIGUEL OLMO HERNANDO
  */
 
 public class CamposVacios extends Exception{
@@ -11,15 +11,27 @@ public class CamposVacios extends Exception{
 
     }
 
+    /**
+     * 
+     * @param mensaje 
+     */
     public CamposVacios(String mensaje) {
         ErroresDesconocidos.mensaje = mensaje;
     }
 
+    /**
+     * 
+     * @return mensaje
+     */
     public String getMensaje() {
         mensaje = "Todos los campos son obligatorios";
         return mensaje;
     }
 
+    /**
+     * 
+     * @param mensaje 
+     */
     public void setMensaje(String mensaje) {
         ErroresDesconocidos.mensaje = mensaje;
     }

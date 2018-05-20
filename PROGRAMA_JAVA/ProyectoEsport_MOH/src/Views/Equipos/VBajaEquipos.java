@@ -1,28 +1,21 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Views.Equipos;
 
 import proyectoesport_moh.Controladora;
 import Exceptions.*;
 import Views.Equipos.*;
-import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.awt.Color;
 import javax.swing.JOptionPane;
 
 /**
  *
- * @author MIGUEL
+ * @author MIGUEL OLMO HERNANDO
  */
 public class VBajaEquipos extends javax.swing.JFrame {
 
     private final String tipoVentana;
 
     /**
-     * Creates new form VAltaAdmin
+     * Creates new form VBajaEquipos
      */
     public VBajaEquipos() {
         initComponents();
@@ -30,6 +23,7 @@ public class VBajaEquipos extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         this.setResizable(false);
         configPredeterminadaVentana();
+        this.getContentPane().setBackground(Color.CYAN);
 
     }
 
@@ -195,14 +189,14 @@ public class VBajaEquipos extends javax.swing.JFrame {
                 + "\na este Equipo?");
 
         if (preguntaSalida == JOptionPane.YES_OPTION) {
-            try {
-                Controladora.eliminarEquipoDelaBD(jTnombre.getText());
+            //try {
+                //Controladora.eliminarEquipoDelaBD(jTnombre.getText());
                 JOptionPane.showMessageDialog(this, "El Equipo ha sido "
                         + "\ndado de baja correctamente");
                 resetearCamposParaConsultarDeNuevo();
-            } catch (SQLException | ConexionProblemas EX) {
-                Logger.getLogger(VBajaEquipos.class.getName()).log(Level.SEVERE, null, EX);
-            }
+            //} catch (SQLException | ConexionProblemas EX) {
+             //   Logger.getLogger(VBajaEquipos.class.getName()).log(Level.SEVERE, null, EX);
+           //}
         }
 
     }//GEN-LAST:event_jBbajaActionPerformed
@@ -226,6 +220,7 @@ public class VBajaEquipos extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jBconsultarActionPerformed
 
+    // ACTION RETROCEDER
     private void jBretrocederActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBretrocederActionPerformed
         try {
             Controladora.abreTipoVentanas(tipoVentana);
@@ -270,6 +265,7 @@ public class VBajaEquipos extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
             public void run() {
                 new VBajaEquipos().setVisible(true);
             }
@@ -293,8 +289,16 @@ public class VBajaEquipos extends javax.swing.JFrame {
     private javax.swing.JTextField jTnombre;
     private javax.swing.JTextField jTpresupuesto;
     // End of variables declaration//GEN-END:variables
-
-    // FUNCIONES PROPIAS DE LA VISTA
+   
+    /**
+     * FUNCIONES PROPIAS DE LA VISTA
+     * 
+     * @param nombre
+     * @param presupuesto
+     * @param anioFundacion
+     * @param ciudad
+     * @param nombreEstadio 
+     */
     public void rellenarCamposVentana(String nombre, Double presupuesto, String anioFundacion, String ciudad, String nombreEstadio) {
         jTnombre.setText(nombre);
         jTpresupuesto.setText(presupuesto.toString());

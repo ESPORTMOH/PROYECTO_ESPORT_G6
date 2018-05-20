@@ -1,15 +1,15 @@
 package Views.Usuarios;
 
-import Views.Jugadores.*;
 import Views.Administradores.*;
 import proyectoesport_moh.Controladora;
 import Exceptions.*;
+import java.awt.Color;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
- * @author MIGUEL
+ * @author MIGUEL OLMO HERNANDO
  */
 public class VPanelCrudUsuarios extends javax.swing.JFrame {
 
@@ -23,6 +23,7 @@ public class VPanelCrudUsuarios extends javax.swing.JFrame {
         this.tipoVentana = "VCrudUsuarios";
         this.setLocationRelativeTo(null);
         this.setResizable(false);
+        this.getContentPane().setBackground(Color.CYAN);
     }
 
     /**
@@ -226,6 +227,7 @@ public class VPanelCrudUsuarios extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
             public void run() {
                 new VPanelCrudUsuarios().setVisible(true);
             }

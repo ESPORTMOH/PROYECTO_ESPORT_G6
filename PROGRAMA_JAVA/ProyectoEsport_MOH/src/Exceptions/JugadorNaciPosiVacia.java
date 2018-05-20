@@ -1,7 +1,7 @@
 package Exceptions;
 
 /**
- * @author 1gdaw12
+ * @author MIGUEL OLMO HERNANDO
  */
 
 public class JugadorNaciPosiVacia extends Exception{
@@ -11,16 +11,28 @@ public class JugadorNaciPosiVacia extends Exception{
 
     }
 
+    /**
+     * 
+     * @param mensaje 
+     */
     public JugadorNaciPosiVacia(String mensaje) {
         ErroresDesconocidos.mensaje = mensaje;
     }
 
+    /**
+     * 
+     * @return mensaje
+     */
     public String getMensaje() {
         mensaje = "Posición y Nacionalidad obligatorias"
                 + "\npara poder guardarlas en la BD";
         return mensaje;
     }
 
+    /**
+     * 
+     * @param mensaje 
+     */
     public void setMensaje(String mensaje) {
         ErroresDesconocidos.mensaje = mensaje;
     }
