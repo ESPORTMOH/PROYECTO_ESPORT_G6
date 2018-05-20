@@ -3,7 +3,7 @@ Por Miguel Olmo Hernando
 
 # NOVEDADES
 
-* Esta versión Fase 4 v9.5.1 incluye lo siguiente:
+* Esta versión Fase 4 v9.5.2 incluye lo siguiente:
 
 	* Cambios importantes en el SCRIPT DLL de Oracle (cambios en tablas, creacion de datos para la presentacion).
 	* Mejorados los PAQUETES que incluyen los procedimientos.
@@ -63,7 +63,7 @@ Por Miguel Olmo Hernando
 	
 * [**8º.-**] Ejecuta el programa. El **usuario y clave** por defecto del **Administrador** es **ROOT / ROOT**.
 
-* [**9º.-**] El **usuario y clave** por defecto del **Dueño** es **SUPER / DUEÑO****.
+* [**9º.-**] El **usuario y clave** por defecto del **Dueño** es **SUPER / DUENIO****.
 
 * [**10º.-**] El **usuario y clave** por defecto del **Usuario** es **SUPER / USUARIO**.
 
