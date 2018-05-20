@@ -124,19 +124,11 @@ public class VAltaClasificacion extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jBgenerarTemporadaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBgenerarTemporadaActionPerformed
-        try {
-            // GENERAR TEMPORADA
-            if (jTntemporada.getText().isEmpty()) {
-                throw new CampoTempVacio();
-            } else {
-                //JProgressBar jProg = Controladora.generaBarraProgreso(jProgressBarT);
-                Controladora.generarJornadas(jTntemporada.getText());
-
-            }
-        } catch (CampoTempVacio CTV) {
-            JOptionPane.showMessageDialog(this, CTV.getMensaje());
-        } catch (Exception ex) {
-            Logger.getLogger(VAltaClasificacion.class.getName()).log(Level.SEVERE, null, ex);
+  try {
+            // CREAR CLASIFICACION
+            Controladora.crearClasificcion(jTntemporada.getText());
+        } catch (Exception Ex) {
+           JOptionPane.showMessageDialog(this, Ex);
         }
     }//GEN-LAST:event_jBgenerarTemporadaActionPerformed
 

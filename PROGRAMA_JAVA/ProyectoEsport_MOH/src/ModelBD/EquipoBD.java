@@ -147,7 +147,7 @@ public class EquipoBD extends GenericoBD {
         con = genericoBD.abrirConexion(con);
 
         ArrayList<Equipo> listaEquipos = new ArrayList();
-        String consultaSQL = "SELECT codequipo, nombre, presupuesto, aniofundacion, ciudad, nombreestadio, codduenio FROM equipo WHERE codequipo <> 41 ";
+        String consultaSQL = "SELECT codequipo, nombre, presupuesto, aniofundacion, ciudad, nombreestadio, codduenio FROM equipo WHERE codequipo <> 1 ";
 
         Statement stmt = con.createStatement();
 
@@ -180,28 +180,24 @@ public class EquipoBD extends GenericoBD {
      */
     public Equipo recogerDatosEquipo(Duenio utilizarDuenioEnSesion) throws SQLException, ConexionProblemas {
 
-        Equipo eq = new Equipo();
+        Equipo equ = new Equipo();
 
         GenericoBD genericoBD = new GenericoBD();
         con = genericoBD.abrirConexion(con);
 
-        PreparedStatement pS = con.prepareStatement("SELECT * FROM equipo WHERE codDuenio = ?");
-        pS.setInt(1, utilizarDuenioEnSesion.getCodDuenio());
-
+        System.out.println("Codigo del Duenio en sesion: "+utilizarDuenioEnSesion.getCodDuenio()
+                           + " Y el codigo de Login Duenio: " + utilizarDuenioEnSesion.getLogin().getCodLogin());
+        
+        PreparedStatement pS = con.prepareStatement("SELECT CODEQUIPO FROM equipo WHERE codDuenio = ?");
+        pS.setInt(1, utilizarDuenioEnSesion.getCodDuenio());    
         ResultSet rs = pS.executeQuery();
         while (rs.next()) {
-            eq = new Equipo();
-            eq.setCodEquipo(rs.getInt("codequipo"));
-            eq.setNombre(rs.getString("nombre"));
-            eq.setPresupuesto(rs.getDouble("presupuesto"));
-            //eq.setAnioFundacion(rs.getDate("ANIOFUNDACION"));
-            eq.setCiudad(rs.getString("ciudad"));
-            eq.setNombreEstadio(rs.getString("nombreestadio"));
-            eq.setDuenio(new Duenio(rs.getInt("codduenio")));
+            equ = new Equipo();
+            equ.setCodEquipo(rs.getInt("CODEQUIPO"));
         }
         cerrarConexion(con);
 
-        return eq;
+        return equ;
     }
 
 }

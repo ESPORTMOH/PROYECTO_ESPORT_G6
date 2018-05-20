@@ -236,12 +236,12 @@ public class VBajaJugadores extends javax.swing.JFrame {
             if (jTdni.getText().isEmpty()) {
                 throw new CampoDniVacio();
             } else {
-                //Controladora.localizarJugadorEnBD(jTdni.getText());
+                Controladora.localizarJugadorEnBD(tipoVentana,jTdni.getText());
             }
         } catch (CampoDniVacio CDV) {
             JOptionPane.showMessageDialog(this, CDV.getMensaje());
-        //} catch (JugadorNoExiste JNE) {
-           // JOptionPane.showMessageDialog(this, JNE.getMensaje());
+        } catch (JugadorNoExiste JNE) {
+            JOptionPane.showMessageDialog(this, JNE.getMensaje());
         } catch (Exception E) {
             JOptionPane.showMessageDialog(this, E.getMessage());
         }
@@ -342,7 +342,7 @@ public class VBajaJugadores extends javax.swing.JFrame {
 
     // FUNCIONES PROPIAS DE LA VISTA
     public void rellenarCamposVentana(String dni, String nombre, String apellido, String nickname, Double sueldo, Date fechaNacimiento, String nacionalidad, String posicion) {
-        jTnombre.setText(dni);
+        jTdni.setText(dni);
         jTnombre.setText(nombre);
         jTapellido.setText(apellido);
         jTnickname.setText(nickname);
@@ -365,7 +365,7 @@ public class VBajaJugadores extends javax.swing.JFrame {
     }
 
     public void resetearCamposParaConsultarDeNuevo() {
-        jTnombre.setText(null);
+        jTdni.setText(null);
         jTnombre.setText(null);
         jTnombre.setText(null);
         jTapellido.setText(null);

@@ -1,4 +1,4 @@
-CREATE OR REPLACE TRIGGER TRIGG_jugadoresMaximoEquipo
+create or replace TRIGGER TRIGG_jugadoresMaximoEquipo
   BEFORE INSERT ON jugador
     FOR EACH ROW
       DECLARE
@@ -10,7 +10,8 @@ CREATE OR REPLACE TRIGGER TRIGG_jugadoresMaximoEquipo
         SELECT COUNT(*)
           INTO v_cantidadJugadores
             FROM jugador
-              WHERE codEquipo = v_codEquipo;  
+              WHERE codEquipo = v_codEquipo
+              AND codEquipo <> 1;  
               IF(v_cantidadJugadores>5)THEN
                 RAISE demasiadosJugadores;
               END IF;  

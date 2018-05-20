@@ -204,7 +204,7 @@ public class VAltaJugadores extends javax.swing.JFrame {
                         Controladora.pedirInsertarJugadorBD(jTdni.getText(), jTnombre.getText(), jTapellido.getText(), jTnickname.getText(), jTsueldo.getText(), jDatefnacimiento.getDate(), jTnacionalidad.getText(), jTposicion.getText(), estado);
                         JOptionPane.showMessageDialog(this, "El Jugador ha sido "
                         + "\ndado de alta correctamente");
-                        //resetearCampos();
+                        resetearCampos();
                     }else{
                         jTdni.setBackground(Color.RED);
                        JOptionPane.showMessageDialog(this, "Ya existe un Jugador con ese DNI");    
@@ -300,6 +300,18 @@ public class VAltaJugadores extends javax.swing.JFrame {
         java.util.Date fechaActual = new Date();
         
         return fechaActual;
+    }
+
+    private void resetearCampos() {
+        jTdni.setText(null);
+        jTnombre.setText(null);
+        jTapellido.setText(null);
+        jTnickname.setText(null);
+        jTsueldo.setText(null);
+        jDatefnacimiento.setDate(null);
+        jTnacionalidad.setText(null);
+        jTposicion.setText(null);
+ 
     }
 
 

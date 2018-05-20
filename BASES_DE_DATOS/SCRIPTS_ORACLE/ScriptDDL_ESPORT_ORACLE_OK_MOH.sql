@@ -79,6 +79,7 @@ DROP TABLE clasificacion CASCADE CONSTRAINTS;
 
 DROP PACKAGE ESPORT_MOH_1;
 DROP PACKAGE ESPORT_MOH_2;
+DROP PROCEDURE actualizarClasificacion;
 DROP TRIGGER TRIGG_jugadoresMaximoEquipo;
 DROP TRIGGER TRIGG_salarioMinimo;
 
@@ -245,7 +246,6 @@ CREATE TABLE partido (
                    NOCYCLE  NOT NULL ENABLE
                    CONSTRAINT PA_CDPA_PK PRIMARY KEY,
   fechaPartido DATE NOT NULL,                 
-  horaInicio DATE NOT NULL, -- EN PROGRAMACION ESTE ATRIBUTO SERA TIME
   puntosLocal NUMBER(3) NOT NULL,
   puntosVisitante NUMBER(3) NOT NULL,
   codLocal NUMBER(4) NOT NULL,  -- RESERVADO FK
@@ -590,9 +590,6 @@ COMMIT;
 --
 -- Datos para la tabla 'equipo' -  Creacion de EQUIPOS VARIOS
 --.
-
-INSERT INTO equipo VALUES (DEFAULT, 'SIN EQUIPO', 200000, '1988', 'Vitoria', 'Mi PC', 1);
-COMMIT;
 
 INSERT INTO equipo VALUES (DEFAULT, 'LAKERS', 200000, '1947', 'Los Angeles', 'Staples Center', 1);
 COMMIT;

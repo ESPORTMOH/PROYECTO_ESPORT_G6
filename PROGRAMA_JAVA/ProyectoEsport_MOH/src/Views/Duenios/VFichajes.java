@@ -148,8 +148,11 @@ public class VFichajes extends javax.swing.JFrame {
         try {
             // ACTION FICHAR
             Controladora.realizarFichaje(jComboBoxJugadores.getSelectedItem().toString());
+            JOptionPane.showMessageDialog(this, "Jugador fichado");
+            Controladora.reiniciarVistaFichaje();
         } catch (Exception ex) {
             Logger.getLogger(VFichajes.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(this, ex.getMessage() +" " +ex.getClass() );
         }
 
 

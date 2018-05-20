@@ -10,7 +10,6 @@ public class Partido {
 
     private Integer codPartido;
     private Date fechaPartido;
-    private Date horaInicio;
     private Integer puntosLocal;
     private Integer puntosVisitante;
 
@@ -27,16 +26,14 @@ public class Partido {
     /**
      * 
      * @param fechaPartido
-     * @param horaInicio
      * @param puntosLocal
      * @param puntosVisitante
      * @param codLocal
      * @param codVisitante
      * @param codJornada 
      */
-    public Partido(Date fechaPartido, Date horaInicio, Integer puntosLocal, Integer puntosVisitante, Equipo codLocal, Equipo codVisitante, Jornada codJornada) {
+    public Partido(Date fechaPartido, Integer puntosLocal, Integer puntosVisitante, Equipo codLocal, Equipo codVisitante, Jornada codJornada) {
         this.fechaPartido = fechaPartido;
-        this.horaInicio = horaInicio;
         this.puntosLocal = puntosLocal;
         this.puntosVisitante = puntosVisitante;
         this.codLocal = codLocal;
@@ -47,13 +44,11 @@ public class Partido {
     /**
      * 
      * @param codPartido
-     * @param horaInicio
      * @param puntosLocal
      * @param puntosVisitante 
      */
-    public Partido(Integer codPartido, Date horaInicio, Integer puntosLocal, Integer puntosVisitante) {
+    public Partido(Integer codPartido, Integer puntosLocal, Integer puntosVisitante) {
         this.codPartido = codPartido;
-        this.horaInicio = horaInicio;
         this.puntosLocal = puntosLocal;
         this.puntosVisitante = puntosVisitante;
     }
@@ -61,15 +56,13 @@ public class Partido {
     /**
      * 
      * @param codPartido
-     * @param horaInicio
      * @param puntosLocal
      * @param puntosVisitante
      * @param codLocal
      * @param codVisitante 
      */
-    public Partido(Integer codPartido, Date horaInicio, Integer puntosLocal, Integer puntosVisitante, Equipo codLocal, Equipo codVisitante) {
+    public Partido(Integer codPartido, Integer puntosLocal, Integer puntosVisitante, Equipo codLocal, Equipo codVisitante) {
         this.codPartido = codPartido;
-        this.horaInicio = horaInicio;
         this.puntosLocal = puntosLocal;
         this.puntosVisitante = puntosVisitante;
         this.codLocal = codLocal;
@@ -79,14 +72,12 @@ public class Partido {
     /**
      * 
      * @param codPartido
-     * @param horaInicio
      * @param puntosLocal
      * @param puntosVisitante
      * @param codJornada 
      */
-    public Partido(Integer codPartido, Date horaInicio, Integer puntosLocal, Integer puntosVisitante, Jornada codJornada) {
+    public Partido(Integer codPartido,  Integer puntosLocal, Integer puntosVisitante, Jornada codJornada) {
         this.codPartido = codPartido;
-        this.horaInicio = horaInicio;
         this.puntosLocal = puntosLocal;
         this.puntosVisitante = puntosVisitante;
         this.codJornada = codJornada;
@@ -95,16 +86,14 @@ public class Partido {
     /**
      * 
      * @param codPartido
-     * @param horaInicio
      * @param puntosLocal
      * @param puntosVisitante
      * @param codLocal
      * @param codVisitante
      * @param codJornada 
      */
-    public Partido(Integer codPartido, Date horaInicio, Integer puntosLocal, Integer puntosVisitante, Equipo codLocal, Equipo codVisitante, Jornada codJornada) {
+    public Partido(Integer codPartido,  Integer puntosLocal, Integer puntosVisitante, Equipo codLocal, Equipo codVisitante, Jornada codJornada) {
         this.codPartido = codPartido;
-        this.horaInicio = horaInicio;
         this.puntosLocal = puntosLocal;
         this.puntosVisitante = puntosVisitante;
         this.codLocal = codLocal;
@@ -127,23 +116,7 @@ public class Partido {
     public void setCodPartido(Integer codPartido) {
         this.codPartido = codPartido;
     }
-
-    /**
-     * 
-     * @return horaInicio
-     */
-    public Date getHoraInicio() {
-        return horaInicio;
-    }
-
-    /**
-     * 
-     * @param horaInicio 
-     */
-    public void setHoraInicio(Date horaInicio) {
-        this.horaInicio = horaInicio;
-    }
-
+    
     /**
      * 
      * @return puntosLocal

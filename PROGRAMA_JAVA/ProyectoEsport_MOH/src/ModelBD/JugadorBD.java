@@ -109,6 +109,7 @@ public class JugadorBD extends GenericoBD {
             jugador.setFechaNacimiento(datosRS.getDate("fechaNacimiento"));
             jugador.setNacionalidad(datosRS.getString("nacionalidad"));
             jugador.setPosicion(datosRS.getString("posicion"));
+            jugador.setEstado(datosRS.getInt("estado"));
             jugador.setEquipo(new Equipo(datosRS.getInt("codEquipo")));
 
         }

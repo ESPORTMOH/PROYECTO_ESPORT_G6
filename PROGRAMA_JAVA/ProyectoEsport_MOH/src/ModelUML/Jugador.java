@@ -16,7 +16,7 @@ public class Jugador {
     private Date fechaNacimiento;
     private String nacionalidad;
     private String posicion;
-    private String estado;
+    private Integer estado;
 
     // ATRIBUTO DE LA RELACION CON EQUIPO
     private Equipo equipo;
@@ -100,7 +100,7 @@ public class Jugador {
      *
      * @param estado
      */
-    public Jugador(String estado) {
+    public Jugador(Integer estado) {
         this.estado = estado;
     }
 
@@ -291,7 +291,7 @@ public class Jugador {
      * 
      * @return estado
      */
-    public String getEstado() {
+    public Integer getEstado() {
         return estado;
     }
 
@@ -299,7 +299,7 @@ public class Jugador {
      * 
      * @param estado 
      */
-    public void setEstado(String estado) {
+    public void setEstado(Integer estado) {
         this.estado = estado;
     }
 

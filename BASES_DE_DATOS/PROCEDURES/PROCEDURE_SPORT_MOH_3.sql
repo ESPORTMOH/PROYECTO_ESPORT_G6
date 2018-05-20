@@ -1,4 +1,9 @@
-CREATE OR REPLACE PROCEDURE actualizarClasificacion(p_pLocal in NUMBER , p_pVisitante in NUMBER, p_codLocal in NUMBER, p_codVisitante in NUMBER, p_numTemporada in VARCHAR2) AS 
+CREATE OR REPLACE PROCEDURE actualizarClasificacion(
+p_pLocal in NUMBER ,
+p_pVisitante in NUMBER,
+p_codLocal in NUMBER, 
+p_codVisitante in NUMBER, 
+p_numTemporada in VARCHAR2) AS 
   
   puntosVisitante clasificacion.puntos%TYPE;
   puntosLocal clasificacion.puntos%TYPE;
@@ -19,12 +24,12 @@ BEGIN
           WHERE CODEQUIPO = p_codLocal 
             AND NUMEROTEMPORADA = p_numTemporada;
       UPDATE clasificacion
-      SET puntos = (puntosVisitante+1)
+      SET puntos = (puntosLocal+1)
         WHERE CODEQUIPO = p_codLocal 
           AND NUMEROTEMPORADA = p_numTemporada; 
   END IF;
     EXCEPTION 
       WHEN OTHERS THEN 
-        RAISE_APPLICATION_ERROR(-20100, 'Error en pr_Crea_Login: '||SQLERRM);
+        RAISE_APPLICATION_ERROR(-20100, 'Error en no se ha actualizado la clasificacion: '||SQLERRM);
 END;
   

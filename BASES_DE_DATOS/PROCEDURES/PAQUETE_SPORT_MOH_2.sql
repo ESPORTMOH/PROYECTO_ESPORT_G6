@@ -46,7 +46,8 @@ END PROCE_rellenarcomboDuenios;
 		OPEN e_equipos 
 			FOR
 				SELECT *
-				FROM equipo;
+          FROM equipo
+            WHERE UPPER(nombre) <> 'ALL STARS';
   EXCEPTION
     WHEN OTHERS THEN
       RAISE_APPLICATION_ERROR(-20100, 'ERROR INEXPERADO');
@@ -59,7 +60,7 @@ END PROCE_rellenarcomboDuenios;
 			FOR
 				SELECT *
 				FROM jugador
-        WHERE codEquipo = 1;
+        WHERE estado = 0;
   EXCEPTION
     WHEN OTHERS THEN
       RAISE_APPLICATION_ERROR(-20100, 'ERROR INEXPERADO');

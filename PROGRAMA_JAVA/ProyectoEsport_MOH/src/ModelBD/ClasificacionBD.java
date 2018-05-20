@@ -1,10 +1,13 @@
 package ModelBD;
 
 import Exceptions.ConexionProblemas;
+import ModelUML.Equipo;
 import ModelUML.Partido;
 import java.sql.CallableStatement;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 /**
  *
@@ -38,5 +41,30 @@ public class ClasificacionBD extends GenericoBD {
         cerrarConexion(con);
 
     }
+    
+        public void crearClasificacion(ArrayList<Equipo> listaEquipos, String nT) throws SQLException, ConexionProblemas {
+        
+        GenericoBD genericoBD = new GenericoBD();
+        
+        
+        
+        for(int i =0; i<listaEquipos.size();i++){
+            
+            con = genericoBD.abrirConexion(con);
+            
+            PreparedStatement pS = con.prepareStatement("INSERT INTO clasificacion (CODEQUIPO, PUNTOS, NUMEROTEMPORADA) VALUES (?,?,?) ");
+
+            pS.setInt(1, listaEquipos.get(i).getCodEquipo());
+            pS.setInt(2, 0);
+            pS.setString(3, nT);
+
+            pS.executeUpdate();
+
+            cerrarConexion(con);
+
+        }  
+    }
+    
+    
 
 }

@@ -96,7 +96,6 @@ public class Controladora {
     // VISTAS CLASIFICACION
     private static VPanelClasificacion vpanelClasificacion;
     private static VAltaClasificacion vAltaClasificacion;
-    private static VBajaClasificacion vBajaClasificacion;
     private static VConsultaClasificacion vConsultaClasificacion;
 
     /**
@@ -265,6 +264,11 @@ public class Controladora {
         vFichajes.setVisible(true);
     }
 
+    public static void reiniciarVistaFichaje() {
+        vFichajes.dispose();
+        abrirFichajes(); 
+    }
+
     // ABRIR VISTA ULTIMA JORNADA
     public static void abrirUltimaJornada() {
         vultimaJornada = new VUltimaJornada();
@@ -290,8 +294,9 @@ public class Controladora {
     }
 
     // ABRIR PANEL REGISTRAR PUNTOS PARTIDOS
-    public static void abrirPanelPartidosPuntos() {
-        vPartido = new VPartido();
+    public static void abrirPanelPartidosPuntos() throws Exception {
+        equipoBD = new EquipoBD();
+        vPartido = new VPartido(equipoBD.getAllEquipos());
         vPartido.setVisible(true);
     }
 
@@ -483,12 +488,6 @@ public class Controladora {
         vConsultaClasificacion.setVisible(true);
     }
 
-    // ABRIR BAJA CLASIFICACION            
-    public static void abrirBajaClasificacion() {
-        vBajaClasificacion = new VBajaClasificacion();
-        vBajaClasificacion.setVisible(true);
-    }
-
     /**
      * INICIO CONTROL GENERICO DE VENTANAS > CERRADO DE VENTANAS
      *
@@ -656,10 +655,6 @@ public class Controladora {
             }
             case "VAltaClasificacion": {
                 vAltaClasificacion.dispose();
-                break;
-            }
-            case "VBajaClasificacion": {
-                vBajaClasificacion.dispose();
                 break;
             }
             case "VConsultarClasificacion": {
@@ -1177,19 +1172,19 @@ public class Controladora {
             case "VBajaJugadores": {
                 jugadorBD = new JugadorBD();
                 jugadorUML = jugadorBD.localizarJugador(dni);
-                vBajaDuenios.rellenarCamposVentana(duenioUML.getDni(), duenioUML.getNombre(), duenioUML.getApellido(), duenioUML.getLogin().getCodLogin());
+                vBajaJugadores.rellenarCamposVentana(jugadorUML.getDni(), jugadorUML.getNombre(), jugadorUML.getApellido(), jugadorUML.getNickname(), jugadorUML.getSueldo(), jugadorUML.getFechaNacimiento(), jugadorUML.getNacionalidad(), jugadorUML.getPosicion());
                 break;
             }
             case "VConsultarJugadores": {
                 jugadorBD = new JugadorBD();
                 jugadorUML = jugadorBD.localizarJugador(dni);
-                vConsultarDuenios.rellenarCamposVentana(duenioUML.getDni(), duenioUML.getNombre(), duenioUML.getApellido(), duenioUML.getLogin().getUser(), duenioUML.getLogin().getPassword(), duenioUML.getEstado());
+                vConsultarJugadores.rellenarCamposVentana(jugadorUML.getDni(), jugadorUML.getNombre(), jugadorUML.getApellido(), jugadorUML.getNickname(), jugadorUML.getSueldo(), jugadorUML.getFechaNacimiento(), jugadorUML.getNacionalidad(), jugadorUML.getPosicion(), jugadorUML.getEstado());
                 break;
             }
             case "VEditarJugadores": {
                 jugadorBD = new JugadorBD();
                 jugadorUML = jugadorBD.localizarJugador(dni);
-                vEditarDuenios.rellenarCamposVentana(duenioUML.getDni(), duenioUML.getNombre(), duenioUML.getApellido(), duenioUML.getLogin().getUser(), duenioUML.getLogin().getPassword());
+                vEditarJugadores.rellenarCamposVentana(jugadorUML.getDni(), jugadorUML.getNombre(), jugadorUML.getApellido(), jugadorUML.getNickname(), jugadorUML.getSueldo(), jugadorUML.getFechaNacimiento(), jugadorUML.getNacionalidad(), jugadorUML.getPosicion());
                 break;
             }
             default:
@@ -1336,14 +1331,13 @@ public class Controladora {
      * @param temporada
      * @param jornada
      * @param fechaPartido
-     * @param horaPratido
      * @param equipoLocal
      * @param puntosLocal
      * @param equipoVisitantendex
      * @param puntosVisitante
      * @throws java.lang.Exception
      */
-    public static void registrarDatosDelPartido(String temporada, String jornada, Date fechaPartido, String horaPratido, String equipoLocal, String puntosLocal, String equipoVisitantendex, String puntosVisitante) throws Exception {
+    public static void registrarDatosDelPartido(String temporada, String jornada, Date fechaPartido, String equipoLocal, String puntosLocal, String equipoVisitantendex, String puntosVisitante) throws Exception {
         equipoBD = new EquipoBD();
         jornadaBD = new JornadaBD();
         partidoBD = new PartidoBD();
@@ -1352,12 +1346,10 @@ public class Controladora {
         Equipo local = equipoBD.localizarEquipo(equipoLocal);
         Equipo visitante = equipoBD.localizarEquipo(equipoVisitantendex);
 
-        SimpleDateFormat sdf = new SimpleDateFormat("HH:MM:SS");
-        Date horaInicio = sdf.parse(horaPratido);
-
+//        SimpleDateFormat sdf = new SimpleDateFormat("HH:MM:SS");
+//       Date horaInicio = sdf.parse(horaPratido);
         Partido partido = new Partido(
                 fechaPartido,
-                horaInicio,
                 Integer.parseInt(puntosLocal),
                 Integer.parseInt(puntosVisitante),
                 local,
@@ -1482,8 +1474,19 @@ public class Controladora {
 
     }
 
-    // SENTENCIAS ALTA / BAJA / CONSULTA / MODIFICACION > CLASIFICACION
-    public static void localizarClasificacionEnBD() {
+    /**
+     * SENTENCIAS ALTA / BAJA / CONSULTA / MODIFICACION > CLASIFICACION
+     *
+     * @param nT
+     * @throws Exception
+     */
+    public static void crearClasificcion(String nT) throws Exception {
+
+        equipoBD = new EquipoBD();
+        ClasificacionBD clasificacionBD = new ClasificacionBD();
+        ArrayList<Equipo> listaEquipos = equipoBD.getAllEquipos();
+        clasificacionBD.crearClasificacion(listaEquipos, nT);
+
     }
 
     /**
@@ -1601,7 +1604,7 @@ public class Controladora {
     public static Duenio buscarDatosDeDuenio(Integer codLogin) throws SQLException, ConexionProblemas {
         duenioBD = new DuenioBD();
         Duenio duenio = new Duenio();
-        duenio.setCodDuenio(codLogin);
+        duenio.setLogin(new Login(codLogin));
         return duenioBD.recopilarDatosDuenio(duenio);
     }
 
