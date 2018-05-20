@@ -41,7 +41,7 @@ Por Miguel Olmo Hernando
 
 * La Carpeta [**PROGRAMACION_JAVA**](https://github.com/migueloh/PROYECTO_ESPORT_G6/tree/master/PROGRAMA_JAVA/ProyectoEsport_MOH) es donde tiene lugar la codificación del programa. Esta codificación la realizo mediante Netbeans.
 
-* La Carpeta [**DOCUMENTACION**] va a contener toda la documentación (manuales, presentacion).
+* La Carpeta [**DOCUMENTACION**](https://github.com/migueloh/PROYECTO_ESPORT_G6/tree/master/DOCUMENTACION) va a contener toda la documentación (manuales, presentacion).
 
 
 # REQUISITOS PARA EJECUTAR EL PROGRAMA:
