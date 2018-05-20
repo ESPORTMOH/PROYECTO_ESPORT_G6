@@ -117,3 +117,7 @@ SELECT puntos
           AND NUMEROTEMPORADA = 'T01';
           
 ALTER TABLE partido DROP COLUMN HORAINICIO ;
+
+
+SELECT * FROM clasificacion c, equipo e WHERE e.codequipo = c.codequipo AND c.numerotemporada = 'T01' ORDER BY PUNTOS DESC ;
+SELECT * FROM clasificacion c, equipo e WHERE e.codequipo = c.codequipo AND c.numerotemporada = 'T01' ORDER BY PUNTOS DESC

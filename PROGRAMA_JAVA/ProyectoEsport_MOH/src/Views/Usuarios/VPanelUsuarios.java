@@ -42,7 +42,6 @@ public class VPanelUsuarios extends javax.swing.JFrame {
         jMcerrarSesion = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
         jMjornadas = new javax.swing.JMenuItem();
-        jMclasificaciones = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -68,21 +67,13 @@ public class VPanelUsuarios extends javax.swing.JFrame {
 
         jMenu3.setText("Visualizar");
 
-        jMjornadas.setText("Resultados Jornadas");
+        jMjornadas.setText("Resultados");
         jMjornadas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMjornadasActionPerformed(evt);
             }
         });
         jMenu3.add(jMjornadas);
-
-        jMclasificaciones.setText("Resultados Clasificaciones");
-        jMclasificaciones.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMclasificacionesActionPerformed(evt);
-            }
-        });
-        jMenu3.add(jMclasificaciones);
 
         jMenuBar1.add(jMenu3);
 
@@ -140,18 +131,6 @@ public class VPanelUsuarios extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jMjornadasActionPerformed
 
-    private void jMclasificacionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMclasificacionesActionPerformed
-        // ARCHIVO / VISUALIZAR / CLASIFICACIONES
-        try {
-            Controladora.abrirClasificaciones();
-            Controladora.cierraTipoVentanas(tipoVentana);
-        } catch (CierreVError CVE) {
-            JOptionPane.showMessageDialog(this, CVE.getMessage());
-        } catch (Exception ex) {
-            Logger.getLogger(VPanelUsuarios.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }//GEN-LAST:event_jMclasificacionesActionPerformed
-
     /**
      * @param args the command line arguments
      */
@@ -191,7 +170,6 @@ public class VPanelUsuarios extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JMenuItem jMcerrarSesion;
-    private javax.swing.JMenuItem jMclasificaciones;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;

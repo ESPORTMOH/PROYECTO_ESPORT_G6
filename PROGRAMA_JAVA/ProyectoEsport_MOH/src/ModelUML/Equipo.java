@@ -31,6 +31,11 @@ public class Equipo {
         this.codEquipo = codEquipo;
     }
 
+    public Equipo(String nombre) {
+        this.nombre = nombre;
+    }
+    
+
     /**
      * 
      * @param codEquipo

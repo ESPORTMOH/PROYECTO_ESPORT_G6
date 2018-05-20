@@ -1,11 +1,14 @@
 package ModelBD;
 
+import Exceptions.ClasiNoExiste;
 import Exceptions.ConexionProblemas;
+import ModelUML.Clasificacion;
 import ModelUML.Equipo;
 import ModelUML.Partido;
 import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -41,17 +44,15 @@ public class ClasificacionBD extends GenericoBD {
         cerrarConexion(con);
 
     }
-    
-        public void crearClasificacion(ArrayList<Equipo> listaEquipos, String nT) throws SQLException, ConexionProblemas {
-        
+
+    public void crearClasificacion(ArrayList<Equipo> listaEquipos, String nT) throws SQLException, ConexionProblemas {
+
         GenericoBD genericoBD = new GenericoBD();
-        
-        
-        
-        for(int i =0; i<listaEquipos.size();i++){
-            
+
+        for (int i = 0; i < listaEquipos.size(); i++) {
+
             con = genericoBD.abrirConexion(con);
-            
+
             PreparedStatement pS = con.prepareStatement("INSERT INTO clasificacion (CODEQUIPO, PUNTOS, NUMEROTEMPORADA) VALUES (?,?,?) ");
 
             pS.setInt(1, listaEquipos.get(i).getCodEquipo());
@@ -62,9 +63,35 @@ public class ClasificacionBD extends GenericoBD {
 
             cerrarConexion(con);
 
-        }  
+        }
     }
-    
-    
+
+    public ArrayList<Clasificacion> traerClasificacion(String temporada) throws SQLException, ConexionProblemas, ClasiNoExiste {
+        GenericoBD genericoBD = new GenericoBD();
+        con = genericoBD.abrirConexion(con);
+
+        ArrayList<Clasificacion> listaCP = new ArrayList();
+
+        System.out.println("Parametro de temporada es:  "+temporada);
+        //SELECT e.NOMBRE, c.PUNTOS FROM clasificacion c, equipo e WHERE e.codequipo = c.codequipo AND c.numerotemporada = ? ORDER BY PUNTOS DESC
+       
+        PreparedStatement pS = con.prepareStatement("SELECT e.NOMBRE, c.PUNTOS FROM clasificacion c, equipo e WHERE e.codequipo = c.codequipo AND c.numerotemporada = ? ORDER BY PUNTOS DESC");
+        pS.setString(1, temporada);
+
+        ResultSet datosRS = pS.executeQuery();
+
+        while (datosRS.next()) {
+            Clasificacion cl = new Clasificacion();
+            Equipo e = new Equipo();
+            e.setNombre(datosRS.getString("nombre"));
+            cl.setEquipo(e);
+            cl.setPuntos(datosRS.getInt("puntos"));
+            listaCP.add(cl);
+        }
+
+        cerrarConexion(con);
+
+        return listaCP;
+    }
 
 }

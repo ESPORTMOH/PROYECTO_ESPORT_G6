@@ -18,6 +18,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import javax.swing.JFrame;
 
 //import javax.swing.JProgressBar;
 /**
@@ -54,7 +55,6 @@ public class Controladora {
     private static VEditarUsuarios vEditarUsuarios;
     private static VConsultaUsuarios vConsultarUsuarios;
     private static VJornadas vJornadas;
-    private static VClasificaciones vClasificaciones;
 
     //VISTAS DUENIOS
     private static VPanelDuenios vpanelDuenios;
@@ -285,12 +285,6 @@ public class Controladora {
     public static void abrirJornadas() {
         vJornadas = new VJornadas();
         vJornadas.setVisible(true);
-    }
-
-    // ABRIR VISTA ULTIMA CLASIFICACION
-    public static void abrirClasificaciones() {
-        vClasificaciones = new VClasificaciones();
-        vClasificaciones.setVisible(true);
     }
 
     // ABRIR PANEL REGISTRAR PUNTOS PARTIDOS
@@ -639,10 +633,6 @@ public class Controladora {
             }
             case "VJornadas": {
                 vJornadas.dispose();
-                break;
-            }
-            case "VClasificaciones": {
-                vClasificaciones.dispose();
                 break;
             }
             case "VPartidos": {
@@ -1623,6 +1613,16 @@ public class Controladora {
         Equipo equipo = equipoBD.recogerDatosEquipo(utilizarDuenioEnSesion());
         jugadorBD.actualizarDatosJugador(jugador, equipo);
 
+    }
+
+    public static void generarTablaClasificion(String temporada) throws SQLException, ConexionProblemas, ClasiNoExiste {
+        clasificacionBD = new ClasificacionBD();
+        ArrayList<Clasificacion> listaDePuntos = clasificacionBD.traerClasificacion(temporada);
+        GenerarTablaClasificaciones generarTablaClasificacion = new GenerarTablaClasificaciones();
+        generarTablaClasificacion.crearTabla(listaDePuntos);
+        generarTablaClasificacion.pack();
+        generarTablaClasificacion.setVisible(true);
+        generarTablaClasificacion.setLocationRelativeTo(null);
     }
 
 }
