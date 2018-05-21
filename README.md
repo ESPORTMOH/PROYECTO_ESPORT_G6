@@ -3,21 +3,9 @@ Por Miguel Olmo Hernando
 
 # NOVEDADES
 
-* Esta versión Fase 4 v9.5.2 incluye lo siguiente:
+* Esta versión Fase 4 v10 incluye lo siguiente:
 
-	* Cambios importantes en el SCRIPT DLL de Oracle (cambios en tablas, creacion de datos para la presentacion).
-	* Mejorados los PAQUETES que incluyen los procedimientos.
-	* Mejorados los DISPARADORES.
-	* Todos los CRUD funcionando.
-	* Genera una temporada o las que se quieran.
-	* Genera una clasificacion o las que se quieran en base a las temporadas que se tengan.
-	* Inserta los puntos obtenidos de los partidos jugados en una temporada y jornada.
-	* Dueños pueden hacer fichajes.
-	* Usuarios pueden ver los resultados.
-	* Creación íntegra del Javadoc.
-	* Se ha mejorado la interfaz gráfica.
-	* Se incluye una nueva carpeta llamada DOCUMENTACION al repositorio, esta va a contenter los manuales y la presentación.
-	* Trabajando en los diferentes manuales y la presentación.
+	* Funcionando todo.
 	
 
 # CONTENIDO DEL REPOSITORIO
